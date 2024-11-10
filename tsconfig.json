@@ -29,12 +29,20 @@
       "@assets/*": [
         "./src/assets/*"
       ],
+      "@icons/*": [
+        "./src/assets/icons/*"
+      ],
       "@app/*": [
         "./src/app/*"
       ]
     }
   },
   "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "svgr.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
