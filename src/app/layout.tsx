@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@app/globals.css";
 import "@assets/fonts/fonts.css";
 import { LayoutSC } from "./layout.styled";
-import SideBar from "@/components/SideBar";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   title: "WaManga",
@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <LayoutSC>
-          <SideBar />
+          <Sidebar />
           {children}
         </LayoutSC>
       </body>

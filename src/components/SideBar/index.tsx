@@ -1,13 +1,16 @@
 import React from "react";
-import { SideBarSC } from "./styled";
-import Logo from "@icons/svg/logo.svg";
+import Logo from "@icons/svg/logo.svg?url";
+import { LogoSC, SidebarSC } from "./styled";
+import { SidebarTab } from "./Tab";
+import HomeIcon from "@icons/svg/home.svg";
 
-const SideBar = () => {
+const Sidebar = () => {
   return (
-    <SideBarSC>
-      <Logo />
-    </SideBarSC>
+    <SidebarSC>
+      <LogoSC src={Logo} alt="Logo" />
+      <SidebarTab icon={<HomeIcon />} title={"Главная"} />
+    </SidebarSC>
   );
 };
 
-export default SideBar;
+export default Sidebar;

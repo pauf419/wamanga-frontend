@@ -2,10 +2,24 @@
 
 import { colors } from "@/styles";
 import styled from "@emotion/styled";
+import Logo from "@icons/svg/logo.svg";
+import Image from "next/image";
 
-export const SideBarSC = styled.div`
+export const SidebarSC = styled.div`
   width: 100%;
   height: 100%;
   background: ${colors.sideBarBackground};
-  padding: 35px 15px;
+  padding: 20px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+`;
+
+export const LogoSC = styled(Image)`
+  width: 100%;
+  height: 50px;
+  padding: 0px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
