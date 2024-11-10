@@ -1,3 +1,5 @@
+import { HomeSC } from "./page.styled";
+
 export default function Home() {
-  return <div></div>;
+  return <HomeSC>Home</HomeSC>;
 }
