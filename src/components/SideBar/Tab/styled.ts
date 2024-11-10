@@ -15,39 +15,36 @@ export const SidebarTabSC = styled.div`
   line-height: 16px;
   text-align: center;
   border-radius: 8px;
-
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: ${colors.textPriamry};
     background: ${colors.primary}28;
-
-    /* TODO: Change to a better way */
-    & div:first-of-type path {
-      fill: ${colors.textPriamry};
-    }
-
-    & div:last-of-type path {
-      fill: none;
-      stroke: ${colors.textPriamry};
-    }
   }
 `;
 
 export const Left = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
+
+  ${SidebarTabSC}:hover & path {
+    fill: ${colors.textPriamry};
+  }
 `;
 
 export const Right = styled.div`
   position: absolute;
   top: 0;
-  right: 0;
+  right: 4px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${SidebarTabSC}:hover & path {
+    stroke: ${colors.textPriamry};
+  }
 `;

@@ -2,7 +2,6 @@
 
 import { colors } from "@/styles";
 import styled from "@emotion/styled";
-import Logo from "@icons/svg/logo.svg";
 import Image from "next/image";
 
 export const SidebarSC = styled.div`
