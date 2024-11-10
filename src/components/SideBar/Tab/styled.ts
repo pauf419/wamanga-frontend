@@ -4,10 +4,9 @@ import { colors } from "@/styles";
 import styled from "@emotion/styled";
 
 export const SidebarTabSC = styled.div`
+  position: relative;
   height: 54px;
   display: flex;
-  gap: 6px;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: ${colors.iconColor};
@@ -24,8 +23,31 @@ export const SidebarTabSC = styled.div`
     color: ${colors.textPriamry};
     background: ${colors.primary}28;
 
-    & svg path {
+    /* TODO: Change to a better way */
+    & div:first-of-type path {
       fill: ${colors.textPriamry};
     }
+
+    & div:last-of-type path {
+      fill: none;
+      stroke: ${colors.textPriamry};
+    }
   }
+`;
+
+export const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+`;
+
+export const Right = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

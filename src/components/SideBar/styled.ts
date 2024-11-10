@@ -12,7 +12,7 @@ export const SidebarSC = styled.div`
   padding: 20px 8px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 `;
 
 export const LogoSC = styled(Image)`
@@ -22,4 +22,10 @@ export const LogoSC = styled(Image)`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const Tabs = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
