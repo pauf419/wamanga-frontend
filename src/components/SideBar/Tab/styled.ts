@@ -3,7 +3,6 @@
 import { colors } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
-import { css } from "@emotion/css";
 
 export const SidebarTabSC = styled.a<{ $isActive?: boolean }>`
   text-decoration: none;
@@ -14,7 +13,6 @@ export const SidebarTabSC = styled.a<{ $isActive?: boolean }>`
   justify-content: center;
   color: ${colors.iconColor};
   font-size: 12px;
-  font-weight: 500;
   line-height: 16px;
   text-align: center;
   border-radius: 8px;

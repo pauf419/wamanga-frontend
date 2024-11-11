@@ -1,7 +1,8 @@
 import React from "react";
+import { CatalogSC } from "./styled";
 
 const CatalogPage = () => {
-  return <h1>Hello World</h1>;
+  return <CatalogSC>Catalog</CatalogSC>;
 };
 
 export default CatalogPage;

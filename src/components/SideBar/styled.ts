@@ -26,5 +26,5 @@ export const LogoSC = styled(Image)`
 export const Tabs = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 `;
