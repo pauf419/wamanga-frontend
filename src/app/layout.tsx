@@ -3,6 +3,7 @@ import "@app/globals.css";
 import "@assets/fonts/fonts.css";
 import { LayoutSC } from "./layout.styled";
 import Sidebar from "@/components/Sidebar";
+import Providers from "./Providers";
 
 export const metadata: Metadata = {
   title: "WaManga",
@@ -17,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LayoutSC>
-          <Sidebar />
-          {children}
-        </LayoutSC>
+        <Providers>
+          <LayoutSC>
+            <Sidebar />
+            {children}
+          </LayoutSC>
+        </Providers>
       </body>
     </html>
   );
