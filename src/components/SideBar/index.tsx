@@ -5,22 +5,21 @@ import { SidebarTab } from "./Tab";
 import HomeIcon from "@icons/svg/home.svg";
 import CatalogIcon from "@icons/svg/catalog.svg";
 import RandomIcon from "@icons/svg/random.svg";
-import MoreIcon from "@icons/svg/more.svg";
-import RightArrowIcon from "@icons/svg/right-arrow.svg";
+import { routes } from "@/const";
 
 const Sidebar = () => {
   return (
     <SidebarSC>
       <LogoSC src={Logo} alt="Logo" />
       <Tabs>
-        <SidebarTab icon={<HomeIcon />} title={"Главная"} />
-        <SidebarTab icon={<CatalogIcon />} title={"Каталог"} />
-        <SidebarTab icon={<RandomIcon />} title={"Рандом"} />
-        <SidebarTab
+        <SidebarTab icon={<HomeIcon />} route={routes.home} />
+        <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
+        <SidebarTab icon={<RandomIcon />} route={routes.random} />
+        {/* <SidebarTab
           icon={<MoreIcon />}
           title={"Ещё"}
           sideIcon={<RightArrowIcon />}
-        />
+        /> */}
       </Tabs>
     </SidebarSC>
   );

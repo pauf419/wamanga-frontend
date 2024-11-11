@@ -1,20 +1,26 @@
+"use client";
+
 import React from "react";
 import { Left, Right, SidebarTabSC } from "./styled";
+import { usePathname } from "next/navigation";
+import { Route } from "@/const";
 
 interface Props {
   icon: React.ReactNode;
   sideIcon?: React.ReactNode;
-  title: string;
+  route: Route;
 }
 
-export const SidebarTab = ({ icon, title, sideIcon }: Props) => {
+export const SidebarTab = ({ icon, sideIcon, route }: Props) => {
+  const path = usePathname();
+
   return (
-    <SidebarTabSC>
-      <Left>
+    <SidebarTabSC $isActive={path === route.path} href={route.path}>
+      <Left $isActive={path === route.path}>
         {icon}
-        {title}
+        {route.title}
       </Left>
-      <Right>{sideIcon}</Right>
+      <Right $isActive={path === route.path}>{sideIcon}</Right>
     </SidebarTabSC>
   );
 };
