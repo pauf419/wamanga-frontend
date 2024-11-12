@@ -1,11 +1,11 @@
 "use client";
 
-import { colors } from "@/const";
+import { colors, sizes } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
 export const SidebarSC = styled.div`
-  width: 100%;
+  width: ${sizes.sidebarWidth};
   height: 100%;
   background: ${colors.sideBarBackground};
   padding: 20px 8px;

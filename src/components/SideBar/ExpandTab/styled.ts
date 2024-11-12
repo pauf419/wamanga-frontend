@@ -3,9 +3,11 @@
 import { colors } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
+import { animated } from "@react-spring/web";
 
-export const Routes = styled.div`
-  display: none;
+export const Routes = styled(animated.div)`
+  display: flex;
+  z-index: 1;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,7 +21,6 @@ export const RoutesWrapper = styled.div`
   --sidebar-padding: 8px;
 
   margin-left: calc(var(--sidebar-width) - var(--sidebar-padding));
-  transform: translateY(-50px);
   width: 250px;
 
   background: ${colors.background + convertOpacityToHex(60)};
@@ -71,10 +72,6 @@ export const SidebarTabSC = styled.div`
   &:hover {
     color: ${colors.text};
     background: ${colors.iconColor + convertOpacityToHex(16)};
-
-    ${Routes} {
-      display: block;
-    }
   }
 `;
 
@@ -86,7 +83,7 @@ export const Left = styled.div`
   gap: 6px;
 
   ${SidebarTabSC} & path {
-    fill: ${colors.textPriamry};
+    fill: ${colors.iconColor};
   }
 
   ${SidebarTabSC}:hover & path {
@@ -104,7 +101,7 @@ export const Right = styled.div`
   align-items: center;
 
   ${SidebarTabSC} & path {
-    stroke: ${colors.textPriamry};
+    stroke: ${colors.iconColor};
   }
 
   ${SidebarTabSC}:hover & path {
