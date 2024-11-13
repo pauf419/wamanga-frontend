@@ -23,9 +23,15 @@ export const SidebarExpandTab = ({ icon, routes, title }: Props) => {
   const [show, setShow] = useState(false);
 
   const transition = useTransition(show, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
+    from: {
+      opacity: 0,
+    },
+    enter: {
+      opacity: 1,
+    },
+    leave: {
+      opacity: 0,
+    },
     config: { duration: 300, easing: easings.easeInOutSine },
   });
 
@@ -38,7 +44,10 @@ export const SidebarExpandTab = ({ icon, routes, title }: Props) => {
   };
 
   return (
-    <SidebarTabSC onMouseEnter={handleMouseEnter}>
+    <SidebarTabSC
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <Left>
         {icon}
         {title}

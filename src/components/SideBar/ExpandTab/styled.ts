@@ -8,11 +8,11 @@ import { animated } from "@react-spring/web";
 export const Routes = styled(animated.div)`
   display: flex;
   margin: 0;
-  padding: 0;
+  padding: 0px 0px 0px 8px;
   box-sizing: border-box;
   position: absolute;
   top: 0;
-  right: -8px;
+  right: 0;
   transform: translateX(100%);
 `;
 
