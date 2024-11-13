@@ -1,4 +1,4 @@
-import { colors } from "@/const";
+import { colors, sizes } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 
@@ -67,4 +67,8 @@ export const LoginButton = styled.button`
     background: ${colors.secondary};
     box-shadow: 0px 8px 16px ${colors.secondary + convertOpacityToHex(60)};
   }
+`;
+
+export const Content = styled.div<{ $isImageBehind: boolean }>`
+  margin-top: ${(props) => (props.$isImageBehind ? -sizes.headerHeight : 0)}px;
 `;

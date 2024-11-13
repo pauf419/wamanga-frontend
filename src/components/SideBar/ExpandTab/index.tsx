@@ -20,7 +20,7 @@ interface Props {
 }
 
 export const SidebarExpandTab = ({ icon, routes, title }: Props) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   const transition = useTransition(show, {
     from: { opacity: 0 },

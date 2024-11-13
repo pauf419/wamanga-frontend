@@ -3,7 +3,7 @@ import { HomeSC } from "./styled";
 
 const HomePage = () => {
   return (
-    <HomeSC>
+    <HomeSC isImageBehind>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt
         repudiandae sequi molestiae iusto reiciendis nostrum? Et praesentium

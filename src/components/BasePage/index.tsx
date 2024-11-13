@@ -1,5 +1,11 @@
 import React from "react";
-import { BasePageSC, Header, LoginButton, SearchButton } from "./styled";
+import {
+  BasePageSC,
+  Content,
+  Header,
+  LoginButton,
+  SearchButton,
+} from "./styled";
 import SearchIcon from "@icons/svg/search.svg";
 
 interface Props {
@@ -7,7 +13,7 @@ interface Props {
   isImageBehind?: boolean;
 }
 
-const BasePage = ({ children }: Props) => {
+const BasePage = ({ children, isImageBehind }: Props) => {
   return (
     <BasePageSC>
       <Header>
@@ -16,7 +22,7 @@ const BasePage = ({ children }: Props) => {
         </SearchButton>
         <LoginButton>Войти</LoginButton>
       </Header>
-      {children}
+      <Content $isImageBehind={!!isImageBehind}>{children}</Content>
     </BasePageSC>
   );
 };
