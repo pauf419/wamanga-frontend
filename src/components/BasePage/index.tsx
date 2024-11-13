@@ -2,7 +2,12 @@ import React from "react";
 import { BasePageSC, Header, LoginButton, SearchButton } from "./styled";
 import SearchIcon from "@icons/svg/search.svg";
 
-const BasePage = ({ children }: { children: React.ReactNode }) => {
+interface Props {
+  children: React.ReactNode;
+  isImageBehind?: boolean;
+}
+
+const BasePage = ({ children }: Props) => {
   return (
     <BasePageSC>
       <Header>

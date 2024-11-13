@@ -12,6 +12,7 @@ export const SidebarSC = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  z-index: 1;
 `;
 
 export const LogoSC = styled(Image)`

@@ -11,7 +11,7 @@ import {
 } from "./styled";
 import { Route } from "@/const";
 import RightArrowIcon from "@icons/svg/right-arrow.svg";
-import { animated, easings, useTransition } from "@react-spring/web";
+import { easings, useTransition } from "@react-spring/web";
 
 interface Props {
   title: string;
@@ -20,7 +20,7 @@ interface Props {
 }
 
 export const SidebarExpandTab = ({ icon, routes, title }: Props) => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const transition = useTransition(show, {
     from: { opacity: 0 },

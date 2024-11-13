@@ -7,20 +7,19 @@ import { animated } from "@react-spring/web";
 
 export const Routes = styled(animated.div)`
   display: flex;
-  z-index: 1;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   position: absolute;
   top: 0;
-  left: 0;
+  right: -8px;
+  transform: translateX(100%);
 `;
 
 export const RoutesWrapper = styled.div`
   --sidebar-width: 83px;
   --sidebar-padding: 8px;
 
-  margin-left: calc(var(--sidebar-width) - var(--sidebar-padding));
   width: 250px;
 
   background: ${colors.background + convertOpacityToHex(60)};
@@ -33,11 +32,9 @@ export const RouteSC = styled.a`
   text-decoration: none;
 
   max-height: 32px;
-  overflow: hidden;
   position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: block;
+  font-family: sans-serif;
   color: ${colors.iconColor};
   font-size: 16px;
   border-radius: 10px;
@@ -45,6 +42,7 @@ export const RouteSC = styled.a`
   padding: 8px;
   font-weight: 300;
   text-align: start;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 

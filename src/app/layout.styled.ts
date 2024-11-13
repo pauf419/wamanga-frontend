@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 
 export const LayoutSC = styled.div`
   display: grid;
-  grid-template-columns: 83px 1fr;
+  grid-template-columns: auto 1fr;
   height: 100dvh;
   background: ${colors.background};
 `;
