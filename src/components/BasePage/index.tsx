@@ -7,13 +7,15 @@ import {
   SearchButton,
 } from "./styled";
 import SearchIcon from "@icons/svg/search.svg";
+import Footer from "../Footer";
 
 interface Props {
   children: React.ReactNode;
   isImageBehind?: boolean;
+  className?: string;
 }
 
-const BasePage = ({ children, isImageBehind }: Props) => {
+const BasePage = ({ children, isImageBehind, className }: Props) => {
   return (
     <BasePageSC>
       <Header>
@@ -22,7 +24,10 @@ const BasePage = ({ children, isImageBehind }: Props) => {
         </SearchButton>
         <LoginButton>Войти</LoginButton>
       </Header>
-      <Content $isImageBehind={!!isImageBehind}>{children}</Content>
+      <Content className={className} $isImageBehind={!!isImageBehind}>
+        {children}
+      </Content>
+      <Footer />
     </BasePageSC>
   );
 };

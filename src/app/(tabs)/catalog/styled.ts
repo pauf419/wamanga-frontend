@@ -1,8 +1,10 @@
 "use client";
 
 import BasePage from "@/components/BasePage";
+import { colors } from "@/const";
 import styled from "@emotion/styled";
 
 export const CatalogSC = styled(BasePage)`
-  background: rgba(0, 255, 0, 0.2);
+  height: 100vh;
+  background: ${colors.primary};
 `;

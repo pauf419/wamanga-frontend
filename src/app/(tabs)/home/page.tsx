@@ -64,7 +64,7 @@ const HomePage = () => {
         </Manga>
       </Background>
 
-      <Divider />
+      <Divider>Coming soon...</Divider>
     </HomeSC>
   );
 };
