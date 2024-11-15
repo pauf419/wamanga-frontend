@@ -1,10 +1,12 @@
 "use client";
 
-import { colors, sizes } from "@/const";
+import { colors, sizes, zIndex } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
 export const SidebarSC = styled.div`
+  z-index: ${zIndex.aboveEverything};
+
   width: ${sizes.sidebarWidth};
   height: 100%;
   background: ${colors.sideBarBackground};
@@ -12,7 +14,6 @@ export const SidebarSC = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 1;
 `;
 
 export const LogoSC = styled(Image)`
