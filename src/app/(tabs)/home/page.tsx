@@ -11,10 +11,13 @@ import {
   Description,
   StatsBadges,
   OpenButton,
+  FavouriteButton,
+  Buttons,
 } from "./styled";
 import Badge from "./Badge";
 import { colors } from "@/const";
 import StatsBadge, { Icon } from "./StatsBadge";
+import FavouriteIcon from "@icons/svg/favourites.svg";
 
 const HomePage = () => {
   return (
@@ -48,10 +51,15 @@ const HomePage = () => {
               survived not only five centuries Ipsumj.
             </Description>
             <StatsBadges>
-              <StatsBadge icon={Icon.LIKE} amount={1451} />
-              <StatsBadge icon={Icon.VIEW} amount={1451} />
+              <StatsBadge icon={Icon.LIKE} amount={82256} />
+              <StatsBadge icon={Icon.VIEW} amount={15151534} />
             </StatsBadges>
-            <OpenButton>Открыть</OpenButton>
+            <Buttons>
+              <OpenButton>Открыть</OpenButton>
+              <FavouriteButton>
+                <FavouriteIcon />В закладки
+              </FavouriteButton>
+            </Buttons>
           </Info>
         </Manga>
       </Background>

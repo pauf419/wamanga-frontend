@@ -2,6 +2,7 @@
 
 import BasePage from "@/components/BasePage";
 import { colors, zIndex } from "@/const";
+import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
@@ -86,6 +87,12 @@ export const Description = styled.p`
   margin-top: 8px;
 `;
 
+export const Buttons = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+`;
+
 export const OpenButton = styled.button`
   width: 80px;
   height: 36px;
@@ -104,7 +111,25 @@ export const OpenButton = styled.button`
 
   &:hover {
     background: ${colors.secondary};
+    box-shadow: 0px 8px 16px ${colors.secondary + convertOpacityToHex(60)};
   }
+`;
+
+export const FavouriteButton = styled.button`
+  padding: 8px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: #8f96a33d;
+  color: #8f96a3cc;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 35.61px;
+  text-align: center;
 `;
 
 export const Divider = styled.div`

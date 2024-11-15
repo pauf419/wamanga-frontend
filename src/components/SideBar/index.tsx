@@ -12,8 +12,8 @@ import { SidebarExpandTab } from "./ExpandTab";
 const Sidebar = () => {
   const moreRoutes = [
     { title: "Премиум подписочка", path: "/catalog" },
-    { title: "Крутейшая страница для си132554252", path: "/catalog" },
-    { title: "Правила сайта", path: "/catalog" },
+    { title: "Крутейшая страница для си132554252", path: "/home" },
+    { title: "Правила сайта", path: "/random" },
     { title: "Политика сайта", path: "/catalog" },
   ];
 
