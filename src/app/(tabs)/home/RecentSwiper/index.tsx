@@ -2,13 +2,17 @@
 
 import React, { useCallback, useRef } from "react";
 import {
+  Info,
   LeftSwipeButton,
   Manga,
   Poster,
   RecentSwiperSC,
   RightSwipeButton,
+  Status,
   SwiperSC,
   SwiperSlideSC,
+  Title,
+  Type,
 } from "./styled";
 import RightArrowIcon from "@icons/svg/right-arrow.svg";
 
@@ -49,6 +53,13 @@ export const RecentSwiper = () => {
                 width={200}
                 height={350}
               />
+              <Info>
+                <Title>
+                  НазваниеНазваниеНазваниеНазваниеНазваниеНазваниеНазваниеНазваниеНазваниеНазваниеНазваниеНазваниеНазвание
+                </Title>
+                <Type>Манхва</Type>
+                <Status>Переводится</Status>
+              </Info>
             </Manga>
           </SwiperSlideSC>
         ))}
