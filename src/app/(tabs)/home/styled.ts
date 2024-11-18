@@ -5,6 +5,7 @@ import { colors, zIndex } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 import Image from "next/image";
+import { Section } from "./Section";
 
 export const HomeSC = styled(BasePage)``;
 
@@ -12,7 +13,7 @@ export const Background = styled.div<{ $backgroundImage: string }>`
   z-index: ${zIndex.background};
 
   width: 100%;
-  height: 90vh;
+  height: 80vh;
   background: ${colors.primary};
   background-image: url(${({ $backgroundImage }) => $backgroundImage});
   background-size: cover;
@@ -24,16 +25,11 @@ export const Background = styled.div<{ $backgroundImage: string }>`
   &::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      #111213 90%,
-      #111213 100%
-    );
+    height: 80vh;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #111213 95%);
     backdrop-filter: blur(5px);
   }
 `;
@@ -45,7 +41,7 @@ export const Manga = styled.div`
   top: 80px;
   left: 0;
   width: 100%;
-  height: calc(90vh - 80px);
+  height: calc(80vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,6 +126,11 @@ export const FavouriteButton = styled.button`
   font-weight: 400;
   line-height: 35.61px;
   text-align: center;
+`;
+
+export const DaySwiper = styled(Section)`
+  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 export const Divider = styled.div`

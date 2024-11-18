@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Divider,
   HomeSC,
   Background,
   Manga,
@@ -13,11 +12,19 @@ import {
   OpenButton,
   FavouriteButton,
   Buttons,
+  Divider,
+  DaySwiper,
 } from "./styled";
 import Badge from "./Badge";
 import { colors } from "@/const";
 import StatsBadge, { Icon } from "./StatsBadge";
 import FavouriteIcon from "@icons/svg/favourites.svg";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { Section } from "./Section";
+import { RecentSwiper } from "./RecentSwiper";
 
 const HomePage = () => {
   return (
@@ -63,6 +70,14 @@ const HomePage = () => {
           </Info>
         </Manga>
       </Background>
+
+      <Section title="Недавние обновления" link="/">
+        <RecentSwiper />
+      </Section>
+
+      <DaySwiper title="Топ за день" link="/"></DaySwiper>
+
+      <Divider>Coming soon...</Divider>
     </HomeSC>
   );
 };
