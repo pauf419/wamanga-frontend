@@ -1,17 +1,11 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import {
-  Left,
-  Right,
-  RouteSC,
-  Routes,
-  RoutesWrapper,
-  SidebarTabSC,
-} from "./styled";
+import React, { useState } from "react";
+import { Left, Right, RouteSC, RoutesWrapper, SidebarTabSC } from "./styled";
 import { Route } from "@/const";
 import RightArrowIcon from "@icons/svg/right-arrow.svg";
-import { easings, useTransition } from "@react-spring/web";
+import * as motion from "motion/react-client";
+import { AnimatePresence } from "motion/react";
 
 interface Props {
   title: string;
@@ -21,19 +15,6 @@ interface Props {
 
 export const SidebarExpandTab = ({ icon, routes, title }: Props) => {
   const [show, setShow] = useState(false);
-
-  const transition = useTransition(show, {
-    from: {
-      opacity: 0,
-    },
-    enter: {
-      opacity: 1,
-    },
-    leave: {
-      opacity: 0,
-    },
-    config: { duration: 300, easing: easings.easeInOutSine },
-  });
 
   const handleMouseEnter = () => {
     setShow(true);
@@ -55,20 +36,36 @@ export const SidebarExpandTab = ({ icon, routes, title }: Props) => {
       <Right>
         <RightArrowIcon />
       </Right>
-      {transition(
-        (style, item) =>
-          item && (
-            <Routes style={style} onMouseLeave={handleMouseLeave}>
-              <RoutesWrapper>
-                {routes.map((route, index) => (
-                  <RouteSC key={index} href={route.path}>
-                    {route.title}
-                  </RouteSC>
-                ))}
-              </RoutesWrapper>
-            </Routes>
-          )
-      )}
+
+      <AnimatePresence>
+        {show && (
+          <motion.div
+            initial={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              transform: "translateX(100%) scale(0.9)",
+              paddingLeft: "8px",
+              opacity: 0,
+              backdropFilter: "blur(6px)",
+            }}
+            animate={{
+              opacity: 1,
+              backdropFilter: "blur(0px)",
+              transform: "translateX(100%) scale(1)",
+            }}
+            exit={{ opacity: 0, transform: "translateX(100%) scale(0.9)" }}
+          >
+            <RoutesWrapper>
+              {routes.map((route, index) => (
+                <RouteSC key={index} href={route.path}>
+                  {route.title}
+                </RouteSC>
+              ))}
+            </RoutesWrapper>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </SidebarTabSC>
   );
 };

@@ -3,18 +3,6 @@
 import { colors } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
-import { animated } from "@react-spring/web";
-
-export const Routes = styled(animated.div)`
-  display: flex;
-  margin: 0;
-  padding: 0px 0px 0px 8px;
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateX(100%);
-`;
 
 export const RoutesWrapper = styled.div`
   --sidebar-width: 83px;
