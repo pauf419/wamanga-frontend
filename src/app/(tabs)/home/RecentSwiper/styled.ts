@@ -1,11 +1,38 @@
 "use client";
 
 import { colors, zIndex } from "@/const";
+import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+export const NavButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1;
+
+  &.left-button {
+    left: 10px;
+  }
+
+  &.right-button {
+    right: 10px;
+  }
+
+  svg {
+    width: 30px;
+    height: 30px;
+    fill: ${colors.primary};
+  }
+`;
+
 export const RecentSwiperSC = styled.div`
+  position: relative;
   height: 350px;
 `;
 
@@ -52,10 +79,50 @@ export const SwiperSlideSC = styled(SwiperSlide)`
   align-items: center;
 `;
 
+export const Manga = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+`;
+
 export const Poster = styled(Image)`
   width: 100%;
   height: 100%;
   border-radius: 12px;
   user-select: none;
   -webkit-user-drag: none;
+`;
+
+export const SwipeButton = styled.button`
+  z-index: ${zIndex.popup};
+
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: ${colors.background + convertOpacityToHex(60)};
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: ${colors.background};
+  }
+`;
+
+export const LeftSwipeButton = styled(SwipeButton)`
+  left: 0;
+
+  & svg {
+    transform: rotate(180deg);
+  }
+`;
+
+export const RightSwipeButton = styled(SwipeButton)`
+  right: 0;
 `;
