@@ -6,10 +6,13 @@ import Image from "next/image";
 import { SwiperSlide } from "swiper/react";
 
 export const SwiperSlideSC = styled(SwiperSlide)`
-  max-width: 250px;
+  max-width: 424px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: ${colors.gray};
+  border-radius: 12px;
 `;
 
 export const SwiperManga = styled.div`
@@ -25,12 +28,6 @@ export const MangaInfo = styled.div`
   left: 0;
   width: 100%;
   height: 180px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 50%,
-    rgba(0, 0, 0) 80%
-  );
   border-radius: 11px;
   display: flex;
   flex-direction: column;
@@ -69,7 +66,7 @@ export const MangaStatus = styled.p`
 `;
 
 export const MangaPoster = styled(Image)`
-  width: 100%;
+  width: 120px;
   height: 100%;
   border-radius: 12px;
   user-select: none;

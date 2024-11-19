@@ -13,7 +13,7 @@ import {
   FavouriteButton,
   Buttons,
   Divider,
-  DaySwiper,
+  DayTopSection,
 } from "./styled";
 import Badge from "./Badge";
 import { colors } from "@/const";
@@ -25,6 +25,7 @@ import "swiper/css/pagination";
 
 import { Section } from "./Section";
 import { RecentSwiper } from "./RecentSwiper";
+import { DayTopSwiper } from "./DayTopSwiper";
 
 const HomePage = () => {
   return (
@@ -75,7 +76,9 @@ const HomePage = () => {
         <RecentSwiper />
       </Section>
 
-      <DaySwiper title="Топ за день" link="/"></DaySwiper>
+      <DayTopSection title="Топ за день" link="/">
+        <DayTopSwiper />
+      </DayTopSection>
 
       <Divider>Coming soon...</Divider>
     </HomeSC>

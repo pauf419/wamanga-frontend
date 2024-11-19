@@ -3,6 +3,7 @@ export const colors = {
   primary: "#5A5EE7",
   secondary: "#2D30A6",
   orange: "#FFAB00",
+  gray: "#1D1E20",
   hoverShadow: "box-shadow: 0px 8px 16px 0px #5A5EE73D;",
   background: "#111213",
   sideBarBackground:

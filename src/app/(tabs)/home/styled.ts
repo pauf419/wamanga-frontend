@@ -6,6 +6,7 @@ import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { Section } from "./Section";
+import { SwiperSlide } from "swiper/react";
 
 export const HomeSC = styled(BasePage)``;
 
@@ -128,7 +129,7 @@ export const FavouriteButton = styled.button`
   text-align: center;
 `;
 
-export const DaySwiper = styled(Section)`
+export const DayTopSection = styled(Section)`
   margin-top: 50px;
   margin-bottom: 50px;
 `;

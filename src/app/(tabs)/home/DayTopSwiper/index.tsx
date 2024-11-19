@@ -12,9 +12,9 @@ import {
 } from "./styled";
 import { Swiper } from "../Swiper";
 
-export const RecentSwiper = () => {
+export const DayTopSwiper = () => {
   return (
-    <Swiper height={350}>
+    <Swiper height={160}>
       {Array.from({ length: 15 }).map((_, index) => (
         <SwiperSlideSC key={index}>
           <SwiperManga>
