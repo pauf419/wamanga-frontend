@@ -54,7 +54,7 @@ export const MangaTitle = styled.h3`
 
 export const MangaType = styled.p`
   font-size: 0.75rem;
-  color: ${colors.grayText};
+  color: ${colors.iconColor};
 `;
 
 export const MangaStatus = styled.p`

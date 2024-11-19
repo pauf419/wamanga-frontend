@@ -16,23 +16,18 @@ export const SwiperSlideSC = styled(SwiperSlide)`
 `;
 
 export const SwiperManga = styled.div`
-  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 12px;
+  display: flex;
 `;
 
 export const MangaInfo = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  height: 180px;
-  border-radius: 11px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 14px;
+  padding: 8px 4px 8px 12px;
 `;
 
 export const MangaTitle = styled.h3`
@@ -51,11 +46,11 @@ export const MangaTitle = styled.h3`
 
 export const MangaType = styled.p`
   font-size: 0.75rem;
-  color: ${colors.grayText};
+  color: ${colors.iconColor};
 `;
 
 export const MangaStatus = styled.p`
-  margin-top: 12px;
+  margin-top: auto;
   font-size: 0.75rem;
   font-weight: 550;
   background: rgba(143, 150, 163, 0.16);
