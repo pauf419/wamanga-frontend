@@ -134,6 +134,10 @@ export const DayTopSection = styled(Section)`
   margin-bottom: 50px;
 `;
 
+export const NewsSection = styled.div`
+  margin: 100px 24px;
+`;
+
 export const Divider = styled.div`
   display: flex;
   justify-content: center;
