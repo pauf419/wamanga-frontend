@@ -65,7 +65,7 @@ const HomePage = () => {
               <StatsBadge icon={Icon.VIEW} amount={15151534} />
             </StatsBadges>
             <Buttons>
-              <OpenButton>Открыть</OpenButton>
+              <OpenButton href={"/comics/krutoi-comics"}>Открыть</OpenButton>
               <FavouriteButton>
                 <FavouriteIcon />В закладки
               </FavouriteButton>

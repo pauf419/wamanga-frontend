@@ -7,6 +7,7 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 import { Section } from "./Section";
 import { SwiperSlide } from "swiper/react";
+import Link from "next/link";
 
 export const HomeSC = styled(BasePage)``;
 
@@ -90,7 +91,8 @@ export const Buttons = styled.div`
   align-items: flex-end;
 `;
 
-export const OpenButton = styled.button`
+export const OpenButton = styled(Link)`
+  text-decoration: none;
   width: 80px;
   height: 36px;
   display: flex;
