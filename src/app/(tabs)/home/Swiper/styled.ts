@@ -87,6 +87,7 @@ export const SwipeButton = styled.button`
   background: ${colors.background + convertOpacityToHex(60)};
   border: none;
   border-radius: 100%;
+  color: ${colors.text};
   cursor: pointer;
   transition: background 0.2s ease-in-out;
 

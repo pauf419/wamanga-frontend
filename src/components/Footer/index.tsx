@@ -48,7 +48,7 @@ const Footer = () => {
           </Social>
         </Socials>
       </Content>
-      <Copyright>© 2024 WaManga</Copyright>
+      <Copyright>© 2024 WaComics</Copyright>
     </FooterSC>
   );
 };

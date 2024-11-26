@@ -1,2 +1,2 @@
-export { convertOpacityToHex } from "./convertOpacityToHex";
-export { formatNumber } from "./formatNumber";
+export { convertOpacityToHex } from "./conevrt-to-opacity";
+export { formatNumber } from "./format-number";

@@ -2,46 +2,40 @@
 
 import React from "react";
 import {
-  MangaInfo,
-  MangaPoster,
-  MangaStatus,
-  MangaTitle,
-  MangaType,
-  SwiperManga,
+  ComicsInfo,
+  ComicsPoster,
+  ComicsStatus,
+  ComicsTitle,
+  ComicsType,
+  SwiperComics,
   SwiperSlideSC,
 } from "./styled";
 import { Swiper } from "../Swiper";
-import { StatsBadges } from "../styled";
 import StatsBadge, { Icon } from "../StatsBadge";
+import { StatsBadges } from "../styled";
 
 export const DayTopSwiper = () => {
   return (
     <Swiper height={160}>
       {Array.from({ length: 15 }).map((_, index) => (
         <SwiperSlideSC key={index}>
-          <SwiperManga>
-            <MangaPoster
+          <SwiperComics>
+            <ComicsPoster
               src={`/test-${((index - 1) % 3) + 1}.webp`}
-              alt="manga"
+              alt="comics"
               width={200}
               height={350}
             />
-            <MangaInfo>
-              <MangaTitle>Название</MangaTitle>
-              <MangaType>Манхва</MangaType>
+            <ComicsInfo>
+              <ComicsTitle>Название</ComicsTitle>
+              <ComicsType>Манхва</ComicsType>
               <StatsBadges>
-                <StatsBadge
-                  icon={Icon.LIKE}
-                  amount={Math.round(Math.random() * 1000000000)}
-                />
-                <StatsBadge
-                  icon={Icon.VIEW}
-                  amount={Math.round(Math.random() * 1000000000)}
-                />
+                <StatsBadge icon={Icon.LIKE} amount={124451135} />
+                <StatsBadge icon={Icon.VIEW} amount={586392} />
               </StatsBadges>
-              <MangaStatus>Переводится</MangaStatus>
-            </MangaInfo>
-          </SwiperManga>
+              <ComicsStatus>Переводится</ComicsStatus>
+            </ComicsInfo>
+          </SwiperComics>
         </SwiperSlideSC>
       ))}
     </Swiper>

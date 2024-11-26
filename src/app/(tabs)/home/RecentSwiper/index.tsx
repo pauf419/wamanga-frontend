@@ -2,12 +2,12 @@
 
 import React from "react";
 import {
-  MangaInfo,
-  MangaPoster,
-  MangaStatus,
-  MangaTitle,
-  MangaType,
-  SwiperManga,
+  ComicsInfo,
+  ComicsPoster,
+  ComicsStatus,
+  ComicsTitle,
+  ComicsType,
+  SwiperComics,
   SwiperSlideSC,
 } from "./styled";
 import { Swiper } from "../Swiper";
@@ -17,19 +17,19 @@ export const RecentSwiper = () => {
     <Swiper height={350}>
       {Array.from({ length: 15 }).map((_, index) => (
         <SwiperSlideSC key={index}>
-          <SwiperManga>
-            <MangaPoster
+          <SwiperComics>
+            <ComicsPoster
               src={`/test-${((index - 1) % 3) + 1}.webp`}
-              alt="manga"
+              alt="comics"
               width={200}
               height={350}
             />
-            <MangaInfo>
-              <MangaTitle>Название</MangaTitle>
-              <MangaType>Манхва</MangaType>
-              <MangaStatus>Переводится</MangaStatus>
-            </MangaInfo>
-          </SwiperManga>
+            <ComicsInfo>
+              <ComicsTitle>Название</ComicsTitle>
+              <ComicsType>Манхва</ComicsType>
+              <ComicsStatus>Переводится</ComicsStatus>
+            </ComicsInfo>
+          </SwiperComics>
         </SwiperSlideSC>
       ))}
     </Swiper>

@@ -6,8 +6,8 @@ import Sidebar from "@/components/Sidebar";
 import Providers from "./Providers";
 
 export const metadata: Metadata = {
-  title: "WaManga",
-  description: "WaManga's description",
+  title: "WaComics",
+  description: "WaComics's description",
 };
 
 export default function RootLayout({

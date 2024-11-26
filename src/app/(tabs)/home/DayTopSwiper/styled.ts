@@ -15,14 +15,14 @@ export const SwiperSlideSC = styled(SwiperSlide)`
   border-radius: 12px;
 `;
 
-export const SwiperManga = styled.div`
+export const SwiperComics = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 12px;
   display: flex;
 `;
 
-export const MangaInfo = styled.div`
+export const ComicsInfo = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -30,7 +30,7 @@ export const MangaInfo = styled.div`
   padding: 8px 4px 8px 12px;
 `;
 
-export const MangaTitle = styled.h3`
+export const ComicsTitle = styled.h3`
   font-size: 1rem;
   max-width: 100%;
   display: block;
@@ -44,12 +44,12 @@ export const MangaTitle = styled.h3`
   max-height: calc(1.2rem * 2);
 `;
 
-export const MangaType = styled.p`
+export const ComicsType = styled.p`
   font-size: 0.75rem;
   color: ${colors.iconColor};
 `;
 
-export const MangaStatus = styled.p`
+export const ComicsStatus = styled.p`
   margin-top: auto;
   font-size: 0.75rem;
   font-weight: 550;
@@ -60,7 +60,7 @@ export const MangaStatus = styled.p`
   text-transform: uppercase;
 `;
 
-export const MangaPoster = styled(Image)`
+export const ComicsPoster = styled(Image)`
   width: 120px;
   height: 100%;
   border-radius: 12px;
