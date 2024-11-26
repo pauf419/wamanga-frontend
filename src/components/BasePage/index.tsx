@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  BasePageSC,
-  Content,
-  Header,
-  LoginButton,
-  SearchButton,
-} from "./styled";
-import SearchIcon from "@icons/svg/search.svg";
+import { BasePageSC, Content } from "./styled";
 import Footer from "../Footer";
+import Header from "../Header";
 
 interface Props {
   children: React.ReactNode;
@@ -18,12 +12,7 @@ interface Props {
 const BasePage = ({ children, isImageBehind, className }: Props) => {
   return (
     <BasePageSC>
-      <Header>
-        <SearchButton>
-          <SearchIcon />
-        </SearchButton>
-        <LoginButton>Войти</LoginButton>
-      </Header>
+      <Header />
       <Content className={className} $isImageBehind={!!isImageBehind}>
         {children}
       </Content>
