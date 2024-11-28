@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { ModalContent, ModalSC, Title } from "./styled";
+import { Input, Inputs, ModalContent, ModalSC, Title } from "./styled";
 import { Portal } from "@/components/Portal";
 import { AnimatePresence, motion } from "motion/react";
 import { ModalState } from "@/components/Header";
@@ -39,7 +39,11 @@ const SignUpForm = ({ state, setState }: Props) => {
                   transition={{ duration: 0.2 }}
                   onMouseDown={(e) => e.stopPropagation()}
                 >
-                  <Title>Войти</Title>
+                  <Title>Вход</Title>
+                  <Inputs>
+                    <Input placeholder="Email" />
+                    <Input placeholder="Пароль" />
+                  </Inputs>
                 </ModalContent>
               </ModalSC>
             </motion.div>
