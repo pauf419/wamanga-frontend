@@ -6,7 +6,6 @@ import {
   LeftSwipeButton,
   RecentSwiperSC,
   RightSwipeButton,
-  SwieprSlideSC,
   SwiperSC,
 } from "./styled";
 import RightArrowIcon from "@icons/svg/right-arrow.svg";
