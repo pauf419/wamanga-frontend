@@ -4,17 +4,29 @@ import { AnimatePresence, motion } from "motion/react";
 import { ModalState } from "@/components/Header";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { Input, Inputs, ModalContent, ModalSC, Title } from "../Form/styled";
+import {
+  Action,
+  GoogleContent,
+  GoogleIconSC,
+  GoogleText,
+  Question,
+  Questions,
+  Text,
+  WithGoogle,
+} from "./styled";
+import GoogleIcon from "@icons/svg/google.svg?url";
+import Image from "next/image";
 
 interface Props {
   state: ModalState;
   setState: React.Dispatch<React.SetStateAction<ModalState>>;
 }
 
-const SignUpForm = ({ state, setState }: Props) => {
+const SignInForm = ({ state, setState }: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const onClickOutside = () => {
-    setState({ ...state, signUp: false });
+    setState({ ...state, signIn: false });
   };
 
   useClickOutside(modalRef, onClickOutside);
@@ -22,7 +34,7 @@ const SignUpForm = ({ state, setState }: Props) => {
   return (
     <>
       <AnimatePresence mode="wait">
-        {state.signUp && (
+        {state.signIn && (
           <Portal>
             <motion.div
               initial={{ opacity: 0 }}
@@ -39,12 +51,27 @@ const SignUpForm = ({ state, setState }: Props) => {
                   transition={{ duration: 0.2 }}
                   onMouseDown={(e) => e.stopPropagation()}
                 >
-                  <Title>Регистрация</Title>
+                  <Title>Вход</Title>
                   <Inputs>
                     <Input placeholder="Email" />
                     <Input placeholder="Пароль" type="password" />
-                    <Input placeholder="Повторите пароль" type="password" />
                   </Inputs>
+                  <Questions>
+                    <Question>
+                      <Text>Нет аккаунта?</Text>
+                      <Action>Создать аккаунт</Action>
+                    </Question>
+                    <Question>
+                      <Text>Забыл пароль?</Text>
+                      <Action>Поменять</Action>
+                    </Question>
+                  </Questions>
+                  <WithGoogle>
+                    <GoogleContent>
+                      <GoogleIconSC src={GoogleIcon} alt="google icon" />
+                      <GoogleText>С помощью Google</GoogleText>
+                    </GoogleContent>
+                  </WithGoogle>
                 </ModalContent>
               </ModalSC>
             </motion.div>
@@ -55,4 +82,4 @@ const SignUpForm = ({ state, setState }: Props) => {
   );
 };
 
-export default SignUpForm;
+export default SignInForm;

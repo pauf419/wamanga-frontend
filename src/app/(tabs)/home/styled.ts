@@ -1,13 +1,9 @@
 "use client";
 
 import BasePage from "@/components/BasePage";
-import { colors, zIndex } from "@/const";
-import { convertOpacityToHex } from "@/utils";
+import { colors } from "@/const";
 import styled from "@emotion/styled";
-import Image from "next/image";
 import { Section } from "./Section";
-import { SwiperSlide } from "swiper/react";
-import Link from "next/link";
 import { Badges } from "./RecommendedSwiper/styled";
 
 export const HomeSC = styled(BasePage)``;
