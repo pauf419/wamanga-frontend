@@ -5,6 +5,7 @@ export const getRecommended = (): GetRecommendedResult => {
     data: [
       {
         name: "Терпение, Моя Леди!",
+        alternativeName: "terpenie-moya-ledi",
         imagePath: "/mock-poster.png",
         id: 0,
         description:
@@ -28,6 +29,7 @@ export const getRecommended = (): GetRecommendedResult => {
       },
       {
         name: "И тем не менее...",
+        alternativeName: "i-tem-ne-menee",
         imagePath: "/mock-poster-2.webp",
         id: 0,
         description:
