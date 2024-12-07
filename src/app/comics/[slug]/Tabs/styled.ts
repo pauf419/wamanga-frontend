@@ -41,7 +41,8 @@ export const Tab = styled.div<{ $isActive: boolean; $width: number }>`
   align-items: center;
 
   font-size: 13px;
-  font-weight: ${(props) => (props.$isActive ? "550" : "400")};
+  font-weight: 550;
+  color: ${(props) => (props.$isActive ? colors.text : colors.iconColor)};
 
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
