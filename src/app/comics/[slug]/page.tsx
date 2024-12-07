@@ -24,7 +24,8 @@ import FavouriteIcon from "@icons/svg/favourites.svg";
 import LikeIcon from "@icons/svg/stat-like.svg";
 import ViewIcon from "@icons/svg/stat-view.svg";
 import { getComics } from "@/api/mocks/queries/use-get-comics";
-import { Tabs } from "./Tabs";
+import { Tabs } from "../../../components/Tabs";
+import { MainSection } from "./MainSection";
 
 const ComicsPage = ({ params }: { params: { slug: string } }) => {
   const comics = getComics();
@@ -70,9 +71,7 @@ const ComicsPage = ({ params }: { params: { slug: string } }) => {
                 Просмотров: <StatsContent>{comics.views}</StatsContent>
               </StatsBadge>
             </Stats>
-            <Tabs
-              tabs={["Описание", "Главы", "Мультимедия", "Афроамериканец"]}
-            />
+            <MainSection />
           </Right>
         </Content>
       </Background>

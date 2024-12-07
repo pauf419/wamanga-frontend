@@ -5,13 +5,13 @@ import { Tab, TabsSC } from "./styled";
 
 interface Props {
   tabs: string[];
+  activeTab: number;
+  setActiveTab: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const Tabs = ({ tabs }: Props) => {
+export const Tabs = ({ tabs, activeTab, setActiveTab }: Props) => {
   const GAP = 8;
-
   const refs = tabs.map(() => React.createRef<HTMLDivElement>());
-  const [activeTab, setActiveTab] = React.useState(0);
   const [marginLeft, setMarginLeft] = useState(0);
   const [activeTabWidth, setActiveTabWidth] = useState(0);
 
