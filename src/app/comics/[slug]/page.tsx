@@ -71,7 +71,7 @@ const ComicsPage = ({ params }: { params: { slug: string } }) => {
                 Просмотров: <StatsContent>{comics.views}</StatsContent>
               </StatsBadge>
             </Stats>
-            <MainSection />
+            <MainSection comics={comics} />
           </Right>
         </Content>
       </Background>

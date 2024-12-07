@@ -13,7 +13,7 @@ export const getComics = (): Comics => {
     typeComics: "Manga",
     author: "",
     originalAuthor: "",
-    year: 0,
+    year: 2023,
     isFinished: false,
     pegi: "3+",
     status: "В процессе",
