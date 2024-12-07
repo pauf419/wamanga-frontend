@@ -16,12 +16,11 @@ export const Tabs = ({ tabs, activeTab, setActiveTab }: Props) => {
   const [activeTabWidth, setActiveTabWidth] = useState(0);
 
   useEffect(() => {
-    const totalWidth = refs
-      .slice(0, activeTab)
-      .reduce((acc, ref) => acc + (ref.current?.offsetWidth || 0), 0);
-
-    const margin = totalWidth + GAP * activeTab;
-    const width = refs[activeTab].current?.offsetWidth || 0;
+    const first = refs[0]?.current?.getBoundingClientRect().left || 0;
+    const current = refs[activeTab]?.current?.getBoundingClientRect();
+    const currentLeft = current?.left || 0;
+    const margin = first - currentLeft;
+    const width = current?.width || 0;
 
     setMarginLeft(margin);
     setActiveTabWidth(width);

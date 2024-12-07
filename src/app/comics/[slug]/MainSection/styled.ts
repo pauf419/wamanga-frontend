@@ -43,7 +43,7 @@ export const InfoTagTitle = styled.span`
 
 export const InfoTagText = styled.span`
   font-size: 0.75rem;
-  font-weight: 550;
+  font-weight: 50;
   color: ${colors.text};
 `;
 
