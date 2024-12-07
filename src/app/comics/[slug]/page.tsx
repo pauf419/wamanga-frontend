@@ -70,7 +70,9 @@ const ComicsPage = ({ params }: { params: { slug: string } }) => {
                 Просмотров: <StatsContent>{comics.views}</StatsContent>
               </StatsBadge>
             </Stats>
-            <Tabs tabs={["Описание", "Главы"]} />
+            <Tabs
+              tabs={["Описание", "Главы", "Мультимедия", "Афроамериканец"]}
+            />
           </Right>
         </Content>
       </Background>

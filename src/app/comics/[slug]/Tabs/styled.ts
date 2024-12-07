@@ -4,8 +4,6 @@ import { colors } from "@/const";
 import styled from "@emotion/styled";
 
 export const TabsSC = styled.div<{
-  $activeTab: number;
-  $tabsCount: number;
   $activeTabWidth: number;
   $marginLeft: number;
   $gap: number;
@@ -34,8 +32,8 @@ export const TabsSC = styled.div<{
   }
 `;
 
-export const Tab = styled.div<{ $isActive: boolean; $width: number }>`
-  width: ${(props) => props.$width}px;
+export const Tab = styled.div<{ $isActive: boolean }>`
+  width: fit-content;
   height: 100%;
   display: flex;
   align-items: center;

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tab, TabsSC } from "./styled";
 
 interface Props {
@@ -8,42 +8,36 @@ interface Props {
 }
 
 export const Tabs = ({ tabs }: Props) => {
+  const GAP = 8;
+
+  const refs = tabs.map(() => React.createRef<HTMLDivElement>());
   const [activeTab, setActiveTab] = React.useState(0);
-  const charWidth = 8.36;
-  const gap = 8;
+  const [marginLeft, setMarginLeft] = useState(0);
+  const [activeTabWidth, setActiveTabWidth] = useState(0);
 
-  const getMargin = () => {
-    if (activeTab === 0) return 0;
+  useEffect(() => {
+    const totalWidth = refs
+      .slice(0, activeTab)
+      .reduce((acc, ref) => acc + (ref.current?.offsetWidth || 0), 0);
 
-    const newTabs = tabs.slice(0, activeTab);
+    const margin = totalWidth + GAP * activeTab;
+    const width = refs[activeTab].current?.offsetWidth || 0;
 
-    return newTabs.reduce((acc, tab) => acc + getWidth(tab), 0) + gap;
-  };
-
-  const getActiveTabWidth = () => {
-    const activeTabWidth = tabs[activeTab].length * charWidth;
-    if (activeTab === 0) return activeTabWidth - gap + 3;
-
-    return activeTabWidth - gap + 2;
-  };
-
-  const getWidth = (tab: string) => {
-    return tab.length * charWidth;
-  };
+    setMarginLeft(margin);
+    setActiveTabWidth(width);
+  }, [activeTab, refs]);
 
   return (
     <TabsSC
-      $tabsCount={tabs.length}
-      $activeTab={activeTab}
-      $activeTabWidth={getActiveTabWidth()}
-      $marginLeft={getMargin()}
-      $gap={gap}
+      $gap={GAP}
+      $marginLeft={marginLeft}
+      $activeTabWidth={activeTabWidth}
     >
       {tabs.map((tab, index) => (
         <Tab
+          ref={refs[index]}
           key={index}
           $isActive={activeTab === index}
-          $width={getWidth(tab)}
           onClick={() => setActiveTab(index)}
         >
           {tab}
