@@ -1,3 +1,5 @@
+import { convertOpacityToHex } from "@/utils";
+
 export const colors = {
   textPriamry: "#9DA0F7",
   primary: "#5A5EE7",
@@ -10,6 +12,8 @@ export const colors = {
   background: "#111213",
   sideBarBackground:
     "linear-gradient(180deg, rgba(17, 18, 19, 0.6) 0%, rgba(27, 26, 59, 0) 100%);",
+  badgeBg: "#1D1E20" + convertOpacityToHex(80),
+  badgeColor: "#787E89",
   text: "#FFFFFF",
   grayText: "#BDBDBD",
   iconColor: "#8F96A3",

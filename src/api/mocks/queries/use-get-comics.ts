@@ -9,7 +9,7 @@ export const getComics = (): Comics => {
     description:
       "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
     rating: 0,
-    bannerPath: "mock-background.png",
+    bannerPath: "/mock-background.png",
     typeComics: "Manga",
     author: "",
     originalAuthor: "",
