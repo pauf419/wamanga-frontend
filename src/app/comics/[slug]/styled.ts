@@ -167,7 +167,7 @@ export const Right = styled.div``;
 
 export const Stats = styled.div`
   margin-top: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: flex;
   gap: 12px;
 `;
