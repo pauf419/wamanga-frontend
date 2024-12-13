@@ -35,21 +35,21 @@ const RulesPage = () => {
               <BlockLeft>
                 <BlockTitle>Общие правила</BlockTitle>
               </BlockLeft>
-              <PrimaryButton href="/">Открыть</PrimaryButton>
+              <PrimaryButton href="/rules/general">Открыть</PrimaryButton>
             </Block>
             <Block>
               <BlockLeft>
                 <BlockTitle>Правила для командо</BlockTitle>
                 <BlockDescription>(переводчикам и авторам)</BlockDescription>
               </BlockLeft>
-              <PrimaryButton href="/">Открыть</PrimaryButton>
-            </Block>{" "}
+              <PrimaryButton href="/rules/teams">Открыть</PrimaryButton>
+            </Block>
             <Block>
               <BlockLeft>
                 <BlockTitle>Часто задаваемые вопросы</BlockTitle>
                 <BlockDescription>(FAQ - Вопрос/Ответ)</BlockDescription>
               </BlockLeft>
-              <PrimaryButton href="/">Открыть</PrimaryButton>
+              <PrimaryButton href="/rules/faq">Открыть</PrimaryButton>
             </Block>
           </Blocks>
         </Content>
