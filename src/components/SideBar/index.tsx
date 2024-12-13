@@ -13,7 +13,7 @@ const Sidebar = () => {
   const moreRoutes = [
     { title: "Премиум подписочка", path: "/catalog" },
     { title: "Крутейшая страница для си132554252", path: "/home" },
-    { title: "Правила сайта", path: "/random" },
+    { title: "Правила сайта", path: "/rules" },
     { title: "Политика сайта", path: "/catalog" },
   ];
 
