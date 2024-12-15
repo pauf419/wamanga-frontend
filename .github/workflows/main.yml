@@ -14,37 +14,31 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [20.x, 21.x]
 
     steps:
-      - name: Open Web Client Directory
-        working-directory: src/
-        run: |
-          ls -la
 
-      # - name: Checkout repository
-      #   uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      # - name: Cache Node Modules
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ~/.npm
-      #     key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-${{ matrix.node-version }}-
 
-      # - name: Set up Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-      #     cache: 'npm'
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node-version }}-
 
-      # - name: Install dependencies
-      #   run: npm install
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
-      # - name: Run Linters
-      #   run: npm run lint
-      #   continue-on-error: true
+      - name: Install dependencies
+        run: rm -rf node_modules && rm -rf package-lock.json  && rm -rf .next && npm install
 
-      # - name: Build Next.js
-      #   run: npm run build --verbose
+      - name: Run Linters
+        run: npm run lint
+        continue-on-error: true
