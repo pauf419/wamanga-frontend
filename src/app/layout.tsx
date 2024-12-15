@@ -4,7 +4,7 @@ import "@assets/fonts/fonts.css";
 import { LayoutSC } from "./layout.styled";
 
 import Providers from "./Providers";
-import Sidebar from "@/components/SideBar";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   title: "WaComics",
