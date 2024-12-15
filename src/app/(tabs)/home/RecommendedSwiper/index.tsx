@@ -5,7 +5,7 @@ import {
   Arrows,
   LeftSwipeButton,
   RecentSwiperSC,
-  RightSwipeButton,
+  SwipeButton,
   SwiperSC,
 } from "./styled";
 import RightArrowIcon from "@icons/svg/right-arrow.svg";
@@ -120,9 +120,9 @@ export const RecommendedSwiper = () => {
         <LeftSwipeButton onClick={handlePrev}>
           <RightArrowIcon />
         </LeftSwipeButton>
-        <RightSwipeButton onClick={handleNext}>
+        <SwipeButton onClick={handleNext}>
           <RightArrowIcon />
-        </RightSwipeButton>
+        </SwipeButton>
       </Arrows>
     </RecentSwiperSC>
   );

@@ -80,7 +80,6 @@ export const LeftSwipeButton = styled(SwipeButton)`
   }
 `;
 
-export const RightSwipeButton = styled(SwipeButton)``;
 
 export const Background = styled.div<{ $backgroundImage: string }>`
   z-index: ${zIndex.background};

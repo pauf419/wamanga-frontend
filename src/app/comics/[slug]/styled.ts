@@ -159,8 +159,6 @@ export const FavouriteButton = styled.button`
   border-radius: 8px;
 `;
 
-export const Right = styled.div``;
-
 export const Stats = styled.div`
   display: flex;
   gap: 12px;

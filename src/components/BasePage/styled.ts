@@ -14,7 +14,7 @@ export const BasePageSC = styled.div`
 
   position: relative;
   width: 100%;
-  max-height: 100dvh;
+  max-height: 100vh;
   overflow: auto;
   color: ${colors.text};
   background: ${colors.background};

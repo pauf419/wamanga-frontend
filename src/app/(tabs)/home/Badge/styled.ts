@@ -10,7 +10,6 @@ export const BadgeSC = styled.div<{ $bgColor: string; $textColor: string }>`
   min-width: 22px;
   height: 24px;
   padding: 12px;
-  font-family: Gilroy;
   font-size: 12px;
   font-weight: 500;
   color: ${(props) => props.$textColor};

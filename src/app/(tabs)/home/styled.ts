@@ -1,12 +1,10 @@
 "use client";
 
-import BasePage from "@/components/BasePage";
 import { colors } from "@/const";
 import styled from "@emotion/styled";
 import { Section } from "./Section";
 import { Badges } from "./RecommendedSwiper/styled";
 
-export const HomeSC = styled(BasePage)``;
 
 export const DayTopSection = styled(Section)`
   margin-top: 50px;

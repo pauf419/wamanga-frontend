@@ -6,6 +6,6 @@ import styled from "@emotion/styled";
 export const LayoutSC = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
-  height: 100dvh;
+  height: 100vh;
   background: ${colors.background};
 `;

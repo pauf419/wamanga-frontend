@@ -1,5 +1,5 @@
 import React from "react";
-import { HomeSC, Divider, DayTopSection, NewsSection } from "./styled";
+import { Divider, DayTopSection, NewsSection } from "./styled";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -9,10 +9,11 @@ import { RecentSwiper } from "./RecentSwiper";
 import { DayTopSwiper } from "./DayTopSwiper";
 import { NewsSwiper } from "./NewsSwiper";
 import { RecommendedSwiper } from "./RecommendedSwiper";
+import BasePage from "@/components/BasePage";
 
 const HomePage = () => {
   return (
-    <HomeSC isImageBehind>
+    <BasePage isImageBehind>
       <RecommendedSwiper />
       <Section title="Недавние обновления" link="/">
         <RecentSwiper />
@@ -27,7 +28,7 @@ const HomePage = () => {
       </NewsSection>
 
       <Divider>Coming soon...</Divider>
-    </HomeSC>
+    </BasePage>
   );
 };
 

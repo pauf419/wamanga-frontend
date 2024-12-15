@@ -9,9 +9,7 @@ import {
   InfoTags,
   InfoTagText,
   InfoTagTitle,
-  Left,
-  MainSectionSC,
-  Right,
+
 } from "./styled";
 import { Tabs } from "@/components/Tabs";
 import type{ Comics } from "@/api/types/comics";
@@ -25,14 +23,14 @@ export const MainSection = ({ comics }: Props) => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <MainSectionSC>
+    <div>
       <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === 0 ? (
         <Content>
-          <Left>
+          <div>
             <Description>{comics.description}</Description>
-          </Left>
-          <Right>
+          </div>
+          <div>
             <InfoTags>
               <InfoTag>
                 <InfoTagTitle>Статус Перевода</InfoTagTitle>
@@ -48,11 +46,11 @@ export const MainSection = ({ comics }: Props) => {
                 <InfoTagText>{comics.year}</InfoTagText>
               </InfoTag>
             </InfoTags>
-          </Right>
+          </div>
         </Content>
       ) : (
         "Главы"
       )}
-    </MainSectionSC>
+    </div>
   );
 };

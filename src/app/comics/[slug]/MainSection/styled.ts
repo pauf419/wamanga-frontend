@@ -4,16 +4,12 @@ import { colors } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 
-export const MainSectionSC = styled.div``;
-
 export const Content = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
   margin-top: 16px;
 `;
-
-export const Left = styled.div``;
 
 export const Description = styled.p`
   font-size: 0.875rem;
@@ -22,7 +18,6 @@ export const Description = styled.p`
   white-space: pre-wrap;
 `;
 
-export const Right = styled.div``;
 
 export const InfoTags = styled.div`
   display: flex;

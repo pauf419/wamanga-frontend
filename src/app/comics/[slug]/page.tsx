@@ -11,7 +11,6 @@ import {
   Left,
   Poster,
   ReadButton,
-  Right,
   Stats,
   StatsBadge,
   StatsContent,
@@ -55,7 +54,7 @@ const ComicsPage = () => {
               <FavouriteIcon />В закладки
             </FavouriteButton>
           </Left>
-          <Right>
+          <div>
             <Title>{comics.name}</Title>
             <SubTitle>
               Some altrnative title because backend didn&apos;t add one
@@ -71,7 +70,7 @@ const ComicsPage = () => {
               </StatsBadge>
             </Stats>
             <MainSection comics={comics} />
-          </Right>
+          </div>
         </Content>
       </Background>
     </ComicsPageSC>

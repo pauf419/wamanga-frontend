@@ -36,7 +36,6 @@ export const LoginButton = styled.button`
   justify-content: center;
   width: 75px;
   height: 30px;
-  font-family: Gilroy;
   font-size: 13px;
   font-weight: 500;
   line-height: 22.29px;
