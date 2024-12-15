@@ -1,6 +1,5 @@
 import React from "react";
 import Logo from "@icons/svg/logo.svg?url";
-import { LogoSC, SidebarSC, Tabs } from "./styled";
 import { SidebarTab } from "./Tab";
 import HomeIcon from "@icons/svg/home.svg";
 import CatalogIcon from "@icons/svg/catalog.svg";
@@ -8,6 +7,7 @@ import RandomIcon from "@icons/svg/random.svg";
 import MoreIcon from "@icons/svg/more.svg";
 import { routes } from "@/const";
 import { SidebarExpandTab } from "./ExpandTab";
+import { LogoSC, SidebarSC, Tabs } from "./styled";
 
 const Sidebar = () => {
   const moreRoutes = [

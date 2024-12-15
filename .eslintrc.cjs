@@ -19,6 +19,7 @@ module.exports = {
   ignorePatterns: ["dist", ".eslintrc.cjs"],
 
   rules: {
+    "quotes": ["error", "double"],
     "no-restricted-syntax": [
       "error",
       {
