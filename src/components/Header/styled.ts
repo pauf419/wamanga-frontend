@@ -13,19 +13,16 @@ export const HeaderSC = styled.div`
   gap: 16px;
   align-items: center;
   justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   height: 80px;
   padding: 0 50px;
   background: ${colors.background + convertOpacityToHex(60)};
   backdrop-filter: blur(6px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 50px;
 
   @media (max-width: 1200px) {
-    padding: 0 24px;
     height: 64px;
+    padding: 0 24px;
   }
 `;
 
@@ -41,9 +38,9 @@ export const Block = styled.div`
 
 export const ToggleButton = styled.button`
   display: none;
+  cursor: pointer;
   background: transparent;
   border: none;
-  cursor: pointer;
 
   svg {
     width: 20px;

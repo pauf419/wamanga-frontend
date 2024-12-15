@@ -1,7 +1,15 @@
 "use client";
 
 import React from "react";
-import { HomeSC, Divider, DayTopSection, UpdatesSection, ComicTypeSection, RandomComicSection, NewsSection, CategorySection, Container } from "./styled";
+import {
+  DayTopSection,
+  UpdatesSection,
+  ComicTypeSection,
+  RandomComicSection,
+  NewsSection,
+  CategorySection,
+  Container,
+} from "./styled";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -15,6 +23,7 @@ import { RandomComic } from "./RandomComic";
 import { TypeSwiper } from "./TypeSwiper";
 import { NewsSwiper } from "./NewsSwiper";
 import { CategoriesSwiper } from "./CategoriesSwiper";
+import BasePage from "@/components/BasePage";
 
 const HomePage = () => {
   return (
@@ -35,25 +44,22 @@ const HomePage = () => {
         </UpdatesSection>
 
         <RandomComicSection>
-          <RandomComic/>
+          <RandomComic />
         </RandomComicSection>
 
         <ComicTypeSection title="Тип тайтла" link="/">
-          <TypeSwiper/>
+          <TypeSwiper />
         </ComicTypeSection>
 
         <CategorySection title="Категория" link="/">
-          <CategoriesSwiper/>
+          <CategoriesSwiper />
         </CategorySection>
-      
+
         <NewsSection title="Новинки 🔥" link="/">
-          <NewsSwiper/>
+          <NewsSwiper />
         </NewsSection>
-
       </Container>
-      
-
-    </HomeSC>
+    </BasePage>
   );
 };
 

@@ -16,9 +16,6 @@ export const RoutesWrapper = styled.div`
 `;
 
 export const RouteSC = styled.a<{ $mobile: boolean }>`
-  text-decoration: none;
-
-  max-height: 32px;
   position: relative;
   display: block;
   max-height: 32px;
@@ -74,7 +71,6 @@ export const SidebarTabSC = styled.div`
 `;
 
 export const Left = styled.div<{ $mobile: boolean }>`
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -96,8 +92,8 @@ export const Left = styled.div<{ $mobile: boolean }>`
     `}
 
   ${SidebarTabSC} & path {
-    transition: all 0.2s ease-in-out;
     fill: ${colors.iconColor};
+    transition: all 0.2s ease-in-out;
   }
 
   ${SidebarTabSC}:hover & path {
@@ -109,9 +105,9 @@ export const Right = styled.div<{ $active: boolean; $mobile: boolean }>`
   position: absolute;
   top: 0;
   right: 12px;
-  height: 100%;
   display: flex;
   align-items: center;
+  height: 100%;
   ${(props) =>
     props.$mobile &&
     ` 
@@ -139,30 +135,30 @@ export const Dropdown = styled.div<{ $active: boolean }>`
 `;
 
 export const DotHolder = styled.div`
-  min-width: auto;
-  margin-right: 16px;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   width: 24px;
+  min-width: auto;
   height: 24px;
+  margin-right: 16px;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
 `;
 
 export const Dot = styled.span`
   width: 4px;
   height: 4px;
-  background-color: rgb(94, 99, 110);
+  background-color: rgb(94 99 110);
   border-radius: 50%;
 `;
 export const AfterDotText = styled.div`
-  white-space: break-spaces;
-  line-height: 1.57143;
+  display: block;
+  overflow: hidden;
   font-size: 0.875rem;
   font-weight: 400;
-  overflow: hidden;
+  line-height: 1.57143;
   text-overflow: ellipsis;
+  white-space: break-spaces;
   white-space: nowrap;
-  display: block;
 `;

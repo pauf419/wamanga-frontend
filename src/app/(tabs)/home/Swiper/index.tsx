@@ -11,6 +11,7 @@ import RightArrowIcon from "@icons/svg/right-arrow.svg";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import type { SwiperRef } from "swiper/react";
 
 interface Props {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ interface Props {
 }
 
 export const Swiper = ({ children, type }: Props) => {
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<SwiperRef>(null);
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current || !sliderRef.current.swiper) return;
@@ -39,7 +40,7 @@ export const Swiper = ({ children, type }: Props) => {
         ref={sliderRef}
         slidesPerView={"auto"}
         spaceBetween={30}
-        loop={true}
+        loop
         initialSlide={5}
         speed={500}
         breakpoints={

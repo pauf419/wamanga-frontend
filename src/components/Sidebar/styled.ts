@@ -1,6 +1,6 @@
 "use client";
 
-import { colors, sizes, zIndex } from "@/const";
+import { zIndex } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
 

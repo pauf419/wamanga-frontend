@@ -3,7 +3,6 @@
 import React from "react";
 import {
   Block,
-  Content,
   HeaderSC,
   LoginButton,
   SearchButton,
@@ -12,7 +11,6 @@ import {
 import SearchIcon from "@icons/svg/search.svg";
 import SignUpForm from "../(auth)/SignUpForm";
 import SideBarToggleIcon from "@icons/svg/sidebar-mobile-toggle.svg";
-import { useClickOutside } from "@/hooks/use-click-outside";
 import SignInForm from "../(auth)/SignInForm";
 import SideBarMobile from "../SideBarMobile";
 

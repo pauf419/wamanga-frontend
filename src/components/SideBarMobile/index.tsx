@@ -1,5 +1,13 @@
-import { FC } from "react"
-import { Blurer, ButtonOutline, LoginButton, LogoSC, LogoSegment, Navigation, SidebarMobileSC } from "./styled"
+import type { FC } from "react";
+import {
+  Blurer,
+  ButtonOutline,
+  LoginButton,
+  LogoSC,
+  LogoSegment,
+  Navigation,
+  SidebarMobileSC,
+} from "./styled";
 import Logo from "@icons/svg/logo.svg?url";
 import { SidebarTab } from "../Sidebar/Tab";
 import HomeIcon from "@icons/svg/home.svg";
@@ -10,43 +18,41 @@ import { routes } from "@/const";
 import { SidebarExpandTab } from "../Sidebar/ExpandTab";
 
 interface SideBarMobileProps {
-    active: boolean
-    toggle: (status:boolean) => void
+  active: boolean;
+  toggle: (status: boolean) => void;
 }
 
+const SideBarMobile: FC<SideBarMobileProps> = ({ active, toggle }) => {
+  const moreRoutes = [
+    { title: "Премиум подписочка", path: "/catalog" },
+    { title: "Крутейшая страница для си132554252", path: "/home" },
+    { title: "Правила сайта", path: "/rules" },
+    { title: "Политика сайта", path: "/catalog" },
+  ];
 
-const SideBarMobile: FC<SideBarMobileProps> = ({active, toggle}) => {
+  return (
+    <>
+      <Blurer $active={active} onClick={() => toggle(false)} />
+      <SidebarMobileSC $active={active}>
+        <LogoSegment>
+          <LogoSC src={Logo} alt="logo" />
+          <ButtonOutline>
+            <LoginButton>Войти</LoginButton>
+          </ButtonOutline>
+        </LogoSegment>
+        <Navigation>Навигация</Navigation>
+        <SidebarTab mobile icon={<HomeIcon />} route={routes.home} />
+        <SidebarTab mobile icon={<CatalogIcon />} route={routes.catalog} />
+        <SidebarTab mobile icon={<RandomIcon />} route={routes.random} />
+        <SidebarExpandTab
+          mobile
+          icon={<MoreIcon />}
+          title={"Ещё"}
+          routes={moreRoutes}
+        />
+      </SidebarMobileSC>
+    </>
+  );
+};
 
-    const moreRoutes = [
-        { title: "Премиум подписочка", path: "/catalog" },
-        { title: "Крутейшая страница для си132554252", path: "/home" },
-        { title: "Правила сайта", path: "/rules" },
-        { title: "Политика сайта", path: "/catalog" },
-      ];
-
-    return (
-        <>
-            <Blurer $active={active} onClick={() => toggle(false)}/>
-            <SidebarMobileSC $active={active}>
-                <LogoSegment>
-                    <LogoSC src={Logo} alt="logo"/>
-                    <ButtonOutline>
-                        <LoginButton>Войти</LoginButton>
-                    </ButtonOutline>
-                </LogoSegment>
-                <Navigation>Навигация</Navigation>
-                <SidebarTab mobile icon={<HomeIcon />} route={routes.home} />
-                <SidebarTab mobile icon={<CatalogIcon />} route={routes.catalog} />
-                <SidebarTab mobile icon={<RandomIcon />} route={routes.random} />
-                <SidebarExpandTab
-                mobile
-                icon={<MoreIcon />}
-                title={"Ещё"}
-                routes={moreRoutes}
-                />
-            </SidebarMobileSC>
-        </>
-    )
-}
-
-export default SideBarMobile
+export default SideBarMobile;

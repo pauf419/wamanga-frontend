@@ -47,6 +47,6 @@ export const Divider = styled.div`
 `;
 
 export const StatsBadges = styled(Badges)`
-  margin-top: 10px;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  margin-top: 10px
 `;

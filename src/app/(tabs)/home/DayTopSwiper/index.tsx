@@ -1,21 +1,21 @@
 "use client";
 
 import React from "react";
-import {
-  SwiperSlideSC,
-} from "./styled";
+import { SwiperSlideSC } from "./styled";
 import { Swiper } from "../Swiper";
-import StatsBadge, { Icon } from "../StatsBadge";
-import { StatsBadges } from "../styled";
 import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
-import { Comics } from "@/api/types/comics";
+import type { Comics } from "@/api/types/comics";
 
 export const DayTopSwiper = () => {
   return (
     <Swiper type="horizontal">
       {Array.from({ length: 15 }).map((_, index) => (
         <SwiperSlideSC key={index}>
-          <ComicPreviewMinimized comic={{imagePath: `/test-${((index - 1) % 3) + 1}.webp`} as Comics}/>
+          <ComicPreviewMinimized
+            comic={
+              { imagePath: `/test-${((index - 1) % 3) + 1}.webp` } as Comics
+            }
+          />
         </SwiperSlideSC>
       ))}
     </Swiper>

@@ -6,33 +6,33 @@ import Image from "next/image";
 
 
 export const SwiperComics = styled.div<{$nested: boolean}>`
+  display: flex;
   width: 100%;
   height: 100%;
-  border-radius: 12px;
-  display: flex;
-  background-color: ${(props) => props.$nested ? colors.nestedComicBackground : "transparent"}
+  background-color: ${(props) => props.$nested ? colors.nestedComicBackground : "transparent"};
+  border-radius: 12px
 `;
 
 export const ComicsInfo = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
   padding: 8px 4px 8px 12px;
 `;
 
 export const ComicsTitle = styled.h3`
-  font-size: 1rem;
-  max-width: 100%;
   display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-height: 1.2rem;
+  max-width: 100%;
   max-height: calc(1.2rem * 2);
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  word-wrap: break-word;
+  -webkit-box-orient: vertical;
 `;
 
 export const ComicsType = styled.p`
@@ -41,21 +41,21 @@ export const ComicsType = styled.p`
 `;
 
 export const ComicsStatus = styled.p`
+  width: fit-content;
+  padding: 8px;
   margin-top: auto;
   font-size: 0.75rem;
   font-weight: 550;
-  background: rgba(143, 150, 163, 0.16);
-  padding: 8px;
-  border-radius: 40px;
-  width: fit-content;
   text-transform: uppercase;
+  background: rgb(143 150 163 / 16%);
+  border-radius: 40px;
 `;
 
 export const ComicsPoster = styled(Image)`
   width: 120px;
   height: 100%;
-  border-radius: 12px;
   user-select: none;
+  border-radius: 12px;
   -webkit-user-drag: none;
 `;
 

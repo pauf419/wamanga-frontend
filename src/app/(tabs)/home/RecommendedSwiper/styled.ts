@@ -113,21 +113,17 @@ export const Comics = styled.div`
   justify-content: center;
   width: 100%;
   height: calc(80vh - 80px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  padding: 0px 100px;
+  padding: 0 100px;
 
   @media (max-width: 900px) {
     padding: 64px 24px;
   }
 
   @media (max-width: 600px) {
-    padding: 80px 16px;
+    display: grid;
     gap: 0;
     align-content: center;
-    display: grid;
+    padding: 80px 16px;
   }
 `;
 

@@ -7,12 +7,12 @@ import styled from "@emotion/styled";
 
 
 export const Wrapper = styled.div`
+  position: relative;
   display: grid; 
   grid-template-columns: auto 350px;
   max-width: 1200px;
-  margin-left: auto;
   margin-right: auto;
-  position: relative;
+  margin-left: auto;
   overflow: hidden;
   background: ${colors.randomComicBackground};
   border-radius: 16px;
@@ -32,9 +32,9 @@ export const Content = styled.div`
 `
 
 export const Title = styled.h1`
-    line-height: 1.5;
-    font-weight: 700;
     margin-block-end: 8px;
+    font-weight: 700;
+    line-height: 1.5;
 
 `
 
@@ -43,16 +43,16 @@ export const PrimaryColor = styled.span`
 `
 
 export const RandomBtn = styled.button`
-    background: #5A5EE714;
     padding: 12px 78px;
-    color: ${colors.textPriamry};
+    margin-bottom: 32px;
     font-size: 15px;
     font-weight: 700;
-    outline: none;
-    border-radius: 8px;
-    border: none;
-    margin-bottom: 32px;
+    color: ${colors.textPriamry};
     cursor: pointer;
+    background: #5A5EE714;
+    border: none;
+    border-radius: 8px;
+    outline: none;
     transition: all 0.2s ease-in-out;
 
     @media(max-width: 900px) {
@@ -72,9 +72,9 @@ export const Bg = styled.div`
 
 export const BgImage = styled.img`
     position: absolute;
-    width: 140%;
-    left: -25%;
     top: 10%;
+    left: -25%;
+    width: 140%;
     transform: rotateY(180deg);
 `
 

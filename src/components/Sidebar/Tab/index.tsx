@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Left, Right, SidebarTabSC } from "./styled";
 import { usePathname } from "next/navigation";
 import type { Route } from "@/const";
+import { Left, Right, SidebarTabSC } from "./styled";
 
 interface Props {
   icon: React.ReactNode;
@@ -12,11 +12,20 @@ interface Props {
   mobile?: boolean;
 }
 
-export const SidebarTab = ({ icon, sideIcon, route, mobile=false }: Props) => {
+export const SidebarTab = ({
+  icon,
+  sideIcon,
+  route,
+  mobile = false,
+}: Props) => {
   const path = usePathname();
 
   return (
-    <SidebarTabSC $isActive={path === route.path} href={route.path} $mobile={mobile}>
+    <SidebarTabSC
+      $isActive={path === route.path}
+      href={route.path}
+      $mobile={mobile}
+    >
       <Left $isActive={path === route.path} $mobile={mobile}>
         {icon}
         {route.title}

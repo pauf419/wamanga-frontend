@@ -12,7 +12,7 @@ import {
   RoutesWrapper,
   SidebarTabSC,
 } from "./styled";
-import { Route } from "@/const";
+import type { Route } from "@/const";
 import RightArrowIcon from "@icons/svg/right-arrow.svg";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";

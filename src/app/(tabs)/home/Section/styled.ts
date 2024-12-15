@@ -13,9 +13,9 @@ export const SectionSC = styled.div`
 `;
 
 export const SectionTitle = styled.div`
+  z-index: 2;
   display: flex;
   align-items: center;
-  z-index: 2;
 `;
 
 export const SectionTitleText = styled.h2`

@@ -24,7 +24,6 @@ import {
   Background,
   Comics,
   Poster,
-  Badges,
   Title,
   Info,
   Description,
