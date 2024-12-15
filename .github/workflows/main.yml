@@ -24,12 +24,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies using pnpm
-        run: |
-          npm install -g pnpm
-          pnpm install
+        run: pnpm install
 
       - name: Run ESLint
         run: pnpm eslint . --ext .js,.jsx,.ts,.tsx
@@ -39,11 +39,3 @@ jobs:
 
       - name: Build Next.js
         run: pnpm run build
-
-      - name: Cache pnpm store
-        uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
