@@ -16,6 +16,7 @@ export const SectionTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 `;
 
 export const SectionTitleText = styled.h2`

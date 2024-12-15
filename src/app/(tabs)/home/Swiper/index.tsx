@@ -13,11 +13,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 interface Props {
-  height: number;
   children: React.ReactNode;
+  type: string;
 }
 
-export const Swiper = ({ height, children }: Props) => {
+export const Swiper = ({ children, type }: Props) => {
   const sliderRef = useRef(null);
 
   const handlePrev = useCallback(() => {
@@ -34,14 +34,18 @@ export const Swiper = ({ height, children }: Props) => {
   }, []);
 
   return (
-    <RecentSwiperSC $height={height}>
+    <RecentSwiperSC $type={type}>
       <SwiperSC
         ref={sliderRef}
         slidesPerView={"auto"}
         spaceBetween={30}
         loop={true}
-        initialSlide={1}
+        initialSlide={5}
         speed={500}
+        breakpoints={type==="horizontal"?{
+          0: {slidesPerView: 1},
+          700: {slidesPerView: "auto"}
+        }:{}}
       >
         {children}
       </SwiperSC>

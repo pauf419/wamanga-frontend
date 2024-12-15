@@ -15,12 +15,23 @@ export const FooterSC = styled.footer`
 export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(4, minmax(0px, 1fr));
+
+  @media(max-width: 1025px) {
+    grid-template-columns: auto;
+    justify-items: center;
+    gap: 24px;
+  }
 `;
 
 export const Section = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  @media(max-width: 1025px) {
+    justify-content: center;
+    gap: 24px;
+  }
 `;
 
 export const Title = styled.h5`
@@ -31,6 +42,11 @@ export const Links = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+    @media(max-width: 1025px) {
+      display: flex;
+      align-items: center
+    }
 `;
 
 export const LinkSC = styled(Link)`
@@ -41,6 +57,7 @@ export const LinkSC = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+
 `;
 
 export const Socials = styled.div`
@@ -68,5 +85,12 @@ export const Social = styled(Link)`
 `;
 
 export const Copyright = styled.p`
+  margin-top: 32px;
+  padding-bottom: 64px;
+  text-align: center;
   color: #8f96a3;
+  font-weight: 600;
+  font-size: 1rem;
+  
+  color: rgb(143, 150, 163);
 `;

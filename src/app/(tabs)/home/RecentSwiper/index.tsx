@@ -2,34 +2,18 @@
 
 import React from "react";
 import {
-  ComicsInfo,
-  ComicsPoster,
-  ComicsStatus,
-  ComicsTitle,
-  ComicsType,
-  SwiperComics,
   SwiperSlideSC,
 } from "./styled";
 import { Swiper } from "../Swiper";
+import { ComicPreviewVertical } from "../ComicPreviewVertical";
+import { Comics } from "@/api/types/comics";
 
 export const RecentSwiper = () => {
   return (
-    <Swiper height={350}>
-      {Array.from({ length: 15 }).map((_, index) => (
+    <Swiper type="vertical">
+      {Array.from({ length: 14 }).map((_, index) => (
         <SwiperSlideSC key={index}>
-          <SwiperComics>
-            <ComicsPoster
-              src={`/test-${((index - 1) % 3) + 1}.webp`}
-              alt="comics"
-              width={200}
-              height={350}
-            />
-            <ComicsInfo>
-              <ComicsTitle>Название</ComicsTitle>
-              <ComicsType>Манхва</ComicsType>
-              <ComicsStatus>Переводится</ComicsStatus>
-            </ComicsInfo>
-          </SwiperComics>
+          <ComicPreviewVertical comic={{imagePath: `/test-${((index - 1) % 3) + 1}.webp`} as Comics}/>
         </SwiperSlideSC>
       ))}
     </Swiper>

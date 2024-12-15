@@ -2,7 +2,10 @@
 
 import React, { useCallback, useRef } from "react";
 import {
+  AdaptivePosterHolder,
   Arrows,
+  BadgesAdaptive,
+  BadgesAdaptiveMinus,
   LeftSwipeButton,
   RecentSwiperSC,
   RightSwipeButton,
@@ -73,14 +76,30 @@ export const RecommendedSwiper = () => {
           >
             <Background $backgroundImage={comics.bannerPath}>
               <Comics>
-                <Poster
-                  src={comics.imagePath}
-                  alt="poster"
-                  width={250}
-                  height={350}
-                />
+                <AdaptivePosterHolder>
+                  <Poster
+                    src={comics.imagePath}
+                    alt="poster"
+                    width={250}
+                    height={350}
+                  />
+                  <BadgesAdaptive>
+                    <Badge
+                      textColor={colors.background}
+                      backgroundColor={colors.orange}
+                    >
+                      {comics.typeComics}
+                    </Badge>
+                    <Badge
+                      textColor={colors.text}
+                      backgroundColor={colors.primary}
+                    >
+                      {comics.status}
+                    </Badge>
+                  </BadgesAdaptive>
+                </AdaptivePosterHolder>
                 <Info>
-                  <Badges>
+                  <BadgesAdaptiveMinus>
                     <Badge
                       textColor={colors.text}
                       backgroundColor={colors.primary}
@@ -93,7 +112,7 @@ export const RecommendedSwiper = () => {
                     >
                       {comics.typeComics}
                     </Badge>
-                  </Badges>
+                  </BadgesAdaptiveMinus>
                   <Title>{comics.name}</Title>
                   <Description>{comics.description}</Description>
                   <StatsBadges>

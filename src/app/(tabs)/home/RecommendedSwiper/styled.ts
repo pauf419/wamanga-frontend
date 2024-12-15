@@ -120,12 +120,39 @@ export const Comics = styled.div`
   align-items: center;
   gap: 28px;
   padding: 0px 100px;
+
+  @media(max-width: 900px) {
+    padding: 64px 24px;
+  }
+
+  @media(max-width: 600px) {
+    padding: 80px 16px;
+    gap: 0;
+    align-content: center;
+    display: grid;
+  }
 `;
+
+export const AdaptivePosterHolder = styled.div`
+  display: flex;
+  gap: 8px;
+
+
+  @media(max-width: 600px) {
+    margin-bottom: 8px;
+  }
+`
 
 export const Poster = styled(Image)`
   width: 250px;
   height: 350px;
   border-radius: 10px;
+
+  @media(max-width: 900px) {
+    width: 170px;
+    height: 250px;
+  }
+
 `;
 
 export const Info = styled.div`
@@ -139,11 +166,32 @@ export const Badges = styled.div`
   gap: 8px;
 `;
 
+export const BadgesAdaptive = styled.div`
+  display: none;
+
+  @media(max-width: 600px) {
+    display: grid;
+    gap: 8px;
+    align-content: end;
+    justify-items: start
+  }
+`
+
+export const BadgesAdaptiveMinus = styled(Badges)`
+  @media(max-width: 600px) {
+    display: none;
+  }
+`
+
 export const Title = styled.h1`
   font-size: 3rem;
   margin: 0;
   padding: 0;
   margin-top: 8px;
+  
+  @media(max-width: 900px) {
+    font-size: 1.625rem;
+  }
 `;
 
 export const Description = styled.p`

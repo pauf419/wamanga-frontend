@@ -6,11 +6,12 @@ import Image from "next/image";
 import { SwiperSlide } from "swiper/react";
 
 export const SwiperSlideSC = styled(SwiperSlide)`
-  max-width: 424px;
+  max-width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background: ${colors.gray};
-  border-radius: 12px;
+    @media(max-width: 1200px) {
+    max-width: 200px;
+  }
 `;

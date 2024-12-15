@@ -3,5 +3,7 @@ export const zIndex = {
   background: 1,
   behindHeaderAboveBackground: 2,
   header: 250,
-  aboveEverything: 251,
+  blurer: 251,
+  aboveEverything: 252,
+
 };

@@ -9,3 +9,16 @@ body,
 html {
   background: #111213;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #36383f; 
+  border-radius: 5px;
+}

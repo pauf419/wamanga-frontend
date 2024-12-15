@@ -1,11 +1,13 @@
 "use client";
 
 import React from "react";
-import { HeaderSC, LoginButton, SearchButton } from "./styled";
+import { Block, Content, HeaderSC, LoginButton, SearchButton, ToggleButton } from "./styled";
 import SearchIcon from "@icons/svg/search.svg";
 import SignUpForm from "../(auth)/SignUpForm";
+import SideBarToggleIcon from "@icons/svg/sidebar-mobile-toggle.svg"
 import { useClickOutside } from "@/hooks/use-click-outside";
 import SignInForm from "../(auth)/SignInForm";
+import SideBarMobile from "../SideBarMobile";
 
 export interface ModalState {
   signUp: boolean;
@@ -18,6 +20,8 @@ const Header = () => {
     signIn: false,
   });
 
+  const [sidebarActive, setSidebarActive] = React.useState<boolean>(false)
+
   const handleClick = () => {
     setModalState({
       ...modalState,
@@ -25,15 +29,27 @@ const Header = () => {
     });
   };
 
+  const toggleSidebar = () => {
+    setSidebarActive(!sidebarActive)
+  }
+
   return (
-    <HeaderSC>
-      <SignUpForm state={modalState} setState={setModalState} />
-      <SignInForm state={modalState} setState={setModalState} />
-      <SearchButton>
-        <SearchIcon />
-      </SearchButton>
-      <LoginButton onClick={handleClick}>Войти</LoginButton>
-    </HeaderSC>
+    <>
+      <SideBarMobile active={sidebarActive} toggle={setSidebarActive}/>
+      <HeaderSC>
+        <Block>
+          <ToggleButton onClick={toggleSidebar}><SideBarToggleIcon/></ToggleButton>
+        </Block>
+        <Block>
+          <SignUpForm state={modalState} setState={setModalState} />
+          <SignInForm state={modalState} setState={setModalState} />
+          <SearchButton>
+            <SearchIcon />
+          </SearchButton>
+          <LoginButton onClick={handleClick}>Войти</LoginButton>
+        </Block>
+      </HeaderSC>
+    </>
   );
 };
 

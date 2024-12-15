@@ -9,14 +9,15 @@ interface Props {
   icon: React.ReactNode;
   sideIcon?: React.ReactNode;
   route: Route;
+  mobile?: boolean;
 }
 
-export const SidebarTab = ({ icon, sideIcon, route }: Props) => {
+export const SidebarTab = ({ icon, sideIcon, route, mobile=false }: Props) => {
   const path = usePathname();
 
   return (
-    <SidebarTabSC $isActive={path === route.path} href={route.path}>
-      <Left $isActive={path === route.path}>
+    <SidebarTabSC $isActive={path === route.path} href={route.path} $mobile={mobile}>
+      <Left $isActive={path === route.path} $mobile={mobile}>
         {icon}
         {route.title}
       </Left>

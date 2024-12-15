@@ -17,4 +17,8 @@ export const colors = {
   text: "#FFFFFF",
   grayText: "#BDBDBD",
   iconColor: "#8F96A3",
+  randomBtnBackground: "rgba(90, 94, 231, 0.08)",
+  randomBtnBackgroundHover: "rgba(90, 94, 231, 0.32)",
+  randomComicBackground: "rgba(47, 50, 55, 1)",
+  nestedComicBackground: "rgb(29, 30, 32)"
 };

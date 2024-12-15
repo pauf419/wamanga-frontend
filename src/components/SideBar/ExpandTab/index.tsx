@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Left, Right, RouteSC, RoutesWrapper, SidebarTabSC } from "./styled";
+import { AfterDotText, Dot, DotHolder, Dropdown, Left, Right, RouteSC, RoutesWrapper, SidebarTabSC } from "./styled";
 import { Route } from "@/const";
 import RightArrowIcon from "@icons/svg/right-arrow.svg";
 import * as motion from "motion/react-client";
@@ -11,34 +11,53 @@ interface Props {
   title: string;
   icon: React.ReactNode;
   routes: Route[];
+  mobile?: boolean
 }
 
-export const SidebarExpandTab = ({ icon, routes, title }: Props) => {
+export const SidebarExpandTab = ({ icon, routes, title, mobile=false }: Props) => {
   const [show, setShow] = useState(false);
 
   const handleMouseEnter = () => {
-    setShow(true);
+    if(!mobile) return setShow(true);
+
   };
 
   const handleMouseLeave = () => {
-    setShow(false);
+    if(!mobile) setShow(false);
   };
 
   return (
     <SidebarTabSC
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={() => mobile && setShow(!show)}
     >
-      <Left>
+      <Left $mobile={mobile}>
         {icon}
         {title}
       </Left>
-      <Right>
-        <RightArrowIcon />
+      <Right $active={show} $mobile={mobile}>
+        <RightArrowIcon/>
       </Right>
+      {
+        mobile &&
+        <Dropdown $active={show}>
+          {routes.map((route, index) => (
+            <RouteSC key={index} href={route.path} $mobile>
+              <DotHolder>
+                <Dot>
+                </Dot>
+              </DotHolder>
+              <AfterDotText>
+                {route.title}
+              </AfterDotText>
+            </RouteSC>
+          ))}
+        </Dropdown>
+      }
 
       <AnimatePresence>
-        {show && (
+        {!mobile && show && (
           <motion.div
             initial={{
               position: "absolute",
@@ -58,7 +77,7 @@ export const SidebarExpandTab = ({ icon, routes, title }: Props) => {
           >
             <RoutesWrapper>
               {routes.map((route, index) => (
-                <RouteSC key={index} href={route.path}>
+                <RouteSC key={index} href={route.path} $mobile={false}>
                   {route.title}
                 </RouteSC>
               ))}

@@ -14,6 +14,10 @@ export const SidebarSC = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 export const LogoSC = styled(Image)`

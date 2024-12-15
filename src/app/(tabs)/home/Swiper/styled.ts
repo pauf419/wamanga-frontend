@@ -30,9 +30,29 @@ export const NavButton = styled.button`
   }
 `;
 
-export const RecentSwiperSC = styled.div<{ $height: number }>`
+export const RecentSwiperSC = styled.div<{ $type: string }>`
   position: relative;
-  height: ${({ $height }) => $height}px;
+
+  ${(props) => {
+    if(props.$type === "vertical") return `
+      height: 350px;
+
+      @media(max-width: 1200px) {
+        height: 300px;
+      }
+    `
+    if(props.$type === "horizontal") return `
+      height: 160px;
+    `
+
+    if(props.$type === "large") return `
+      height: 320px;
+    `
+
+    if(props.$type === "horizontal_ext") return `
+      height: 230px;
+    `
+  }}
 `;
 
 export const SwiperSC = styled(Swiper)`

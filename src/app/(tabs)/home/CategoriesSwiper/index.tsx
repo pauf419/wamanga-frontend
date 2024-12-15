@@ -5,17 +5,15 @@ import {
   SwiperSlideSC,
 } from "./styled";
 import { Swiper } from "../Swiper";
-import StatsBadge, { Icon } from "../StatsBadge";
-import { StatsBadges } from "../styled";
-import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
+import { ComicPreviewVertical } from "../ComicPreviewVertical";
 import { Comics } from "@/api/types/comics";
 
-export const NewsSwiper = () => {
+export const CategoriesSwiper = () => {
   return (
-    <Swiper type="horizontal">
+    <Swiper type="vertical">
       {Array.from({ length: 14 }).map((_, index) => (
         <SwiperSlideSC key={index}>
-          <ComicPreviewMinimized comic={{imagePath: `/test-${((index - 1) % 3) + 1}.webp`} as Comics}/>
+          <ComicPreviewVertical comic={{imagePath: `/test-${((index - 1) % 3) + 1}.webp`} as Comics}/>
         </SwiperSlideSC>
       ))}
     </Swiper>

@@ -4,10 +4,10 @@ import { colors } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 
-export const SidebarTabSC = styled.a<{ $isActive?: boolean }>`
+export const SidebarTabSC = styled.a<{ $isActive?: boolean, $mobile: boolean}>`
   text-decoration: none;
   position: relative;
-  height: 54px;
+  height: ${(props) => props.$mobile ? "48px": "54px"};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,14 +32,30 @@ export const SidebarTabSC = styled.a<{ $isActive?: boolean }>`
   }
 `;
 
-export const Left = styled.div<{ $isActive?: boolean }>`
+export const Left = styled.div<{ $isActive?: boolean,  $mobile: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
 
+  ${
+    (props) => props.$mobile && 
+    `
+    flex-direction: row;
+    gap: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 12px;
+    font-weight: 600;
+    line-height: 1.57143;
+    font-size: 0.875rem;
+    `
+  }
+
   ${SidebarTabSC} & path {
+    transition: all 0.2s ease-in-out;
     fill: ${(props) => props.$isActive && colors.textPriamry};
   }
 

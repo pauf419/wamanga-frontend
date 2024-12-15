@@ -9,7 +9,7 @@ export const BadgeSC = styled.div`
   align-items: center;
   font-size: 14px;
   font-weight: 500;
-
+  align-content: center;
   height: 25px;
   background: #8f96a329;
   border-radius: 16px;

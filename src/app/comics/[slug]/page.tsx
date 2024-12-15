@@ -48,7 +48,7 @@ const ComicsPage = ({ params }: { params: { slug: string } }) => {
               />
               <Badge>{comics.typeComics}</Badge>
             </Comics>
-            <ReadButton>
+            <ReadButton> 
               <BookIcon />
               Читать
             </ReadButton>

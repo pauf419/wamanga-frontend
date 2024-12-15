@@ -15,11 +15,46 @@ export const HeaderSC = styled.div`
   background: ${colors.background + convertOpacityToHex(60)};
   backdrop-filter: blur(6px);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
   padding: 0px 50px;
+
+  @media(max-width: 1200px) {
+    padding: 0 24px;
+    height: 64px;
+  }
 `;
+
+export const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+export const Block = styled.div`
+  display: flex;
+  gap: 16px;
+`
+
+export const ToggleButton = styled.button`
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  svg path {
+    fill: #fff;
+  }
+
+  @media (max-width: 1200px) {
+    display: block;
+  }
+`
 
 export const SearchButton = styled.button`
   background: none;
