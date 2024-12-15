@@ -32,23 +32,25 @@ import {
 import { colors } from "@/const";
 import FavouriteIcon from "@icons/svg/favourites.svg";
 import Badge from "../Badge";
-import StatsBadge, { Icon } from "../StatsBadge";
+import StatsBadge from "../StatsBadge";
 import { StatsBadges } from "../styled";
 import { SwiperSlide } from "swiper/react";
+import { Icon } from "../StatsBadge/types/icon";
 
 export const RecommendedSwiper = () => {
-  const sliderRef = useRef(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const sliderRef = useRef<any>(null);
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
 
-    const swiper = (sliderRef.current as any).swiper;
+    const swiper = sliderRef.current.swiper;
     swiper.slidePrev();
   }, []);
 
   const handleNext = useCallback(() => {
     if (!sliderRef.current) return;
-    const swiper = (sliderRef.current as any).swiper;
+    const swiper = sliderRef.current?.swiper;
     swiper.slideNext();
   }, []);
 

@@ -3,17 +3,17 @@
 import { colors, zIndex } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper} from "swiper/react";
 
 export const NavButton = styled.button`
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  z-index: 1;
+  padding: 0;
+  cursor: pointer;
   background: none;
   border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1;
+  transform: translateY(-50%);
 
   &.left-button {
     left: 10px;
@@ -37,59 +37,56 @@ export const RecentSwiperSC = styled.div<{ $height: number }>`
 
 export const SwiperSC = styled(Swiper)`
   height: 100%;
-
   padding-left: 60px;
 
-  &:before {
-    z-index: ${zIndex.behindHeaderAboveBackground};
-
-    content: "";
+  &::before {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: ${zIndex.behindHeaderAboveBackground};
     width: 100px;
     height: 100%;
+    content: "";
     background: linear-gradient(
       270deg,
-      rgba(0, 0, 0, 0) 0%,
+      rgb(0 0 0 / 0%) 0%,
       ${colors.background} 100%
     );
   }
 
-  &:after {
-    z-index: ${zIndex.behindHeaderAboveBackground};
-
-    content: "";
+  &::after {
     position: absolute;
     top: 0;
     right: 0;
+    z-index: ${zIndex.behindHeaderAboveBackground};
     width: 100px;
     height: 100%;
+    content: "";
     background: linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0) 0%,
+      rgb(0 0 0 / 0%) 0%,
       ${colors.background} 100%
     );
   }
 `;
 
 export const SwipeButton = styled.button`
-  z-index: ${zIndex.popup};
 
   position: absolute;
+  top: 50%;
+  z-index: ${zIndex.popup};
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
-  top: 50%;
-  transform: translateY(-50%);
+  color: ${colors.text};
+  cursor: pointer;
   background: ${colors.background + convertOpacityToHex(60)};
   border: none;
   border-radius: 100%;
-  color: ${colors.text};
-  cursor: pointer;
   transition: background 0.2s ease-in-out;
+  transform: translateY(-50%);
 
   &:hover {
     background: ${colors.background};

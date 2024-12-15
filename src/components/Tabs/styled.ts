@@ -8,46 +8,40 @@ export const TabsSC = styled.div<{
   $marginLeft: number;
   $gap: number;
 }>`
-  width: fit-content;
   position: relative;
-  display: flex;
   box-sizing: border-box;
-  isolation: isolate;
-  height: 30px;
+  display: flex;
   gap: ${(props) => props.$gap}px;
+  width: fit-content;
+  height: 30px;
+  isolation: isolate;
 
   &::after {
-    z-index: -1;
-    border-radius: inherit;
-    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: -1;
     width: ${(props) => props.$activeTabWidth}px;
     height: 2px;
-    transform: translateX(${(props) => props.$marginLeft}px);
+    content: "";
     background: ${colors.primary};
-
+    border-radius: inherit;
     transition: all 0.15s ease-in-out;
+    transform: translateX(${(props) => props.$marginLeft}px);
   }
 `;
 
 export const Tab = styled.div<{ $isActive: boolean }>`
-  width: fit-content;
-  height: 100%;
   display: flex;
   align-items: center;
-
+  width: fit-content;
+  height: 100%;
   font-size: 13px;
   font-weight: 550;
   color: ${(props) => (props.$isActive ? colors.text : colors.iconColor)};
-
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-
-  user-select: none;
-  -webkit-user-select: none;
-
-  white-space: nowrap;
   text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 `;

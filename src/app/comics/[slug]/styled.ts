@@ -2,7 +2,6 @@
 
 import BasePage from "@/components/BasePage";
 import { colors, zIndex } from "@/const";
-import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,75 +12,72 @@ export const ComicsPageSC = styled(BasePage)`
 `;
 
 export const Background = styled.div<{ $backgroundImage: string }>`
-  z-index: ${zIndex.background};
 
   position: absolute;
   top: 0;
   left: 0;
+  z-index: ${zIndex.background};
   width: 100%;
   height: 45vh;
   padding-top: 80px;
-
   background-image: url(${({ $backgroundImage }) => $backgroundImage});
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   &::after {
-    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 45vh;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, #111213 95%);
+    content: "";
+    background: linear-gradient(180deg, rgb(0 0 0 / 50%) 0%, #111213 95%);
   }
 `;
 
 export const Content = styled.div`
-  padding: 80px 24px 0px 24px;
-
-  z-index: ${zIndex.behindHeaderAboveBackground};
 
   position: relative;
+  z-index: ${zIndex.behindHeaderAboveBackground};
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 24px;
+  padding: 80px 24px 0;
 `;
 
 export const BackButton = styled(Link)`
-  z-index: ${zIndex.behindHeaderAboveBackground};
-
-  text-decoration: none;
   position: absolute;
   top: 24px;
   left: 24px;
+  z-index: ${zIndex.behindHeaderAboveBackground};
   display: flex;
   gap: 4px;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  font-size: 1rem;
+  color: ${colors.text};
+  text-decoration: none;
+  cursor: pointer;
   background: none;
   border: none;
   border-radius: 8px;
-  color: ${colors.text};
   transition: background 0.2s ease-in-out;
-  padding: 6px 8px;
-  font-size: 1rem;
-  cursor: pointer;
 
   &:hover {
-    background: rgba(90, 94, 231, 0.08);
+    background: rgb(90 94 231 / 8%);
   }
 `;
 
 export const BackText = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
   font-weight: 550;
   line-height: 24px;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 2px;
 `;
 
 export const Left = styled.div`
@@ -113,28 +109,28 @@ export const Badge = styled.div`
   position: absolute;
   top: 8px;
   left: 8px;
-  background: ${colors.orange};
-  color: ${colors.background};
-  text-transform: uppercase;
+  padding: 4px;
   font-size: 12px;
   font-weight: 550;
-  padding: 4px;
+  color: ${colors.background};
+  text-transform: uppercase;
+  background: ${colors.orange};
   border-radius: 8px;
 `;
 
 export const ReadButton = styled.button`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 35px;
-  border-radius: 8px;
-  background: ${colors.primary};
-  color: ${colors.text};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border: none;
   font-weight: 550;
+  color: ${colors.text};
   cursor: pointer;
+  background: ${colors.primary};
+  border: none;
+  border-radius: 8px;
   transition: all 0.2s ease-in-out;
 
   &:hover {
@@ -149,45 +145,45 @@ export const ReadButton = styled.button`
 `;
 
 export const FavouriteButton = styled.button`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 35px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border: none;
   font-weight: 550;
-  background: #8f96a33d;
   color: #8f96a3cc;
   cursor: not-allowed;
+  background: #8f96a33d;
+  border: none;
+  border-radius: 8px;
 `;
 
 export const Right = styled.div``;
 
 export const Stats = styled.div`
-  margin-top: 16px;
-  margin-bottom: 24px;
   display: flex;
   gap: 12px;
+  margin-top: 16px;
+  margin-bottom: 24px;
 `;
 
 export const StatsBadge = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 4px;
-  border-radius: 16px;
-  border: none;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
   padding: 6px;
-  background: ${colors.badgeBg};
-  color: ${colors.badgeColor};
   font-size: 13px;
+  color: ${colors.badgeColor};
+  background: ${colors.badgeBg};
+  border: none;
+  border-radius: 16px;
 `;
 
 export const StatsContent = styled.span`
   font-size: 13px;
-  color: ${colors.text};
   font-weight: 550;
+  color: ${colors.text};
 `;

@@ -6,16 +6,16 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 
 export const SectionSC = styled.div`
-  margin: 12px 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin: 12px 24px;
 `;
 
 export const SectionTitle = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const SectionTitleText = styled.h2`
@@ -25,11 +25,11 @@ export const SectionTitleText = styled.h2`
 
 export const MoreButton = styled(Link)`
   padding: 8px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
   font-size: 0.875rem;
+  font-weight: 600;
   color: ${colors.primary};
+  text-decoration: none;
+  border-radius: 8px;
   transition: background 0.2s ease-in-out;
 
   &:hover {

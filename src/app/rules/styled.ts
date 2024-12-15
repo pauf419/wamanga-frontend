@@ -11,29 +11,28 @@ export const RulesPagesSC = styled(BasePage)`
 `;
 
 export const Background = styled.div<{ $backgroundImage: string }>`
-  z-index: ${zIndex.background};
 
   position: relative;
+  z-index: ${zIndex.background};
   width: 100%;
   height: 80vh;
+  padding-top: 80px;
   background: ${colors.primary};
   background-image: url(${({ $backgroundImage }) => $backgroundImage});
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
-  padding-top: 80px;
 
   &::after {
-    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 80vh;
+    content: "";
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0) 0%,
+      rgb(0 0 0 / 0%) 0%,
       ${"#111213" + convertOpacityToHex(80)} 50%,
       #111213 80%
     );
@@ -55,9 +54,9 @@ export const Title = styled.h1`
 
 export const Description = styled.div`
   display: flex;
+  gap: 20px;
   align-items: center;
   justify-content: center;
-  gap: 20px;
 `;
 
 export const Icon = styled(Image)`
@@ -67,26 +66,26 @@ export const Icon = styled(Image)`
 
 export const DescriptionText = styled.p`
   font-size: 1.25rem;
+  color: ${colors.grayText};
   mix-blend-mode: overlay;
   opacity: 0.9;
-  color: ${colors.grayText};
 `;
 
 export const Blocks = styled.div`
-  margin-top: 48px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 48px;
 `;
 
 export const Block = styled.div`
-  width: 500px;
-  border-radius: 16px;
-  background-color: ${colors.gray + convertOpacityToHex(50)};
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 500px;
   padding: 16px;
+  background-color: ${colors.gray + convertOpacityToHex(50)};
+  border-radius: 16px;
 `;
 
 export const BlockLeft = styled.div`

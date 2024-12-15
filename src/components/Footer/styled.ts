@@ -5,16 +5,16 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 
 export const FooterSC = styled.footer`
+  display: grid;
+  grid-template-rows: 2 1fr;
   width: 100%;
   height: 250px;
   padding: 25px;
-  display: grid;
-  grid-template-rows: 2 1fr;
 `;
 
 export const Content = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, minmax(0px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 `;
 
 export const Section = styled.div`
@@ -34,9 +34,9 @@ export const Links = styled.nav`
 `;
 
 export const LinkSC = styled(Link)`
-  text-decoration: none;
-  color: ${colors.text};
   font-weight: 300;
+  color: ${colors.text};
+  text-decoration: none;
 
   &:hover {
     text-decoration: underline;
@@ -45,16 +45,16 @@ export const LinkSC = styled(Link)`
 
 export const Socials = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 24px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Social = styled(Link)`
-  color: ${colors.text};
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  color: ${colors.text};
 
   & svg {
     width: 24px;

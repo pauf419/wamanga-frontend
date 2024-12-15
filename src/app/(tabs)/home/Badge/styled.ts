@@ -4,17 +4,17 @@ import styled from "@emotion/styled";
 
 export const BadgeSC = styled.div<{ $bgColor: string; $textColor: string }>`
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: ${(props) => props.$textColor};
-  background: ${(props) => props.$bgColor};
-  border-radius: 8px;
-  height: 24px;
+  justify-content: center;
   width: auto;
   min-width: 22px;
+  height: 24px;
   padding: 12px;
   font-family: Gilroy;
   font-size: 12px;
   font-weight: 500;
+  color: ${(props) => props.$textColor};
   text-transform: uppercase;
+  background: ${(props) => props.$bgColor};
+  border-radius: 8px;
 `;

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Portal } from "@/components/Portal";
 import { AnimatePresence, motion } from "motion/react";
-import { ModalState } from "@/components/Header";
+import type { ModalState } from "@/components/Header";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { Input, Inputs, ModalContent, ModalSC, Title } from "../Form/styled";
 import {
@@ -15,7 +15,6 @@ import {
   WithGoogle,
 } from "./styled";
 import GoogleIcon from "@icons/svg/google.svg?url";
-import Image from "next/image";
 
 interface Props {
   state: ModalState;

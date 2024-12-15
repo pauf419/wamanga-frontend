@@ -4,7 +4,6 @@ import React from "react";
 import { HeaderSC, LoginButton, SearchButton } from "./styled";
 import SearchIcon from "@icons/svg/search.svg";
 import SignUpForm from "../(auth)/SignUpForm";
-import { useClickOutside } from "@/hooks/use-click-outside";
 import SignInForm from "../(auth)/SignInForm";
 
 export interface ModalState {

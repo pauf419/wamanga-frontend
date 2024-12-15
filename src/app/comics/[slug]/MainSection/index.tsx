@@ -14,7 +14,7 @@ import {
   Right,
 } from "./styled";
 import { Tabs } from "@/components/Tabs";
-import { Comics } from "@/api/types/comics";
+import type{ Comics } from "@/api/types/comics";
 
 interface Props {
   comics: Comics;

@@ -18,18 +18,19 @@ interface Props {
 }
 
 export const Swiper = ({ height, children }: Props) => {
-  const sliderRef = useRef(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const sliderRef = useRef<any>(null);
 
   const handlePrev = useCallback(() => {
-    if (!sliderRef.current) return;
+    if (!sliderRef.current || !sliderRef.current.swiper) return;
 
-    const swiper = (sliderRef.current as any).swiper;
+    const swiper = sliderRef.current.swiper;
     swiper.slidePrev();
   }, []);
 
   const handleNext = useCallback(() => {
-    if (!sliderRef.current) return;
-    const swiper = (sliderRef.current as any).swiper;
+    if (!sliderRef.current || !sliderRef.current.swiper) return;
+    const swiper = sliderRef.current.swiper;
     swiper.slideNext();
   }, []);
 
@@ -39,7 +40,7 @@ export const Swiper = ({ height, children }: Props) => {
         ref={sliderRef}
         slidesPerView={"auto"}
         spaceBetween={30}
-        loop={true}
+        loop
         initialSlide={1}
         speed={500}
       >

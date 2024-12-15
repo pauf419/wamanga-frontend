@@ -49,11 +49,11 @@ export const InfoTagText = styled.span`
 
 export const InfoTagBadge = styled.span`
   width: fit-content;
+  padding: 6px;
   font-size: 0.75rem;
   font-weight: 550;
   color: ${colors.textPriamry};
+  text-transform: uppercase;
   background: ${colors.textPriamry + convertOpacityToHex(10)};
   border-radius: 8px;
-  padding: 6px;
-  text-transform: uppercase;
 `;

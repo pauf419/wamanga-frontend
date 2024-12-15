@@ -1,7 +1,7 @@
 "use client";
 
 import { zIndex } from "@/const";
-import React, { LegacyRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 export const Portal = ({ children }: { children: React.ReactNode }) => {

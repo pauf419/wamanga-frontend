@@ -9,50 +9,48 @@ export const RoutesWrapper = styled.div`
   --sidebar-padding: 8px;
 
   width: 250px;
-
-  background: ${colors.background + convertOpacityToHex(60)};
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
   padding: 6px;
+  background: ${colors.background + convertOpacityToHex(60)};
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
 `;
 
 export const RouteSC = styled.a`
-  text-decoration: none;
-
-  max-height: 32px;
   position: relative;
   display: block;
-  font-family: sans-serif;
-  color: ${colors.iconColor};
-  font-size: 16px;
-  border-radius: 10px;
-  cursor: pointer;
+  max-height: 32px;
   padding: 8px;
-  font-weight: 300;
-  text-align: start;
   overflow: hidden;
-  white-space: nowrap;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: ${colors.iconColor};
+  text-align: start;
+  text-decoration: none;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 10px;
 
   &:hover {
-    background: ${colors.iconColor + convertOpacityToHex(15)};
     color: ${colors.text};
+    background: ${colors.iconColor + convertOpacityToHex(15)};
   }
 `;
 
 export const SidebarTabSC = styled.div`
-  text-decoration: none;
   position: relative;
-  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${colors.iconColor};
+  height: 54px;
   font-size: 12px;
   line-height: 16px;
+  color: ${colors.iconColor};
   text-align: center;
-  border-radius: 8px;
+  text-decoration: none;
   cursor: pointer;
+  border-radius: 8px;
   transition: all 0.2s ease-in-out;
 
   &:hover {
@@ -62,11 +60,11 @@ export const SidebarTabSC = styled.div`
 `;
 
 export const Left = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 6px;
+  align-items: center;
+  width: 100%;
 
   ${SidebarTabSC} & path {
     fill: ${colors.iconColor};
@@ -81,10 +79,10 @@ export const Right = styled.div`
   position: absolute;
   top: 0;
   right: 4px;
-  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 
   ${SidebarTabSC} & path {
     stroke: ${colors.iconColor};

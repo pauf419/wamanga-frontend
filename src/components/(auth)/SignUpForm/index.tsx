@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Portal } from "@/components/Portal";
 import { AnimatePresence, motion } from "motion/react";
-import { ModalState } from "@/components/Header";
+import type { ModalState } from "@/components/Header";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { Input, Inputs, ModalContent, ModalSC, Title } from "../Form/styled";
 

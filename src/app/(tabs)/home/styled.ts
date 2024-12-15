@@ -19,8 +19,8 @@ export const NewsSection = styled.div`
 
 export const Divider = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   background: ${colors.background};
 `;

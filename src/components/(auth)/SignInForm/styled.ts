@@ -14,22 +14,22 @@ export const Questions = styled.div`
 
 export const Question = styled.div`
   display: flex;
-  align-items: center;
   gap: 4px;
+  align-items: center;
 `;
 
 export const Text = styled.span`
-  color: ${colors.text};
   font-size: 0.75rem;
+  color: ${colors.text};
 `;
 
 export const Action = styled.button`
+  padding: 4px 5px;
+  color: ${colors.primary};
+  cursor: pointer;
   background: none;
   border: none;
-  color: ${colors.primary};
-  padding: 4px 5px;
   border-radius: 8px;
-  cursor: pointer;
   transition: background 0.2s ease-in-out;
 
   &:hover {
@@ -38,17 +38,16 @@ export const Action = styled.button`
 `;
 
 export const WithGoogle = styled.div`
-  margin-top: 16px;
-  height: 36px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 34px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 8px;
-  border: 1px solid ${colors.textPriamry + convertOpacityToHex(50)};
+  margin-top: 16px;
   cursor: pointer;
+  border: 1px solid ${colors.textPriamry + convertOpacityToHex(50)};
+  border-radius: 8px;
   transition: all 0.2s ease-in-out;
 
   &:hover {
@@ -58,29 +57,30 @@ export const WithGoogle = styled.div`
 `;
 
 export const GoogleContent = styled.div`
-  height: 100%;
-  width: 100%;
   display: flex;
   gap: 8px;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
 
 export const GoogleIconSC = styled(Image)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 20px;
   height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const GoogleText = styled.span`
-  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100%;
   font-size: 0.875rem;
   font-weight: 550;
   color: ${colors.textPriamry};
+
   /* font-family: Arial, Helvetica, sans-serif; */
 `;
