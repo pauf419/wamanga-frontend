@@ -10,7 +10,6 @@ import {
   Overview,
   SwiperSlideSC,
   Tag,
-  Title,
 } from "./styled";
 import { Swiper } from "../Swiper";
 
@@ -74,7 +73,7 @@ export const UpdatesSwiper = () => {
                 {el.type === "news" ? "НОВОСТЬ" : "КОМАНДА"}
               </Tag>
               <Info>
-                <Title>{el.title}</Title>
+                <h3>{el.title}</h3>
                 <Overview>{el.overview}</Overview>
                 {el.button && el.button.text && el.button.link && (
                   <Button href={el.button.link}>{el.button.text}</Button>

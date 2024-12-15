@@ -43,16 +43,15 @@ export const LogoSC = styled(Image)`
 `;
 
 export const Blurer = styled.div<{ $active: boolean }>`
-  transition: all 0.2s ease-in-out;
   position: fixed;
   top: 0;
-  left: 0;
+  z-index: ${zIndex.blurer};
   width: 100%;
   height: 100%;
-  background: rgb(29 30 32 / 80%);
-  z-index: ${zIndex.blurer};
   visibility: hidden;
+  background: rgb(29 30 32 / 80%);
   opacity: 0;
+  transition: all 0.2s ease-in-out;
 
   ${(props) => props.$active && "visibility: visible;opacity:1;"}
 
@@ -75,7 +74,6 @@ export const LoginButton = styled.button`
   justify-content: center;
   width: 100%;
   height: 30px;
-  font-family: Gilroy;
   font-size: 14px;
   font-weight: 700;
   line-height: 22.29px;

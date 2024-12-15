@@ -69,8 +69,6 @@ export const Info = styled.div`
   height: 100%;
 `;
 
-export const Title = styled.h3``;
-
 export const Overview = styled.p`
   color: ${colors.grayText};
 `;

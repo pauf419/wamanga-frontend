@@ -157,7 +157,7 @@ export const AfterDotText = styled.div`
   overflow: hidden;
   font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.57143;
+  line-height: 1.5714;
   text-overflow: ellipsis;
   white-space: break-spaces;
   white-space: nowrap;
