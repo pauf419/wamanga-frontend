@@ -24,15 +24,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
-      - name: Install dependencies using npm
-        run: npm install
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
 
       - name: Run ESLint
-        run: npm run lint:js
+        run: npm run lint:eslint
 
       - name: Run Stylelint
-        run: npm run lint:css
+        run: npm run lint:stylelint
 
       - name: Build Next.js
         run: npm run build
