@@ -24,16 +24,26 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: 'pnpm'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies using pnpm
+        run: |
+          npm install -g pnpm
+          pnpm install
 
       - name: Run ESLint
-        run: npx eslint . --ext .js,.jsx,.ts,.tsx
+        run: pnpm eslint . --ext .js,.jsx,.ts,.tsx
 
       - name: Run Stylelint
-        run: npx stylelint "**/*.{css,scss,js,jsx,ts,tsx}"
+        run: pnpm stylelint "**/*.{css,scss,js,jsx,ts,tsx}"
 
       - name: Build Next.js
-        run: npm run build
+        run: pnpm run build
+
+      - name: Cache pnpm store
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
