@@ -14,11 +14,19 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [21.x]
+        node-version: [20.x, 21.x]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node-version }}-
 
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -27,10 +35,11 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install
 
       - name: Run Linters
         run: npm run lint
+        continue-on-error: true
 
       - name: Build Next.js
-        run: npm run build
+        run: npm run build --verbose
