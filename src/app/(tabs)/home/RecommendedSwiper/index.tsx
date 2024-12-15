@@ -32,10 +32,9 @@ import {
 import { colors } from "@/const";
 import FavouriteIcon from "@icons/svg/favourites.svg";
 import Badge from "../Badge";
-import StatsBadge from "../StatsBadge";
+import StatsBadge, { Icon } from "../StatsBadge";
 import { StatsBadges } from "../styled";
 import { SwiperSlide } from "swiper/react";
-import { Icon } from "../StatsBadge/types/icon";
 
 export const RecommendedSwiper = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

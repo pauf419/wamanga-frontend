@@ -46,7 +46,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/app/(tabs)/home/StatsBadge/types/ico.nts",
+    "next.config.js"
   ],
   "exclude": [
     "node_modules"
