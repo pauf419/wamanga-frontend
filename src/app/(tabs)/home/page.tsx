@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { HomeSC, Divider, DayTopSection, UpdatesSection, ComicTypeSection, RandomComicSection, NewsSection, CategorySection, Container } from "./styled";
 
@@ -16,7 +18,7 @@ import { CategoriesSwiper } from "./CategoriesSwiper";
 
 const HomePage = () => {
   return (
-    <HomeSC isImageBehind>
+    <BasePage isImageBehind>
       <RecommendedSwiper />
 
       <Container>

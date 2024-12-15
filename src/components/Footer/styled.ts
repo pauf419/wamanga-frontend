@@ -5,18 +5,18 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 
 export const FooterSC = styled.footer`
+  display: grid;
+  grid-template-rows: 2 1fr;
   width: 100%;
   height: 250px;
   padding: 25px;
-  display: grid;
-  grid-template-rows: 2 1fr;
 `;
 
 export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(4, minmax(0px, 1fr));
 
-  @media(max-width: 1025px) {
+  @media (max-width: 1025px) {
     grid-template-columns: auto;
     justify-items: center;
     gap: 24px;
@@ -28,7 +28,7 @@ export const Section = styled.div`
   flex-direction: column;
   gap: 12px;
 
-  @media(max-width: 1025px) {
+  @media (max-width: 1025px) {
     justify-content: center;
     gap: 24px;
   }
@@ -43,35 +43,34 @@ export const Links = styled.nav`
   flex-direction: column;
   gap: 4px;
 
-    @media(max-width: 1025px) {
-      display: flex;
-      align-items: center
-    }
+  @media (max-width: 1025px) {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const LinkSC = styled(Link)`
-  text-decoration: none;
-  color: ${colors.text};
   font-weight: 300;
+  color: ${colors.text};
+  text-decoration: none;
 
   &:hover {
     text-decoration: underline;
   }
-
 `;
 
 export const Socials = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 24px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Social = styled(Link)`
-  color: ${colors.text};
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  color: ${colors.text};
 
   & svg {
     width: 24px;
@@ -91,6 +90,6 @@ export const Copyright = styled.p`
   color: #8f96a3;
   font-weight: 600;
   font-size: 1rem;
-  
+
   color: rgb(143, 150, 163);
 `;

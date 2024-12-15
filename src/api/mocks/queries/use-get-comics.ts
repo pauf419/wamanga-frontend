@@ -1,4 +1,4 @@
-import { Comics } from "@/api/types/comics";
+import type { Comics } from "@/api/types/comics";
 
 export const getComics = (): Comics => {
   return {

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "@app/globals.css";
 import "@assets/fonts/fonts.css";
 import { LayoutSC } from "./layout.styled";
-import Sidebar from "@/components/Sidebar";
+
 import Providers from "./Providers";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   title: "WaComics",

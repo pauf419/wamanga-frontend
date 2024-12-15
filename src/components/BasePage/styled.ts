@@ -1,5 +1,4 @@
-import { colors, sizes, zIndex } from "@/const";
-import { convertOpacityToHex } from "@/utils";
+import { colors, sizes} from "@/const";
 import styled from "@emotion/styled";
 
 export const BasePageSC = styled.div`
@@ -7,18 +6,19 @@ export const BasePageSC = styled.div`
     0% {
       opacity: 0;
     }
+
     100% {
       opacity: 1;
     }
   }
 
   position: relative;
-  max-height: 100dvh;
   width: 100%;
+  max-height: 100vh;
   overflow: auto;
-  animation: opacity 0.2s ease-in-out;
   color: ${colors.text};
   background: ${colors.background};
+  animation: opacity 0.2s ease-in-out;
 `;
 
 export const Content = styled.div<{ $isImageBehind: boolean }>`

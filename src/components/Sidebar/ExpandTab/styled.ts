@@ -9,33 +9,33 @@ export const RoutesWrapper = styled.div`
   --sidebar-padding: 8px;
 
   width: 250px;
-
-  background: ${colors.background + convertOpacityToHex(60)};
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
   padding: 6px;
+  background: ${colors.background + convertOpacityToHex(60)};
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
 `;
 
-export const RouteSC = styled.a<{$mobile: boolean}>`
+export const RouteSC = styled.a<{ $mobile: boolean }>`
   text-decoration: none;
 
   max-height: 32px;
   position: relative;
   display: block;
-  font-family: sans-serif;
-  color: ${colors.iconColor};
-  font-size: 16px;
-  border-radius: 10px;
-  cursor: pointer;
+  max-height: 32px;
   padding: 8px;
-  font-weight: 300;
-  text-align: start;
   overflow: hidden;
-  white-space: nowrap;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: ${colors.iconColor};
+  text-align: start;
+  text-decoration: none;
   text-overflow: ellipsis;
-  transition: .2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
 
-  ${(props) => props.$mobile && `
+  ${(props) =>
+    props.$mobile &&
+    `
     max-height: none;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -47,24 +47,24 @@ export const RouteSC = styled.a<{$mobile: boolean}>`
   `}
 
   &:hover {
-    background: ${colors.iconColor + convertOpacityToHex(15)};
     color: ${colors.text};
+    background: ${colors.iconColor + convertOpacityToHex(15)};
   }
 `;
 
 export const SidebarTabSC = styled.div`
-  text-decoration: none;
   position: relative;
-  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${colors.iconColor};
+  height: 54px;
   font-size: 12px;
   line-height: 16px;
+  color: ${colors.iconColor};
   text-align: center;
-  border-radius: 8px;
+  text-decoration: none;
   cursor: pointer;
+  border-radius: 8px;
   transition: all 0.2s ease-in-out;
 
   &:hover {
@@ -73,15 +73,16 @@ export const SidebarTabSC = styled.div`
   }
 `;
 
-export const Left = styled.div<{$mobile: boolean}>`
+export const Left = styled.div<{ $mobile: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 6px;
+  align-items: center;
+  width: 100%;
 
-  ${
-    (props) => props.$mobile && 
+  ${(props) =>
+    props.$mobile &&
     `
     flex-direction: row;
     gap: 16px;
@@ -92,8 +93,7 @@ export const Left = styled.div<{$mobile: boolean}>`
     font-weight: 600;
     line-height: 1.57143;
     font-size: 0.875rem;
-    `
-  }
+    `}
 
   ${SidebarTabSC} & path {
     transition: all 0.2s ease-in-out;
@@ -105,22 +105,21 @@ export const Left = styled.div<{$mobile: boolean}>`
   }
 `;
 
-export const Right = styled.div<{$active:boolean, $mobile: boolean}>`
+export const Right = styled.div<{ $active: boolean; $mobile: boolean }>`
   position: absolute;
   top: 0;
   right: 12px;
   height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  ${(props) => props.$mobile && 
+  ${(props) =>
+    props.$mobile &&
     ` 
     svg {
       transition: .2s all ease-in-out;
       transform: ${props.$active ? "rotateZ(-90deg)" : "rotateZ(90deg)"};
     }
-    `
-  }
+    `}
 
   ${SidebarTabSC} & path {
     stroke: ${colors.iconColor};
@@ -131,15 +130,15 @@ export const Right = styled.div<{$active:boolean, $mobile: boolean}>`
   }
 `;
 
-export const Dropdown = styled.div<{$active:boolean}>` 
+export const Dropdown = styled.div<{ $active: boolean }>`
   position: absolute;
   top: calc(100% + 4px);
-  left: ${(props) => props.$active ? "0" : "-150%"};
+  left: ${(props) => (props.$active ? "0" : "-150%")};
   width: 100%;
-  transition: .2s all ease-in-out;
-`
+  transition: 0.2s all ease-in-out;
+`;
 
-export const DotHolder = styled.div` 
+export const DotHolder = styled.div`
   min-width: auto;
   margin-right: 16px;
   display: flex;
@@ -149,14 +148,14 @@ export const DotHolder = styled.div`
   justify-content: center;
   width: 24px;
   height: 24px;
-`
+`;
 
 export const Dot = styled.span`
   width: 4px;
   height: 4px;
   background-color: rgb(94, 99, 110);
   border-radius: 50%;
-`
+`;
 export const AfterDotText = styled.div`
   white-space: break-spaces;
   line-height: 1.57143;
@@ -166,4 +165,4 @@ export const AfterDotText = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   display: block;
-`
+`;

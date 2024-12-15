@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [21.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Clean npm cache
+        run: npm cache clean --force
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Debug file structure
+        run: ls -R src/components
+
+      - name: Force clean build
+        run: rm -rf .next && npm run build
+
+      - name: Run Linters
+        run: npm run lint

@@ -11,7 +11,6 @@ import {
   Left,
   Poster,
   ReadButton,
-  Right,
   Stats,
   StatsBadge,
   StatsContent,
@@ -24,10 +23,9 @@ import FavouriteIcon from "@icons/svg/favourites.svg";
 import LikeIcon from "@icons/svg/stat-like.svg";
 import ViewIcon from "@icons/svg/stat-view.svg";
 import { getComics } from "@/api/mocks/queries/use-get-comics";
-import { Tabs } from "../../../components/Tabs";
 import { MainSection } from "./MainSection";
 
-const ComicsPage = ({ params }: { params: { slug: string } }) => {
+const ComicsPage = () => {
   const comics = getComics();
 
   return (
@@ -56,10 +54,10 @@ const ComicsPage = ({ params }: { params: { slug: string } }) => {
               <FavouriteIcon />В закладки
             </FavouriteButton>
           </Left>
-          <Right>
+          <div>
             <Title>{comics.name}</Title>
             <SubTitle>
-              Some altrnative title because backend didn't add one
+              Some altrnative title because backend didn&apos;t add one
             </SubTitle>
             <Stats>
               <StatsBadge>
@@ -72,7 +70,7 @@ const ComicsPage = ({ params }: { params: { slug: string } }) => {
               </StatsBadge>
             </Stats>
             <MainSection comics={comics} />
-          </Right>
+          </div>
         </Content>
       </Background>
     </ComicsPageSC>

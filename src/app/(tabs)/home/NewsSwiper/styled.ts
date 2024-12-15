@@ -8,9 +8,9 @@ import { SwiperSlide } from "swiper/react";
 export const SwiperSlideSC = styled(SwiperSlide)`
   max-width: 424px;
   display: flex;
-  justify-content: center;
   align-items: center;
-
+  justify-content: center;
+  max-width: 1054px;
   background: ${colors.gray};
   border-radius: 12px;
 `;

@@ -3,7 +3,7 @@
 import React from "react";
 import { Left, Right, SidebarTabSC } from "./styled";
 import { usePathname } from "next/navigation";
-import { Route } from "@/const";
+import type { Route } from "@/const";
 
 interface Props {
   icon: React.ReactNode;

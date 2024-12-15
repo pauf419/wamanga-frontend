@@ -21,15 +21,15 @@ export const Swiper = ({ children, type }: Props) => {
   const sliderRef = useRef(null);
 
   const handlePrev = useCallback(() => {
-    if (!sliderRef.current) return;
+    if (!sliderRef.current || !sliderRef.current.swiper) return;
 
-    const swiper = (sliderRef.current as any).swiper;
+    const swiper = sliderRef.current.swiper;
     swiper.slidePrev();
   }, []);
 
   const handleNext = useCallback(() => {
-    if (!sliderRef.current) return;
-    const swiper = (sliderRef.current as any).swiper;
+    if (!sliderRef.current || !sliderRef.current.swiper) return;
+    const swiper = sliderRef.current.swiper;
     swiper.slideNext();
   }, []);
 
@@ -42,10 +42,14 @@ export const Swiper = ({ children, type }: Props) => {
         loop={true}
         initialSlide={5}
         speed={500}
-        breakpoints={type==="horizontal"?{
-          0: {slidesPerView: 1},
-          700: {slidesPerView: "auto"}
-        }:{}}
+        breakpoints={
+          type === "horizontal"
+            ? {
+                0: { slidesPerView: 1 },
+                700: { slidesPerView: "auto" },
+              }
+            : {}
+        }
       >
         {children}
       </SwiperSC>

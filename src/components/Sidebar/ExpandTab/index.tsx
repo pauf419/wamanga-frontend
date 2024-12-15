@@ -1,7 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { AfterDotText, Dot, DotHolder, Dropdown, Left, Right, RouteSC, RoutesWrapper, SidebarTabSC } from "./styled";
+import {
+  AfterDotText,
+  Dot,
+  DotHolder,
+  Dropdown,
+  Left,
+  Right,
+  RouteSC,
+  RoutesWrapper,
+  SidebarTabSC,
+} from "./styled";
 import { Route } from "@/const";
 import RightArrowIcon from "@icons/svg/right-arrow.svg";
 import * as motion from "motion/react-client";
@@ -11,19 +21,23 @@ interface Props {
   title: string;
   icon: React.ReactNode;
   routes: Route[];
-  mobile?: boolean
+  mobile?: boolean;
 }
 
-export const SidebarExpandTab = ({ icon, routes, title, mobile=false }: Props) => {
+export const SidebarExpandTab = ({
+  icon,
+  routes,
+  title,
+  mobile = false,
+}: Props) => {
   const [show, setShow] = useState(false);
 
   const handleMouseEnter = () => {
-    if(!mobile) return setShow(true);
-
+    if (!mobile) return setShow(true);
   };
 
   const handleMouseLeave = () => {
-    if(!mobile) setShow(false);
+    if (!mobile) setShow(false);
   };
 
   return (
@@ -37,24 +51,20 @@ export const SidebarExpandTab = ({ icon, routes, title, mobile=false }: Props) =
         {title}
       </Left>
       <Right $active={show} $mobile={mobile}>
-        <RightArrowIcon/>
+        <RightArrowIcon />
       </Right>
-      {
-        mobile &&
+      {mobile && (
         <Dropdown $active={show}>
           {routes.map((route, index) => (
             <RouteSC key={index} href={route.path} $mobile>
               <DotHolder>
-                <Dot>
-                </Dot>
+                <Dot></Dot>
               </DotHolder>
-              <AfterDotText>
-                {route.title}
-              </AfterDotText>
+              <AfterDotText>{route.title}</AfterDotText>
             </RouteSC>
           ))}
         </Dropdown>
-      }
+      )}
 
       <AnimatePresence>
         {!mobile && show && (

@@ -8,7 +8,7 @@ import {
   BadgesAdaptiveMinus,
   LeftSwipeButton,
   RecentSwiperSC,
-  RightSwipeButton,
+  SwipeButton,
   SwiperSC,
 } from "./styled";
 import RightArrowIcon from "@icons/svg/right-arrow.svg";
@@ -40,18 +40,19 @@ import { StatsBadges } from "../styled";
 import { SwiperSlide } from "swiper/react";
 
 export const RecommendedSwiper = () => {
-  const sliderRef = useRef(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const sliderRef = useRef<any>(null);
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
 
-    const swiper = (sliderRef.current as any).swiper;
+    const swiper = sliderRef.current.swiper;
     swiper.slidePrev();
   }, []);
 
   const handleNext = useCallback(() => {
     if (!sliderRef.current) return;
-    const swiper = (sliderRef.current as any).swiper;
+    const swiper = sliderRef.current?.swiper;
     swiper.slideNext();
   }, []);
 
@@ -138,9 +139,9 @@ export const RecommendedSwiper = () => {
         <LeftSwipeButton onClick={handlePrev}>
           <RightArrowIcon />
         </LeftSwipeButton>
-        <RightSwipeButton onClick={handleNext}>
+        <SwipeButton onClick={handleNext}>
           <RightArrowIcon />
-        </RightSwipeButton>
+        </SwipeButton>
       </Arrows>
     </RecentSwiperSC>
   );
