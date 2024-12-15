@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [21.x]
 
     steps:
       - name: Checkout repository
@@ -25,17 +25,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Install dependencies using pnpm
-        run: pnpm install
+      - name: Install dependencies using npm
+        run: npm install
 
       - name: Run ESLint
-        run: pnpm eslint . --ext .js,.jsx,.ts,.tsx
+        run: npm run lint:js
 
       - name: Run Stylelint
-        run: pnpm stylelint "**/*.{css,scss,js,jsx,ts,tsx}"
+        run: npm run lint:css
 
       - name: Build Next.js
-        run: pnpm run build
+        run: npm run build
