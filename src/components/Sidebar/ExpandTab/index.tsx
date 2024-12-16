@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import {
   AfterDotText,
   Dot,
-  DotHolder,
+  DotWrapper,
   Dropdown,
   Left,
   Right,
@@ -30,36 +30,36 @@ export const SidebarExpandTab = ({
   title,
   mobile = false,
 }: Props) => {
-  const [show, setShow] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const handleMouseEnter = () => {
-    if (!mobile) return setShow(true);
+    if (!mobile) return setVisible(true);
   };
 
   const handleMouseLeave = () => {
-    if (!mobile) setShow(false);
+    if (!mobile) setVisible(false);
   };
 
   return (
     <SidebarTabSC
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={() => mobile && setShow(!show)}
+      onClick={() => mobile && setVisible(!visible)}
     >
       <Left $mobile={mobile}>
         {icon}
         {title}
       </Left>
-      <Right $active={show} $mobile={mobile}>
+      <Right $active={visible} $mobile={mobile}>
         <RightArrowIcon />
       </Right>
       {mobile && (
-        <Dropdown $active={show}>
+        <Dropdown $active={visible}>
           {routes.map((route, index) => (
             <RouteSC key={index} href={route.path} $mobile>
-              <DotHolder>
-                <Dot></Dot>
-              </DotHolder>
+              <DotWrapper>
+                <Dot/>
+              </DotWrapper>
               <AfterDotText>{route.title}</AfterDotText>
             </RouteSC>
           ))}
@@ -67,7 +67,7 @@ export const SidebarExpandTab = ({
       )}
 
       <AnimatePresence>
-        {!mobile && show && (
+        {!mobile && visible && (
           <motion.div
             initial={{
               position: "absolute",

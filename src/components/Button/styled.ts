@@ -9,8 +9,6 @@ export const PrimaryLinkSC = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 36px;
   font-size: 0.875rem;
   font-weight: 400px;
   color: ${colors.text};
@@ -20,6 +18,7 @@ export const PrimaryLinkSC = styled(Link)`
   border: none;
   border-radius: 8px;
   transition: all 0.2s ease-in-out;
+  padding: 8px 16px;
 
   &:hover {
     background: ${colors.secondary};

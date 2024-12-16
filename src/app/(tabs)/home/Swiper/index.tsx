@@ -43,14 +43,6 @@ export const Swiper = ({ children, type }: Props) => {
         loop
         initialSlide={5}
         speed={500}
-        breakpoints={
-          type === "horizontal"
-            ? {
-                0: { slidesPerView: 1 },
-                700: { slidesPerView: "auto" },
-              }
-            : {}
-        }
       >
         {children}
       </SwiperSC>

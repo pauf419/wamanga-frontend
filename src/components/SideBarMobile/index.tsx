@@ -19,10 +19,10 @@ import { SidebarExpandTab } from "../Sidebar/ExpandTab";
 
 interface SideBarMobileProps {
   active: boolean;
-  toggle: (status: boolean) => void;
+  setActive: (status: boolean) => void;
 }
 
-const SideBarMobile: FC<SideBarMobileProps> = ({ active, toggle }) => {
+const SideBarMobile: FC<SideBarMobileProps> = ({ active, setActive }) => {
   const moreRoutes = [
     { title: "Премиум подписочка", path: "/catalog" },
     { title: "Крутейшая страница для си132554252", path: "/home" },
@@ -32,7 +32,7 @@ const SideBarMobile: FC<SideBarMobileProps> = ({ active, toggle }) => {
 
   return (
     <>
-      <Blurer $active={active} onClick={() => toggle(false)} />
+      <Blurer $active={active} onClick={() => setActive(false)} />
       <SidebarMobileSC $active={active}>
         <LogoSegment>
           <LogoSC src={Logo} alt="logo" />

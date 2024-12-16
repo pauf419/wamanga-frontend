@@ -8,7 +8,7 @@ export const SwiperSlideSC = styled(SwiperSlide)`
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1054px;
+  max-width: 424px;
   background: ${colors.gray};
   border-radius: 12px;
 `;

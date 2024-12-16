@@ -1,6 +1,6 @@
-import type { Comics } from "@/api/types/comics";
+import type { Comic } from "@/api/types/comic";
 
-export const getComics = (): Comics => {
+export const getComics = (): Comic => {
   return {
     name: "Терпение, Моя Леди!",
     alternativeName: "terpenie-moya-ledi",
@@ -10,7 +10,7 @@ export const getComics = (): Comics => {
       "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
     rating: 0,
     bannerPath: "/mock-background.png",
-    typeComics: "Manga",
+    typeComic: "Manga",
     author: "",
     originalAuthor: "",
     year: 2023,

@@ -41,6 +41,7 @@ export const RouteSC = styled.a<{ $mobile: boolean }>`
     display: grid;
     align-items: center;
     grid-template-columns: 40px auto;
+    border-radius: 8px;
   `}
 
   &:hover {
@@ -134,7 +135,7 @@ export const Dropdown = styled.div<{ $active: boolean }>`
   transition: 0.2s all ease-in-out;
 `;
 
-export const DotHolder = styled.div`
+export const DotWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

@@ -16,9 +16,9 @@ export const SidebarMobileSC = styled.div<{ $active: boolean }>`
   width: 280px;
   height: 100%;
   padding: 0 16px;
-  background: rgb(29 30 32 / 90%);
+  background: ${colors.sidebarMobileBackground};
   backdrop-filter: blur(5px);
-  box-shadow: rgb(0 0 0 / 24%) -40px 40px 80px -8px;
+  box-shadow: ${colors.sidebarMobileShadow}
   transition: all 0.2s ease-in-out;
   transform: ${(props) =>
     props.$active ? "translateX(0)" : "translateX(-100%)"};
@@ -49,7 +49,7 @@ export const Blurer = styled.div<{ $active: boolean }>`
   width: 100%;
   height: 100%;
   visibility: hidden;
-  background: rgb(29 30 32 / 80%);
+  background: ${colors.sidebarMobileBlurerBackground};
   opacity: 0;
   transition: all 0.2s ease-in-out;
 
@@ -99,6 +99,6 @@ export const Navigation = styled.div`
   font-size: 12px;
   font-weight: 700;
   line-height: 1.5;
-  color: rgb(143 150 163);
+  color: ${colors.sidebarMobileNavigation};
   list-style: none;
 `;

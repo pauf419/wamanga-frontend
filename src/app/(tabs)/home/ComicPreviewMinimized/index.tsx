@@ -3,43 +3,46 @@
 import React from "react";
 import type { FC } from "react";
 import {
-  ComicsInfo,
-  ComicsPoster,
-  ComicsStatus,
-  ComicsTitle,
-  ComicsType,
-  SwiperComics,
+  ComicInfo,
+  ComicPoster,
+  ComicStatus,
+  ComicTitle,
+  ComicType,
+  SwiperComic,
 } from "./styled";
 import StatsBadge, { Icon } from "../StatsBadge";
 import { StatsBadges } from "../styled";
-import type { Comics } from "@/api/types/comics";
+import type { Comic } from "@/api/types/comic";
 
 interface ComicPreviewProps {
   nested?: boolean;
-  comic: Comics;
+  comic: Comic;
 }
 
 export const ComicPreviewMinimized: FC<ComicPreviewProps> = ({
   nested = false,
   comic,
 }) => {
+
+  if(!comic || !comic.name) return <h1>NoComic</h1>
+
   return (
-    <SwiperComics $nested={nested}>
-      <ComicsPoster
+    <SwiperComic $nested={nested}>
+      <ComicPoster
         src={comic.imagePath ? comic.imagePath : "/test-1.webp"}
-        alt="comics"
+        alt="Comic"
         width={200}
         height={350}
       />
-      <ComicsInfo>
-        <ComicsTitle>Название</ComicsTitle>
-        <ComicsType>Манхва</ComicsType>
+      <ComicInfo>
+        <ComicTitle>{comic.name}</ComicTitle>
+        <ComicType>{comic.typeComic}</ComicType>
         <StatsBadges>
-          <StatsBadge icon={Icon.LIKE} amount={124451135} />
-          <StatsBadge icon={Icon.VIEW} amount={586392} />
+          <StatsBadge icon={Icon.LIKE} amount={comic.likes} />
+          <StatsBadge icon={Icon.VIEW} amount={comic.views} />
         </StatsBadges>
-        <ComicsStatus>Переводится</ComicsStatus>
-      </ComicsInfo>
-    </SwiperComics>
+        <ComicStatus>{comic.status}</ComicStatus>
+      </ComicInfo>
+    </SwiperComic>
   );
 };

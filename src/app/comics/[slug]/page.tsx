@@ -44,7 +44,7 @@ const ComicsPage = () => {
                 width={600}
                 height={300}
               />
-              <Badge>{comics.typeComics}</Badge>
+              <Badge>{comics.typeComic}</Badge>
             </Comics>
             <ReadButton> 
               <BookIcon />

@@ -1,6 +1,6 @@
 "use client";
 
-import { colors } from "@/const";
+import { colors, zIndex } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 import Link from "next/link";
@@ -13,8 +13,9 @@ export const SectionSC = styled.div`
 `;
 
 export const SectionTitle = styled.div`
-  z-index: 2;
+  z-index: ${zIndex.behindHeaderAboveBackground};
   display: flex;
+  justify-content: space-between;
   align-items: center;
 `;
 

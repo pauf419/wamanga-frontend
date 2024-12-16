@@ -1,4 +1,4 @@
-import type { GetRecommendedResult } from "@/api/types/recommended";
+import { GetRecommendedResult } from "@/api/types/results";
 
 export const getRecommended = (): GetRecommendedResult => {
   return {
@@ -12,7 +12,7 @@ export const getRecommended = (): GetRecommendedResult => {
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "mock-background.png",
-        typeComics: "Manga",
+        typeComic: "Manga",
         author: "",
         originalAuthor: "",
         year: 0,
@@ -36,7 +36,7 @@ export const getRecommended = (): GetRecommendedResult => {
           "Комикс про жизнь на венере, включающий в себя захватывающую историю о русалочке без хвостика. И вот настал час расплаты...",
         rating: 0,
         bannerPath: "mock-background-2.png",
-        typeComics: "Manga",
+        typeComic: "Manga",
         author: "",
         originalAuthor: "",
         year: 0,

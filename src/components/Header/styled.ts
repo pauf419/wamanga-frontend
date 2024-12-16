@@ -48,7 +48,7 @@ export const ToggleButton = styled.button`
   }
 
   svg path {
-    fill: #fff;
+    fill: ${colors.headerToggleButtonFill};
   }
 
   @media (max-width: 1200px) {

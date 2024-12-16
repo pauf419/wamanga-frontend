@@ -3,7 +3,6 @@
 import React from "react";
 import {
   Background,
-  Button,
   Content,
   Info,
   Updates,
@@ -12,71 +11,28 @@ import {
   Tag,
 } from "./styled";
 import { Swiper } from "../Swiper";
+import { getUpdates } from "@/api/mocks/queries/use-get-updates";
+import { PrimaryButton } from "@/components/Button";
 
 export const UpdatesSwiper = () => {
-  // TODO: Убрать хардкод
-  const updates = [
-    {
-      type: "news",
-      title: "медузки!!",
-      overview: "Морские животные рулят mother fucker~",
-      image: "/bac2.jpg",
-    },
-    {
-      type: "team",
-      title: "Команда лохов",
-      overview: "Мы команда настоящих лошар, и мы покажем вам кто такой лось~",
-      image: "bac3.png",
-      button: {
-        link: "/",
-        text: "Подписаться",
-      },
-    },
-    {
-      type: "team",
-      title: "Команда Uvuvwevwe Onyetyenyevwe Osas",
-      overview:
-        "Мы команда Uvuvwevwe Onyetyenyevwe Osas, и мы покажем вам кто такой Африка~",
-      image: "bac1.jpg",
-    },
-    {
-      type: "team",
-      title: "Команда Uvuvwevwe Onyetyenyevwe Osas",
-      overview:
-        "Мы команда Uvuvwevwe Onyetyenyevwe Osas, и мы покажем вам кто такой Африка~",
-      image: "bac1.jpg",
-    },
-    {
-      type: "team",
-      title: "Команда Uvuvwevwe Onyetyenyevwe Osas",
-      overview:
-        "Мы команда Uvuvwevwe Onyetyenyevwe Osas, и мы покажем вам кто такой Африка~",
-      image: "bac1.jpg",
-    },
-    {
-      type: "team",
-      title: "Команда Uvuvwevwe Onyetyenyevwe Osas",
-      overview:
-        "Мы команда Uvuvwevwe Onyetyenyevwe Osas, и мы покажем вам кто такой Африка~",
-      image: "bac1.jpg",
-    },
-  ];
+
+  const {data} = getUpdates();
 
   return (
     <Swiper type="large">
-      {updates.map((el, index) => (
+      {data.map((update, index) => (
         <SwiperSlideSC key={index}>
-          <Updates $background={el.image}>
+          <Updates $background={update.image}>
             <Background />
             <Content>
-              <Tag $type={el.type}>
-                {el.type === "news" ? "НОВОСТЬ" : "КОМАНДА"}
+              <Tag $type={update.type}>
+                {update.type === "news" ? "НОВОСТЬ" : "КОМАНДА"}
               </Tag>
               <Info>
-                <h3>{el.title}</h3>
-                <Overview>{el.overview}</Overview>
-                {el.button && el.button.text && el.button.link && (
-                  <Button href={el.button.link}>{el.button.text}</Button>
+                <h3>{update.title}</h3>
+                <Overview>{update.overview}</Overview>
+                {update.button && update.button.text && update.button.link && (
+                  <PrimaryButton href={update.button.link}>{update.button.text}</PrimaryButton>
                 )}
               </Info>
             </Content>

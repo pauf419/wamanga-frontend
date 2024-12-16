@@ -9,6 +9,7 @@ export const SidebarSC = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 26px 6px 0px 6px;
 
   @media (max-width: 1200px) {
     display: none;
@@ -21,7 +22,8 @@ export const LogoSC = styled(Image)`
   justify-content: center;
   width: 100%;
   height: 50px;
-  padding: 0 8px;
+  padding: 0 6px 0 6px;
+  margin-bottom: 12px;
 `;
 
 export const Tabs = styled.div`

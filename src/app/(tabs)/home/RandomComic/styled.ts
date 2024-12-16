@@ -42,7 +42,7 @@ export const PrimaryColor = styled.span`
     color: ${colors.primary}
 `
 
-export const RandomBtn = styled.button`
+export const RandomButton = styled.button`
     padding: 12px 78px;
     margin-bottom: 32px;
     font-size: 15px;
@@ -55,22 +55,22 @@ export const RandomBtn = styled.button`
     outline: none;
     transition: all 0.2s ease-in-out;
 
+    &:hover {
+        background: ${colors.randomButtonBackgroundHover};
+    }
+
     @media(max-width: 900px) {
         width: 100%;
     }
-
-    &:hover {
-        background: ${colors.randomBtnBackgroundHover};
-    }
 `
 
-export const Bg = styled.div` 
+export const Background = styled.div` 
     position: relative; 
     width: 100%;
     height: 100%;
 `
 
-export const BgImage = styled.img`
+export const BackgroundImage = styled.img`
     position: absolute;
     top: 10%;
     left: -25%;

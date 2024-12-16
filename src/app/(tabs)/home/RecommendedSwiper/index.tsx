@@ -22,7 +22,7 @@ import { getRecommended } from "@/api/mocks/queries/use-get-recommended";
 
 import {
   Background,
-  Comics,
+  Comic,
   Poster,
   Title,
   Info,
@@ -55,7 +55,7 @@ export const RecommendedSwiper = () => {
     swiper.slideNext();
   }, []);
 
-  const data = getRecommended();
+  const {data} = getRecommended();
 
   return (
     <RecentSwiperSC>
@@ -67,18 +67,18 @@ export const RecommendedSwiper = () => {
         speed={500}
         loop
       >
-        {data.data.map((comics, index) => (
+        {data.map((comic, index) => (
           <SwiperSlide
             style={{
               height: "80vh",
             }}
             key={index}
           >
-            <Background $backgroundImage={comics.bannerPath}>
-              <Comics>
+            <Background $backgroundImage={comic.bannerPath}>
+              <Comic>
                 <AdaptivePosterHolder>
                   <Poster
-                    src={comics.imagePath}
+                    src={comic.imagePath}
                     alt="poster"
                     width={250}
                     height={350}
@@ -88,13 +88,13 @@ export const RecommendedSwiper = () => {
                       textColor={colors.background}
                       backgroundColor={colors.orange}
                     >
-                      {comics.typeComics}
+                      {comic.typeComic}
                     </Badge>
                     <Badge
                       textColor={colors.text}
                       backgroundColor={colors.primary}
                     >
-                      {comics.status}
+                      {comic.status}
                     </Badge>
                   </BadgesAdaptive>
                 </AdaptivePosterHolder>
@@ -104,23 +104,23 @@ export const RecommendedSwiper = () => {
                       textColor={colors.text}
                       backgroundColor={colors.primary}
                     >
-                      {comics.status}
+                      {comic.status}
                     </Badge>
                     <Badge
                       textColor={colors.background}
                       backgroundColor={colors.orange}
                     >
-                      {comics.typeComics}
+                      {comic.typeComic}
                     </Badge>
                   </BadgesAdaptiveMinus>
-                  <Title>{comics.name}</Title>
-                  <Description>{comics.description}</Description>
+                  <Title>{comic.name}</Title>
+                  <Description>{comic.description}</Description>
                   <StatsBadges>
-                    <StatsBadge icon={Icon.LIKE} amount={comics.likes} />
-                    <StatsBadge icon={Icon.VIEW} amount={comics.views} />
+                    <StatsBadge icon={Icon.LIKE} amount={comic.likes} />
+                    <StatsBadge icon={Icon.VIEW} amount={comic.views} />
                   </StatsBadges>
                   <Buttons>
-                    <OpenButton href={`/comics/${comics.alternativeName}`}>
+                    <OpenButton href={`/comics/${comic.alternativeName}`}>
                       Открыть
                     </OpenButton>
                     <FavouriteButton>
@@ -128,7 +128,7 @@ export const RecommendedSwiper = () => {
                     </FavouriteButton>
                   </Buttons>
                 </Info>
-              </Comics>
+              </Comic>
             </Background>
           </SwiperSlide>
         ))}

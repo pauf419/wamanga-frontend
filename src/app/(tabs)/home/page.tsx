@@ -21,7 +21,7 @@ import { UpdatesSwiper } from "./UpdatesSwiper";
 import { RecommendedSwiper } from "./RecommendedSwiper";
 import { RandomComic } from "./RandomComic";
 import { TypeSwiper } from "./TypeSwiper";
-import { NewsSwiper } from "./NewsSwiper";
+import { LatestSwiper } from "./LatestSwiper";
 import { CategoriesSwiper } from "./CategoriesSwiper";
 import BasePage from "@/components/BasePage";
 
@@ -56,7 +56,7 @@ const HomePage = () => {
         </CategorySection>
 
         <NewsSection title="Новинки 🔥" link="/">
-          <NewsSwiper />
+          <LatestSwiper />
         </NewsSection>
       </Container>
     </BasePage>

@@ -1,4 +1,4 @@
-type ComicsType =
+type ComicType =
   | "Manga"
   | "Webtoon"
   | "Comic"
@@ -15,7 +15,7 @@ type StatusType =
   | "Заброшено"
   | "Анонсировано";
 
-export interface Comics {
+export interface Comic {
   id: number;
   name: string;
   alternativeName?: string;
@@ -23,7 +23,7 @@ export interface Comics {
   rating: number;
   imagePath: string;
   bannerPath: string;
-  typeComics: ComicsType;
+  typeComic: ComicType;
   author: string;
   originalAuthor: string;
   year: number;

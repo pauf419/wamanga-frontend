@@ -7,11 +7,11 @@ import { Badges } from "./RecommendedSwiper/styled";
 
 export const Container = styled.div`
   max-width: 1536px;
+  margin: 0 auto;
 `;
 
 export const DayTopSection = styled(Section)`
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 50px 0px;
 `;
 
 export const ComicTypeSection = styled(Section)`
@@ -33,8 +33,7 @@ export const NewsSection = styled(Section)`
 `;
 
 export const CategorySection = styled(Section)`
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 50px 0;
 `;
 
 export const Divider = styled.div`

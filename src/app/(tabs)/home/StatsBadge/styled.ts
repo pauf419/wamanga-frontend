@@ -1,5 +1,6 @@
 "use client";
 
+import { colors } from "@/const/colors";
 import styled from "@emotion/styled";
 
 export const BadgeSC = styled.div`
@@ -11,6 +12,6 @@ export const BadgeSC = styled.div`
   padding: 8px;
   font-size: 14px;
   font-weight: 500;
-  background: #8f96a329;
+  background: ${colors.statsBadgeBackground};
   border-radius: 16px;
 `;

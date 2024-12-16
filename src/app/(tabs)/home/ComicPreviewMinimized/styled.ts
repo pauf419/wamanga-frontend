@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 
 
-export const SwiperComics = styled.div<{$nested: boolean}>`
+export const SwiperComic = styled.div<{$nested: boolean}>`
   display: flex;
   width: 100%;
   height: 100%;
@@ -13,7 +13,7 @@ export const SwiperComics = styled.div<{$nested: boolean}>`
   border-radius: 12px
 `;
 
-export const ComicsInfo = styled.div`
+export const ComicInfo = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -21,7 +21,7 @@ export const ComicsInfo = styled.div`
   padding: 8px 4px 8px 12px;
 `;
 
-export const ComicsTitle = styled.h3`
+export const ComicTitle = styled.h3`
   display: block;
   display: -webkit-box;
   max-width: 100%;
@@ -35,12 +35,12 @@ export const ComicsTitle = styled.h3`
   -webkit-box-orient: vertical;
 `;
 
-export const ComicsType = styled.p`
+export const ComicType = styled.p`
   font-size: 0.75rem;
   color: ${colors.iconColor};
 `;
 
-export const ComicsStatus = styled.p`
+export const ComicStatus = styled.p`
   width: fit-content;
   padding: 8px;
   margin-top: auto;
@@ -51,7 +51,7 @@ export const ComicsStatus = styled.p`
   border-radius: 40px;
 `;
 
-export const ComicsPoster = styled(Image)`
+export const ComicPoster = styled(Image)`
   width: 120px;
   height: 100%;
   user-select: none;

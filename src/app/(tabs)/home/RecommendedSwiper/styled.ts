@@ -102,7 +102,7 @@ export const Background = styled.div<{ $backgroundImage: string }>`
   }
 `;
 
-export const Comics = styled.div`
+export const Comic = styled.div`
   position: absolute;
   top: 80px;
   left: 0;

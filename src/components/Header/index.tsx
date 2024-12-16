@@ -35,12 +35,12 @@ const Header = () => {
   };
 
   const toggleSidebar = () => {
-    setSidebarActive(!sidebarActive);
+    setSidebarActive(prev => !prev);
   };
 
   return (
     <>
-      <SideBarMobile active={sidebarActive} toggle={setSidebarActive} />
+      <SideBarMobile active={sidebarActive} setActive={setSidebarActive} />
       <HeaderSC>
         <Block>
           <ToggleButton onClick={toggleSidebar}>

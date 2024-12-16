@@ -4,17 +4,18 @@ import React from "react";
 import { SwiperSlideSC } from "./styled";
 import { Swiper } from "../Swiper";
 import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
-import type { Comics } from "@/api/types/comics";
+import { getDayTop } from "@/api/mocks/queries/use-get-day-top";
 
 export const DayTopSwiper = () => {
+
+  const {data} = getDayTop()
+
   return (
     <Swiper type="horizontal">
-      {Array.from({ length: 15 }).map((_, index) => (
+      {data.map((comic, index) => (
         <SwiperSlideSC key={index}>
           <ComicPreviewMinimized
-            comic={
-              { imagePath: `/test-${((index - 1) % 3) + 1}.webp` } as Comics
-            }
+            comic={comic}
           />
         </SwiperSlideSC>
       ))}

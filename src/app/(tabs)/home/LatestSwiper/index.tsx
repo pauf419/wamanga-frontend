@@ -4,16 +4,19 @@ import React from "react";
 import { SwiperSlideSC } from "./styled";
 import { Swiper } from "../Swiper";
 import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
-import type { Comics } from "@/api/types/comics";
+import { getLatest } from "@/api/mocks/queries/use-get-latest";
 
-export const NewsSwiper = () => {
+export const LatestSwiper = () => {
+
+  const {data} = getLatest()
+
   return (
     <Swiper type="horizontal">
-      {Array.from({ length: 14 }).map((_, index) => (
+      {data.map((comic, index) => (
         <SwiperSlideSC key={index}>
           <ComicPreviewMinimized
             comic={
-              { imagePath: `/test-${((index - 1) % 3) + 1}.webp` } as Comics
+              comic
             }
           />
         </SwiperSlideSC>

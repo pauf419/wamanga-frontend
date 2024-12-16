@@ -4,16 +4,19 @@ import React from "react";
 import { SwiperSlideSC } from "./styled";
 import { Swiper } from "../Swiper";
 import { ComicPreviewVertical } from "../ComicPreviewVertical";
-import type { Comics } from "@/api/types/comics";
+import { getByCategory } from "@/api/mocks/queries/use-get-by-category";
 
 export const CategoriesSwiper = () => {
+
+  const {data} = getByCategory()  
+
   return (
     <Swiper type="vertical">
-      {Array.from({ length: 14 }).map((_, index) => (
+      {data.map((comic, index) => (
         <SwiperSlideSC key={index}>
           <ComicPreviewVertical
             comic={
-              { imagePath: `/test-${((index - 1) % 3) + 1}.webp` } as Comics
+              comic
             }
           />
         </SwiperSlideSC>
