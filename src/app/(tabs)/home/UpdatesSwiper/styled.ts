@@ -3,7 +3,6 @@
 import { colors, zIndex } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
-import Link from "next/link";
 import { SwiperSlide } from "swiper/react";
 
 export const SwiperSlideSC = styled(SwiperSlide)`
