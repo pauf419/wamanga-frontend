@@ -12,10 +12,10 @@ import {
 
 } from "./styled";
 import { Tabs } from "@/components/Tabs";
-import type{ Comics } from "@/api/types/comic";
+import type{ Comic } from "@/api/types/comic";
 
 interface Props {
-  comics: Comics;
+  comics: Comic;
 }
 
 export const MainSection = ({ comics }: Props) => {
