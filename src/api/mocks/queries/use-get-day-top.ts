@@ -1,4 +1,4 @@
-import { GetDayTopResult } from "@/api/types/results";
+import type { GetDayTopResult } from "@/api/types/results";
 
 export const getDayTop = (): GetDayTopResult => {
     return {

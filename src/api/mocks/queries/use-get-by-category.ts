@@ -1,4 +1,5 @@
-import { GetByCategoryResult } from "@/api/types/results";
+import type { GetByCategoryResult } from "@/api/types/results";
+
 
 export const getByCategory = (): GetByCategoryResult => {
   return {

@@ -1,4 +1,4 @@
-import { GetUpdatesResult } from "@/api/types/results";
+import type { GetUpdatesResult } from "@/api/types/results";
 
 export const getUpdates = (): GetUpdatesResult => {
     return {

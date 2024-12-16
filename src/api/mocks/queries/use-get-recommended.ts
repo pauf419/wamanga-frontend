@@ -1,4 +1,4 @@
-import { GetRecommendedResult } from "@/api/types/results";
+import type { GetRecommendedResult } from "@/api/types/results";
 
 export const getRecommended = (): GetRecommendedResult => {
   return {

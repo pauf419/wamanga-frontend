@@ -1,4 +1,4 @@
-import { GetRandomComicResult } from "@/api/types/results";
+import type { GetRandomComicResult } from "@/api/types/results";
 
 export const getRandomComic = (): GetRandomComicResult => {
     return {
