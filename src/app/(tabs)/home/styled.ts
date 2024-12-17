@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const DayTopSection = styled(Section)`
-  margin: 50px 0;
+  margin: 50px 24px;
 `;
 
 export const ComicTypeSection = styled(Section)`
@@ -28,12 +28,11 @@ export const RandomComicSection = styled.div`
 `;
 
 export const NewsSection = styled(Section)`
-  margin-top: 50px;
-  margin-bottom: 150px;
+  margin: 50px 24px 150px 24px;
 `;
 
 export const CategorySection = styled(Section)`
-  margin: 50px 0;
+  margin: 50px 24px;
 `;
 
 export const Divider = styled.div`
