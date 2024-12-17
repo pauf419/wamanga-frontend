@@ -22,7 +22,7 @@ import { getRecommended } from "@/api/mocks/queries/use-get-recommended";
 
 import {
   Background,
-  Comic,
+  Comics,
   Poster,
   Title,
   Info,
@@ -55,7 +55,7 @@ export const RecommendedSwiper = () => {
     swiper.slideNext();
   }, []);
 
-  const {data} = getRecommended();
+  const { data } = getRecommended();
 
   return (
     <RecentSwiperSC>
@@ -75,7 +75,7 @@ export const RecommendedSwiper = () => {
             key={index}
           >
             <Background $backgroundImage={comic.bannerPath}>
-              <Comic>
+              <Comics>
                 <AdaptivePosterHolder>
                   <Poster
                     src={comic.imagePath}
@@ -128,7 +128,7 @@ export const RecommendedSwiper = () => {
                     </FavouriteButton>
                   </Buttons>
                 </Info>
-              </Comic>
+              </Comics>
             </Background>
           </SwiperSlide>
         ))}
