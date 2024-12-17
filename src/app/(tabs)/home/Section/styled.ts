@@ -15,8 +15,8 @@ export const SectionSC = styled.div`
 export const SectionTitle = styled.div`
   z-index: ${zIndex.behindHeaderAboveBackground};
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const SectionTitleText = styled.h2`

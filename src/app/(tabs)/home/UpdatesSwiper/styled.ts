@@ -65,10 +65,9 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
+  align-items: flex-start;
   justify-content: flex-end;
   height: 100%;
-  align-items: flex-start;
-
 `;
 
 export const Overview = styled.p`

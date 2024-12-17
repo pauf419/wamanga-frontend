@@ -7,8 +7,8 @@ export const SwiperSlideSC = styled(SwiperSlide)`
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 250px;
-
+  max-width: 250px; 
+ 
   @media (max-width: 1200px) {
     max-width: 200px;
   }

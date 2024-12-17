@@ -18,7 +18,7 @@ export const SidebarMobileSC = styled.div<{ $active: boolean }>`
   padding: 0 16px;
   background: ${colors.sidebarMobileBackground};
   backdrop-filter: blur(5px);
-  box-shadow: ${colors.sidebarMobileShadow}
+  box-shadow: ${colors.sidebarMobileShadow};
   transition: all 0.2s ease-in-out;
   transform: ${(props) =>
     props.$active ? "translateX(0)" : "translateX(-100%)"};

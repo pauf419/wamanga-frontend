@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const DayTopSection = styled(Section)`
-  margin: 50px 0px;
+  margin: 50px 0;
 `;
 
 export const ComicTypeSection = styled(Section)`
