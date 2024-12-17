@@ -18,7 +18,6 @@ export const Description = styled.p`
   white-space: pre-wrap;
 `;
 
-
 export const InfoTags = styled.div`
   display: flex;
   flex-direction: column;

@@ -8,17 +8,20 @@ module.exports = {
     "react-hooks",
     "prefer-arrow",
     "promise",
+    "prettier", // Add Prettier plugin
   ],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    'plugin:@next/next/recommended',
+    "plugin:@next/next/recommended",
+    "plugin:prettier/recommended", // Enable Prettier integration
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
 
   rules: {
+    "prettier/prettier": "error", // Force Prettier formatting
     "quotes": ["error", "double"],
     "no-restricted-syntax": [
       "error",
@@ -34,7 +37,7 @@ module.exports = {
       },
     ],
 
-    "react/prop-types": "off", // Not necessary when using TypeScript
+    "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-boolean-value": ["error", "never"],
     "react/jsx-pascal-case": "error",
@@ -88,7 +91,7 @@ module.exports = {
   overrides: [
     {
       files: ["./src/mocks/telegram.ts"],
-      rules: { "camelcase": "off" },
+      rules: { camelcase: "off" },
     },
   ],
 

@@ -1,4 +1,4 @@
-import { colors, sizes} from "@/const";
+import { colors, sizes } from "@/const";
 import styled from "@emotion/styled";
 
 export const BasePageSC = styled.div`

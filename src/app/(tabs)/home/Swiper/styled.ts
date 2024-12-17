@@ -3,7 +3,7 @@
 import { colors, zIndex } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
-import { Swiper} from "swiper/react";
+import { Swiper } from "swiper/react";
 
 export const NavButton = styled.button`
   position: absolute;
@@ -91,7 +91,6 @@ export const SwiperSC = styled(Swiper)`
 `;
 
 export const SwipeButton = styled.button`
-
   position: absolute;
   top: 50%;
   z-index: ${zIndex.popup};

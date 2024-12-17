@@ -22,7 +22,7 @@ interface Props {
 }
 
 const SignInForm = ({ state, setState }: Props) => {
-    const modalRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const onClickOutside = () => {
     setState({ ...state, signIn: false });
