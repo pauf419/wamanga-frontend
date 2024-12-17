@@ -5,7 +5,6 @@ import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 
 export const HeaderSC = styled.div`
-
   position: sticky;
   top: 0;
   left: 0;

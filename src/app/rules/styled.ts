@@ -11,7 +11,6 @@ export const RulesPagesSC = styled(BasePage)`
 `;
 
 export const Background = styled.div<{ $backgroundImage: string }>`
-
   position: relative;
   z-index: ${zIndex.background};
   width: 100%;

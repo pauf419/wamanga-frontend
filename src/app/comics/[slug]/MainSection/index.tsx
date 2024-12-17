@@ -9,10 +9,9 @@ import {
   InfoTags,
   InfoTagText,
   InfoTagTitle,
-
 } from "./styled";
 import { Tabs } from "@/components/Tabs";
-import type{ Comics } from "@/api/types/comics";
+import type { Comics } from "@/api/types/comics";
 
 interface Props {
   comics: Comics;

@@ -65,7 +65,6 @@ export const SwipeButton = styled.button`
 `;
 
 export const Arrows = styled.div`
-
   position: absolute;
   right: 20px;
   bottom: 80px;
@@ -79,7 +78,6 @@ export const LeftSwipeButton = styled(SwipeButton)`
     transform: rotate(180deg);
   }
 `;
-
 
 export const Background = styled.div<{ $backgroundImage: string }>`
   z-index: ${zIndex.background};
@@ -105,7 +103,6 @@ export const Background = styled.div<{ $backgroundImage: string }>`
 `;
 
 export const Comics = styled.div`
-
   position: absolute;
   top: 80px;
   left: 0;

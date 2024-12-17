@@ -12,7 +12,6 @@ export const ComicsPageSC = styled(BasePage)`
 `;
 
 export const Background = styled.div<{ $backgroundImage: string }>`
-
   position: absolute;
   top: 0;
   left: 0;
@@ -37,7 +36,6 @@ export const Background = styled.div<{ $backgroundImage: string }>`
 `;
 
 export const Content = styled.div`
-
   position: relative;
   z-index: ${zIndex.behindHeaderAboveBackground};
   display: grid;

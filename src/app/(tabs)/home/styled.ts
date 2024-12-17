@@ -5,7 +5,6 @@ import styled from "@emotion/styled";
 import { Section } from "./Section";
 import { Badges } from "./RecommendedSwiper/styled";
 
-
 export const DayTopSection = styled(Section)`
   margin-top: 50px;
   margin-bottom: 50px;

@@ -27,7 +27,6 @@ export const News = styled.div<{ $background: string }>`
 `;
 
 export const Background = styled.div`
-
   position: absolute;
   top: 0;
   left: 0;
@@ -39,7 +38,6 @@ export const Background = styled.div`
 `;
 
 export const Content = styled.div`
-
   position: relative;
   z-index: ${zIndex.behindHeaderAboveBackground};
   height: 100%;
