@@ -28,7 +28,7 @@ export const RandomComicSection = styled.div`
 `;
 
 export const NewsSection = styled(Section)`
-  margin: 50px 24px 150px 24px;
+  margin: 50px 24px 150px;
 `;
 
 export const CategorySection = styled(Section)`
