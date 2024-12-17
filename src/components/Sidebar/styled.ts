@@ -1,6 +1,6 @@
 "use client";
 
-import { zIndex } from "@/const";
+import { sizes, zIndex } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
@@ -9,6 +9,7 @@ export const SidebarSC = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: ${sizes.sidebarWidth}px;
   padding: 26px 6px 0;
 
   @media (max-width: 1200px) {

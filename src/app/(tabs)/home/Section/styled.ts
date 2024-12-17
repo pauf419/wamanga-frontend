@@ -10,6 +10,18 @@ export const SectionSC = styled.div`
   flex-direction: column;
   gap: 20px;
   margin: 12px 24px;
+
+  @media (max-width: 600px) {
+    margin: 12px 16px;
+  }
+
+  @media (max-width: 400px) {
+    margin: 12px;
+  }
+
+  @media (max-width: 360px) {
+    margin: 12px 8px;
+  }
 `;
 
 export const SectionTitle = styled.div`

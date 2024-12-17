@@ -2,6 +2,7 @@
 
 import { colors } from "@/const";
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -10,7 +11,7 @@ export const Wrapper = styled.div`
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
-  overflow: hidden;
+  overflow: visible;
   background: ${colors.randomComicBackground};
   border-radius: 16px;
 
@@ -63,10 +64,11 @@ export const Background = styled.div`
   height: 100%;
 `;
 
-export const BackgroundImage = styled.img`
+export const BackgroundImage = styled(Image)`
   position: absolute;
-  top: 10%;
-  left: -25%;
-  width: 140%;
+  top: -10%;
+  right: 0;
+  width: 100%;
+  height: 100%;
   transform: rotateY(180deg);
 `;

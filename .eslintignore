@@ -1,3 +1,4 @@
 src/api/generated
 next.config.ts
 svgr.d.ts
+img.d.ts

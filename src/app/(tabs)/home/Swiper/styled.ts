@@ -1,7 +1,8 @@
 "use client";
 
-import { colors, zIndex } from "@/const";
+import { colors, sizes, zIndex } from "@/const";
 import { convertOpacityToHex } from "@/utils";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Swiper } from "swiper/react";
 
@@ -35,40 +36,40 @@ export const RecentSwiperSC = styled.div<{ $type: string }>`
 
   ${(props) => {
     if (props.$type === "vertical")
-      return `
-      height: 350px;
+      return css`
+        height: 350px;
 
-      @media(max-width: 1200px) {
-        height: 300px;
-      }
-    `;
+        @media (max-width: 1200px) {
+          height: 300px;
+        }
+      `;
     if (props.$type === "horizontal")
-      return `
-      height: 160px;
-    `;
+      return css`
+        height: 160px;
+      `;
 
     if (props.$type === "large")
-      return `
-      height: 320px;
-    `;
+      return css`
+        height: 320px;
+      `;
 
     if (props.$type === "horizontal_ext")
-      return `
-      height: 230px;
-    `;
+      return css`
+        height: 230px;
+      `;
   }}
 `;
 
-export const SwiperSC = styled(Swiper)`
+export const SwiperSC = styled(Swiper)<{ $padding: boolean }>`
   height: 100%;
-  padding-left: 60px;
+  padding-left: ${(props) => (props.$padding ? "60px" : "0px")};
 
   &::before {
     position: absolute;
     top: 0;
     left: 0;
     z-index: ${zIndex.behindHeaderAboveBackground};
-    width: 100px;
+    width: 20px;
     height: 100%;
     content: "";
     background: linear-gradient(
@@ -101,8 +102,8 @@ export const SwipeButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: ${sizes.swiperButtonHeight}px;
+  height: ${sizes.swiperButtonHeight}px;
   color: ${colors.text};
   cursor: pointer;
   background: ${colors.background + convertOpacityToHex(60)};
@@ -116,7 +117,11 @@ export const SwipeButton = styled.button`
   }
 `;
 
-export const LeftSwipeButton = styled(SwipeButton)`
+export const CustomSwipeButton = styled(SwipeButton)<{ $margin: number }>`
+  margin-top: ${(props) => props.$margin}px;
+`;
+
+export const LeftSwipeButton = styled(CustomSwipeButton)`
   left: 0;
 
   & svg {
@@ -124,6 +129,6 @@ export const LeftSwipeButton = styled(SwipeButton)`
   }
 `;
 
-export const RightSwipeButton = styled(SwipeButton)`
+export const RightSwipeButton = styled(CustomSwipeButton)`
   right: 0;
 `;

@@ -59,8 +59,8 @@ export const Description = styled.div`
 `;
 
 export const Icon = styled(Image)`
-  width: 100px;
-  height: auto;
+  width: 100%;
+  height: 100%;
 `;
 
 export const DescriptionText = styled.p`

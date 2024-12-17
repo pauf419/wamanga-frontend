@@ -1,6 +1,6 @@
 "use client";
 
-import { colors } from "@/const";
+import { colors, sizes } from "@/const";
 import styled from "@emotion/styled";
 import { Section } from "./Section";
 import { Badges } from "./RecommendedSwiper/styled";
@@ -16,7 +16,7 @@ export const DayTopSection = styled(Section)`
 
 export const ComicTypeSection = styled(Section)`
   position: relative;
-  height: 220px;
+  height: ${sizes.typesSectionHeight}px;
 `;
 
 export const UpdatesSection = styled.div`

@@ -27,7 +27,13 @@ export const RandomComic = () => {
         <ComicPreviewMinimized nested comic={data} />
       </Content>
       <Background>
-        <BackgroundImage src="/rules.png" />
+        <BackgroundImage
+          quality={100}
+          src="/rules.png"
+          alt="rules"
+          width={512}
+          height={512}
+        />
       </Background>
     </Wrapper>
   );

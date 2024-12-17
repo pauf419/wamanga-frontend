@@ -9,9 +9,12 @@ import {
   SwiperHolder,
 } from "./styled";
 import { Swiper } from "../Swiper";
+import SmallComic from "@assets/images/types/small.png?url";
+import { sizes } from "@/const";
 
 export const TypeSwiper = () => {
-  // TODO: Убрать хардкод
+  const swiperButtonMargin =
+    (sizes.typesSectionHeight - sizes.typeSliderHeight) / 2;
   const types = [
     {
       background:
@@ -28,7 +31,7 @@ export const TypeSwiper = () => {
       value: "Мальопис",
       background:
         "https://zenko.b-cdn.net/cover12.webp?optimizer=image&width=640&quality=40",
-      icon: "https://zenko.b-cdn.net/assets/images/manga-ua-zenko.webp?optimizer=image&width=640&quality=90",
+      icon: SmallComic,
     },
     {
       value: "Вебкомикс",
@@ -94,12 +97,37 @@ export const TypeSwiper = () => {
 
   return (
     <SwiperHolder>
-      <Swiper type="horizontal_ext">
+      <Swiper
+        type="horizontal_ext"
+        buttonMargin={swiperButtonMargin}
+        props={{
+          breakpoints: {
+            0: {
+              slidesPerView: 1,
+              centeredSlides: true,
+            },
+            500: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+          },
+        }}
+      >
         {types.map((type, index) => (
           <SwiperSlideSC key={index} $background={type.background}>
             <Content href="/type">
               <ComicType>{type.value}</ComicType>
-              <ComicIcon src={type.icon} />
+              <ComicIcon
+                src={type.icon}
+                alt={type.value || "type"}
+                width={200}
+                height={300}
+              />
             </Content>
           </SwiperSlideSC>
         ))}

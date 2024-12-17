@@ -1,7 +1,8 @@
 "use client";
 
-import { colors } from "@/const";
+import { colors, sizes, zIndex } from "@/const";
 import styled from "@emotion/styled";
+import Image from "next/image";
 import { SwiperSlide } from "swiper/react";
 
 export const SwiperHolder = styled.div`
@@ -12,8 +13,8 @@ export const SwiperHolder = styled.div`
 
 export const SwiperSlideSC = styled(SwiperSlide)<{ $background: string }>`
   position: relative;
-  max-width: 310px;
-  height: 175px;
+  min-width: 310px;
+  height: ${sizes.typeSliderHeight}px;
   margin-top: auto;
   background: ${colors.gray};
   background: url(${(props) => props.$background});
@@ -23,6 +24,10 @@ export const SwiperSlideSC = styled(SwiperSlide)<{ $background: string }>`
 
   &:hover {
     transform: translate(-0.2rem, -0.5rem) rotate(2deg);
+  }
+
+  @media (max-width: 360px) {
+    min-width: 280px;
   }
 `;
 
@@ -44,11 +49,23 @@ export const ComicType = styled.div`
   font-size: 22px;
   font-weight: 700;
   color: #fff;
+
+  @media (max-width: 360px) {
+    font-size: 20px;
+  }
 `;
 
-export const ComicIcon = styled.img`
+export const ComicIcon = styled(Image)`
   position: absolute;
-  right: 0%;
-  bottom: 0;
-  height: 215px;
+  top: -30px;
+  right: 0;
+  z-index: ${zIndex.popup};
+  max-width: 50%;
+  max-height: 100%;
+  object-fit: contain;
+  transform: scale(1.2);
+
+  @media (max-width: 360px) {
+    transform: scale(1);
+  }
 `;
