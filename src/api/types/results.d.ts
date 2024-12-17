@@ -5,25 +5,25 @@ export interface GetRecommendedResult {
 }
 
 export interface GetRecentResult {
-    data: Comic[];
+  data: Comic[];
 }
 
 export interface GetDayTopResult {
-    data: Comic[];
+  data: Comic[];
 }
 
 export interface GetUpdatesResult {
-    data: Update[];
+  data: Update[];
 }
 
 export interface GetRandomComicResult {
-    data: IComic;
+  data: IComic;
 }
 
 export interface GetByCategoryResult {
-    data: IComic[];
+  data: IComic[];
 }
 
 export interface GetLatestResult {
-    data: IComic[];
+  data: IComic[];
 }

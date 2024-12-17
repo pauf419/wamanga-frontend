@@ -7,18 +7,13 @@ import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
 import { getLatest } from "@/api/mocks/queries/use-get-latest";
 
 export const LatestSwiper = () => {
-
-  const {data} = getLatest()
+  const { data } = getLatest();
 
   return (
     <Swiper type="horizontal">
       {data.map((comic, index) => (
         <SwiperSlideSC key={index}>
-          <ComicPreviewMinimized
-            comic={
-              comic
-            }
-          />
+          <ComicPreviewMinimized comic={comic} />
         </SwiperSlideSC>
       ))}
     </Swiper>

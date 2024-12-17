@@ -4,13 +4,13 @@ import { colors } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
-
-export const SwiperComic = styled.div<{$nested: boolean}>`
+export const SwiperComic = styled.div<{ $nested: boolean }>`
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: ${(props) => props.$nested ? colors.nestedComicBackground : "transparent"};
-  border-radius: 12px
+  background-color: ${(props) =>
+    props.$nested ? colors.nestedComicBackground : "transparent"};
+  border-radius: 12px;
 `;
 
 export const ComicInfo = styled.div`
@@ -58,4 +58,3 @@ export const ComicPoster = styled(Image)`
   border-radius: 12px;
   -webkit-user-drag: none;
 `;
-

@@ -7,18 +7,13 @@ import { ComicPreviewVertical } from "../ComicPreviewVertical";
 import { getByCategory } from "@/api/mocks/queries/use-get-by-category";
 
 export const CategoriesSwiper = () => {
-
-  const {data} = getByCategory()  
+  const { data } = getByCategory();
 
   return (
     <Swiper type="vertical">
       {data.map((comic, index) => (
         <SwiperSlideSC key={index}>
-          <ComicPreviewVertical
-            comic={
-              comic
-            }
-          />
+          <ComicPreviewVertical comic={comic} />
         </SwiperSlideSC>
       ))}
     </Swiper>

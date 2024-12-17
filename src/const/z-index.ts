@@ -5,5 +5,4 @@ export const zIndex = {
   header: 250,
   blurer: 251,
   aboveEverything: 252,
-
 };

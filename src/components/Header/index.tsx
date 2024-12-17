@@ -35,7 +35,7 @@ const Header = () => {
   };
 
   const toggleSidebar = () => {
-    setSidebarActive(prev => !prev);
+    setSidebarActive((prev) => !prev);
   };
 
   return (

@@ -23,8 +23,7 @@ export const ComicPreviewMinimized: FC<ComicPreviewProps> = ({
   nested = false,
   comic,
 }) => {
-
-  if(!comic || !comic.name) return <h1>NoComic</h1>
+  if (!comic || !comic.name) return <h1>NoComic</h1>;
 
   return (
     <SwiperComic $nested={nested}>

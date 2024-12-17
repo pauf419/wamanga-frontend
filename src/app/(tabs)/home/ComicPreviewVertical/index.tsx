@@ -18,8 +18,7 @@ interface ComicPreviewProps {
 }
 
 export const ComicPreviewVertical: FC<ComicPreviewProps> = ({ comic }) => {
-
-  if(!comic || !comic.name) return <h1>NoComic</h1>
+  if (!comic || !comic.name) return <h1>NoComic</h1>;
 
   return (
     <SwiperComic>

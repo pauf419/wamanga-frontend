@@ -14,8 +14,7 @@ import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
 import { getRandomComic } from "@/api/mocks/queries/use-get-random-comic";
 
 export const RandomComic = () => {
-
-  const {data} = getRandomComic()
+  const { data } = getRandomComic();
 
   return (
     <Wrapper>

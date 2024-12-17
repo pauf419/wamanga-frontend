@@ -11,7 +11,6 @@ import {
 import { Swiper } from "../Swiper";
 
 export const TypeSwiper = () => {
-
   // TODO: Убрать хардкод
   const types = [
     {

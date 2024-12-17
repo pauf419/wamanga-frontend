@@ -18,7 +18,7 @@ export const colors = {
   grayText: "#BDBDBD",
   iconColor: "#8F96A3",
   sidebarMobileBackground: "rgb(29 30 32 / 90%)",
-  sidebarMobileNavigation: "rgb(143 150 163)", 
+  sidebarMobileNavigation: "rgb(143 150 163)",
   sidebarMobileShadow: "rgb(0 0 0 / 24%) -40px 40px 80px -8px;",
   sidebarMobileBlurerBackground: "rgb(29 30 32 / 80%)",
   randomButtonBackground: "rgba(90, 94, 231, 0.08)",

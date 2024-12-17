@@ -15,8 +15,7 @@ import { getUpdates } from "@/api/mocks/queries/use-get-updates";
 import { PrimaryButton } from "@/components/Button";
 
 export const UpdatesSwiper = () => {
-
-  const {data} = getUpdates();
+  const { data } = getUpdates();
 
   return (
     <Swiper type="large">
@@ -32,7 +31,9 @@ export const UpdatesSwiper = () => {
                 <h3>{update.title}</h3>
                 <Overview>{update.overview}</Overview>
                 {update.button && update.button.text && update.button.link && (
-                  <PrimaryButton href={update.button.link}>{update.button.text}</PrimaryButton>
+                  <PrimaryButton href={update.button.link}>
+                    {update.button.text}
+                  </PrimaryButton>
                 )}
               </Info>
             </Content>

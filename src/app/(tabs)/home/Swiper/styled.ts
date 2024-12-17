@@ -34,24 +34,28 @@ export const RecentSwiperSC = styled.div<{ $type: string }>`
   position: relative;
 
   ${(props) => {
-    if(props.$type === "vertical") return `
+    if (props.$type === "vertical")
+      return `
       height: 350px;
 
       @media(max-width: 1200px) {
         height: 300px;
       }
-    `
-    if(props.$type === "horizontal") return `
+    `;
+    if (props.$type === "horizontal")
+      return `
       height: 160px;
-    `
+    `;
 
-    if(props.$type === "large") return `
+    if (props.$type === "large")
+      return `
       height: 320px;
-    `
+    `;
 
-    if(props.$type === "horizontal_ext") return `
+    if (props.$type === "horizontal_ext")
+      return `
       height: 230px;
-    `
+    `;
   }}
 `;
 

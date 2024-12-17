@@ -58,7 +58,7 @@ export const SidebarExpandTab = ({
           {routes.map((route, index) => (
             <RouteSC key={index} href={route.path} $mobile>
               <DotWrapper>
-                <Dot/>
+                <Dot />
               </DotWrapper>
               <AfterDotText>{route.title}</AfterDotText>
             </RouteSC>
