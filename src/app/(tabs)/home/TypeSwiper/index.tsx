@@ -100,6 +100,7 @@ export const TypeSwiper = () => {
       <Swiper
         type="horizontal_ext"
         buttonMargin={swiperButtonMargin}
+        padding={false}
         props={{
           breakpoints: {
             0: {

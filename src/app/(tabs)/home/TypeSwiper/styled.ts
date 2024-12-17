@@ -16,6 +16,7 @@ export const SwiperSlideSC = styled(SwiperSlide)<{ $background: string }>`
   min-width: 310px;
   height: ${sizes.typeSliderHeight}px;
   margin-top: auto;
+  user-select: none;
   background: ${colors.gray};
   background: url(${(props) => props.$background});
   background-size: cover;

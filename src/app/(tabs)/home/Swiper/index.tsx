@@ -52,7 +52,7 @@ export const Swiper = ({
         loop
         speed={500}
         initialSlide={1}
-        $padding={padding || false}
+        $padding={!!padding}
         {...props}
       >
         {children}
