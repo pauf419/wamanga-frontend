@@ -21,7 +21,7 @@ export const UpdatesSwiper = () => {
     <Swiper type="large">
       {data.map((update, index) => (
         <SwiperSlideSC key={index}>
-          <Updates $background={update.image}>
+          <Updates background={update.image}>
             <Background />
             <Content>
               <Tag $type={update.type}>

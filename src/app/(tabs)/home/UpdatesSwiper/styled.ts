@@ -14,11 +14,11 @@ export const SwiperSlideSC = styled(SwiperSlide)`
   border-radius: 12px;
 `;
 
-export const Updates = styled.div<{ $background: string }>`
+export const Updates = styled.div<{ background: string }>`
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url(${(props) => props.$background});
+  background-image: url(${(props) => props.background});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

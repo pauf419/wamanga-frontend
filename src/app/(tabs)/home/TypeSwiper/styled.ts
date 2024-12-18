@@ -11,14 +11,14 @@ export const SwiperHolder = styled.div`
   height: 220px;
 `;
 
-export const SwiperSlideSC = styled(SwiperSlide)<{ $background: string }>`
+export const SwiperSlideSC = styled(SwiperSlide)<{ background: string }>`
   position: relative;
   min-width: 310px;
   height: ${sizes.typeSliderHeight}px;
   margin-top: auto;
   user-select: none;
   background: ${colors.gray};
-  background: url(${(props) => props.$background});
+  background: url(${(props) => props.background});
   background-size: cover;
   border-radius: 12px;
   transition: all 0.2s ease-in-out;

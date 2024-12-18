@@ -65,6 +65,7 @@ export const RecommendedSwiper = () => {
         modules={[EffectFade]}
         slidesPerView={"auto"}
         speed={500}
+        autoplay={{ delay: 5000 }}
         loop
       >
         {data.map((comic, index) => (

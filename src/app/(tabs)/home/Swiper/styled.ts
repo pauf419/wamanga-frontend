@@ -60,9 +60,14 @@ export const RecentSwiperSC = styled.div<{ $type: string }>`
   }}
 `;
 
-export const SwiperSC = styled(Swiper)<{ $padding: boolean }>`
+interface SwiperProps {
+  padding?: number;
+  $buttonMargin?: number;
+}
+
+export const SwiperSC = styled(Swiper)<SwiperProps>`
   height: 100%;
-  padding-left: ${(props) => (props.$padding ? "60px" : "0px")};
+  padding-left: ${({ padding: $padding }) => $padding}px;
 
   &::before {
     position: absolute;

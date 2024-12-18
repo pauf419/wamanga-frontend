@@ -100,7 +100,7 @@ export const TypeSwiper = () => {
       <Swiper
         type="horizontal_ext"
         buttonMargin={swiperButtonMargin}
-        padding={false}
+        padding={0}
         props={{
           breakpoints: {
             0: {
@@ -120,7 +120,7 @@ export const TypeSwiper = () => {
         }}
       >
         {types.map((type, index) => (
-          <SwiperSlideSC key={index} $background={type.background}>
+          <SwiperSlideSC key={index} background={type.background}>
             <Content href="/type">
               <ComicType>{type.value}</ComicType>
               <ComicIcon

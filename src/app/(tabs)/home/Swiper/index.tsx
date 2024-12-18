@@ -15,7 +15,7 @@ import type { SwiperProps, SwiperRef } from "swiper/react";
 
 interface Props {
   type: string;
-  padding?: boolean;
+  padding?: number;
   buttonMargin?: number;
   children?: React.ReactNode;
   props?: SwiperProps;
@@ -23,7 +23,7 @@ interface Props {
 
 export const Swiper = ({
   type,
-  padding,
+  padding = 60,
   children,
   props,
   buttonMargin,
@@ -52,7 +52,7 @@ export const Swiper = ({
         loop
         speed={500}
         initialSlide={1}
-        $padding={!!padding}
+        padding={padding}
         {...props}
       >
         {children}
