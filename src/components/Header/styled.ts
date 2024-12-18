@@ -13,11 +13,47 @@ export const HeaderSC = styled.div`
   gap: 16px;
   align-items: center;
   justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   height: 80px;
   padding: 0 50px;
   background: ${colors.background + convertOpacityToHex(60)};
   backdrop-filter: blur(6px);
+
+  @media (max-width: 1200px) {
+    height: 64px;
+    padding: 0 24px;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Block = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+export const ToggleButton = styled.button`
+  display: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  svg path {
+    fill: ${colors.headerToggleButtonFill};
+  }
+
+  @media (max-width: 1200px) {
+    display: block;
+  }
 `;
 
 export const SearchButton = styled.button`

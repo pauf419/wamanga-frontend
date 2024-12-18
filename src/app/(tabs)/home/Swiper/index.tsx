@@ -11,15 +11,24 @@ import RightArrowIcon from "@icons/svg/right-arrow.svg";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import type { SwiperProps, SwiperRef } from "swiper/react";
 
 interface Props {
-  height: number;
-  children: React.ReactNode;
+  type: string;
+  padding?: number;
+  buttonMargin?: number;
+  children?: React.ReactNode;
+  props?: SwiperProps;
 }
 
-export const Swiper = ({ height, children }: Props) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sliderRef = useRef<any>(null);
+export const Swiper = ({
+  type,
+  padding = 60,
+  children,
+  props,
+  buttonMargin,
+}: Props) => {
+  const sliderRef = useRef<SwiperRef>(null);
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current || !sliderRef.current.swiper) return;
@@ -35,22 +44,24 @@ export const Swiper = ({ height, children }: Props) => {
   }, []);
 
   return (
-    <RecentSwiperSC $height={height}>
+    <RecentSwiperSC $type={type}>
       <SwiperSC
         ref={sliderRef}
         slidesPerView={"auto"}
         spaceBetween={30}
         loop
-        initialSlide={1}
         speed={500}
+        initialSlide={1}
+        padding={padding}
+        {...props}
       >
         {children}
       </SwiperSC>
 
-      <LeftSwipeButton onClick={handlePrev}>
+      <LeftSwipeButton onClick={handlePrev} $margin={buttonMargin ?? 0}>
         <RightArrowIcon />
       </LeftSwipeButton>
-      <RightSwipeButton onClick={handleNext}>
+      <RightSwipeButton onClick={handleNext} $margin={buttonMargin ?? 0}>
         <RightArrowIcon />
       </RightSwipeButton>
     </RecentSwiperSC>

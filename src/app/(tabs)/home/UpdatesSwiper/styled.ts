@@ -3,7 +3,6 @@
 import { colors, zIndex } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
-import Link from "next/link";
 import { SwiperSlide } from "swiper/react";
 
 export const SwiperSlideSC = styled(SwiperSlide)`
@@ -15,11 +14,11 @@ export const SwiperSlideSC = styled(SwiperSlide)`
   border-radius: 12px;
 `;
 
-export const News = styled.div<{ $background: string }>`
+export const Updates = styled.div<{ background: string }>`
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url(${(props) => props.$background});
+  background-image: url(${(props) => props.background});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -65,31 +64,12 @@ export const Tag = styled.div<{ $type: string }>`
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
   justify-content: flex-end;
   height: 100%;
 `;
 
 export const Overview = styled.p`
   color: ${colors.grayText};
-`;
-
-export const Button = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  height: 40px;
-  padding: 6px 16px;
-  margin-top: 12px;
-  color: ${colors.text};
-  text-decoration: none;
-  background: ${colors.primary};
-  border: none;
-  border-radius: 8px;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    background: ${colors.secondary};
-    box-shadow: ${colors.hoverShadow};
-  }
 `;

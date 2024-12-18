@@ -4,12 +4,12 @@ import { colors } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 
-export const SidebarTabSC = styled.a<{ $isActive?: boolean }>`
+export const SidebarTabSC = styled.a<{ $isActive?: boolean; $mobile: boolean }>`
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 54px;
+  height: ${(props) => (props.$mobile ? "48px" : "54px")};
   font-size: 12px;
   line-height: 16px;
   color: ${colors.iconColor};
@@ -31,15 +31,30 @@ export const SidebarTabSC = styled.a<{ $isActive?: boolean }>`
   }
 `;
 
-export const Left = styled.div<{ $isActive?: boolean }>`
+export const Left = styled.div<{ $isActive?: boolean; $mobile: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 6px;
   align-items: center;
   width: 100%;
 
+  ${(props) =>
+    props.$mobile &&
+    `
+    flex-direction: row;
+    gap: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 12px;
+    font-weight: 600;
+    line-height: 1.57143;
+    font-size: 0.875rem;
+    `}
+
   ${SidebarTabSC} & path {
     fill: ${(props) => props.$isActive && colors.textPriamry};
+    transition: all 0.2s ease-in-out;
   }
 
   ${SidebarTabSC}:hover & path {

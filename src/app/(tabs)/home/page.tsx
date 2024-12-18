@@ -1,7 +1,15 @@
 "use client";
 
 import React from "react";
-import { Divider, DayTopSection, NewsSection } from "./styled";
+import {
+  DayTopSection,
+  UpdatesSection,
+  ComicTypeSection,
+  RandomComicSection,
+  NewsSection,
+  CategorySection,
+  Container,
+} from "./styled";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -9,27 +17,48 @@ import "swiper/css/pagination";
 import { Section } from "./Section";
 import { RecentSwiper } from "./RecentSwiper";
 import { DayTopSwiper } from "./DayTopSwiper";
-import { NewsSwiper } from "./NewsSwiper";
+import { UpdatesSwiper } from "./UpdatesSwiper";
 import { RecommendedSwiper } from "./RecommendedSwiper";
+import { RandomComic } from "./RandomComic";
+import { TypeSwiper } from "./TypeSwiper";
+import { LatestSwiper } from "./LatestSwiper";
+import { CategoriesSwiper } from "./CategoriesSwiper";
 import BasePage from "@/components/BasePage";
 
 const HomePage = () => {
   return (
     <BasePage isImageBehind>
       <RecommendedSwiper />
-      <Section title="Недавние обновления" link="/">
-        <RecentSwiper />
-      </Section>
 
-      <DayTopSection title="Топ за день" link="/">
-        <DayTopSwiper />
-      </DayTopSection>
+      <Container>
+        <Section title="Недавние обновления" link="/">
+          <RecentSwiper />
+        </Section>
 
-      <NewsSection>
-        <NewsSwiper />
-      </NewsSection>
+        <DayTopSection title="Топ за день" link="/">
+          <DayTopSwiper />
+        </DayTopSection>
 
-      <Divider>Coming soon...</Divider>
+        <UpdatesSection>
+          <UpdatesSwiper />
+        </UpdatesSection>
+
+        <RandomComicSection>
+          <RandomComic />
+        </RandomComicSection>
+
+        <ComicTypeSection title="Тип тайтла" link="/">
+          <TypeSwiper />
+        </ComicTypeSection>
+
+        <CategorySection title="Категория" link="/">
+          <CategoriesSwiper />
+        </CategorySection>
+
+        <NewsSection title="Новинки 🔥" link="/">
+          <LatestSwiper />
+        </NewsSection>
+      </Container>
     </BasePage>
   );
 };

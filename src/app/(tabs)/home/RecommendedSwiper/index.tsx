@@ -2,7 +2,10 @@
 
 import React, { useCallback, useRef } from "react";
 import {
+  AdaptivePosterHolder,
   Arrows,
+  BadgesAdaptive,
+  BadgesAdaptiveMinus,
   LeftSwipeButton,
   RecentSwiperSC,
   SwipeButton,
@@ -21,7 +24,6 @@ import {
   Background,
   Comics,
   Poster,
-  Badges,
   Title,
   Info,
   Description,
@@ -53,7 +55,7 @@ export const RecommendedSwiper = () => {
     swiper.slideNext();
   }, []);
 
-  const data = getRecommended();
+  const { data } = getRecommended();
 
   return (
     <RecentSwiperSC>
@@ -63,46 +65,63 @@ export const RecommendedSwiper = () => {
         modules={[EffectFade]}
         slidesPerView={"auto"}
         speed={500}
+        autoplay={{ delay: 5000 }}
         loop
       >
-        {data.data.map((comics, index) => (
+        {data.map((comic, index) => (
           <SwiperSlide
             style={{
               height: "80vh",
             }}
             key={index}
           >
-            <Background $backgroundImage={comics.bannerPath}>
+            <Background $backgroundImage={comic.bannerPath}>
               <Comics>
-                <Poster
-                  src={comics.imagePath}
-                  alt="poster"
-                  width={250}
-                  height={350}
-                />
-                <Info>
-                  <Badges>
+                <AdaptivePosterHolder>
+                  <Poster
+                    src={comic.imagePath}
+                    alt="poster"
+                    width={250}
+                    height={350}
+                  />
+                  <BadgesAdaptive>
+                    <Badge
+                      textColor={colors.background}
+                      backgroundColor={colors.orange}
+                    >
+                      {comic.typeComic}
+                    </Badge>
                     <Badge
                       textColor={colors.text}
                       backgroundColor={colors.primary}
                     >
-                      {comics.status}
+                      {comic.status}
+                    </Badge>
+                  </BadgesAdaptive>
+                </AdaptivePosterHolder>
+                <Info>
+                  <BadgesAdaptiveMinus>
+                    <Badge
+                      textColor={colors.text}
+                      backgroundColor={colors.primary}
+                    >
+                      {comic.status}
                     </Badge>
                     <Badge
                       textColor={colors.background}
                       backgroundColor={colors.orange}
                     >
-                      {comics.typeComics}
+                      {comic.typeComic}
                     </Badge>
-                  </Badges>
-                  <Title>{comics.name}</Title>
-                  <Description>{comics.description}</Description>
+                  </BadgesAdaptiveMinus>
+                  <Title>{comic.name}</Title>
+                  <Description>{comic.description}</Description>
                   <StatsBadges>
-                    <StatsBadge icon={Icon.LIKE} amount={comics.likes} />
-                    <StatsBadge icon={Icon.VIEW} amount={comics.views} />
+                    <StatsBadge icon={Icon.LIKE} amount={comic.likes} />
+                    <StatsBadge icon={Icon.VIEW} amount={comic.views} />
                   </StatsBadges>
                   <Buttons>
-                    <OpenButton href={`/comics/${comics.alternativeName}`}>
+                    <OpenButton href={`/comics/${comic.alternativeName}`}>
                       Открыть
                     </OpenButton>
                     <FavouriteButton>

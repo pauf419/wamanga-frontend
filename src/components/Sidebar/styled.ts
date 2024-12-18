@@ -1,6 +1,6 @@
 "use client";
 
-import { colors, sizes, zIndex } from "@/const";
+import { sizes, zIndex } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
@@ -9,10 +9,12 @@ export const SidebarSC = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: ${sizes.sidebarWidth};
-  height: 100%;
-  padding: 20px 8px;
-  background: ${colors.sideBarBackground};
+  width: ${sizes.sidebarWidth}px;
+  padding: 26px 6px 0;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 export const LogoSC = styled(Image)`
@@ -21,7 +23,8 @@ export const LogoSC = styled(Image)`
   justify-content: center;
   width: 100%;
   height: 50px;
-  padding: 0 8px;
+  padding: 0 6px;
+  margin-bottom: 12px;
 `;
 
 export const Tabs = styled.div`

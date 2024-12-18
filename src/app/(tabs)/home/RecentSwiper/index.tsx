@@ -1,35 +1,19 @@
 "use client";
 
 import React from "react";
-import {
-  ComicsInfo,
-  ComicsPoster,
-  ComicsStatus,
-  ComicsTitle,
-  ComicsType,
-  SwiperComics,
-  SwiperSlideSC,
-} from "./styled";
+import { SwiperSlideSC } from "./styled";
 import { Swiper } from "../Swiper";
+import { ComicPreviewVertical } from "../ComicPreviewVertical";
+import { getRecent } from "@/api/mocks/queries/use-get-recent";
 
 export const RecentSwiper = () => {
+  const { data } = getRecent();
+
   return (
-    <Swiper height={350}>
-      {Array.from({ length: 15 }).map((_, index) => (
+    <Swiper type="vertical">
+      {data.map((comic, index) => (
         <SwiperSlideSC key={index}>
-          <SwiperComics>
-            <ComicsPoster
-              src={`/test-${((index - 1) % 3) + 1}.webp`}
-              alt="comics"
-              width={200}
-              height={350}
-            />
-            <ComicsInfo>
-              <ComicsTitle>Название</ComicsTitle>
-              <ComicsType>Манхва</ComicsType>
-              <ComicsStatus>Переводится</ComicsStatus>
-            </ComicsInfo>
-          </SwiperComics>
+          <ComicPreviewVertical comic={comic} />
         </SwiperSlideSC>
       ))}
     </Swiper>

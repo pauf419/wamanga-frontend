@@ -11,10 +11,10 @@ import {
   InfoTagTitle,
 } from "./styled";
 import { Tabs } from "@/components/Tabs";
-import type { Comics } from "@/api/types/comics";
+import type { Comic } from "@/api/types/comic";
 
 interface Props {
-  comics: Comics;
+  comics: Comic;
 }
 
 export const MainSection = ({ comics }: Props) => {
