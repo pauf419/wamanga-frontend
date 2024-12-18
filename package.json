@@ -9,7 +9,8 @@
     "lint:eslint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:stylelint": "stylelint 'src/**/*.{css,js,jsx,ts,tsx}'",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
-    "fix": "stylelint 'src/**/*.{css,js,jsx,ts,tsx}' --fix"
+    "fix": "stylelint 'src/**/*.{css,js,jsx,ts,tsx}' --fix",
+    "fix:prettier": "prettier --write \"**/*.*\""
   },
   "dependencies": {
     "@emotion/babel-plugin": "11.13.5",
@@ -20,6 +21,7 @@
     "@tanstack/react-query": "5.62.7",
     "motion": "11.14.4",
     "next": "15.1.0",
+    "prettier": "^3.4.2",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "sharp": "^0.33.5",
@@ -44,7 +46,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "postcss-styled-syntax": "^0.6.4",
-    "prettier": "^3.3.3",
     "stylelint": "^16.10.0",
     "stylelint-config-recess-order": "^5.1.1",
     "stylelint-config-standard": "^36.0.1",

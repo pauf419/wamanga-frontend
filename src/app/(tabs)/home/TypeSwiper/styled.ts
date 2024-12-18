@@ -1,6 +1,6 @@
 "use client";
 
-import { colors, sizes, zIndex } from "@/const";
+import { colors, sizes } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { SwiperSlide } from "swiper/react";
@@ -58,8 +58,8 @@ export const ComicType = styled.div`
 
 export const ComicIcon = styled(Image)`
   position: absolute;
-  height: 220px;
-  width: auto;
   right: 0;
   bottom: 0;
+  width: auto;
+  height: 220px;
 `;

@@ -22,14 +22,13 @@ module.exports = {
 
   rules: {
     "prettier/prettier": "error", // Force Prettier formatting
-    "quotes": ["error", "double"],
+    quotes: ["error", "double"],
     "no-restricted-syntax": [
       "error",
       {
         selector:
           "CallExpression[callee.property.name=/^(map|forEach|filter|reduce|every|some)$/] > ArrowFunctionExpression > ObjectPattern",
-        message:
-          "Avoid destructuring in parameters when using array methods.",
+        message: "Avoid destructuring in parameters when using array methods.",
       },
       {
         selector: "TSAsExpression[typeAnnotation.type=TSUnknownKeyword]",
@@ -50,10 +49,7 @@ module.exports = {
       "error",
       { prefer: "type-imports" },
     ],
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      { argsIgnorePattern: "^_" },
-    ],
+    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
 
     "promise/prefer-await-to-then": "error",
     "no-var": "error",
@@ -61,25 +57,16 @@ module.exports = {
     "no-mixed-spaces-and-tabs": "error",
     "no-console": "error",
     "no-debugger": "warn",
-    "eqeqeq": ["error", "always"],
+    eqeqeq: ["error", "always"],
 
-    "camelcase": "error",
-    "id-length": ["warn", {
-      min: 2,
-      exceptions: [
-        "i",
-        "j",
-        "k",
-        "n",
-        "e",
-        "x",
-        "y",
-        "w",
-        "h",
-        "t",
-        "_",
-      ],
-    }],
+    camelcase: "error",
+    "id-length": [
+      "warn",
+      {
+        min: 2,
+        exceptions: ["i", "j", "k", "n", "e", "x", "y", "w", "h", "t", "_"],
+      },
+    ],
 
     "prefer-arrow-callback": "error",
     "no-nested-ternary": "error",

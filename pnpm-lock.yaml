@@ -29,6 +29,9 @@ dependencies:
   next:
     specifier: 15.1.0
     version: 15.1.0(@babel/core@7.26.0)(react-dom@19.0.0)(react@19.0.0)
+  prettier:
+    specifier: ^3.4.2
+    version: 3.4.2
   react:
     specifier: 19.0.0
     version: 19.0.0
@@ -97,9 +100,6 @@ devDependencies:
   postcss-styled-syntax:
     specifier: ^0.6.4
     version: 0.6.4(postcss@8.4.49)
-  prettier:
-    specifier: ^3.3.3
-    version: 3.4.2
   stylelint:
     specifier: ^16.10.0
     version: 16.12.0(typescript@5.7.2)
@@ -4487,7 +4487,6 @@ packages:
     resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
     engines: {node: '>=14'}
     hasBin: true
-    dev: true
 
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}

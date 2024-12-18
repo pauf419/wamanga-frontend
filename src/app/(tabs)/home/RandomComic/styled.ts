@@ -68,8 +68,8 @@ export const Background = styled.div`
 
 export const BackgroundImage = styled(Image)`
   position: absolute;
-  width: 140%;
-  left: -25%;
   top: 5%;
+  left: -25%;
+  width: 140%;
   transform: rotateY(180deg);
 `;

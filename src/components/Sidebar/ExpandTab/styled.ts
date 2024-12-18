@@ -27,8 +27,8 @@ export const RouteSC = styled.a<{ $mobile: boolean }>`
   color: ${colors.iconColor};
   text-align: start;
   text-decoration: none;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  white-space: nowrap;
   transition: 0.2s all ease-in-out;
 
   ${(props) =>
@@ -162,5 +162,4 @@ export const AfterDotText = styled.div`
   line-height: 1.5714;
   text-overflow: ellipsis;
   white-space: break-spaces;
-  white-space: nowrap;
 `;
