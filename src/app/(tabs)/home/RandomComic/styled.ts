@@ -62,13 +62,14 @@ export const Background = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
 `;
 
 export const BackgroundImage = styled(Image)`
   position: absolute;
-  top: -10%;
-  right: 0;
-  width: 100%;
-  height: 100%;
+  width: 140%;
+  left: -25%;
+  top: 5%;
   transform: rotateY(180deg);
 `;

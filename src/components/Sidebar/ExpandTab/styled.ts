@@ -27,6 +27,7 @@ export const RouteSC = styled.a<{ $mobile: boolean }>`
   color: ${colors.iconColor};
   text-align: start;
   text-decoration: none;
+  white-space: nowrap;
   text-overflow: ellipsis;
   transition: 0.2s all ease-in-out;
 

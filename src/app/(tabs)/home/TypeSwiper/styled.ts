@@ -58,15 +58,8 @@ export const ComicType = styled.div`
 
 export const ComicIcon = styled(Image)`
   position: absolute;
-  top: -30px;
+  height: 220px;
+  width: auto;
   right: 0;
-  z-index: ${zIndex.popup};
-  max-width: 50%;
-  max-height: 100%;
-  object-fit: contain;
-  transform: scale(1.2);
-
-  @media (max-width: 360px) {
-    transform: scale(1);
-  }
+  bottom: 0;
 `;
