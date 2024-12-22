@@ -9,12 +9,23 @@ export const Content = styled.div`
   grid-template-columns: 2fr 1fr;
   gap: 20px;
   margin-top: 16px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: auto;
+  }
 `;
 
-export const Description = styled.p`
+export const Main = styled.div`
+  display: grid;
+  gap: 12px;
+  align-content: start;
+`;
+
+export const Description = styled.div`
   font-size: 0.875rem;
-  font-weight: 300;
-  color: ${colors.grayText};
+  font-weight: 400;
+  line-height: 1.5714;
+  color: ${colors.text};
   white-space: pre-wrap;
 `;
 
@@ -31,7 +42,7 @@ export const InfoTag = styled.div`
 `;
 export const InfoTagTitle = styled.span`
   font-size: 0.875rem;
-  font-weight: 550;
+  font-weight: 700;
   color: ${colors.iconColor};
 `;
 
@@ -44,10 +55,72 @@ export const InfoTagText = styled.span`
 export const InfoTagBadge = styled.span`
   width: fit-content;
   padding: 6px;
+  margin-top: 4px;
   font-size: 0.75rem;
   font-weight: 550;
   color: ${colors.textPriamry};
   text-transform: uppercase;
   background: ${colors.textPriamry + convertOpacityToHex(10)};
   border-radius: 8px;
+`;
+
+export const Badges = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+`;
+
+export const InfoTagBadgeDefault = styled(InfoTagBadge)`
+  color: ${colors.badgeLightColor};
+  text-transform: none;
+  background: ${colors.badgeLightBackground};
+  border-radius: 12px;
+`;
+
+export const ChapterCountWrapper = styled.div`
+  display: flex;
+  gap: 5px;
+  margin-top: 4px;
+`;
+
+export const ChaptersAvailable = styled.span`
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: ${colors.text};
+`;
+
+export const Separator = styled.span`
+  font-weight: 600;
+  line-height: 1.5;
+  color: ${colors.iconColor};
+`;
+
+export const ChaptersTotal = styled.span`
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: ${colors.iconColor};
+`;
+
+export const CommentWrapper = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const TranslatorTag = styled(InfoTag)`
+  gap: 16px;
+`;
+
+export const ZeroSpacer = styled.div`
+  margin-top: 16px;
+`;
+
+export const CommentsTitle = styled.div`
+  margin-top: 40px;
+  margin-bottom: 16px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5555;
 `;

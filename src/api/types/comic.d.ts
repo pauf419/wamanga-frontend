@@ -1,3 +1,6 @@
+import type { ComicGenre } from "./comic-genre";
+import type { ComicTag } from "./comic-tag";
+
 type ComicType =
   | "Manga"
   | "Webtoon"
@@ -36,7 +39,9 @@ export interface Comic {
   hidden: boolean;
   publishedOn?: Date;
   updatedAt?: Date;
-  tags: string[];
-  genres: string[];
+  tags: ComicTag[];
+  genres: ComicGenre[];
+  chaptersAvailable: number;
+  chaptersTotal: number | null;
   bookmark: number;
 }

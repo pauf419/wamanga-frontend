@@ -33,6 +33,10 @@ export const Background = styled.div<{ $backgroundImage: string }>`
     content: "";
     background: linear-gradient(180deg, rgb(0 0 0 / 50%) 0%, #111213 95%);
   }
+
+  @media (max-width: 1200px) {
+    background: none;
+  }
 `;
 
 export const Content = styled.div`
@@ -41,7 +45,14 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 24px;
+  max-width: 1536px;
   padding: 80px 24px 0;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: auto;
+    padding: 0;
+  }
 `;
 
 export const BackButton = styled(Link)`
@@ -85,6 +96,7 @@ export const Left = styled.div`
 `;
 
 export const Title = styled.h1`
+  margin-bottom: 6px;
   font-size: 2rem;
 `;
 
@@ -96,11 +108,17 @@ export const SubTitle = styled.h2`
 
 export const Comics = styled.div`
   position: relative;
+  display: grid;
 `;
 
 export const Poster = styled(Image)`
   width: 100%;
   height: 100%;
+  border-radius: 16px;
+
+  @media (max-width: 1200px) {
+    border-radius: 0;
+  }
 `;
 
 export const Badge = styled.div`
@@ -160,8 +178,11 @@ export const FavouriteButton = styled.button`
 export const Stats = styled.div`
   display: flex;
   gap: 12px;
-  margin-top: 16px;
-  margin-bottom: 24px;
+  margin: 24px 0 19px;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
 `;
 
 export const StatsBadge = styled.div`
@@ -176,10 +197,65 @@ export const StatsBadge = styled.div`
   background: ${colors.badgeBg};
   border: none;
   border-radius: 16px;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
 `;
 
 export const StatsContent = styled.span`
   font-size: 13px;
   font-weight: 550;
   color: ${colors.text};
+`;
+
+export const AdaptivePadding = styled.div`
+  display: grid;
+  gap: 8px;
+  align-content: start;
+
+  @media (max-width: 1200px) {
+    padding: 0 16px;
+  }
+`;
+
+export const MobileInfo = styled.div`
+  position: absolute;
+  bottom: 0;
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  width: 100%;
+  height: 30%;
+  padding: 0 24px;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    ${colors.background},
+    rgb(0 0 0 / 70%) 40%,
+    rgb(0 0 0 / 50%) 60%,
+    rgb(0 0 0 / 0%)
+  );
+`;
+
+export const MobileBadge = styled(Badge)`
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-bottom: 6px;
+`;
+
+export const SameTitlesList = styled.div`
+  display: grid;
+  gap: 16px;
+  padding-top: 32px;
+`;
+
+export const ListTitle = styled.h6`
+  font-size: 1.125rem;
+`;
+
+export const TitlesList = styled.div`
+  display: grid;
+  gap: 16px;
 `;

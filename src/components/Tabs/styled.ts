@@ -36,8 +36,8 @@ export const Tab = styled.div<{ $isActive: boolean }>`
   align-items: center;
   width: fit-content;
   height: 100%;
-  font-size: 13px;
-  font-weight: 550;
+  font-size: 0.875rem;
+  font-weight: 700;
   color: ${(props) => (props.$isActive ? colors.text : colors.iconColor)};
   text-align: center;
   white-space: nowrap;

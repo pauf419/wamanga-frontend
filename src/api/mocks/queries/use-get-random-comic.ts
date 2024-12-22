@@ -22,6 +22,8 @@ export const getRandomComic = (): GetRandomComicResult => {
       views: 1551334,
       likes: 174858,
       hidden: false,
+      chaptersAvailable: 102,
+      chaptersTotal: 1002,
       tags: [],
       genres: [],
       bookmark: 0,
