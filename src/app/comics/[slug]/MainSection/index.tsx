@@ -161,3 +161,4 @@ export const MainSection = ({ comics }: Props) => {
     </div>
   );
 };
+
