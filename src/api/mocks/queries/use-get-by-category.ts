@@ -188,4 +188,3 @@ export const getByCategory = (): GetByCategoryResult => {
     ],
   };
 };
-
