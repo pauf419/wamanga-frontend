@@ -1,6 +1,7 @@
 import type { Comic } from "./comic";
 import type { ComicChapter } from "./comic-chapter";
 import type { ComicComment } from "./comic-comment";
+import type { Member } from "./member";
 
 export interface GetRecommendedResult {
   data: Comic[];
@@ -44,4 +45,12 @@ export interface GetComicChaptersResult {
 
 export interface GetSameTitlesResult {
   data: Comic[];
+}
+
+export interface GetTeamProjectsResult {
+  data: Comic[];
+}
+
+export interface GetTeamMembersResult {
+  data: Member[];
 }

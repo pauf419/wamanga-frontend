@@ -10,6 +10,10 @@ html {
   background: #111213;
 }
 
+button {
+  cursor: pointer;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -21,4 +25,113 @@ html {
 ::-webkit-scrollbar-thumb {
   background: #36383f;
   border-radius: 5px;
+}
+
+.outline-button {
+  font-weight: 700;
+  line-height: 1.71429;
+  font-size: 0.875rem;
+  padding: 5px 15px;
+  background: transparent;
+  border: 1px solid #5a5ee7;
+  color: #5a5ee7;
+  display: flex;
+  gap: 8px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.2s all ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.button-filled {
+  background: #5a5ee7;
+  opacity: 1;
+  color: #fff;
+
+  &:hover {
+    background: #494fff;
+    border-color: #494fff;
+    box-shadow: rgba(90, 94, 231, 0.24) 0px 8px 16px 0px;
+  }
+}
+
+.icon-button {
+  color: #9da0f7;
+  background: transparent;
+  border: none;
+  display: flex;
+  gap: 8px;
+  font-weight: 700;
+  line-height: 1.71429;
+  font-size: 0.875rem;
+  align-items: center;
+  transition: 0.2s all ease;
+  padding: 6px 8px;
+  border-radius: 8px;
+
+  &:hover {
+    background: rgba(157, 160, 247, 0.1);
+  }
+}
+
+.icon-button-primary {
+}
+
+.icon-button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.mini-switch-wrapper {
+  display: flex;
+  gap: 1px;
+  background: rgb(29, 30, 32);
+  border: 1px solid rgba(245, 245, 245, 0.226);
+  border-radius: 8px;
+
+  &.switch-minimal {
+    .mini-switch-toggler {
+      padding: 2px;
+    }
+  }
+}
+
+.mini-switch-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  color: #8f96a3;
+}
+
+.mini-switch-toggler {
+  padding: 6px;
+  margin: 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s all ease;
+
+  &.mini-switch-active {
+    background: #262840;
+
+    .mini-switch-icon {
+      color: #5a5ee7;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &:hover {
+    background: #8f96a314;
+  }
 }

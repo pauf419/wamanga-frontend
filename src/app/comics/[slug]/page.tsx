@@ -43,82 +43,52 @@ const ComicsPage = () => {
 
   return (
     <ComicsPageSC isImageBehind>
-      <Background $backgroundImage={comics.bannerPath}>
-        <Content>
-          <BackButton href={"/"}>
-            <BackIcon />
-            <BackText>Назад</BackText>
-          </BackButton>
-          <Left>
-            <Comics>
-              <Poster
-                src={comics.imagePath}
-                alt={comics.name}
-                width={600}
-                height={300}
-              />
-              <HidesWhenMobile>
-                <Badge>{comics.typeComic}</Badge>
-              </HidesWhenMobile>
-              <DisplaysWhenMobile>
-                <MobileInfo>
-                  <MobileBadge>{comics.typeComic}</MobileBadge>
-                  <Title>{comics.name}</Title>
-                  <SubTitle>
-                    Some altrnative title because backend didn&apos;t add one
-                  </SubTitle>
-                  <Stats>
-                    <StatsBadge>
-                      <LikeIcon />
-                      Лайков: <StatsContent>{comics.likes}</StatsContent>
-                    </StatsBadge>
-                    <StatsBadge>
-                      <ViewIcon />
-                      Просмотров: <StatsContent>{comics.views}</StatsContent>
-                    </StatsBadge>
-                  </Stats>
-                </MobileInfo>
-              </DisplaysWhenMobile>
-            </Comics>
-            <AdaptivePadding>
-              <ReadButton>
-                <BookIcon />
-                Читать
-              </ReadButton>
-              <FavouriteButton>
-                <FavouriteIcon />В закладки
-              </FavouriteButton>
-              <HidesWhenMobile>
-                <SameTitlesList>
-                  <ListTitle>Похожие тайтлы</ListTitle>
-                  <TitlesList>
-                    {data.map((el) => (
-                      <SameTitlePreview title={el} key={el.id} />
-                    ))}
-                  </TitlesList>
-                </SameTitlesList>
-              </HidesWhenMobile>
-            </AdaptivePadding>
-          </Left>
-          <AdaptivePadding>
+      <Background $backgroundImage={comics.bannerPath}></Background>
+      <Content>
+        <BackButton href={"/"}>
+          <BackIcon />
+          <BackText>Назад</BackText>
+        </BackButton>
+        <Left>
+          <Comics>
+            <Poster
+              src={comics.imagePath}
+              alt={comics.name}
+              width={600}
+              height={300}
+            />
             <HidesWhenMobile>
-              <Title>{comics.name}</Title>
-              <SubTitle>
-                Some altrnative title because backend didn&apos;t add one
-              </SubTitle>
-              <Stats>
-                <StatsBadge>
-                  <LikeIcon />
-                  Лайков: <StatsContent>{comics.likes}</StatsContent>
-                </StatsBadge>
-                <StatsBadge>
-                  <ViewIcon />
-                  Просмотров: <StatsContent>{comics.views}</StatsContent>
-                </StatsBadge>
-              </Stats>
+              <Badge>{comics.typeComic}</Badge>
             </HidesWhenMobile>
-            <MainSection comics={comics} />
             <DisplaysWhenMobile>
+              <MobileInfo>
+                <MobileBadge>{comics.typeComic}</MobileBadge>
+                <Title>{comics.name}</Title>
+                <SubTitle>
+                  Some altrnative title because backend didn&apos;t add one
+                </SubTitle>
+                <Stats>
+                  <StatsBadge>
+                    <LikeIcon />
+                    Лайков: <StatsContent>{comics.likes}</StatsContent>
+                  </StatsBadge>
+                  <StatsBadge>
+                    <ViewIcon />
+                    Просмотров: <StatsContent>{comics.views}</StatsContent>
+                  </StatsBadge>
+                </Stats>
+              </MobileInfo>
+            </DisplaysWhenMobile>
+          </Comics>
+          <AdaptivePadding>
+            <ReadButton>
+              <BookIcon />
+              Читать
+            </ReadButton>
+            <FavouriteButton>
+              <FavouriteIcon />В закладки
+            </FavouriteButton>
+            <HidesWhenMobile>
               <SameTitlesList>
                 <ListTitle>Похожие тайтлы</ListTitle>
                 <TitlesList>
@@ -127,10 +97,39 @@ const ComicsPage = () => {
                   ))}
                 </TitlesList>
               </SameTitlesList>
-            </DisplaysWhenMobile>
+            </HidesWhenMobile>
           </AdaptivePadding>
-        </Content>
-      </Background>
+        </Left>
+        <AdaptivePadding>
+          <HidesWhenMobile>
+            <Title>{comics.name}</Title>
+            <SubTitle>
+              Some altrnative title because backend didn&apos;t add one
+            </SubTitle>
+            <Stats>
+              <StatsBadge>
+                <LikeIcon />
+                Лайков: <StatsContent>{comics.likes}</StatsContent>
+              </StatsBadge>
+              <StatsBadge>
+                <ViewIcon />
+                Просмотров: <StatsContent>{comics.views}</StatsContent>
+              </StatsBadge>
+            </Stats>
+          </HidesWhenMobile>
+          <MainSection comics={comics} />
+          <DisplaysWhenMobile>
+            <SameTitlesList>
+              <ListTitle>Похожие тайтлы</ListTitle>
+              <TitlesList>
+                {data.map((el) => (
+                  <SameTitlePreview title={el} key={el.id} />
+                ))}
+              </TitlesList>
+            </SameTitlesList>
+          </DisplaysWhenMobile>
+        </AdaptivePadding>
+      </Content>
     </ComicsPageSC>
   );
 };

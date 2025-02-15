@@ -1,6 +1,7 @@
 export interface ComicTranslator {
   id: number;
   name: string;
+  longName: string;
   description: string;
   avatar: string;
   banner: string;

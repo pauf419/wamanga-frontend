@@ -21,6 +21,7 @@ export const colors = {
   iconColor: "#8F96A3",
   sidebarMobileBackground: "rgb(29 30 32 / 90%)",
   commentsBlockBackground: "rgba(29, 30, 32, 0.6)",
+  donationPanelBackground: "rgba(29, 30, 32, 1)",
   commentsBlockShadow:
     "rgba(0, 0, 0, 0.2) 0px 0px 2px 0px, rgba(0, 0, 0, 0.12) 0px 12px 24px -4px",
   sidebarMobileNavigation: "rgb(143 150 163)",
@@ -42,4 +43,5 @@ export const colors = {
   sortingTypeBackgroundHover: "rgba(49, 40, 42)",
   sortingTypeBackgroundActive: "#262840",
   sortingTypeIconActive: "#5a5ee7",
+  counterBtnHoverBackground: "#8f96a314",
 };

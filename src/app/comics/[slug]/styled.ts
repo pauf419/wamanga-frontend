@@ -8,7 +8,6 @@ import Link from "next/link";
 
 export const ComicsPageSC = styled(BasePage)`
   position: relative;
-  height: 100vh;
 `;
 
 export const Background = styled.div<{ $backgroundImage: string }>`
@@ -46,18 +45,18 @@ export const Content = styled.div`
   grid-template-columns: 1fr 3fr;
   gap: 24px;
   max-width: 1536px;
-  padding: 80px 24px 0;
+  padding: 168px 24px 0;
   margin: 0 auto;
 
   @media (max-width: 1200px) {
     grid-template-columns: auto;
-    padding: 0;
+    padding: 80px 0 0;
   }
 `;
 
 export const BackButton = styled(Link)`
   position: absolute;
-  top: 24px;
+  top: 105px;
   left: 24px;
   z-index: ${zIndex.behindHeaderAboveBackground};
   display: flex;

@@ -9,9 +9,6 @@ import {
   NoChaptersText,
   Tools,
   Searchbar,
-  SortTypeWrapper,
-  SortType,
-  SortIcon,
 } from "./styled";
 import type { Comic } from "@/api/types/comic";
 import { getComicChapters } from "@/api/mocks/queries/use-get-comic-chapters";
@@ -33,22 +30,22 @@ export const Chapters = ({ comic }: Props) => {
     <ChaptersWrapper>
       <Tools>
         <Searchbar placeholder="Поиск" />
-        <SortTypeWrapper>
-          <SortType
+        <div className="mini-switch-wrapper">
+          <div
+            className={`mini-switch-toggler ${sortingType === 0 && "mini-switch-active"}`}
             aria-disabled={sortingType === 0}
-            $active={sortingType === 0}
             onClick={() => setSortingType(0)}
           >
-            <SortIcon as={DescendingIcon} />
-          </SortType>
-          <SortType
+            <DescendingIcon className="mini-switch-icon" />
+          </div>
+          <div
+            className={`mini-switch-toggler ${sortingType === 1 && "mini-switch-active"}`}
             aria-disabled={sortingType === 1}
-            $active={sortingType === 1}
             onClick={() => setSortingType(1)}
           >
-            <SortIcon as={AscendingIcon} />
-          </SortType>
-        </SortTypeWrapper>
+            <AscendingIcon className="mini-switch-icon" />
+          </div>
+        </div>
       </Tools>
       <List>
         {data.length ? (
