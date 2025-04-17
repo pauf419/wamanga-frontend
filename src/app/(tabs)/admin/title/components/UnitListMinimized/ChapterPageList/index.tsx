@@ -114,10 +114,10 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
 
   const deleteSelected = async () => {
     try {
-      await deleteChapterPages(
-        chapter._id,
-        chapter.mangaId,
-        pagesSelected.map((page) => page._id)
+      const ids = pagesSelected.map((page) => page._id);
+      await deleteChapterPages(chapter._id, chapter.mangaId, ids);
+      setLocalPages((prev) =>
+        prev.filter((localPage) => !ids.includes(localPage._id))
       );
     } catch (e) {
       console.error(e);
