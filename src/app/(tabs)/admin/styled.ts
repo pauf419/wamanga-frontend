@@ -136,12 +136,26 @@ export const DataListInput = styled.input`
   opacity: 0.85;
 `;
 
-export const MiniBoxWrapper = styled.div`
+export const MiniBoxWrapper = styled.div<{ $uploaded: boolean }>`
   background: #18191b;
   padding: 16px;
   border-radius: 8px;
   display: grid;
   gap: 12px;
+  transition: 0.5s all ease;
+
+  ${(props) =>
+    !props.$uploaded
+      ? `
+    border: 2px dashed #18191b;
+    `
+      : `
+    border: 2px dashed #5a5ee7;
+    `}
+
+  label {
+    background: #18191b;
+  }
 `;
 
 export const MiniBoxImage = styled.div<{ $background: string }>`

@@ -24,7 +24,7 @@ import {
 
 export interface ChapterPageDynamic extends ChapterPage {
   blob?: any;
-  new?: string;
+  new?: boolean;
   uploaded?: boolean;
 }
 
@@ -90,7 +90,16 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
   };
 
   const uploadPage = async (page: ChapterPageDynamic) => {
-    await uploadChapterPage(chapter._id, page.blob);
+    try {
+      await uploadChapterPage(chapter._id, page.blob);
+      setLocalPages((prevPages) =>
+        prevPages.map((p) =>
+          p._id === page._id ? { ...p, uploaded: true, new: false } : p
+        )
+      );
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const onStartUpload = async () => {
@@ -118,6 +127,17 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
       await deleteChapterPages(chapter._id, chapter.mangaId, ids);
       setLocalPages((prev) =>
         prev.filter((localPage) => !ids.includes(localPage._id))
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const deleteSingle = async (page: ChapterPageDynamic) => {
+    try {
+      await deleteChapterPages(chapter._id, chapter.mangaId, [page._id]);
+      setLocalPages((prev) =>
+        prev.filter((localPage) => localPage._id !== page._id)
       );
     } catch (e) {
       console.error(e);
@@ -182,7 +202,10 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
             .map((page) => {
               const file = fileInfo[page._id];
               return (
-                <MiniBoxWrapper key={page._id}>
+                <MiniBoxWrapper
+                  key={page._id}
+                  $uploaded={!page.uploaded && page.new ? true : false}
+                >
                   <MiniBoxContent>
                     <ContentSegment>
                       <MiniBoxImage $background={page.path} />
@@ -205,7 +228,10 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
                           });
                         }}
                       />
-                      <button className="button-transparent button-red">
+                      <button
+                        onClick={() => deleteSingle(page)}
+                        className="button-transparent button-red"
+                      >
                         Удалить
                       </button>
                     </ContentSegment>
