@@ -1,3 +1,4 @@
+import { data } from "motion/react-client";
 import { $api, $apiWithoutAuth } from "./axiosInstance";
 import type { Comic } from "./types/comic";
 
@@ -227,6 +228,15 @@ export async function paginateTitles(
     
   }
 }*/
+
+export async function editManga(body: Comic): Promise<Comic> {
+  const response = await $apiWithoutAuth.put<Comic>(
+    `/manga/update/${body._id}`,
+    body
+  );
+
+  return response.data;
+}
 
 export async function createTitle(
   body: Comic,

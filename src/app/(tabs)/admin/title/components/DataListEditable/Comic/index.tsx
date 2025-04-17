@@ -7,8 +7,12 @@ import { useState } from "react";
 import { BadgeTypeSelectManual } from "@/components/BadgeTypeSelect/Manual";
 import BadgeTypeSelect from "@/components/BadgeTypeSelect";
 import { Dropdown } from "@/components/Dropdown";
-import { createTitle, StatusType } from "@/api/title";
+import { createTitle, editManga, StatusType } from "@/api/title";
 import Input from "@/components/Input";
+import Snackbar from "@mui/material/Snackbar";
+import React from "react";
+import { IconButton } from "@mui/material";
+import CloseIcon from "@icons/svg/close.svg";
 
 interface Props {
   title: Comic;
@@ -24,6 +28,8 @@ export const statusItems = [
 
 const ComicEditableDataList = ({ title }: Props) => {
   const [editTitle, setEditTitle] = useState<Comic>(title);
+  const [open, setOpen] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>();
 
   const statusDefault = statusItems.findIndex(
     (item) => item.key === title.status
@@ -31,6 +37,39 @@ const ComicEditableDataList = ({ title }: Props) => {
 
   const translationStatusDefault = statusItems.findIndex(
     (item) => item.key === title.transferStatus
+  );
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const submit = async () => {
+    try {
+      const edited = await editManga(editTitle);
+      setOpen(true);
+      setMessage("Тайтл успешно обновлен");
+    } catch (e) {
+      console.error(e);
+      if (e.response.data.message) {
+        setMessage(e.response.data.message);
+        setOpen(true);
+      }
+    }
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton size="small" color="inherit" onClick={handleClose}>
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
   );
 
   if (!title) return <></>;
@@ -416,7 +455,15 @@ const ComicEditableDataList = ({ title }: Props) => {
           }
         />
       </DataListItem>
-      <button className="button-filled">Сохранить изменения</button>
+      <button className="button-filled" onClick={() => submit()}>
+        Сохранить изменения
+      </button>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        message={message}
+        action={action}
+      />
     </DataList>
   );
 };
