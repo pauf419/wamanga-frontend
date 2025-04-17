@@ -14,7 +14,7 @@ import Input from "@/components/Input";
 import { useEffect, useState } from "react";
 import type { ChapterPage } from "@/api/types/chapter-page";
 import { Checkbox } from "@/components/Checkbox";
-import { uploadChapterPage } from "@/api/chapter";
+import { deleteChapterPages, uploadChapterPage } from "@/api/chapter";
 import type { Chapter } from "@/api/types/chapter";
 import {
   NoChaptersMessage,
@@ -25,6 +25,7 @@ import {
 export interface ChapterPageDynamic extends ChapterPage {
   blob?: any;
   new?: string;
+  uploaded?: boolean;
 }
 
 interface Props {
@@ -37,6 +38,7 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
   const [fileInfo, setFileInfo] = useState<
     Record<string, { name: string; size: number }>
   >({});
+  const [pagesSelected, setPagesSelected] = useState<ChapterPageDynamic[]>([]);
   const [loading, setLoading] = useState(true);
   const [localPages, setLocalPages] = useState<ChapterPageDynamic[]>(pages);
   const [errors, setErrors] = useState<string[]>([]);
@@ -80,6 +82,7 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
         path: URL.createObjectURL(file),
         blob: file,
         new: true,
+        uploaded: false,
       })
     );
 
@@ -109,11 +112,23 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
 
   const onStopUpload = async () => {};
 
+  const deleteSelected = async () => {
+    try {
+      await deleteChapterPages(
+        chapter._id,
+        chapter.mangaId,
+        pagesSelected.map((page) => page._id)
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   if (!localPages.length)
     return (
       <NoChaptersMessage>
         <NoImage src="/no-comments.png" />
-        <NoChaptersText>Разделов нет...</NoChaptersText>
+        <NoChaptersText>Страниц нет...</NoChaptersText>
       </NoChaptersMessage>
     );
 
@@ -150,7 +165,10 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
         <button className="button-transparent button-primary">
           Отменить загрузку
         </button>
-        <button className="button-transparent button-red">
+        <button
+          className="button-transparent button-red"
+          onClick={() => deleteSelected()}
+        >
           Удалить выбранное
         </button>
       </SegmentTools>
@@ -174,7 +192,19 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
                       <b>{file ? (file.size / 1024).toFixed(2) + "KB" : "—"}</b>
                     </ContentSegment>
                     <ContentSegment>
-                      <Checkbox raw cb={(b) => null} />
+                      <Checkbox
+                        raw
+                        cb={(b) => {
+                          setPagesSelected((prev) => {
+                            if (!b) {
+                              return prev.filter(
+                                (_page) => _page._id !== page._id
+                              );
+                            }
+                            return [...prev, page];
+                          });
+                        }}
+                      />
                       <button className="button-transparent button-red">
                         Удалить
                       </button>

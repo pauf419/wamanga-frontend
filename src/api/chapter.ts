@@ -47,6 +47,11 @@ export async function createChapter(body: CreateChapterMultiuploadDto) {
   return res.data;
 }
 
+export async function updateChapter(body: Chapter): Promise<Chapter> {
+  const res = await $apiWithoutAuth.patch(`/chapters/${body._id}`, body);
+  return res.data;
+}
+
 export async function uploadChapterPage(chapterId: string, blob: any) {
   const formData = new FormData();
   formData.append("file", blob);
@@ -60,4 +65,20 @@ export async function uploadChapterPage(chapterId: string, blob: any) {
       },
     }
   );
+
+  return res.data;
+}
+
+export async function deleteChapterPages(
+  chapterId: string,
+  mangaId: string,
+  chapterPages: string[]
+) {
+  const res = await $apiWithoutAuth.post(
+    `/chapters/${chapterId}/pages?mangaId=${mangaId}`,
+    {
+      pageIds: chapterPages,
+    }
+  );
+  return res.data;
 }
