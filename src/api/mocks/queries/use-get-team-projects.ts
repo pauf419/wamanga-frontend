@@ -8,12 +8,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -35,12 +35,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -62,12 +62,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -89,12 +89,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -116,12 +116,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -143,12 +143,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -170,12 +170,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -197,12 +197,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -224,12 +224,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -251,12 +251,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -278,12 +278,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -305,12 +305,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -332,12 +332,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -359,12 +359,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -386,12 +386,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -413,12 +413,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -440,12 +440,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -467,12 +467,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -494,12 +494,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -521,12 +521,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -548,12 +548,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -575,12 +575,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -602,12 +602,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -629,12 +629,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -656,12 +656,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -683,12 +683,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -710,12 +710,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -737,12 +737,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -764,12 +764,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -791,12 +791,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -818,12 +818,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -845,12 +845,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -872,12 +872,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -899,12 +899,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -926,12 +926,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -953,12 +953,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -980,12 +980,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -1007,12 +1007,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -1034,12 +1034,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -1061,12 +1061,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 0,
+        id: "23131223",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -1088,12 +1088,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 1,
+        id: "321221",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,
@@ -1115,12 +1115,12 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         alternativeName: "terpenie-moya-ledi",
         imagePath:
           "https://zenko.b-cdn.net/6bc40987-d07c-4c3e-9d9a-4c385ca2c214?optimizer=image&width=560&quality=70&height=auto",
-        id: 2,
+        id: "23123123",
         description:
           "Как говорил Конфуций: Я никогда ничего не говорил, я немой. Поэтому я считаю вас дебилами, если вы считаете меня умным за то что я говорил того чего я не говорил. Я немой!",
         rating: 0,
         bannerPath: "/mock-background.png",
-        typeComic: "Manga",
+        type: "Manga",
         author: "",
         originalAuthor: "",
         year: 2023,

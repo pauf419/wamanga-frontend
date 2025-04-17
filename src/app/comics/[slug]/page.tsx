@@ -6,7 +6,6 @@ import {
   BackText,
   Badge,
   Comics,
-  ComicsPageSC,
   Content,
   FavouriteButton,
   Left,
@@ -36,13 +35,24 @@ import {
 } from "@/components/Adaptive/styled";
 import { getSameTitles } from "@/api/mocks/queries/use-get-same-titles";
 import { SameTitlePreview } from "@/components/SameTitlePreview";
+import { getBySlug, getSimilar } from "@/api/title";
+import BasePage from "@/components/BasePage";
+import BookmarkIcon from "@icons/svg/bookmark.svg";
+import { Tooltip } from "@mui/material";
 
-const ComicsPage = () => {
-  const comics = getComics();
+interface ComicsPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+const ComicsPage = async ({ params }: ComicsPageProps) => {
+  const comics = await getBySlug(params.slug);
+  const similarComics = await getSimilar(comics._id);
   const { data } = getSameTitles();
 
   return (
-    <ComicsPageSC isImageBehind>
+    <BasePage isImageBehind>
       <Background $backgroundImage={comics.bannerPath}></Background>
       <Content>
         <BackButton href={"/"}>
@@ -58,41 +68,64 @@ const ComicsPage = () => {
               height={300}
             />
             <HidesWhenMobile>
-              <Badge>{comics.typeComic}</Badge>
+              <Badge>{comics.type}</Badge>
             </HidesWhenMobile>
             <DisplaysWhenMobile>
               <MobileInfo>
-                <MobileBadge>{comics.typeComic}</MobileBadge>
+                <MobileBadge>{comics.type}</MobileBadge>
                 <Title>{comics.name}</Title>
                 <SubTitle>
-                  Some altrnative title because backend didn&apos;t add one
+                  {comics.altName.map((n, index) => {
+                    if (index === 0) return n;
+                    return `/ ${n}`;
+                  })}
                 </SubTitle>
                 <Stats>
                   <StatsBadge>
                     <LikeIcon />
-                    Лайков: <StatsContent>{comics.likes}</StatsContent>
+                    <StatsContent>{comics.likes}</StatsContent>
                   </StatsBadge>
                   <StatsBadge>
                     <ViewIcon />
-                    Просмотров: <StatsContent>{comics.views}</StatsContent>
+                    <StatsContent>{comics.views}</StatsContent>
+                  </StatsBadge>
+                  <StatsBadge>
+                    <BookmarkIcon />
+                    <StatsContent>
+                      {comics.bookmark ? comics.bookmark : "0"}
+                    </StatsContent>
                   </StatsBadge>
                 </Stats>
               </MobileInfo>
             </DisplaysWhenMobile>
           </Comics>
           <AdaptivePadding>
-            <ReadButton>
-              <BookIcon />
-              Читать
-            </ReadButton>
-            <FavouriteButton>
-              <FavouriteIcon />В закладки
-            </FavouriteButton>
+            {comics.chapters.length ? (
+              <a
+                href={`/reader/${comics.alternativeName}/${comics.chapters[0]._id}`}
+                className="button-filled"
+              >
+                <BookIcon />
+                Читать
+              </a>
+            ) : (
+              <Tooltip title="Нет доступных для чтения глав">
+                <button className="button-filled button-filled-disabled button-filled-popped">
+                  <BookIcon />
+                  Читать
+                </button>
+              </Tooltip>
+            )}
+            <Tooltip title="Эта функция еще в разработке">
+              <button className="button-filled button-filled-disabled button-filled-popped">
+                <FavouriteIcon />В закладки
+              </button>
+            </Tooltip>
             <HidesWhenMobile>
               <SameTitlesList>
                 <ListTitle>Похожие тайтлы</ListTitle>
                 <TitlesList>
-                  {data.map((el) => (
+                  {similarComics.map((el) => (
                     <SameTitlePreview title={el} key={el.id} />
                   ))}
                 </TitlesList>
@@ -104,7 +137,10 @@ const ComicsPage = () => {
           <HidesWhenMobile>
             <Title>{comics.name}</Title>
             <SubTitle>
-              Some altrnative title because backend didn&apos;t add one
+              {comics.altName.map((n, index) => {
+                if (index === 0) return n;
+                return `/ ${n}`;
+              })}
             </SubTitle>
             <Stats>
               <StatsBadge>
@@ -115,6 +151,12 @@ const ComicsPage = () => {
                 <ViewIcon />
                 Просмотров: <StatsContent>{comics.views}</StatsContent>
               </StatsBadge>
+              <StatsBadge>
+                <BookmarkIcon />В закладках у:{" "}
+                <StatsContent>
+                  {comics.bookmark ? comics.bookmark : "0"}
+                </StatsContent>
+              </StatsBadge>
             </Stats>
           </HidesWhenMobile>
           <MainSection comics={comics} />
@@ -122,7 +164,7 @@ const ComicsPage = () => {
             <SameTitlesList>
               <ListTitle>Похожие тайтлы</ListTitle>
               <TitlesList>
-                {data.map((el) => (
+                {similarComics.map((el) => (
                   <SameTitlePreview title={el} key={el.id} />
                 ))}
               </TitlesList>
@@ -130,7 +172,7 @@ const ComicsPage = () => {
           </DisplaysWhenMobile>
         </AdaptivePadding>
       </Content>
-    </ComicsPageSC>
+    </BasePage>
   );
 };
 

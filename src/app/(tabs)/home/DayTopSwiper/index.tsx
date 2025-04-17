@@ -5,13 +5,16 @@ import { SwiperSlideSC } from "./styled";
 import { Swiper } from "../Swiper";
 import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
 import { getDayTop } from "@/api/mocks/queries/use-get-day-top";
+import type { Comic } from "@/api/types/comic";
 
-export const DayTopSwiper = () => {
-  const { data } = getDayTop();
+interface Props {
+  titles: Comic[];
+}
 
+export const DayTopSwiper = ({ titles }: Props) => {
   return (
     <Swiper type="horizontal">
-      {data.map((comic, index) => (
+      {titles.map((comic, index) => (
         <SwiperSlideSC key={index}>
           <ComicPreviewMinimized comic={comic} />
         </SwiperSlideSC>

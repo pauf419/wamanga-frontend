@@ -32,7 +32,7 @@ const SideBarMobile: FC<SideBarMobileProps> = ({ active, setActive }) => {
 
   return (
     <>
-      <Blurer $active={active} onClick={() => setActive(false)} />
+      <Blurer $notadaptive $active={active} onClick={() => setActive(false)} />
       <SidebarMobileSC $active={active}>
         <LogoSegment>
           <LogoSC src={Logo} alt="logo" />

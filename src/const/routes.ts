@@ -16,4 +16,36 @@ export const routes = {
     path: "/random",
     title: "Рандом",
   },
+  admin: {
+    path: "/admin",
+    title: "Рут админки",
+  },
+  adminSettings: {
+    path: "/admin/settings",
+    title: "Настройки",
+  },
+  adminComics: {
+    path: "/admin/title",
+    title: "Комиксы",
+  },
+  adminMain: {
+    path: "/",
+    title: "Гэ",
+  },
+  adminAddComics: {
+    path: "/admin/title/new",
+    title: "Создать",
+  },
+  adminCatalog: {
+    path: "/admin/catalog",
+    title: "Каталог",
+  },
+  adminUsers: {
+    path: "/admin/users",
+    title: "Юзеры",
+  },
+  adminTeams: {
+    path: "/admin/teams",
+    title: "Команды",
+  },
 };

@@ -76,7 +76,7 @@ export const Count = styled.div`
   height: 40px;
 `;
 
-export const Counter = styled.input`
+export const Counter = styled.p`
   color: ${colors.text};
   border: 0px;
   font: inherit;
@@ -86,6 +86,7 @@ export const Counter = styled.input`
   outline: none;
   box-sizing: content-box;
   display: block;
+  width: 36px;
   max-width: 36px;
 `;
 

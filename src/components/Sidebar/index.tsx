@@ -8,8 +8,46 @@ import MoreIcon from "@icons/svg/more.svg";
 import { routes } from "@/const";
 import { SidebarExpandTab } from "./ExpandTab";
 import { LogoSC, SidebarSC, Tabs } from "./styled";
+import { headers } from "next/headers";
+import AdminComicsIcon from "@icons/svg/admin-comics.svg";
+import AdminMainPageIcon from "@icons/svg/admin-main.svg";
+import AdminPlusIcon from "@icons/svg/admin-plus.svg";
+import AdminCatalogIcon from "@icons/svg/admin-catalog.svg";
+import AdminUsersIcon from "@icons/svg/admin-user.svg";
+import AdminTeamsIcon from "@icons/svg/admin-team.svg";
+import AdminSettingsIcon from "@icons/svg/admin-gear.svg";
 
-const Sidebar = () => {
+const isAdminPage = async () => {
+  const referer = (await headers()).get("x-current-path") || "";
+  return referer.includes("/admin");
+};
+
+const isReaderPage = async () => {
+  const referer = (await headers()).get("x-current-path") || "";
+  return referer.includes("/reader");
+};
+
+const Sidebar = async () => {
+  if (await isAdminPage())
+    return (
+      <SidebarSC>
+        <LogoSC src={Logo} alt="Logo" />
+        <Tabs>
+          <SidebarTab icon={<AdminComicsIcon />} route={routes.adminComics} />
+          <SidebarTab icon={<AdminMainPageIcon />} route={routes.adminMain} />
+          <SidebarTab icon={<AdminPlusIcon />} route={routes.adminAddComics} />
+          <SidebarTab icon={<AdminCatalogIcon />} route={routes.adminCatalog} />
+          <SidebarTab icon={<AdminUsersIcon />} route={routes.adminUsers} />
+          <SidebarTab icon={<AdminTeamsIcon />} route={routes.adminTeams} />
+          <SidebarTab
+            icon={<AdminSettingsIcon />}
+            route={routes.adminSettings}
+          />
+        </Tabs>
+      </SidebarSC>
+    );
+  if (await isReaderPage()) return <div></div>;
+
   const moreRoutes = [
     { title: "Премиум подписочка", path: "/catalog" },
     { title: "Крутейшая страница для си132554252", path: "/home" },

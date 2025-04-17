@@ -18,6 +18,7 @@ import {
   TranslatorTag,
   CommentsTitle,
   ZeroSpacer,
+  InfoTagTextField,
 } from "./styled";
 import { Tabs } from "@/components/Tabs";
 import type { Comic } from "@/api/types/comic";
@@ -29,6 +30,8 @@ import {
   HidesWhenMobile,
 } from "@/components/Adaptive/styled";
 import { Chapters } from "@/components/Chapters";
+import Badge from "@/app/(tabs)/home/Badge";
+import { colors } from "@/const/colors";
 
 interface Props {
   comics: Comic;
@@ -68,9 +71,7 @@ export const MainSection = ({ comics }: Props) => {
               <InfoTagTitle>Теги</InfoTagTitle>
               <Badges>
                 {comics.tags.map((el) => (
-                  <InfoTagBadgeDefault key={el.id}>
-                    {el.name}
-                  </InfoTagBadgeDefault>
+                  <InfoTagBadgeDefault key={el}>{el}</InfoTagBadgeDefault>
                 ))}
               </Badges>
             </InfoTag>
@@ -78,24 +79,18 @@ export const MainSection = ({ comics }: Props) => {
               <InfoTagTitle>Жанры</InfoTagTitle>
               <Badges>
                 {comics.genres.map((el) => (
-                  <InfoTagBadgeDefault key={el.id}>
-                    {el.name}
-                  </InfoTagBadgeDefault>
+                  <InfoTagBadgeDefault key={el}>{el}</InfoTagBadgeDefault>
                 ))}
               </Badges>
             </InfoTag>
             <InfoTag>
-              <InfoTagTitle>Количество разделов</InfoTagTitle>
+              <InfoTagTitle>Количество глав</InfoTagTitle>
               <ChapterCountWrapper>
-                <ChaptersAvailable>
-                  {comics.chaptersAvailable}
-                </ChaptersAvailable>
-                <Separator>из</Separator>
-                <ChaptersTotal>{comics.chaptersTotal}</ChaptersTotal>
+                <ChaptersAvailable>{comics.chapters.length}</ChaptersAvailable>
               </ChapterCountWrapper>
               <HidesWhenMobile>
                 <CommentsTitle>Комментарии</CommentsTitle>
-                <Comments comic={comics} />
+                <Comments type="comic" comic={comics} />
               </HidesWhenMobile>
             </InfoTag>
             <DisplaysWhenMobile>
@@ -118,6 +113,16 @@ export const MainSection = ({ comics }: Props) => {
           </Main>
           <HidesWhenMobile>
             <InfoTags>
+              <InfoTag style={{ alignItems: "flex-start" }}>
+                <InfoTagTitle>Тип</InfoTagTitle>
+
+                <Badge
+                  textColor={colors.background}
+                  backgroundColor={colors.orange}
+                >
+                  {comics.type}
+                </Badge>
+              </InfoTag>
               <InfoTag>
                 <InfoTagTitle>Статус Перевода</InfoTagTitle>
                 <InfoTagBadge>{comics.status}</InfoTagBadge>
@@ -127,6 +132,46 @@ export const MainSection = ({ comics }: Props) => {
                 <InfoTagBadge>{comics.status}</InfoTagBadge>
               </InfoTag>
 
+              <InfoTag>
+                <InfoTagTitle>Автор оригинала</InfoTagTitle>
+                <InfoTagTextField>
+                  {comics.author.length
+                    ? comics.author.map((author, index) => {
+                        if (index === 0)
+                          return (
+                            <ChaptersAvailable key={author}>
+                              {author}
+                            </ChaptersAvailable>
+                          );
+                        return (
+                          <ChaptersAvailable key={author}>
+                            , {author}
+                          </ChaptersAvailable>
+                        );
+                      })
+                    : "N/A"}
+                </InfoTagTextField>
+              </InfoTag>
+              <InfoTag>
+                <InfoTagTitle>Художник</InfoTagTitle>
+                <InfoTagTextField>
+                  {comics.artist.length
+                    ? comics.artist.map((artist, index) => {
+                        if (index === 0)
+                          return (
+                            <ChaptersAvailable key={artist}>
+                              {artist}
+                            </ChaptersAvailable>
+                          );
+                        return (
+                          <ChaptersAvailable key={artist}>
+                            , {artist}
+                          </ChaptersAvailable>
+                        );
+                      })
+                    : "N/A"}
+                </InfoTagTextField>
+              </InfoTag>
               <InfoTag>
                 <InfoTagTitle>Год выпуска</InfoTagTitle>
                 <ChaptersAvailable>{comics.year}</ChaptersAvailable>
@@ -147,7 +192,7 @@ export const MainSection = ({ comics }: Props) => {
       )}
       {activeTab === 2 && (
         <ZeroSpacer>
-          <Comments comic={comics} />
+          <Comments type="comic" comic={comics} />
         </ZeroSpacer>
       )}
       {activeTab === 3 && (

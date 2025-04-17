@@ -2,6 +2,7 @@
 
 import { colors, zIndex } from "@/const";
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -43,7 +44,7 @@ export const Banner = styled.img`
   object-position: center center;
 `;
 
-export const Avatar = styled.img`
+export const Avatar = styled(Image)`
   position: absolute;
   bottom: -16px;
   left: 24px;

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Background,
   BackgroundImage,
@@ -11,10 +11,20 @@ import {
   Wrapper,
 } from "./styled";
 import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
-import { getRandomComic } from "@/api/mocks/queries/use-get-random-comic";
+import type { Comic } from "@/api/types/comic";
+import { getRandom } from "@/api/title";
 
-export const RandomComic = () => {
-  const { data } = getRandomComic();
+interface Props {
+  title: Comic;
+}
+
+export const RandomComic = ({ title }: Props) => {
+  const [randomTitle, setRandomTitle] = useState<Comic>(title);
+
+  const refetchTitle = async () => {
+    const title = await getRandom();
+    setRandomTitle(title);
+  };
 
   return (
     <Wrapper>
@@ -23,8 +33,8 @@ export const RandomComic = () => {
           Нажми на кнопку <PrimaryColor>&quot;Рандом&quot;</PrimaryColor> и
           появится случайный тайтл
         </Title>
-        <RandomButton>Рандом</RandomButton>
-        <ComicPreviewMinimized nested comic={data} />
+        <RandomButton onClick={() => refetchTitle()}>Рандом</RandomButton>
+        <ComicPreviewMinimized nested comic={randomTitle} />
       </Content>
       <Background>
         <BackgroundImage

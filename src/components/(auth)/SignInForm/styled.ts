@@ -84,3 +84,14 @@ export const GoogleText = styled.span`
 
   /* font-family: Arial, Helvetica, sans-serif; */
 `;
+
+export const ModalAction = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+  gap: 16px;
+
+  button {
+    width: auto;
+  }
+`;

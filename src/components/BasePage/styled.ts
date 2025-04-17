@@ -1,3 +1,5 @@
+"use client";
+
 import { colors, sizes } from "@/const";
 import styled from "@emotion/styled";
 

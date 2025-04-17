@@ -17,32 +17,35 @@ import DownloadIcon from "@icons/svg/download-chapter.svg";
 import LikeIcon from "@icons/svg/like.svg";
 import ViewIcon from "@icons/svg/view.svg";
 import CommentIcon from "@icons/svg/comment.svg";
+import { Chapter } from "@/api/types/chapter";
 
 interface Props {
-  chapter: ComicChapter;
+  chapter: Chapter;
 }
 
 export const Chapter = ({ chapter }: Props) => {
   return (
     <Wrapper>
       <Segment>
-        <Title>{chapter.name}</Title>
+        <Title>{chapter.title}</Title>
         <Tools>
           <Badges>
             <StatBadge>
               <StatIcon as={LikeIcon} />
-              <Stat>{chapter.likesCount}</Stat>
+              <Stat>0</Stat>
             </StatBadge>
             <StatBadge>
               <StatIcon as={ViewIcon} />
-              <Stat>{chapter.viewsCount}</Stat>
+              <Stat>{chapter.views}</Stat>
             </StatBadge>
             <StatBadge>
               <StatIcon as={CommentIcon} />
-              <Stat>{chapter.commentsCount}</Stat>
+              <Stat>{chapter.comments.length}</Stat>
             </StatBadge>
           </Badges>
-          <CreatedAt>{timeAgo(chapter.createdAt)}</CreatedAt>
+          <CreatedAt>
+            {timeAgo(new Date(chapter.uploadDate).getTime())}
+          </CreatedAt>
         </Tools>
       </Segment>
       <Segment>

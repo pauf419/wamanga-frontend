@@ -2,6 +2,17 @@
 
 import styled from "@emotion/styled";
 
+export const Placeholder = styled.label`
+  position: absolute;
+  left: 13px;
+  top: 13.5px;
+  pointer-events: none;
+  transition: 0.2s all ease;
+  background: rgb(29, 30, 32);
+  padding: 0 4px;
+  color: rgb(94, 99, 110);
+`;
+
 export const Wrapper = styled.div<{ $active: boolean }>`
   position: relative;
   border: 1px solid rgb(94, 99, 110);
@@ -25,17 +36,6 @@ export const Wrapper = styled.div<{ $active: boolean }>`
   }
 `;
 
-export const Placeholder = styled.label`
-  position: absolute;
-  left: 13px;
-  top: 13.5px;
-  pointer-events: none;
-  transition: 0.2s all ease;
-  background: rgb(29, 30, 32);
-  padding: 0 4px;
-  color: rgb(94, 99, 110);
-`;
-
 export const Input = styled.input`
   display: inline;
   background: transparent;
@@ -55,6 +55,7 @@ export const DropdownWrapper = styled.div<{ $active: boolean }>`
   gap: 5px;
   overflow-y: auto;
   z-index: 99;
+  align-content: start;
 `;
 
 export const InsideWrapper = styled.div`

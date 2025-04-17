@@ -1,13 +1,7 @@
 "use client";
 
 import { SortingButton as SortingButtonTemplate } from "@/app/team/[slug]/styled";
-import BasePage from "@/components/BasePage";
-import { colors } from "@/const";
 import styled from "@emotion/styled";
-
-export const CatalogSC = styled(BasePage)`
-  min-height: 100vh;
-`;
 
 export const Container = styled.div`
   max-width: 1536px;

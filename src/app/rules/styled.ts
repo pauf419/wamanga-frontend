@@ -1,42 +1,19 @@
 "use client";
 
-import BasePage from "@/components/BasePage";
 import { colors, zIndex } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
-export const RulesPagesSC = styled(BasePage)`
-  height: 100vh;
-`;
-
-export const Background = styled.div<{ $backgroundImage: string }>`
+export const Background = styled.div`
   position: relative;
   z-index: ${zIndex.background};
   width: 100%;
-  height: 80vh;
   padding-top: 80px;
-  background: ${colors.primary};
-  background-image: url(${({ $backgroundImage }) => $backgroundImage});
+  background: transparent;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80vh;
-    content: "";
-    background: linear-gradient(
-      180deg,
-      rgb(0 0 0 / 0%) 0%,
-      ${"#111213" + convertOpacityToHex(80)} 50%,
-      #111213 80%
-    );
-    backdrop-filter: blur(5px);
-  }
 `;
 
 export const Content = styled.div`
@@ -46,16 +23,24 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 3rem;
+  position: relative;
+  z-index: 3;
+  font-size: 4rem;
   mix-blend-mode: overlay;
-  opacity: 0.9;
+  opacity: 1;
+`;
+
+export const BlockDetail = styled.h3`
+  font-weight: 700;
 `;
 
 export const Description = styled.div`
   display: flex;
   gap: 20px;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+
+  justify-content: flex-start;
+  position: relative;
 `;
 
 export const Icon = styled(Image)`
@@ -66,15 +51,22 @@ export const Icon = styled(Image)`
 export const DescriptionText = styled.p`
   font-size: 1.25rem;
   color: ${colors.grayText};
+  font-weight: 700;
   mix-blend-mode: overlay;
   opacity: 0.9;
+`;
+
+export const ImageSpacer = styled.div`
+  max-width: 512px;
+  width: 100%;
+  height: 512px;
 `;
 
 export const Blocks = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 48px;
+  margin-top: 260px;
 `;
 
 export const Block = styled.div`
@@ -101,6 +93,29 @@ export const BlockTitle = styled.p`
 
 export const BlockDescription = styled.p`
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 700;
   color: ${colors.grayText};
+`;
+
+export const RulesImage = styled(Image)`
+  width: auto;
+  margin-top: -35px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+`;
+
+export const ListWrapper = styled.div`
+  display: grid;
+  gap: 8px;
+`;
+
+export const ListItem = styled.div`
+  display: flex;
+  gap: 4px;
+
+  span {
+    min-width: 12px;
+    font-weight: bold;
+  }
 `;

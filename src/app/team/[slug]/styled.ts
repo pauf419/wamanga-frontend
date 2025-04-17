@@ -7,13 +7,11 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 1536px;
-  min-height: 100dvh;
   margin: 0 auto;
   padding: 0 24px;
   color: ${colors.text};
   display: grid;
   align-content: start;
-  margin-top: 80px;
 `;
 
 export const Banner = styled.div<{ $background: string }>`
@@ -71,6 +69,16 @@ export const Profile = styled(BannerBlock)`
   bottom: 0;
   padding: 0px 24px;
   display: flex;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+  }
 `;
 
 export const Avatar = styled.div<{ $avatar: string }>`
@@ -87,10 +95,24 @@ export const Names = styled.div`
   margin-top: 0px;
   text-align: left;
   padding: 44px 0px;
+
+  @media (max-width: 900px) {
+    margin-top: 8px;
+    padding: 0px 0px 16px;
+    justify-items: center;
+    margin-left: 0;
+  }
 `;
 
 export const ShortName = styled.h4`
-  font-size: 1.5rem;
+  font-size: 1.9rem;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    font-size: 1.25rem;
+  }
 `;
 
 export const LongName = styled.div`
@@ -105,6 +127,10 @@ export const Content = styled.div`
   grid-template-columns: 2fr 1fr;
   gap: 32px;
   width: 100%;
+
+  @media (max-width: 900px) {
+    grid-template-columns: auto;
+  }
 `;
 
 export const StatsWrapper = styled.div`
@@ -117,6 +143,10 @@ export const StatsBlocks = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   align-content: start;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const StatsBlock = styled.div`
@@ -222,10 +252,26 @@ export const TabTitle = styled.h4`
 export const Tools = styled.div`
   display: flex;
   gap: 8px;
+
+  @media (max-width: 672px) {
+    display: grid;
+  }
 `;
 export const SortingButton = styled(Download)`
   width: 40px;
   height: 40px;
+  position: relative;
+
+  span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    gap: 2px;
+
+    div {
+      font-family: monospace;
+    }
+  }
 `;
 
 export const SortingIcon = styled.svg<{ $active: boolean }>`

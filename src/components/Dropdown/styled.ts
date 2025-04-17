@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
-import { colors } from "@/const";
 
 export const DropdownWrapper = styled.div`
   position: relative;
-  z-index: 9;
 `;
 
 export const DropdownHeader = styled.div`
@@ -42,6 +40,7 @@ export const DropdownPanel = styled.div<{ $active: boolean }>`
   border-radius: 12px;
   transform: scale(0);
   transition: 0.2s all ease;
+  z-index: 10;
   ${(props) =>
     props.$active &&
     `
@@ -58,4 +57,22 @@ export const PanelElement = styled.div<{ $selected: boolean }>`
   &:hover {
     background: rgba(115, 118, 124, 0.16);
   }
+`;
+
+export const Blurer = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+export const SearchInput = styled.input`
+  height: 35px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 13px;
+  color: #fff;
+  font-weight: 700;
 `;

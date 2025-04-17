@@ -1,4 +1,4 @@
-import type { Member } from "@/api/types/member";
+import type { Member as MemberType } from "@/api/types/member";
 import {
   Avatar,
   AvatarWrapper,
@@ -8,10 +8,9 @@ import {
   Username,
   Wrapper,
 } from "./styled";
-import { PrimaryButton } from "../Button";
 
 interface Props {
-  member: Member;
+  member: MemberType;
 }
 
 export const Member = ({ member }: Props) => {

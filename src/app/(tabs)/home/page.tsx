@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   DayTopSection,
@@ -24,27 +22,43 @@ import { TypeSwiper } from "./TypeSwiper";
 import { LatestSwiper } from "./LatestSwiper";
 import { CategoriesSwiper } from "./CategoriesSwiper";
 import BasePage from "@/components/BasePage";
+import {
+  getDayTop,
+  getRandom,
+  getRecentlyUpdated,
+  getRecommendedTitles,
+} from "@/api/title";
+import { getSession } from "@/app/lib";
 
-const HomePage = () => {
+const HomePage = async () => {
+  const recommendedTitles = await getRecommendedTitles();
+  const recentlyUpdatedTitles = await getRecentlyUpdated();
+  const dailyTopTitles = await getDayTop();
+  const randomTitle = await getRandom();
+
   return (
     <BasePage isImageBehind>
-      <RecommendedSwiper />
+      <RecommendedSwiper titles={recommendedTitles} />
 
       <Container>
-        <Section title="Недавние обновления" link="/">
-          <RecentSwiper />
-        </Section>
+        {recentlyUpdatedTitles && (
+          <Section title="Недавние обновления" link="/">
+            <RecentSwiper titles={recentlyUpdatedTitles} />
+          </Section>
+        )}
 
-        <DayTopSection title="Топ за день" link="/">
-          <DayTopSwiper />
-        </DayTopSection>
+        {dailyTopTitles && (
+          <DayTopSection title="Топ за день" link="/">
+            <DayTopSwiper titles={dailyTopTitles} />
+          </DayTopSection>
+        )}
 
         <UpdatesSection>
           <UpdatesSwiper />
         </UpdatesSection>
 
         <RandomComicSection>
-          <RandomComic />
+          <RandomComic title={randomTitle} />
         </RandomComicSection>
 
         <ComicTypeSection title="Тип тайтла" link="/">

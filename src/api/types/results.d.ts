@@ -1,7 +1,10 @@
+import type { Bookmark } from "./bookmark";
 import type { Comic } from "./comic";
 import type { ComicChapter } from "./comic-chapter";
 import type { ComicComment } from "./comic-comment";
 import type { Member } from "./member";
+import type { Team } from "./team";
+import type { TitleVolumeConfig } from "./volume";
 
 export interface GetRecommendedResult {
   data: Comic[];
@@ -53,4 +56,20 @@ export interface GetTeamProjectsResult {
 
 export interface GetTeamMembersResult {
   data: Member[];
+}
+
+export interface GetBookmarkComicsResult {
+  data: Comic[];
+}
+
+export interface GetUserBookmarksResult {
+  data: Bookmark[];
+}
+
+export interface GetUserTeamsResult {
+  data: Team[];
+}
+
+export interface GetTitleVolumeConfig {
+  data: TitleVolumeConfig;
 }

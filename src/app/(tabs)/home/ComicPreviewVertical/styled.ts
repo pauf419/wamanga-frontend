@@ -19,7 +19,7 @@ export const ComicInfo = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   width: 100%;
-  height: 180px;
+  min-height: 180px;
   padding: 14px;
   background: linear-gradient(
     180deg,
@@ -63,6 +63,8 @@ export const ComicStatus = styled.p`
 export const ComicPoster = styled(Image)`
   width: 100%;
   height: 100%;
+  min-height: 250px;
+  object-fit: cover;
   user-select: none;
   border-radius: 12px;
   -webkit-user-drag: none;

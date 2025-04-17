@@ -42,7 +42,7 @@ export const LogoSC = styled(Image)`
   padding: 0 8px;
 `;
 
-export const Blurer = styled.div<{ $active: boolean }>`
+export const Blurer = styled.div<{ $active: boolean; $notadaptive: boolean }>`
   position: fixed;
   top: 0;
   z-index: ${zIndex.blurer};
@@ -55,9 +55,11 @@ export const Blurer = styled.div<{ $active: boolean }>`
 
   ${(props) => props.$active && "visibility: visible;opacity:1;"}
 
-  @media(min-width: 1200px) {
+  ${(props) =>
+    !props.$notadaptive &&
+    `  @media(min-width: 1200px) {
     display: none;
-  }
+  }`}
 `;
 
 export const ButtonOutline = styled.div`

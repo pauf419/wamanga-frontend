@@ -2,6 +2,7 @@ import React from "react";
 import { BasePageSC, Content } from "./styled";
 import Footer from "../Footer";
 import Header from "../Header";
+import { getSession } from "@/app/lib";
 
 interface Props {
   children: React.ReactNode;
@@ -9,10 +10,12 @@ interface Props {
   className?: string;
 }
 
-const BasePage = ({ children, isImageBehind, className }: Props) => {
+const BasePage = async ({ children, isImageBehind, className }: Props) => {
+  const session = await getSession();
+
   return (
     <BasePageSC>
-      <Header />
+      <Header user={session} />
       <Content className={className} $isImageBehind={!!isImageBehind}>
         {children}
       </Content>

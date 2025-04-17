@@ -11,9 +11,9 @@ export const BadgeSC = styled.div<{ $bgColor: string; $textColor: string }>`
   height: 24px;
   padding: 12px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   color: ${(props) => props.$textColor};
   text-transform: uppercase;
   background: ${(props) => props.$bgColor};
-  border-radius: 8px;
+  border-radius: 100px;
 `;

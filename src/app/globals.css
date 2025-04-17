@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +29,50 @@ button {
   border-radius: 5px;
 }
 
+.button-blured {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  font-weight: 700;
+  line-height: 1.71429;
+  min-width: 64px;
+  box-shadow: none;
+  color: rgb(157, 160, 247);
+  background-color: rgba(90, 94, 231, 0.2);
+  text-transform: none;
+  height: 30px;
+  font-size: 13px;
+  outline: 0px;
+  margin: 0px;
+  text-decoration: none;
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 4px 10px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: rgba(90, 95, 231, 0.5);
+  }
+}
+
 .outline-button {
+  text-decoration: none;
   font-weight: 700;
   line-height: 1.71429;
   font-size: 0.875rem;
@@ -54,15 +99,189 @@ button {
   }
 }
 
+.button-transparent {
+  font-weight: 700;
+  line-height: 1.71429;
+  font-size: 0.875rem;
+  padding: 5px 15px;
+  background: transparent;
+  border: none;
+  color: #5a5ee7;
+  display: flex;
+  gap: 8px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.2s all ease;
+  width: 100%;
+
+  &:hover {
+    background: #5a5ee728;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.button-fully-transparent {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  width: auto;
+
+  &:hover {
+    background: rgba(197, 205, 221, 0.08);
+  }
+}
+
+.icon-button-inline {
+  padding: 4px 5px;
+  min-width: 90px;
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.a-primary {
+  text-decoration: none;
+  color: #5a5ee7;
+}
+
 .button-filled {
+  text-decoration: none;
+  font-weight: 700;
   background: #5a5ee7;
   opacity: 1;
   color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: none;
+  transition: 0.2s all ease;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
 
   &:hover {
     background: #494fff;
     border-color: #494fff;
     box-shadow: rgba(90, 94, 231, 0.24) 0px 8px 16px 0px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+  }
+}
+
+.button-filled-popped {
+  padding: 7px 15px;
+}
+
+.button-filled-disabled {
+  cursor: default;
+  color: rgba(143, 150, 163, 0.8);
+  box-shadow: none;
+  background-color: rgba(143, 150, 163, 0.24);
+
+  svg {
+    color: rgba(143, 150, 163, 0.8);
+  }
+
+  &:hover {
+    box-shadow: none;
+    background-color: rgba(143, 150, 163, 0.24);
+  }
+}
+
+.button-filled-icon-inside {
+  padding: 0;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    color: #fff;
+    width: auto;
+    height: auto;
+  }
+}
+
+.button-disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.button-dark {
+  background: rgba(143, 150, 163, 0.08);
+  &:hover {
+    background: rgba(197, 205, 221, 0.08);
+    box-shadow: none;
+  }
+}
+
+.button-red {
+  color: #fff;
+  background: #d02525;
+
+  &:hover {
+    background: #f31818;
+  }
+}
+
+.button-primary-light {
+  color: #111213;
+  background: #9da0f7;
+
+  &:hover {
+    background: #8286ff;
+  }
+}
+
+.button-primary {
+  color: #fff;
+  background: #5a5ee7;
+
+  &:hover {
+    background: #4a50fa;
+  }
+}
+
+.button-like {
+  display: grid;
+  gap: 0;
+  width: auto;
+
+  div {
+    display: flex;
+    gap: 10px;
+    color: #fff;
+
+    h4 {
+      font-weight: normal;
+      font-size: 15px;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      color: #494fff;
+      fill: #494fff;
+    }
+  }
+
+  span {
+    color: rgb(143, 150, 163);
+    font-size: 0.75rem;
   }
 }
 
@@ -86,6 +305,22 @@ button {
 }
 
 .icon-button-primary {
+}
+
+.css-1dfcyzw-MuiPaper-root-MuiPopover-paper {
+  background: transparent !important;
+}
+
+.label-primary {
+  height: 36px;
+  background: #5a5ee7 !important;
+  color: #fff !important;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover {
+    background: 494fff;
+  }
 }
 
 .icon-button-icon {
@@ -133,5 +368,72 @@ button {
 
   &:hover {
     background: #8f96a314;
+  }
+}
+
+.input-default {
+  box-sizing: content-box;
+  background: none;
+  margin: 0px;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  min-width: 0px;
+  width: 100%;
+  animation-duration: 10ms;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: text;
+  outline: none;
+  color: #fff;
+  border: 1px solid #525760;
+  box-sizing: border-box;
+}
+
+.input-default::placeholder {
+  color: #525760;
+}
+.icon-btn-mini {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-align: center;
+  color: rgb(255, 171, 0);
+  --IconButton-hoverBg: rgba(255, 171, 0, 0.08);
+  font-size: 1.125rem;
+  outline: 0px;
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+  margin: 0px;
+  text-decoration: none;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 5px;
+
+  &.icon-red {
+    color: rgb(248, 75, 75);
+
+    svg {
+      fill: #f84b4b;
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    display: block;
   }
 }

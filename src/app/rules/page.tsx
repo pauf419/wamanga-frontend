@@ -10,51 +10,60 @@ import {
   Description,
   DescriptionText,
   Icon,
-  RulesPagesSC,
+  ImageSpacer,
+  RulesImage,
   Title,
 } from "./styled";
 import { PrimaryButton } from "@/components/Button";
+import BasePage from "@/components/BasePage";
 
 const RulesPage = () => {
   return (
-    <RulesPagesSC isImageBehind>
-      <Background $backgroundImage={"/mock-background.png"}>
+    <BasePage isImageBehind>
+      <Background>
         <Content>
           <Title>Правила сайта</Title>
           <Description>
-            <Icon src="/rules.png" width={108} height={108} alt="rules" />
-            <DescriptionText>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi
-              ipsa eius illum dolorum! Incidunt vitae neque nostrum officia.
-              Facilis, molestiae pariatur. Maiores assumenda iste nulla sunt
-              facilis quod officiis?
-            </DescriptionText>
+            <RulesImage
+              quality={100}
+              src="/rules.png"
+              alt="rules"
+              width={512}
+              height={512}
+            />
+            <ImageSpacer />
+            <Blocks>
+              <Block>
+                <BlockLeft>
+                  <BlockTitle>Общие правила</BlockTitle>
+                </BlockLeft>
+                <a className="button-filled" href="/rules/general">
+                  Открыть
+                </a>
+              </Block>
+              <Block>
+                <BlockLeft>
+                  <BlockTitle>Правила для команд</BlockTitle>
+                  <BlockDescription>(Переводчикам и авторам)</BlockDescription>
+                </BlockLeft>
+                <a className="button-filled" href="/rules/teams">
+                  Открыть
+                </a>
+              </Block>
+              <Block>
+                <BlockLeft>
+                  <BlockTitle>Часто задаваемые вопросы</BlockTitle>
+                  <BlockDescription>(FAQ - Вопрос/Ответ)</BlockDescription>
+                </BlockLeft>
+                <a className="button-filled" href="/rules/faq">
+                  Открыть
+                </a>
+              </Block>
+            </Blocks>
           </Description>
-          <Blocks>
-            <Block>
-              <BlockLeft>
-                <BlockTitle>Общие правила</BlockTitle>
-              </BlockLeft>
-              <PrimaryButton href="/rules/general">Открыть</PrimaryButton>
-            </Block>
-            <Block>
-              <BlockLeft>
-                <BlockTitle>Правила для командо</BlockTitle>
-                <BlockDescription>(переводчикам и авторам)</BlockDescription>
-              </BlockLeft>
-              <PrimaryButton href="/rules/teams">Открыть</PrimaryButton>
-            </Block>
-            <Block>
-              <BlockLeft>
-                <BlockTitle>Часто задаваемые вопросы</BlockTitle>
-                <BlockDescription>(FAQ - Вопрос/Ответ)</BlockDescription>
-              </BlockLeft>
-              <PrimaryButton href="/rules/faq">Открыть</PrimaryButton>
-            </Block>
-          </Blocks>
         </Content>
       </Background>
-    </RulesPagesSC>
+    </BasePage>
   );
 };
 

@@ -1,4 +1,4 @@
-export interface User {
+/*export interface User {
   createdAt: number;
   id: number;
   avatar: string;
@@ -11,4 +11,35 @@ export interface User {
   rank: number;
   points: number;
   gender: string;
+}*/
+
+import type { Bookmark } from "./bookmark";
+
+export interface File {
+  filename: string;
+  format: string;
+}
+
+export interface User {
+  id: number;
+  coverImg: string;
+  online: boolean;
+  description: string;
+  ageLimit: string;
+  rank: number;
+  points: number;
+  gender: string;
+  email: string;
+  username: string;
+  password: string;
+  _id: string;
+  avatar: string;
+  banner: string;
+  xp: number;
+  bookmarksWithStatus: Bookmark[];
+  watched: string[];
+  comments: string[];
+  commented: string[];
+  teams: string[];
+  role: string;
 }

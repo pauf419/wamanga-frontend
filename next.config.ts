@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  generateBuildId: () => "ewer",
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule: any) =>
       rule.test?.test?.(".svg")
@@ -35,6 +36,12 @@ const nextConfig: NextConfig = {
         hostname: "zenko.b-cdn.net",
         port: "",
         pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3011",
+        pathname: "/static/**",
       },
     ],
   },

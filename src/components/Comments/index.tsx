@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CommentsWrapper,
   List,
@@ -12,16 +12,34 @@ import type { Comic } from "@/api/types/comic";
 import { getComicComments } from "@/api/mocks/queries/use-get-comments";
 import { Comment } from "./Comment";
 import { Reply } from "./Reply";
+import type { Chapter } from "@/api/types/chapter";
+import { useMutation } from "@tanstack/react-query";
+import { getComments } from "@/api/comments";
+import type { ComicComment } from "@/api/types/comic-comment";
 
 interface Props {
+  type: "comic" | "chapter";
   comic: Comic;
+  chapter?: Chapter;
 }
 
-export const Comments = ({ comic }: Props) => {
-  //Здесь потом будем передавать comicId
+export const Comments = ({ comic, type = "comic", chapter }: Props) => {
+  const mutation = useMutation({
+    mutationFn: () => getComments(type, comic.id),
+    onSuccess: (result: ComicComment[]) => {
+      console.log(result);
+    },
+    onError: (err: Error) => {
+      console.log(err);
+    },
+  });
+
+  useEffect(() => {
+    mutation.mutate();
+  }, []);
+
   const { data } = getComicComments();
 
-  //Просто приттиер заебал в нулину. Мне лень что-то с этим делать. Просто так оставлю, похуй
   comic.alternativeName = comic.name;
 
   return (

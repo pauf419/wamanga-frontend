@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  Blurer,
   DropdownHeader,
   DropdownPanel,
   DropdownWrapper,
   Icon,
   PanelElement,
+  SearchInput,
   SelectedName,
 } from "./styled";
 import ArrowIcon from "@icons/svg/counter-arrow-bottom.svg";
@@ -20,10 +22,20 @@ interface Props {
   cb: (i: DropdownItem) => void;
   items: DropdownItem[];
   defaultIndex?: number;
+  search?: boolean;
+  onSearch?: ((v: string) => void) | null;
 }
 
-export const Dropdown = ({ cb, items, defaultIndex = 0 }: Props) => {
+export const Dropdown = ({
+  cb,
+  items,
+  defaultIndex = 0,
+  search = false,
+  onSearch = null,
+}: Props) => {
   const [active, setActive] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>();
+  const [timeoutId, setTimeoutId] = useState<any>();
   const [selected, setSelected] = useState<DropdownItem>(items[defaultIndex]);
 
   const handleClick = (item: DropdownItem) => {
@@ -32,22 +44,55 @@ export const Dropdown = ({ cb, items, defaultIndex = 0 }: Props) => {
     setActive(false);
   };
 
+  useEffect(() => {
+    if (!searchValue) {
+      return;
+    }
+    if (timeoutId) clearTimeout(timeoutId);
+    const tid = setTimeout(() => {
+      if (onSearch) onSearch(searchValue);
+    }, 1000);
+    setTimeoutId(tid);
+  }, [searchValue]);
+
   return (
-    <DropdownWrapper>
-      <DropdownHeader onClick={() => setActive(!active)}>
-        <SelectedName>{selected.name}</SelectedName>
-        <Icon as={ArrowIcon} $active={active} />
-      </DropdownHeader>
-      <DropdownPanel $active={active}>
-        {items.map((el) => (
-          <PanelElement
-            onClick={() => handleClick(el)}
-            $selected={el.name === selected.name}
-          >
-            <SelectedName>{el.name}</SelectedName>
-          </PanelElement>
-        ))}
-      </DropdownPanel>
-    </DropdownWrapper>
+    <>
+      {active && (
+        <Blurer
+          onClick={() => {
+            setActive(false);
+          }}
+        ></Blurer>
+      )}
+      <DropdownWrapper>
+        <DropdownHeader onClick={() => setActive(!active)}>
+          {search ? (
+            <SearchInput
+              value={selected ? selected.name : searchValue}
+              onChange={(e) => {
+                setSelected({} as DropdownItem);
+                setActive(true);
+                setSearchValue(e.target.value);
+              }}
+              placeholder="Название команды"
+            />
+          ) : (
+            <SelectedName>{selected.name}</SelectedName>
+          )}
+          <Icon as={ArrowIcon} $active={active} />
+        </DropdownHeader>
+        <DropdownPanel $active={active}>
+          {items.map((el) => (
+            <PanelElement
+              key={el.name}
+              onClick={() => handleClick(el)}
+              $selected={selected ? el.name === selected.name : false}
+            >
+              <SelectedName>{el.name}</SelectedName>
+            </PanelElement>
+          ))}
+        </DropdownPanel>
+      </DropdownWrapper>
+    </>
   );
 };

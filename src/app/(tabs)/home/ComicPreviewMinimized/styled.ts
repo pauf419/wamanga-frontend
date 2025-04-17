@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 
 export const SwiperComic = styled.div<{ $nested: boolean }>`
+  position: relative;
   display: flex;
   width: 100%;
   height: 100%;
@@ -19,6 +20,53 @@ export const ComicInfo = styled.div`
   width: 100%;
   height: 100%;
   padding: 8px 4px 8px 12px;
+  position: relative;
+`;
+
+export const PopoverButton = styled.button`
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(143, 150, 163);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  background-color: rgba(17, 18, 19, 0.6);
+  outline: 0px;
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+  margin: 0px;
+  text-decoration: none;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 4px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: #fff;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const ComicTitle = styled.h3`

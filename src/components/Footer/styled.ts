@@ -10,6 +10,7 @@ export const FooterSC = styled.footer`
   width: 100%;
   height: 250px;
   padding: 25px;
+  margin-top: 80px;
 `;
 
 export const Content = styled.div`

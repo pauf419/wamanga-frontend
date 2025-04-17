@@ -17,20 +17,36 @@ export interface BadgeTypeSelectElement {
   value: string;
 }
 
+export type BadgeTypeSelectType = "default" | "input" | "single";
+
 interface Props {
   elements: BadgeTypeSelectElement[];
   placeholder: string;
+  type?: BadgeTypeSelectType;
+  onSearch?: (string) => void;
+  nested?: boolean;
+  preset?: BadgeTypeSelectElement[];
+  onChange?: (elements: BadgeTypeSelectElement[]) => void;
 }
 
-const BadgeTypeSelect = ({ elements, placeholder }: Props) => {
+const BadgeTypeSelect = ({
+  elements,
+  placeholder,
+  type = "default",
+  onSearch,
+  nested = false,
+  preset = [],
+  onChange,
+}: Props) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [placeholderPinned, setPlaceholderPinned] = useState<boolean>(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const selectedWrapperRef = useRef<HTMLDivElement>(null);
-  const [selectedTypes, setSelectedTypes] = useState<BadgeTypeSelectElement[]>(
-    []
-  );
+  const [selectedTypes, setSelectedTypes] =
+    useState<BadgeTypeSelectElement[]>(preset);
+  const [searchTimeoutId, setSearchTimeoutId] = useState<any>();
+  const [search, setSearch] = useState<string>();
 
   const handleOutsideClick = (event: MouseEvent) => {
     if (
@@ -56,11 +72,22 @@ const BadgeTypeSelect = ({ elements, placeholder }: Props) => {
   }, [focus]);
 
   useEffect(() => {
+    if (onChange) onChange(selectedTypes);
     if (selectedTypes.length > 0) setPlaceholderPinned(true);
     else setPlaceholderPinned(false);
   }, [selectedTypes]);
 
   useEffect(() => {
+    if (searchTimeoutId) clearTimeout(searchTimeoutId);
+    if (!onSearch) return;
+    const tid = setTimeout(() => {
+      onSearch(search);
+    }, 1000);
+    setSearchTimeoutId(tid);
+  }, [search]);
+
+  useEffect(() => {
+    if (type !== "default") return;
     const updateDropdownPosition = () => {
       if (
         !wrapperRef.current ||
@@ -76,13 +103,22 @@ const BadgeTypeSelect = ({ elements, placeholder }: Props) => {
       const dropdownHeight = window.innerHeight / 3;
       dropdownElement.style.height = `${dropdownHeight}px`;
       dropdownElement.style.width = `${wrapperRect.width}px`;
-      //dropdownElement.style.left = `${wrapperRect.left + window.scrollX}px`;
 
       const spaceBelow = window.innerHeight - selectedRect.bottom;
       const spaceAbove = selectedRect.top;
 
       if (spaceBelow >= dropdownHeight || spaceBelow > spaceAbove) {
-        dropdownElement.style.top = `${selectedRect.bottom + window.scrollY}px`;
+        if (nested) {
+          dropdownElement.style.position = "absolute";
+          dropdownElement.style.top = `${wrapperRect.height}px`;
+          //dropdownElement.style.top = `${(selectedRect.bottom + window.scrollY) / 2}px`;
+        } else {
+          dropdownElement.style.top = `${selectedRect.bottom + window.scrollY}px`;
+        }
+      } else if (nested) {
+        dropdownElement.style.position = "absolute";
+        dropdownElement.style.top = `${wrapperRect.height}px`;
+        //dropdownElement.style.top = `${(selectedRect.top + window.scrollY - dropdownHeight) / 2}px`;
       } else {
         dropdownElement.style.top = `${selectedRect.top + window.scrollY - dropdownHeight}px`;
       }
@@ -122,27 +158,38 @@ const BadgeTypeSelect = ({ elements, placeholder }: Props) => {
             autoComplete="off"
             id="inp"
             autoFocus={focus}
+            onChange={(e) => setSearch(e.target.value)}
             onFocus={() => setFocus(true)}
             onBlur={(e) => e.preventDefault()}
           />
         </InsideWrapperSelected>
       </InsideWrapper>
       <DropdownWrapper $active={focus} ref={dropdownRef}>
-        {elements.map((el) => (
-          <DropdownSelect
-            $selected={selectedTypes.some((item) => item.index === el.index)}
-            key={el.index}
-            onClick={() =>
-              setSelectedTypes((prev) => {
-                if (selectedTypes.some((item) => item.index === el.index))
-                  return prev.filter((item) => item.index !== el.index);
-                return [...prev, el];
+        {elements.length
+          ? elements
+              .filter((element) => {
+                if (!search) return true;
+                const tr = element.value.trim().toLocaleLowerCase();
+                return tr.includes(search.trim().toLowerCase());
               })
-            }
-          >
-            {el.value}
-          </DropdownSelect>
-        ))}
+              .map((el) => (
+                <DropdownSelect
+                  $selected={selectedTypes.some(
+                    (item) => item.index === el.index
+                  )}
+                  key={el.index}
+                  onClick={() =>
+                    setSelectedTypes((prev) => {
+                      if (selectedTypes.some((item) => item.index === el.index))
+                        return prev.filter((item) => item.index !== el.index);
+                      return [...prev, el];
+                    })
+                  }
+                >
+                  {el.value}
+                </DropdownSelect>
+              ))
+          : "Начните поиск"}
       </DropdownWrapper>
     </Wrapper>
   );

@@ -2,6 +2,7 @@
 
 import React from "react";
 import type { ComicTranslator } from "@/api/types/comic-translator";
+import Logo from "@icons/svg/logo.svg?url";
 import {
   Banner,
   Wrapper,
@@ -28,7 +29,7 @@ export const ComicTranslatorMinimized = ({ translator }: Props) => {
     <Wrapper>
       <Header>
         <Banner src={translator.banner} />
-        <Avatar src={translator.avatar} />
+        <Avatar src={Logo} alt="Logo" />
       </Header>
       <Body>
         <Name href="/team/0239203">{translator.name}</Name>

@@ -1,6 +1,5 @@
 "use client";
 
-import { ComicTranslator } from "@/api/types/comic-translator";
 import {
   Acknowledgments,
   Avatar,
@@ -47,8 +46,6 @@ import ChapterIcon from "@icons/svg/chapters.svg";
 import ViewIcon from "@icons/svg/view.svg";
 import TelegramIcon from "@icons/svg/telegram.svg";
 import SortingIco from "@icons/svg/sorting.svg";
-import DiscordIcon from "@icons/svg/discord.svg";
-import DonationIcon from "@icons/svg/donation.svg";
 import { Dropdown } from "@/components/Dropdown";
 import { getTeamProjects } from "@/api/mocks/queries/use-get-team-projects";
 import { ComicPreviewMinimized } from "@/app/(tabs)/home/ComicPreviewMinimized";
@@ -125,19 +122,19 @@ const TeamPage = () => {
             <Links>
               <LinksTitle>Ссылки</LinksTitle>
 
-              <Link href="">
+              <Link>
                 <CursorIconWrapper>
                   <LinkIcon as={TelegramIcon} />
                 </CursorIconWrapper>
                 Наш телеграм канал
               </Link>
-              <Link href="">
+              <Link>
                 <CursorIconWrapper>
                   <LinkIcon as={TelegramIcon} />
                 </CursorIconWrapper>
                 Наш телеграм канал
               </Link>
-              <Link href="">
+              <Link>
                 <CursorIconWrapper>
                   <LinkIcon as={TelegramIcon} />
                 </CursorIconWrapper>

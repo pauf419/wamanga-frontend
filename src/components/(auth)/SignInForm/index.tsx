@@ -1,20 +1,30 @@
-import React, { useRef } from "react";
+"use client";
+
+import React, { useRef, useState } from "react";
 import { Portal } from "@/components/Portal";
 import { AnimatePresence, motion } from "motion/react";
 import type { ModalState } from "@/components/Header";
 import { useClickOutside } from "@/hooks/use-click-outside";
-import { Input, Inputs, ModalContent, ModalSC, Title } from "../Form/styled";
+import { Inputs, ModalContent, ModalSC, Title } from "../Form/styled";
 import {
   Action,
   GoogleContent,
   GoogleIconSC,
   GoogleText,
+  ModalAction,
   Question,
   Questions,
   Text,
   WithGoogle,
 } from "./styled";
 import GoogleIcon from "@icons/svg/google.svg?url";
+import Input from "@/components/Input";
+import type { LoginResponse } from "@/api/auth";
+import { signIn } from "@/api/auth";
+import { useMutation } from "@tanstack/react-query";
+import { useStore } from "@/app/store/useStore";
+import type { User } from "@/api/types/user";
+import { redirect, useRouter } from "next/navigation";
 
 interface Props {
   state: ModalState;
@@ -22,13 +32,37 @@ interface Props {
 }
 
 const SignInForm = ({ state, setState }: Props) => {
+  const router = useRouter();
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const [error, setError] = useState<string | null>(null);
+
+  const { setAuth } = useStore();
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const mutation = useMutation({
+    mutationFn: signIn,
+    onSuccess: (result: LoginResponse) => {
+      router.push("/user");
+    },
+    onError: (err: Error) => {
+      setError(err.message || "Ошибка регистрации");
+    },
+  });
 
   const onClickOutside = () => {
     setState({ ...state, signIn: false });
   };
 
   useClickOutside(modalRef, onClickOutside);
+
+  const handleSubmit = () => {
+    mutation.mutate({ email: form.email, password: form.password });
+  };
 
   return (
     <>
@@ -52,13 +86,27 @@ const SignInForm = ({ state, setState }: Props) => {
                 >
                   <Title>Вход</Title>
                   <Inputs>
-                    <Input placeholder="Email" />
-                    <Input placeholder="Пароль" type="password" />
+                    <Input
+                      placeholder="Email"
+                      type="input"
+                      onChange={(e) => setForm({ ...form, email: e })}
+                    />
+                    <Input
+                      placeholder="Пароль"
+                      type="input"
+                      onChange={(e) => setForm({ ...form, password: e })}
+                    />
                   </Inputs>
                   <Questions>
                     <Question>
                       <Text>Нет аккаунта?</Text>
-                      <Action>Создать аккаунт</Action>
+                      <Action
+                        onClick={() =>
+                          setState({ signUp: true, signIn: false })
+                        }
+                      >
+                        Создать аккаунт
+                      </Action>
                     </Question>
                     <Question>
                       <Text>Забыл пароль?</Text>
@@ -71,6 +119,21 @@ const SignInForm = ({ state, setState }: Props) => {
                       <GoogleText>С помощью Google</GoogleText>
                     </GoogleContent>
                   </WithGoogle>
+                  <ModalAction>
+                    <button
+                      className="button-transparent"
+                      onClick={() => setState({ signIn: false, signUp: false })}
+                    >
+                      Закрыть
+                    </button>
+                    <button
+                      className="button-filled"
+                      onClick={() => handleSubmit()}
+                    >
+                      {" "}
+                      Войти{" "}
+                    </button>
+                  </ModalAction>
                 </ModalContent>
               </ModalSC>
             </motion.div>

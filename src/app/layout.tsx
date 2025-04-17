@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
 import "@app/globals.css";
 import "@assets/fonts/fonts.css";
 import { LayoutSC } from "./layout.styled";
+import { headers } from "next/headers";
 
 import Providers from "./Providers";
 import Sidebar from "@/components/Sidebar";
+
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "WaComics",

@@ -24,6 +24,12 @@ export const NoChaptersMessage = styled.div`
 
 export const NoImage = styled.img`
   height: 180px;
+
+  @media (max-width: 500px) {
+    width: 300px;
+    object-fit: contain;
+    max-height: 180px;
+  }
 `;
 
 export const NoChaptersText = styled.div`

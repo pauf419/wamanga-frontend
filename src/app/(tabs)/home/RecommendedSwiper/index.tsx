@@ -37,8 +37,13 @@ import Badge from "../Badge";
 import StatsBadge, { Icon } from "../StatsBadge";
 import { StatsBadges } from "../styled";
 import { SwiperSlide } from "swiper/react";
+import type { Comic } from "@/api/types/comic";
 
-export const RecommendedSwiper = () => {
+interface Props {
+  titles: Comic[];
+}
+
+export const RecommendedSwiper = ({ titles }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sliderRef = useRef<any>(null);
 
@@ -55,8 +60,6 @@ export const RecommendedSwiper = () => {
     swiper.slideNext();
   }, []);
 
-  const { data } = getRecommended();
-
   return (
     <RecentSwiperSC>
       <SwiperSC
@@ -68,7 +71,7 @@ export const RecommendedSwiper = () => {
         autoplay={{ delay: 5000 }}
         loop
       >
-        {data.map((comic, index) => (
+        {titles.map((comic, index) => (
           <SwiperSlide
             style={{
               height: "80vh",
@@ -89,7 +92,7 @@ export const RecommendedSwiper = () => {
                       textColor={colors.background}
                       backgroundColor={colors.orange}
                     >
-                      {comic.typeComic}
+                      {comic.type}
                     </Badge>
                     <Badge
                       textColor={colors.text}
@@ -111,7 +114,7 @@ export const RecommendedSwiper = () => {
                       textColor={colors.background}
                       backgroundColor={colors.orange}
                     >
-                      {comic.typeComic}
+                      {comic.type}
                     </Badge>
                   </BadgesAdaptiveMinus>
                   <Title>{comic.name}</Title>

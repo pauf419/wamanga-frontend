@@ -6,12 +6,12 @@ export const getComics = (): Comic => {
     alternativeName: "terpenie-moya-ledi",
     imagePath:
       "https://zenko.b-cdn.net/ffc30b72-d39c-42f7-96b1-16a26acb9824?optimizer=image&width=1920&quality=80",
-    id: 0,
+    id: "42423",
     description:
       "Ванесса донька Сатани - суккуб, яка просто хоче грати у відеоігри і розслаблятися вдома, поки одного разу йому, Сатані, не набридає, що вона ледарює вдома, і він не виганяє її в людський світ...",
     rating: 0,
     bannerPath: "/mock-background.png",
-    typeComic: "Manga",
+    type: "Manga",
     author: "",
     originalAuthor: "",
     year: 2023,

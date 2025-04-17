@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   ChaptersWrapper,
   List,
@@ -22,14 +22,33 @@ interface Props {
 
 export const Chapters = ({ comic }: Props) => {
   const [sortingType, setSortingType] = useState<number>(0);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  //Здесь потом будем передавать comicId
-  const { data } = getComicChapters();
+  const filteredAndSortedChapters = useMemo(() => {
+    const filtered = comic.chapters.filter((chapter) =>
+      chapter.title?.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    const sorted = filtered.sort((a, b) => {
+      const aNumber = a.numberChapter ?? 0;
+      const bNumber = b.numberChapter ?? 0;
+
+      return sortingType === 0
+        ? bNumber - aNumber // Descending
+        : aNumber - bNumber; // Ascending
+    });
+
+    return sorted;
+  }, [comic.chapters, searchQuery, sortingType]);
 
   return (
     <ChaptersWrapper>
       <Tools>
-        <Searchbar placeholder="Поиск" />
+        <Searchbar
+          placeholder="Поиск"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
         <div className="mini-switch-wrapper">
           <div
             className={`mini-switch-toggler ${sortingType === 0 && "mini-switch-active"}`}
@@ -48,12 +67,14 @@ export const Chapters = ({ comic }: Props) => {
         </div>
       </Tools>
       <List>
-        {data.length ? (
-          data.map((el) => <Chapter key={el.id} chapter={el} />)
+        {filteredAndSortedChapters.length ? (
+          filteredAndSortedChapters.map((el) => (
+            <Chapter key={el._id} chapter={el} />
+          ))
         ) : (
           <NoChaptersMessage>
             <NoImage src="/no-comments.png" />
-            <NoChaptersText>{comic.id}Резделов нет...</NoChaptersText>
+            <NoChaptersText>Разделов нет...</NoChaptersText>
           </NoChaptersMessage>
         )}
       </List>

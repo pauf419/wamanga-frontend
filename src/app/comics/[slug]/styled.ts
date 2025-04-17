@@ -1,14 +1,9 @@
 "use client";
 
-import BasePage from "@/components/BasePage";
 import { colors, zIndex } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import Link from "next/link";
-
-export const ComicsPageSC = styled(BasePage)`
-  position: relative;
-`;
 
 export const Background = styled.div<{ $backgroundImage: string }>`
   position: absolute;
@@ -126,14 +121,15 @@ export const Badge = styled.div`
   left: 8px;
   padding: 4px;
   font-size: 12px;
-  font-weight: 550;
+  font-weight: 700;
   color: ${colors.background};
   text-transform: uppercase;
   background: ${colors.orange};
-  border-radius: 8px;
+  border-radius: 100px;
 `;
 
-export const ReadButton = styled.button`
+export const ReadButton = styled.a`
+  text-decoration: none;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -199,12 +195,14 @@ export const StatsBadge = styled.div`
 
   @media (max-width: 1200px) {
     width: 100%;
+    background: rgba(29, 30, 32, 0.94);
+    gap: 8px;
   }
 `;
 
 export const StatsContent = styled.span`
   font-size: 13px;
-  font-weight: 550;
+  font-weight: 700;
   color: ${colors.text};
 `;
 

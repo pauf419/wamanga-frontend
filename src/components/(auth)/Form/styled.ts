@@ -20,7 +20,6 @@ export const ModalContent = styled(motion.div)`
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 420px;
   padding: 24px;
   color: ${colors.text};
   background: ${colors.gray};

@@ -1,8 +1,8 @@
 import React from "react";
-import { RandomSC } from "./styled";
+import BasePage from "@/components/BasePage";
 
 const RandomPage = () => {
-  return <RandomSC isImageBehind> </RandomSC>;
+  return <BasePage isImageBehind> </BasePage>;
 };
 
 export default RandomPage;

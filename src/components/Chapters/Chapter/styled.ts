@@ -68,7 +68,7 @@ export const Download = styled.button`
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    background: ${colors.sortingTypeBackgroundHover};
+    background: rgba(143, 150, 163, 0.08);
   }
 `;
 

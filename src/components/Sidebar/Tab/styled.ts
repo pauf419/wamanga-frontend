@@ -22,6 +22,16 @@ export const SidebarTabSC = styled.a<{ $isActive?: boolean; $mobile: boolean }>`
   border-radius: 8px;
   transition: all 0.2s ease-in-out;
 
+  svg {
+    color: #8f96a3;
+    fill: #8f96a3;
+
+    path {
+      color: #8f96a3;
+      fill: #8f96a3;
+    }
+  }
+
   &:hover {
     color: ${(props) => (props.$isActive ? colors.textPriamry : colors.text)};
     background: ${(props) =>

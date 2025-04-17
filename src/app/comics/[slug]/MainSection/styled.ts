@@ -57,11 +57,11 @@ export const InfoTagBadge = styled.span`
   padding: 6px;
   margin-top: 4px;
   font-size: 0.75rem;
-  font-weight: 550;
+  font-weight: 700;
   color: ${colors.textPriamry};
   text-transform: uppercase;
   background: ${colors.textPriamry + convertOpacityToHex(10)};
-  border-radius: 8px;
+  border-radius: 100px;
 `;
 
 export const Badges = styled.div`
@@ -76,6 +76,11 @@ export const InfoTagBadgeDefault = styled(InfoTagBadge)`
   text-transform: none;
   background: ${colors.badgeLightBackground};
   border-radius: 12px;
+  font-weight: 500;
+`;
+
+export const InfoTagTextField = styled.div`
+  display: flex;
 `;
 
 export const ChapterCountWrapper = styled.div`

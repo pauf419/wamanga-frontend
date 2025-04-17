@@ -1,6 +1,6 @@
 export interface ComicChapter {
   createdAt: number;
-  id: number;
+  id: string;
   name: string;
   titleId: number;
   authorId: number;

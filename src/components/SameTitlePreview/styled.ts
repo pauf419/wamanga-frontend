@@ -7,12 +7,14 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
+  position: relative;
 `;
 
 export const Poster = styled.img`
   width: 70px;
   height: 100px;
   border-radius: 12px;
+  object-fit: cover;
 `;
 
 export const Content = styled.div`

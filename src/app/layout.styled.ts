@@ -13,3 +13,7 @@ export const LayoutSC = styled.div`
     grid-template-columns: auto;
   }
 `;
+
+export const ReaderLayout = styled(LayoutSC)`
+  grid-template-columns: auto;
+`;
