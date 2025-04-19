@@ -47,8 +47,17 @@ export const DataListKey = styled.b`
   color: #9da0f7;
 `;
 
-export const DataListValue = styled.div`
+export const DataListValueStatic = styled.div`
   font-size: 13px;
+`;
+
+export const DataListValue = styled.input`
+  font-size: 13px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  text-align: right;
+  outline: none;
 `;
 
 export const ActionWrapper = styled.div`

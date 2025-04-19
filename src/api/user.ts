@@ -21,3 +21,22 @@ export async function getAllUsers(tokens: {
     return [];
   }
 }
+
+export async function editUserAdmin(body: User): Promise<User> {
+  const res = await $apiWithoutAuth.post<User>("/user/admin/edit", body);
+
+  return res.data;
+}
+
+export async function assignManga(
+  userId: string,
+  ids: string[],
+  all: boolean
+): Promise<User> {
+  const res = await $apiWithoutAuth.post<User>(`/user/${userId}/assign`, {
+    ids,
+    allMangaAssigned: all,
+  });
+
+  return res.data;
+}

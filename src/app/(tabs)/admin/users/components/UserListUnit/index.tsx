@@ -7,6 +7,7 @@ import {
   DataListKey,
   DataListUnit,
   DataListValue,
+  DataListValueStatic,
   DataWrapper,
   Wrapper,
 } from "./styled";
@@ -22,15 +23,27 @@ import type { Comic } from "@/api/types/comic";
 import BadgeTypeSelect from "@/components/BadgeTypeSelect";
 import { simpleSearch } from "@/api/title";
 import { AppointWrapper, FlexBlock } from "../../../styled";
+import { title } from "process";
+import { assignManga } from "@/api/user";
+import CloseIcon from "@icons/svg/close.svg";
+import React from "react";
+import { IconButton, Snackbar } from "@mui/material";
 
 interface Props {
   user: User;
 }
 
 const UserListUnit = ({ user }: Props) => {
+  const [message, setMessage] = useState<string>();
+  const [open, setOpen] = useState<boolean>(false);
   const [appointActive, setAppointActive] = useState<boolean>(false);
+  const [appointAll, setAppointAll] = useState<boolean>(user.assignedAllManga);
 
+  const [appointedTitles, setAppointedTitles] = useState<string[]>(
+    user.assignedManga.map((manga) => manga._id)
+  );
   const [titles, setTitles] = useState<Comic[]>([]);
+  const [userEditable, setUserEditable] = useState<User>(user);
 
   const searchTitles = async (query: string) => {
     const _ = await simpleSearch(query);
@@ -46,13 +59,50 @@ const UserListUnit = ({ user }: Props) => {
     case "moderator":
       defaultIndex = 1;
       break;
-    case "admin":
+    case "administrator":
       defaultIndex = 2;
       break;
-    case "dev":
+    case "developer":
       defaultIndex = 3;
       break;
+    case "owner":
+      defaultIndex = 4;
+      break;
   }
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const submit = async () => {
+    try {
+      const res = await assignManga(user._id, appointedTitles, appointAll);
+      setAppointActive(false);
+      setMessage("Данные пользователя успешно обновлены");
+      setOpen(true);
+    } catch (e) {
+      console.error(e);
+      if (e.response.data.message) {
+        setMessage(e.response.data.message);
+        setOpen(true);
+      }
+    }
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton size="small" color="inherit" onClick={handleClose}>
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   return (
     <Wrapper>
@@ -63,8 +113,14 @@ const UserListUnit = ({ user }: Props) => {
       >
         <AppointWrapper>
           <FlexBlock style={{ justifyContent: "space-between" }}>
-            <Checkbox cb={(e) => null} placeholder="Назначить Все Комиксы" />
-            <button className="button-filled">Сохранить</button>
+            <Checkbox
+              cb={(e) => setAppointAll(e)}
+              defaultCheckedValue={user.assignedAllManga}
+              placeholder="Назначить Все Комиксы"
+            />
+            <button className="button-filled" onClick={() => submit()}>
+              Сохранить
+            </button>
           </FlexBlock>
           <WarningBlock>
             <WarningIcon style={{ color: "rgb(143,150,163)" }} as={InfoIcon} />
@@ -78,7 +134,14 @@ const UserListUnit = ({ user }: Props) => {
                 value: title.name,
               };
             })}
-            placeholder="Вв"
+            preset={user.assignedManga.map((manga) => {
+              return {
+                index: manga._id,
+                value: manga.name,
+              };
+            })}
+            onChange={(e) => setAppointedTitles(e.map((el) => el.index))}
+            placeholder="Назначенные пользователю тайтлы"
             onSearch={searchTitles}
             type="default"
           />
@@ -91,21 +154,34 @@ const UserListUnit = ({ user }: Props) => {
         <DataWrapper>
           <DataListUnit>
             <DataListKey>Ник</DataListKey>
-            <DataListValue>{user.username}</DataListValue>
+            <DataListValue
+              defaultValue={user.username}
+              onChange={(e) =>
+                setUserEditable({
+                  ...userEditable,
+                  username: e.target.value,
+                })
+              }
+            />
           </DataListUnit>
           <DataListUnit>
             <DataListKey>Почта</DataListKey>
-            <DataListValue>{user.email}</DataListValue>
+            <DataListValueStatic>{user.email}</DataListValueStatic>
           </DataListUnit>
           <DataListUnit>
             <DataListKey>Вход</DataListKey>
-            <DataListValue>...</DataListValue>
+            <DataListValueStatic>...</DataListValueStatic>
           </DataListUnit>
           <DataListUnit>
             <DataListKey>Роль</DataListKey>
-            <DataListValue>
+            <DataListValueStatic>
               <Dropdown
-                cb={(e) => null}
+                cb={(e) =>
+                  setUserEditable({
+                    ...userEditable,
+                    role: e.key,
+                  })
+                }
                 defaultIndex={defaultIndex}
                 items={[
                   {
@@ -117,16 +193,20 @@ const UserListUnit = ({ user }: Props) => {
                     name: "Модератор",
                   },
                   {
-                    key: "admin",
+                    key: "administrator",
                     name: "Администратор",
                   },
                   {
-                    key: "dev",
+                    key: "developer",
                     name: "Разработчик",
+                  },
+                  {
+                    key: "owner",
+                    name: "Владелец",
                   },
                 ]}
               />
-            </DataListValue>
+            </DataListValueStatic>
           </DataListUnit>
         </DataWrapper>
       </ContentWrapper>
@@ -142,6 +222,12 @@ const UserListUnit = ({ user }: Props) => {
         </button>
         <button className="button-transparent button-red">Удалить</button>
       </ActionWrapper>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        message={message}
+        action={action}
+      />
     </Wrapper>
   );
 };

@@ -14,6 +14,7 @@
 }*/
 
 import type { Bookmark } from "./bookmark";
+import type { Comic } from "./comic";
 
 export interface File {
   filename: string;
@@ -42,4 +43,6 @@ export interface User {
   commented: string[];
   teams: string[];
   role: string;
+  assignedManga: Comic[];
+  assignedAllManga: boolean;
 }
