@@ -24,7 +24,7 @@ import BadgeTypeSelect from "@/components/BadgeTypeSelect";
 import { simpleSearch } from "@/api/title";
 import { AppointWrapper, FlexBlock } from "../../../styled";
 import { title } from "process";
-import { assignManga } from "@/api/user";
+import { assignManga, editUserAdmin } from "@/api/user";
 import CloseIcon from "@icons/svg/close.svg";
 import React from "react";
 import { IconButton, Snackbar } from "@mui/material";
@@ -85,6 +85,20 @@ const UserListUnit = ({ user }: Props) => {
     try {
       const res = await assignManga(user._id, appointedTitles, appointAll);
       setAppointActive(false);
+      setMessage("Данные пользователя успешно обновлены");
+      setOpen(true);
+    } catch (e) {
+      console.error(e);
+      if (e.response.data.message) {
+        setMessage(e.response.data.message);
+        setOpen(true);
+      }
+    }
+  };
+
+  const edit = async () => {
+    try {
+      const res = await editUserAdmin(userEditable);
       setMessage("Данные пользователя успешно обновлены");
       setOpen(true);
     } catch (e) {
@@ -217,7 +231,10 @@ const UserListUnit = ({ user }: Props) => {
         >
           Назначить
         </button>
-        <button className="button-transparent button-primary">
+        <button
+          className="button-transparent button-primary"
+          onClick={() => edit()}
+        >
           Редактировать
         </button>
         <button className="button-transparent button-red">Удалить</button>
