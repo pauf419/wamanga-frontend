@@ -207,7 +207,7 @@ const UserListUnit = ({ user }: Props) => {
                     name: "Модератор",
                   },
                   {
-                    key: "administrator",
+                    key: "admin",
                     name: "Администратор",
                   },
                   {
