@@ -21,14 +21,9 @@ import Input from "@/components/Input";
 import ChapterListMinimized from "../components/UnitListMinimized";
 import { Checkbox } from "@/components/Checkbox";
 import ComicEditableDataList from "../components/DataListEditable/Comic";
-interface Props {
-  params: {
-    slug: string;
-  };
-}
 
-const AdminPage = async ({ params }: Props) => {
-  const slug = await params.slug;
+const AdminPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
 
   const title = await getBySlug(slug);
 

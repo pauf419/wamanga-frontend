@@ -23,15 +23,12 @@ import { Action, ActionContainer, Controller, HeaderTitle } from "./styled";
 import ControllerComponent from "./components/Controller";
 import ActionPanel from "./components/ActionPanel";
 
-interface Props {
-  params: {
-    slug: string;
-    chapterId: string;
-  };
-}
-
-const AdminPage = async ({ params }: Props) => {
-  const { slug } = await params;
+const AdminPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string; chapterId: string }>;
+}) => {
+  const { slug, chapterId } = await params;
 
   const title = await getBySlug(slug);
 

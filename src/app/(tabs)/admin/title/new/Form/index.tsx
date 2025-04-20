@@ -14,7 +14,9 @@ import Input from "@/components/Input";
 import { Checkbox } from "@/components/Checkbox";
 import { WarningBlock, WarningIcon, WarningText } from "@/app/user/styled";
 import InfoIcon from "@icons/svg/info-filled.svg";
-import BadgeTypeSelect from "@/components/BadgeTypeSelect";
+import BadgeTypeSelect, {
+  BadgeTypeSelectElement,
+} from "@/components/BadgeTypeSelect";
 import { Dropdown } from "@/components/Dropdown";
 import type { CreateTitleDto } from "@/api/title";
 import { ComicsType, createTitle, PegiType, StatusType } from "@/api/title";
@@ -123,25 +125,15 @@ const AddTitlePageForm = () => {
     setOpen(true);
   };
 
-  const handleClose = (
-    event: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
-
   const submit = async () => {
     try {
       const title = await createTitle(form, posterBlob, bannerBlob);
       router.push(`/comics/${title.alternativeName}`);
     } catch (e) {
       console.error(e);
-      if (e.response.data.message) {
-        setError(e.response.data.message);
+      if (e && typeof e === "object" && "response" in e) {
+        const err = e as { response: { data: { message: string } } };
+        setError(err.response.data.message);
         handleClick();
       }
     }
@@ -149,7 +141,7 @@ const AddTitlePageForm = () => {
 
   const action = (
     <React.Fragment>
-      <IconButton size="small" color="inherit" onClick={handleClose}>
+      <IconButton size="small" color="inherit" onClick={() => setOpen(false)}>
         <CloseIcon fontSize="small" />
       </IconButton>
     </React.Fragment>

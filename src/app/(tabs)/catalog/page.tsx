@@ -3,7 +3,6 @@ import BasePage from "@/components/BasePage";
 import CatalogBody from "./CatalogBody";
 
 const CatalogPage = () => {
-
   return (
     <BasePage isImageBehind>
       <CatalogBody />

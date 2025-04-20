@@ -1,33 +1,31 @@
+"use server";
+
+import { redirect } from "next/navigation";
 import BasePage from "@/components/BasePage";
 import {
   Block,
   Container,
-  DataList,
-  DataListInput,
-  DataListItem,
   FlexBlock,
-  GridContainer,
-  MiniBoxWrapper,
   Pathname,
   PathnameHeader,
   PathnameSpacer,
   Poster,
-  SegmentSeparator,
 } from "../../../../styled";
 import { getChapterById } from "@/api/chapter";
 import { getBySlug } from "@/api/title";
-import { redirect } from "next/navigation";
 import ChapterPageListMinimized from "../../../components/UnitListMinimized/ChapterPageList";
 import ChapterEditableDataList from "../../../components/DataListEditable/Chapter";
 
-interface Props {
-  params: {
-    slug: string;
-    chapterId: string;
-  };
-}
+export type paramsType = {
+  slug: string;
+  chapterId: string;
+};
 
-const AdminPage = async ({ params }: Props) => {
+const AdminPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string; chapterId: string }>;
+}) => {
   const { slug, chapterId } = await params;
 
   const title = await getBySlug(slug);

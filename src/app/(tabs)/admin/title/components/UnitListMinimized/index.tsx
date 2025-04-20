@@ -50,7 +50,7 @@ const ChapterListMinimized = ({ slug, chapters }: Props) => {
           .sort((a, b) => a.volumeIndex - b.volumeIndex)
           .filter((chapter) => !filter || chapter.title.includes(filter))
           .map((chapter) => (
-            <MiniBoxWrapper key={chapter._id}>
+            <MiniBoxWrapper key={chapter._id} $uploaded={false}>
               <h3>{chapter.title}</h3>
               <Link href={`/admin/title/${slug}/chapters/${chapter._id}`}>
                 Редактировать

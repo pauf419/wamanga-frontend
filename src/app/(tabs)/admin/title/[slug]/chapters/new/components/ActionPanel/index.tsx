@@ -118,8 +118,10 @@ export const ActionPanel = ({ title }: Props) => {
         });
       } catch (e) {
         console.error(e);
-        if (e.response.data.message)
-          setErrors((prev) => [...prev, e.response.data.message]);
+        if (e && typeof e === "object" && "response" in e) {
+          const err = e as { response: { data: { message: string } } };
+          setErrors((prev) => [...prev, err.response.data.message]);
+        }
       }
     }
   };
@@ -170,11 +172,11 @@ export const ActionPanel = ({ title }: Props) => {
           const chapterMatch = value.match(/Глава (\d+)/);
 
           if (volumeMatch) {
-            updatedUnit.volume = volumeMatch[1];
+            updatedUnit.volume = Number(volumeMatch[1]);
           }
 
           if (chapterMatch) {
-            updatedUnit.chapter = chapterMatch[1];
+            updatedUnit.chapter = Number(chapterMatch[1]);
           }
         }
 

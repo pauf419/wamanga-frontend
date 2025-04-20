@@ -11,8 +11,7 @@ import {
   Searchbar,
 } from "./styled";
 import type { Comic } from "@/api/types/comic";
-import { getComicChapters } from "@/api/mocks/queries/use-get-comic-chapters";
-import { Chapter } from "./Chapter";
+import { ChapterUnit } from "./Chapter";
 import DescendingIcon from "@icons/svg/sort-descending.svg";
 import AscendingIcon from "@icons/svg/sort-ascending.svg";
 
@@ -69,7 +68,7 @@ export const Chapters = ({ comic }: Props) => {
       <List>
         {filteredAndSortedChapters.length ? (
           filteredAndSortedChapters.map((el) => (
-            <Chapter key={el._id} chapter={el} />
+            <ChapterUnit key={el._id} chapter={el} />
           ))
         ) : (
           <NoChaptersMessage>

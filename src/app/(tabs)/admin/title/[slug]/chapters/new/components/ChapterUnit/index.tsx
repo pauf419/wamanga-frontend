@@ -49,12 +49,16 @@ export const ChapterUnitComponent = ({
           <VolumeInput
             $left
             defaultValue={unit.volume}
-            onChange={(e) => updateUnit(unit.id, "volume", e.target.value)}
+            onChange={(e) =>
+              updateUnit(unit.id, "volume", Number(e.target.value))
+            }
           />
           <VolumeInput
             $left={false}
             defaultValue={unit.chapter}
-            onChange={(e) => updateUnit(unit.id, "chapter", e.target.value)}
+            onChange={(e) =>
+              updateUnit(unit.id, "chapter", Number(e.target.value))
+            }
           />
         </VolumeInputBody>
       </VolumeInputWrapper>

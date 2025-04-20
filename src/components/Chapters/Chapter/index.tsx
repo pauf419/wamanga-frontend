@@ -17,13 +17,13 @@ import DownloadIcon from "@icons/svg/download-chapter.svg";
 import LikeIcon from "@icons/svg/like.svg";
 import ViewIcon from "@icons/svg/view.svg";
 import CommentIcon from "@icons/svg/comment.svg";
-import { Chapter } from "@/api/types/chapter";
+import type { Chapter } from "@/api/types/chapter";
 
 interface Props {
   chapter: Chapter;
 }
 
-export const Chapter = ({ chapter }: Props) => {
+export const ChapterUnit = ({ chapter }: Props) => {
   return (
     <Wrapper>
       <Segment>

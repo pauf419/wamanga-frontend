@@ -113,8 +113,10 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
         setPagesUploaded((prev) => prev + 1);
       } catch (e) {
         console.error(e);
-        if (e.response.data.message)
-          setErrors((prev) => [...prev, e.response.data.message]);
+        if (e && typeof e === "object" && "response" in e) {
+          const err = e as { response: { data: { message: string } } };
+          setErrors((prev) => [...prev, err.response.data.message]);
+        }
       }
     }
   };

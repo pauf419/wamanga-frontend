@@ -38,8 +38,9 @@ const ChapterEditableDataList = ({ chapter }: Props) => {
       setOpen(true);
     } catch (e) {
       console.error(e);
-      if (e.response.data.message) {
-        setMessage(e.response.data.message);
+      if (e && typeof e === "object" && "response" in e) {
+        const err = e as { response: { data: { message: string } } };
+        setMessage(err.response.data.message);
         setOpen(true);
       }
     }

@@ -13,7 +13,7 @@ import {
 import BadgeDynamic from "./BadgeDynamic";
 
 export interface BadgeTypeSelectElement {
-  index: number;
+  index: any;
   value: string;
 }
 
@@ -23,7 +23,7 @@ interface Props {
   elements: BadgeTypeSelectElement[];
   placeholder: string;
   type?: BadgeTypeSelectType;
-  onSearch?: (string) => void;
+  onSearch?: (v: string) => void;
   nested?: boolean;
   preset?: BadgeTypeSelectElement[];
   onChange?: (elements: BadgeTypeSelectElement[]) => void;
@@ -81,7 +81,7 @@ const BadgeTypeSelect = ({
     if (searchTimeoutId) clearTimeout(searchTimeoutId);
     if (!onSearch) return;
     const tid = setTimeout(() => {
-      onSearch(search);
+      if (search) onSearch(search);
     }, 1000);
     setSearchTimeoutId(tid);
   }, [search]);

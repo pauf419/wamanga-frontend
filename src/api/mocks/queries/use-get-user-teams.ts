@@ -4,32 +4,19 @@ export const getUserTeams = (): GetUserTeamsResult => {
   return {
     data: [
       {
-        avatar:
-          "https://zenko.b-cdn.net/84c9a76d-23d3-4028-8ca5-6d36411b1399?optimizer=image&width=96&quality=80&height=auto",
-        description: "121212",
-        id: 11212,
-        name: "Hello",
-      },
-      {
-        avatar:
-          "https://zenko.b-cdn.net/84c9a76d-23d3-4028-8ca5-6d36411b1399?optimizer=image&width=96&quality=80&height=auto",
-        description: "121212",
-        id: 12312,
-        name: "Hello1",
-      },
-      {
-        avatar:
-          "https://zenko.b-cdn.net/84c9a76d-23d3-4028-8ca5-6d36411b1399?optimizer=image&width=96&quality=80&height=auto",
-        description: "121212",
-        id: 12812,
-        name: "Hello2",
-      },
-      {
-        avatar:
-          "https://zenko.b-cdn.net/84c9a76d-23d3-4028-8ca5-6d36411b1399?optimizer=image&width=96&quality=80&height=auto",
-        description: "121212",
-        id: 12412,
-        name: "Hello3",
+        _id: "67b0337e3bb955c0606154bc",
+        name: "Test Team",
+        owner: "user123",
+        avatar: "/teams/banners/82215562-ab05-46d1-9b3f-c7acc2f753db.png",
+        banner: "/teams/banners/82215562-ab05-46d1-9b3f-c7acc2f753db.png",
+        description: "sdsdsdsd",
+        likes: "3434",
+        boosty: "https://boosty.com/team",
+        vk: "https://vk.com/team",
+        patreon: "https://patreon.com/team",
+        telegram: "https://t.me/team",
+        discord: "https://discord.gg/team",
+        id: 1123,
       },
     ],
   };

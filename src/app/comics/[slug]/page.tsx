@@ -40,14 +40,19 @@ import BasePage from "@/components/BasePage";
 import BookmarkIcon from "@icons/svg/bookmark.svg";
 import { Tooltip } from "@mui/material";
 
-interface ComicsPageProps {
+export type paramsType = Promise<{
   params: {
     slug: string;
   };
-}
+}>;
 
-const ComicsPage = async ({ params }: ComicsPageProps) => {
-  const comics = await getBySlug(params.slug);
+const ComicsPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  const comics = await getBySlug(slug);
   const similarComics = await getSimilar(comics._id);
   const { data } = getSameTitles();
 

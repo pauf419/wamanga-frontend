@@ -70,27 +70,17 @@ const UserListUnit = ({ user }: Props) => {
       break;
   }
 
-  const handleClose = (
-    event: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
-
   const submit = async () => {
     try {
-      const res = await assignManga(user._id, appointedTitles, appointAll);
+      await assignManga(user._id, appointedTitles, appointAll);
       setAppointActive(false);
       setMessage("Данные пользователя успешно обновлены");
       setOpen(true);
     } catch (e) {
       console.error(e);
-      if (e.response.data.message) {
-        setMessage(e.response.data.message);
+      if (e && typeof e === "object" && "response" in e) {
+        const err = e as { response: { data: { message: string } } };
+        setMessage(err.response.data.message);
         setOpen(true);
       }
     }
@@ -98,13 +88,14 @@ const UserListUnit = ({ user }: Props) => {
 
   const edit = async () => {
     try {
-      const res = await editUserAdmin(userEditable);
+      await editUserAdmin(userEditable);
       setMessage("Данные пользователя успешно обновлены");
       setOpen(true);
     } catch (e) {
       console.error(e);
-      if (e.response.data.message) {
-        setMessage(e.response.data.message);
+      if (e && typeof e === "object" && "response" in e) {
+        const err = e as { response: { data: { message: string } } };
+        setMessage(err.response.data.message);
         setOpen(true);
       }
     }
@@ -112,7 +103,7 @@ const UserListUnit = ({ user }: Props) => {
 
   const action = (
     <React.Fragment>
-      <IconButton size="small" color="inherit" onClick={handleClose}>
+      <IconButton size="small" color="inherit" onClick={() => setOpen(false)}>
         <CloseIcon fontSize="small" />
       </IconButton>
     </React.Fragment>

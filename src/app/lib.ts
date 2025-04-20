@@ -10,7 +10,7 @@ export async function encrypt(payload: any) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime("10h from now")
+    .setExpirationTime("10 h from now")
     .sign(key);
 }
 
@@ -22,7 +22,7 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function logout() {
-  cookies().set("session", "", { expires: new Date(0) });
+  (await cookies()).set("session", "", { expires: new Date(0) });
 }
 
 export async function getSession() {

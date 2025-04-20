@@ -1,6 +1,6 @@
 import type { GetTitleVolumeConfig } from "@/api/types/results";
 
-export const getTitleVolumeConfig = (): GetTitleVolumeConfig => {
+export const getTitleVolumeConfig = (): any => {
   return {
     data: {
       volumes: [

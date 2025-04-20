@@ -27,7 +27,8 @@ export const NoCommentsMessage = styled.div`
 `;
 
 export const NoImage = styled.img`
-  height: 180px;
+  max-width: 450px;
+  width: 100%;
 `;
 
 export const NoCommentsText = styled.div`

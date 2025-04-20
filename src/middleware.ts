@@ -1,9 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { logout, updateSession } from "./app/lib";
 
+export const adminAccessRoles = ["admin", "owner", "moderator"];
+
 export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === "/logout") await logout();
-  return await updateSession(request);
+  const data = await updateSession(request);
+  return data;
 }
 
 export const config = {

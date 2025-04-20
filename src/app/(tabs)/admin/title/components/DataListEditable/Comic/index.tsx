@@ -9,6 +9,7 @@ import BadgeTypeSelect from "@/components/BadgeTypeSelect";
 import { Dropdown } from "@/components/Dropdown";
 import { createTitle, editManga, StatusType } from "@/api/title";
 import Input from "@/components/Input";
+import type { SnackbarCloseReason } from "@mui/material/Snackbar";
 import Snackbar from "@mui/material/Snackbar";
 import React from "react";
 import { IconButton } from "@mui/material";
@@ -39,17 +40,6 @@ const ComicEditableDataList = ({ title }: Props) => {
     (item) => item.key === title.transferStatus
   );
 
-  const handleClose = (
-    event: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
-
   const submit = async () => {
     try {
       const edited = await editManga(editTitle);
@@ -57,8 +47,9 @@ const ComicEditableDataList = ({ title }: Props) => {
       setMessage("Тайтл успешно обновлен");
     } catch (e) {
       console.error(e);
-      if (e.response.data.message) {
-        setMessage(e.response.data.message);
+      if (e && typeof e === "object" && "response" in e) {
+        const err = e as { response: { data: { message: string } } };
+        setMessage(err.response.data.message);
         setOpen(true);
       }
     }
@@ -66,7 +57,7 @@ const ComicEditableDataList = ({ title }: Props) => {
 
   const action = (
     <React.Fragment>
-      <IconButton size="small" color="inherit" onClick={handleClose}>
+      <IconButton size="small" color="inherit" onClick={() => setOpen(false)}>
         <CloseIcon fontSize="small" />
       </IconButton>
     </React.Fragment>

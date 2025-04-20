@@ -2,15 +2,20 @@ import { getBySlug } from "@/api/title";
 import ReaderBody from "./ReaderBody";
 import { getChapterById } from "@/api/chapter";
 
-interface ReaderPageProps {
+export type paramsType = Promise<{
   params: {
     slug: string;
+    chapterId: string;
   };
-}
-
-const ReaderPage = async ({ params }: ReaderPageProps) => {
-  const titleAlternativeName = await params.slug[0];
-  const chapterId = await params.slug[1];
+}>;
+const ReaderPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  const titleAlternativeName = slug[0];
+  const chapterId = slug[1];
 
   const title = await getBySlug(titleAlternativeName);
   const chapter = await getChapterById(chapterId);
