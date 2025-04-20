@@ -110,3 +110,28 @@ export const Indicator = styled(LevelStat)`
     line-height: 1.3;
   }
 `;
+
+export const ReaderButtonWrapper = styled.div`
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 16px;
+  min-height: 38px;
+`;
+
+export const ReaderButton = styled.a`
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  color: #fff;
+  padding: 10px 16px;
+  background: #11121399;
+  color: #fffl
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px dashed rgba(143, 150, 163, 0.24);
+  border-radius: 6px;
+`;

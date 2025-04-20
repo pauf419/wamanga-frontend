@@ -9,6 +9,7 @@ import {
   ControllerDisabledMessage,
   HeaderBottom,
   HeaderSC,
+  MobileReaderButtonWrapper,
   PagePopup,
   PagePopupWrapper,
   SettingsBlock,
@@ -30,7 +31,13 @@ import ReturnIcon from "@icons/svg/return.svg";
 import type { ChapterPage } from "@/api/types/chapter-page";
 import type { Chapter } from "@/api/types/chapter";
 import type { Volume } from "@/api/types/volume";
-import { DisplaysWhenMobile, HidesWhenMobile } from "../styled";
+import {
+  DisplaysWhenMobile,
+  HidesWhenMobile,
+  ReaderButton,
+  ReaderButtonWrapper,
+} from "../styled";
+import { Tooltip } from "@mui/material";
 
 export interface ModalState {
   signUp: boolean;
@@ -85,42 +92,68 @@ const ReaderHeader = ({
           </a>
         </Block>
         <ChapterControllsBlock>
-          <ChaptersController
-            $disabled={!chapter.prevChapter}
-            onClick={(e) => {
-              if (!chapter.prevChapter) {
-                e.preventDefault();
-                return false;
-              }
-            }}
-            href={`/reader/${title.alternativeName}/${chapter.prevChapter?._id}`}
-          >
-            <ControllerDisabledMessage>
-              Упс, это первый раздел
-            </ControllerDisabledMessage>
-            <ArrowLeft />
-          </ChaptersController>
+          {chapter.prevChapter ? (
+            <ChaptersController
+              $disabled={!chapter.prevChapter}
+              onClick={(e) => {
+                if (!chapter.prevChapter) {
+                  e.preventDefault();
+                  return false;
+                }
+              }}
+              href={`/reader/${title.alternativeName}/${chapter.prevChapter?._id}`}
+            >
+              <ArrowLeft />
+            </ChaptersController>
+          ) : (
+            <Tooltip title="Упс, это первый раздел">
+              <ChaptersController
+                $disabled={!chapter.prevChapter}
+                onClick={(e) => {
+                  if (!chapter.prevChapter) {
+                    e.preventDefault();
+                    return false;
+                  }
+                }}
+              >
+                <ArrowLeft />
+              </ChaptersController>
+            </Tooltip>
+          )}
           <ChaptersControlls onClick={() => setChaptersSidebarActive(true)}>
             {chapter.title}
             <HidesWhenMobile>
               {chapter.description ? `: ${chapter.description}` : ""}
             </HidesWhenMobile>
           </ChaptersControlls>
-          <ChaptersController
-            $disabled={!chapter.nextChapter}
-            onClick={(e) => {
-              if (!chapter.nextChapter) {
-                e.preventDefault();
-                return false;
-              }
-            }}
-            href={`/reader/${title.alternativeName}/${chapter.nextChapter?._id}`}
-          >
-            <ArrowRight />
-            <ControllerDisabledMessage>
-              Упс, это последний раздел
-            </ControllerDisabledMessage>
-          </ChaptersController>
+          {chapter.nextChapter ? (
+            <ChaptersController
+              $disabled={!chapter.nextChapter}
+              onClick={(e) => {
+                if (!chapter.nextChapter) {
+                  e.preventDefault();
+                  return false;
+                }
+              }}
+              href={`/reader/${title.alternativeName}/${chapter.nextChapter?._id}`}
+            >
+              <ArrowRight />
+            </ChaptersController>
+          ) : (
+            <Tooltip title="Упс, это последний раздел">
+              <ChaptersController
+                $disabled={!chapter.nextChapter}
+                onClick={(e) => {
+                  if (!chapter.nextChapter) {
+                    e.preventDefault();
+                    return false;
+                  }
+                }}
+              >
+                <ArrowRight />
+              </ChaptersController>
+            </Tooltip>
+          )}
         </ChapterControllsBlock>
         <HidesWhenMobile>
           <SettingsBlock>
@@ -165,6 +198,11 @@ const ReaderHeader = ({
         </HidesWhenMobile>
       </HeaderSC>
       <DisplaysWhenMobile>
+        <MobileReaderButtonWrapper>
+          <ReaderButton href={title.telegram}>
+            {title.textForButton}
+          </ReaderButton>
+        </MobileReaderButtonWrapper>
         <HeaderBottom>
           <SettingsBlock>
             <SettingsBlurer
@@ -207,6 +245,13 @@ const ReaderHeader = ({
           </SettingsBlock>
         </HeaderBottom>
       </DisplaysWhenMobile>
+      <HidesWhenMobile>
+        <ReaderButtonWrapper>
+          <ReaderButton href={title.telegram}>
+            {title.textForButton}
+          </ReaderButton>
+        </ReaderButtonWrapper>
+      </HidesWhenMobile>
     </>
   );
 };

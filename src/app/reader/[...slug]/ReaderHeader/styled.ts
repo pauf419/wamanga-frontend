@@ -421,6 +421,14 @@ export const ChaptersListElement = styled.a<{ $active: boolean }>`
   }
 `;
 
+export const MobileReaderButtonWrapper = styled.div`
+  position: fixed;
+  bottom: 59px;
+  right: 8px;
+  z-index: 9;
+  min-height: 38px;
+`;
+
 export const HeaderBottom = styled.div`
   position: fixed;
   bottom: 0;

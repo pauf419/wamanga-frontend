@@ -10,6 +10,7 @@ import {
   InfoBlock,
   InfoBlockTranslator,
   InfoContainer,
+  ReaderButton,
   ReaderContentImage,
   ReaderMain,
   ReaderPageWrapper,

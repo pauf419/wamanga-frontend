@@ -2,6 +2,12 @@ import type { GetComicCommentsResult } from "@/api/types/results";
 
 export const getComicComments = (): GetComicCommentsResult => {
   return {
+    data: [],
+  };
+};
+
+/*export const getComicComments = (): GetComicCommentsResult => {
+  return {
     data: [
       {
         id: 0,
@@ -79,4 +85,4 @@ export const getComicComments = (): GetComicCommentsResult => {
       },
     ],
   };
-};
+};*/
