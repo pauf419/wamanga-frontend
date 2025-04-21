@@ -1,3 +1,4 @@
+import type { User } from "@/api/types/user";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import type { NextRequest } from "next/server";
@@ -43,14 +44,21 @@ export async function getTokens() {
   };
 }
 
-export async function updateSession(request: NextRequest) {
+export async function updateSession(request: NextRequest): Promise<{
+  response: NextResponse;
+  user: User | undefined;
+}> {
   const accessToken = request.cookies.get("access_token")?.value;
   const oldRefreshToken = request.cookies.get("refresh_token")?.value;
 
   const response = NextResponse.next();
   response.headers.set("x-current-path", request.nextUrl.pathname);
 
-  if (!oldRefreshToken || !accessToken) return response;
+  if (!oldRefreshToken || !accessToken)
+    return {
+      response,
+      user: undefined,
+    };
 
   try {
     const refreshResponse = await fetch(
@@ -62,7 +70,11 @@ export async function updateSession(request: NextRequest) {
       }
     );
 
-    if (!refreshResponse.ok) return response;
+    if (!refreshResponse.ok)
+      return {
+        response,
+        user: undefined,
+      };
 
     const { accessToken, refreshToken } = await refreshResponse.json();
 
@@ -76,7 +88,11 @@ export async function updateSession(request: NextRequest) {
     });
 
     const session = accessToken;
-    if (!session) return response;
+    if (!session)
+      return {
+        response,
+        user: undefined,
+      };
 
     const parsed = await decrypt(session);
     parsed.expires = new Date(Date.now() + 60 * 60 * 10 * 1000);
@@ -85,9 +101,15 @@ export async function updateSession(request: NextRequest) {
       expires: parsed.expires,
     });
 
-    return response;
+    return {
+      response,
+      user: parsed,
+    };
   } catch (e) {
     console.error(e);
-    return response;
+    return {
+      response,
+      user: undefined,
+    };
   }
 }

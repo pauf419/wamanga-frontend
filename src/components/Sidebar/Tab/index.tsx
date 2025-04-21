@@ -10,6 +10,7 @@ interface Props {
   sideIcon?: React.ReactNode;
   route: Route;
   mobile?: boolean;
+  forceRoute?: string;
 }
 
 export const SidebarTab = ({
@@ -17,13 +18,14 @@ export const SidebarTab = ({
   sideIcon,
   route,
   mobile = false,
+  forceRoute = "",
 }: Props) => {
   const path = usePathname();
 
   return (
     <SidebarTabSC
       $isActive={path === route.path}
-      href={route.path}
+      href={forceRoute ? forceRoute : route.path}
       $mobile={mobile}
     >
       <Left $isActive={path === route.path} $mobile={mobile}>

@@ -125,7 +125,7 @@ export async function getDayTop(): Promise<Comic[]> {
 }
 
 export async function getRandomComic(): Promise<Comic> {
-  const res = await $api.get("/manga/random");
+  const res = await $apiWithoutAuth.get("/manga/random");
 
   return res.data;
 }

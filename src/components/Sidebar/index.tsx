@@ -16,6 +16,7 @@ import AdminCatalogIcon from "@icons/svg/admin-catalog.svg";
 import AdminUsersIcon from "@icons/svg/admin-user.svg";
 import AdminTeamsIcon from "@icons/svg/admin-team.svg";
 import AdminSettingsIcon from "@icons/svg/admin-gear.svg";
+import { getRandomComic } from "@/api/title";
 
 const isAdminPage = async () => {
   const referer = (await headers()).get("x-current-path") || "";
@@ -48,6 +49,8 @@ const Sidebar = async () => {
     );
   if (await isReaderPage()) return <div></div>;
 
+  const randomTitle = await getRandomComic();
+
   const moreRoutes = [
     { title: "Премиум подписочка", path: "/catalog" },
     { title: "Крутейшая страница для си132554252", path: "/home" },
@@ -61,7 +64,11 @@ const Sidebar = async () => {
       <Tabs>
         <SidebarTab icon={<HomeIcon />} route={routes.home} />
         <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
-        <SidebarTab icon={<RandomIcon />} route={routes.random} />
+        <SidebarTab
+          icon={<RandomIcon />}
+          forceRoute={`/comics/${randomTitle?.alternativeName}`}
+          route={routes.random}
+        />
         <SidebarExpandTab
           icon={<MoreIcon />}
           title={"Ещё"}

@@ -16,6 +16,10 @@ import RandomIcon from "@icons/svg/random.svg";
 import MoreIcon from "@icons/svg/more.svg";
 import { routes } from "@/const";
 import { SidebarExpandTab } from "../Sidebar/ExpandTab";
+import { useState } from "react";
+import type { Comic } from "@/api/types/comic";
+import { useEffect } from "react";
+import { getRandomComic } from "@/api/title";
 
 interface SideBarMobileProps {
   active: boolean;
@@ -30,20 +34,37 @@ const SideBarMobile: FC<SideBarMobileProps> = ({ active, setActive }) => {
     { title: "Политика сайта", path: "/catalog" },
   ];
 
+  const [randomTitle, setRandomTitle] = useState<Comic>();
+
+  const getRandomTitle = async () => {
+    try {
+      const title = await getRandomComic();
+      setRandomTitle(title);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    if (!randomTitle) getRandomTitle();
+  }, [randomTitle]);
+
   return (
     <>
       <Blurer $notadaptive $active={active} onClick={() => setActive(false)} />
       <SidebarMobileSC $active={active}>
         <LogoSegment>
           <LogoSC src={Logo} alt="logo" />
-          <ButtonOutline>
-            <LoginButton>Войти</LoginButton>
-          </ButtonOutline>
         </LogoSegment>
         <Navigation>Навигация</Navigation>
         <SidebarTab mobile icon={<HomeIcon />} route={routes.home} />
         <SidebarTab mobile icon={<CatalogIcon />} route={routes.catalog} />
-        <SidebarTab mobile icon={<RandomIcon />} route={routes.random} />
+        <SidebarTab
+          mobile
+          icon={<RandomIcon />}
+          forceRoute={`/comics/${randomTitle?.alternativeName}`}
+          route={routes.random}
+        />
         <SidebarExpandTab
           mobile
           icon={<MoreIcon />}
