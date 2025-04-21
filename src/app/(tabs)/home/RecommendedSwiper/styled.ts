@@ -38,12 +38,10 @@ export const RecentSwiperSC = styled.div`
 
 export const SwiperSC = styled(Swiper)`
   height: 80vh;
-  background: blue;
 `;
 
 export const SwieprSlideSC = styled(SwiperSlide)`
   height: 80vh;
-  background: red;
 `;
 
 export const SwipeButton = styled.button`
@@ -84,7 +82,7 @@ export const Background = styled.div<{ $backgroundImage: string }>`
   width: 100%;
   height: 80vh;
   padding-top: 80px;
-  background: ${colors.primary};
+  background: #111213;
   background-image: url(${({ $backgroundImage }) => $backgroundImage});
   background-repeat: no-repeat;
   background-position: center;

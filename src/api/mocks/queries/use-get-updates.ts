@@ -5,48 +5,20 @@ export const getUpdates = (): GetUpdatesResult => {
     data: [
       {
         type: "news",
-        title: "медузки!!",
-        overview: "Морские животные рулят mother fucker~",
-        image: "/bac2.jpg",
+        title: "Релиз BETA-версии",
+        overview: "Мы открылись. Пока в BETA, но уже с душой",
+        image: "/mock-background.png",
       },
       {
         type: "team",
-        title: "Команда лохов",
+        title: "Не герои, но почти",
         overview:
-          "Мы команда настоящих лошар, и мы покажем вам кто такой лось~",
-        image: "bac3.png",
+          "Наша суперсила — любовь к блю локу и бессонные ночи за переводами. Присоединяйся!",
+        image: "/mock-background.png",
         button: {
           link: "/",
           text: "Подписаться",
         },
-      },
-      {
-        type: "team",
-        title: "Команда Uvuvwevwe Onyetyenyevwe Osas",
-        overview:
-          "Мы команда Uvuvwevwe Onyetyenyevwe Osas, и мы покажем вам кто такой Африка~",
-        image: "bac1.jpg",
-      },
-      {
-        type: "team",
-        title: "Команда Uvuvwevwe Onyetyenyevwe Osas",
-        overview:
-          "Мы команда Uvuvwevwe Onyetyenyevwe Osas, и мы покажем вам кто такой Африка~",
-        image: "bac1.jpg",
-      },
-      {
-        type: "team",
-        title: "Команда Uvuvwevwe Onyetyenyevwe Osas",
-        overview:
-          "Мы команда Uvuvwevwe Onyetyenyevwe Osas, и мы покажем вам кто такой Африка~",
-        image: "bac1.jpg",
-      },
-      {
-        type: "team",
-        title: "Команда Uvuvwevwe Onyetyenyevwe Osas",
-        overview:
-          "Мы команда Uvuvwevwe Onyetyenyevwe Osas, и мы покажем вам кто такой Африка~",
-        image: "bac1.jpg",
       },
     ],
   };
