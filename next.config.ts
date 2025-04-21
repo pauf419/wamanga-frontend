@@ -46,6 +46,12 @@ const nextConfig: NextConfig = {
         port: "3011",
         pathname: "/static/**",
       },
+      {
+        protocol: "http",
+        hostname: "69.55.49.138",
+        port: "3011",
+        pathname: "/**",
+      },
     ],
   },
 };
