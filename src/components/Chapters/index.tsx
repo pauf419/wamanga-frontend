@@ -68,12 +68,12 @@ export const Chapters = ({ comic }: Props) => {
       <List>
         {filteredAndSortedChapters.length ? (
           filteredAndSortedChapters.map((el) => (
-            <ChapterUnit key={el._id} chapter={el} />
+            <ChapterUnit title={comic} key={el._id} chapter={el} />
           ))
         ) : (
           <NoChaptersMessage>
             <NoImage src="/no-comments.png" />
-            <NoChaptersText>Разделов нет...</NoChaptersText>
+            <NoChaptersText>Глав нет...</NoChaptersText>
           </NoChaptersMessage>
         )}
       </List>

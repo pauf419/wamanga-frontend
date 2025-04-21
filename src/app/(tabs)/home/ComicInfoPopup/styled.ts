@@ -67,3 +67,11 @@ export const ChaptersCount = styled(ChaptersAvailable)`
   align-content: center;
   justify-content: center;
 `;
+
+export const Description = styled.h4`
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;

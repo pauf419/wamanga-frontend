@@ -18,14 +18,24 @@ import LikeIcon from "@icons/svg/like.svg";
 import ViewIcon from "@icons/svg/view.svg";
 import CommentIcon from "@icons/svg/comment.svg";
 import type { Chapter } from "@/api/types/chapter";
+import Link from "next/link";
+import type { Comic } from "@/api/types/comic";
+import { useRouter } from "next/navigation";
 
 interface Props {
   chapter: Chapter;
+  title: Comic;
 }
 
-export const ChapterUnit = ({ chapter }: Props) => {
+export const ChapterUnit = ({ chapter, title }: Props) => {
+  const router = useRouter();
+
   return (
-    <Wrapper>
+    <Wrapper
+      onClick={() =>
+        router.push(`/reader/${title.alternativeName}/${chapter._id}`)
+      }
+    >
       <Segment>
         <Title>{chapter.title}</Title>
         <Tools>

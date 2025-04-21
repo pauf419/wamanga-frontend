@@ -8,8 +8,6 @@ const AdminPageUsers = async () => {
   const tokens = await getTokens();
   const users = await getAllUsers(tokens);
 
-  console.log(users);
-
   if (!users) return <h1>no users</h1>;
 
   return (

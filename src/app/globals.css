@@ -304,6 +304,10 @@ button {
   }
 }
 
+.MuiPopover-paper {
+  background: transparent !important;
+}
+
 .icon-button-primary {
 }
 

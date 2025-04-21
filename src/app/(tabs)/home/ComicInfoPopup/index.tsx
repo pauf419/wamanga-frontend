@@ -3,6 +3,7 @@
 import type { Comic } from "@/api/types/comic";
 import {
   ChaptersCount,
+  Description,
   Flexbox,
   GenreWrapper,
   Gridbox,
@@ -108,7 +109,7 @@ export const ComicInfoPopup = ({ comic, onClose }: Props) => {
           </Tooltip>
         </Flexbox>
       </Gridbox>
-      <h4>{comic.description}</h4>
+      <Description>{comic.description}</Description>
     </PopupWrapper>
   );
 };

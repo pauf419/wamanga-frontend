@@ -40,8 +40,6 @@ export const Comments = ({ comic, type = "comic", chapter }: Props) => {
 
   const { data } = getComicComments();
 
-  comic.alternativeName = comic.name;
-
   return (
     <CommentsWrapper>
       <Reply cb={() => null} />

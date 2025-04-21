@@ -13,11 +13,16 @@ export const Wrapper = styled.div`
   background-color: ${colors.commentsBlockBackground};
   border-radius: 16px;
   box-shadow: ${colors.commentsBlockShadow};
+  cursor: pointer;
 `;
 
 export const Segment = styled.div`
   display: grid;
   gap: 4px;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const Title = styled.div`
@@ -26,6 +31,7 @@ export const Title = styled.div`
   font-weight: 600;
   line-height: 1.5714;
   color: rgb(255 255 255);
+  text-decoration: none;
 `;
 
 export const Tools = styled.div`

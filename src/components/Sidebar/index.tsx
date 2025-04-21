@@ -17,6 +17,7 @@ import AdminUsersIcon from "@icons/svg/admin-user.svg";
 import AdminTeamsIcon from "@icons/svg/admin-team.svg";
 import AdminSettingsIcon from "@icons/svg/admin-gear.svg";
 import { getRandomComic } from "@/api/title";
+import Link from "next/link";
 
 const isAdminPage = async () => {
   const referer = (await headers()).get("x-current-path") || "";
@@ -32,7 +33,9 @@ const Sidebar = async () => {
   if (await isAdminPage())
     return (
       <SidebarSC>
-        <LogoSC src={Logo} alt="Logo" />
+        <Link href="/">
+          <LogoSC src={Logo} alt="Logo" />
+        </Link>
         <Tabs>
           <SidebarTab icon={<AdminComicsIcon />} route={routes.adminComics} />
           <SidebarTab icon={<AdminMainPageIcon />} route={routes.adminMain} />
@@ -60,7 +63,9 @@ const Sidebar = async () => {
 
   return (
     <SidebarSC>
-      <LogoSC src={Logo} alt="Logo" />
+      <Link href="/">
+        <LogoSC src={Logo} alt="Logo" />
+      </Link>
       <Tabs>
         <SidebarTab icon={<HomeIcon />} route={routes.home} />
         <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
