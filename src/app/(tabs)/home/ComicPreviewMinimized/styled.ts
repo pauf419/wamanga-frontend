@@ -12,6 +12,7 @@ export const SwiperComic = styled.div<{ $nested: boolean }>`
   background-color: ${(props) =>
     props.$nested ? colors.nestedComicBackground : "transparent"};
   border-radius: 12px;
+  overflow: hidden;
 `;
 
 export const ComicInfo = styled.div`
@@ -55,17 +56,24 @@ export const PopoverButton = styled.button`
   text-decoration: none;
   flex: 0 0 auto;
   border-radius: 50%;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   padding: 4px;
 
   svg {
     width: 16px;
     height: 16px;
     color: #fff;
+    transition: 0.2s all ease;
   }
 
   &:hover {
-    transform: scale(1.05);
+    padding: 20px;
+    top: -6px;
+    right: -6px;
+
+    svg {
+      transform: scale(1.3);
+    }
   }
 `;
 
@@ -100,9 +108,11 @@ export const ComicStatus = styled.p`
 `;
 
 export const ComicPoster = styled(Image)`
+  cursor: pointer;
   width: 120px;
   height: 100%;
   user-select: none;
   border-radius: 12px;
   -webkit-user-drag: none;
+  cursor: pointer;
 `;

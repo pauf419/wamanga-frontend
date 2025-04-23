@@ -18,6 +18,7 @@ import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import { ComicInfoPopup } from "../ComicInfoPopup";
 import PopoverIcon from "@icons/svg/popover.svg";
+import { useRouter } from "next/navigation";
 
 interface ComicPreviewProps {
   nested?: boolean;
@@ -40,12 +41,14 @@ export const ComicPreviewMinimized: FC<ComicPreviewProps> = ({
 
   const open = Boolean(anchorEl);
   const id = open ? comic.alternativeName : undefined;
+  const router = useRouter();
 
   if (!comic || !comic.name) return <h1>No comic</h1>;
 
   return (
     <SwiperComic $nested={nested}>
       <ComicPoster
+        onClick={() => router.push(`/comics/${comic.alternativeName}`)}
         src={comic.imagePath ? comic.imagePath : "/test-1.webp"}
         alt="Comic"
         width={200}

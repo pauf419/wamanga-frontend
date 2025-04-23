@@ -9,9 +9,11 @@ export const SwiperComic = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 12px;
+  overflow: hidden;
 `;
 
 export const ComicInfo = styled.div`
+  cursor: pointer;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -68,4 +70,5 @@ export const ComicPoster = styled(Image)`
   user-select: none;
   border-radius: 12px;
   -webkit-user-drag: none;
+  cursor: pointer;
 `;

@@ -17,6 +17,7 @@ import { PopoverButton } from "@/app/(tabs)/home/ComicPreviewMinimized/styled";
 import PopoverIcon from "@icons/svg/popover.svg";
 import Popover from "@mui/material/Popover";
 import { ComicInfoPopup } from "@/app/(tabs)/home/ComicInfoPopup";
+import { useRouter } from "next/navigation";
 
 interface Props {
   title: Comic;
@@ -24,6 +25,8 @@ interface Props {
 
 export const SameTitlePreview = ({ title }: Props) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+  const router = useRouter();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -38,7 +41,10 @@ export const SameTitlePreview = ({ title }: Props) => {
 
   return (
     <Wrapper>
-      <Poster src={title.imagePath} />
+      <Poster
+        src={title.imagePath}
+        onClick={() => router.push(`/comics/${title.alternativeName}`)}
+      />
       <Content>
         <Info>
           <TypeBadge>{title.type}</TypeBadge>

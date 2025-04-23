@@ -15,6 +15,7 @@ export const Poster = styled.img`
   height: 100px;
   border-radius: 12px;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 export const Content = styled.div`

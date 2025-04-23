@@ -16,12 +16,14 @@ import { PopoverButton } from "../ComicPreviewMinimized/styled";
 import PopoverIcon from "@icons/svg/popover.svg";
 import Popover from "@mui/material/Popover";
 import { ComicInfoPopup } from "../ComicInfoPopup";
+import { useRouter } from "next/navigation";
 
 interface ComicPreviewProps {
   comic: Comic;
 }
 
 export const ComicPreviewVertical: FC<ComicPreviewProps> = ({ comic }) => {
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -55,12 +57,15 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({ comic }) => {
         <ComicInfoPopup comic={comic} onClose={handleClose} />
       </Popover>
       <ComicPoster
+        onClick={() => router.push(`/comics/${comic.alternativeName}`)}
         src={comic.imagePath ? comic.imagePath : "/test-1.webp"}
         alt="Comic"
         width={200}
         height={350}
       />
-      <ComicInfo>
+      <ComicInfo
+        onClick={() => router.push(`/comics/${comic.alternativeName}`)}
+      >
         <ComicTitle>{comic.name}</ComicTitle>
         <ComicType>{comic.type}</ComicType>
         <ComicStatus>{comic.status}</ComicStatus>
