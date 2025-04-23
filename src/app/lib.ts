@@ -62,7 +62,7 @@ export async function updateSession(request: NextRequest): Promise<{
 
   try {
     const refreshResponse = await fetch(
-      "http://localhost:3011/auth/refresh-token",
+      "http://69.55.49.138:3011/auth/refresh-token",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
