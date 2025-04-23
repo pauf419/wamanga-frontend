@@ -27,7 +27,7 @@ export enum PegiType {
 }
 
 export enum StatusType {
-  Started = "В процессе",
+  Started = "Онгоинг",
   Finished = "Окончено",
   Paused = "Приостановлено",
   Abandoned = "Заброшено",

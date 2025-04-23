@@ -20,7 +20,7 @@ interface Props {
 }
 
 export const statusItems = [
-  { key: StatusType.Started, name: "В процессе" },
+  { key: StatusType.Started, name: "Онгоинг" },
   { key: StatusType.Finished, name: "Окончено" },
   { key: StatusType.Paused, name: "Приостановлено" },
   { key: StatusType.Abandoned, name: "Заброшено" },
@@ -173,7 +173,7 @@ const ComicEditableDataList = ({ title }: Props) => {
           items={[
             {
               key: StatusType.Started,
-              name: "В процессе",
+              name: "Онгоинг",
             },
             {
               key: StatusType.Finished,
@@ -207,7 +207,7 @@ const ComicEditableDataList = ({ title }: Props) => {
           items={[
             {
               key: StatusType.Started,
-              name: "В процессе",
+              name: "Онгоинг",
             },
             {
               key: StatusType.Finished,

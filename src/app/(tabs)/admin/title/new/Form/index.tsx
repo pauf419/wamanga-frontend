@@ -184,12 +184,7 @@ const AddTitlePageForm = () => {
         <Input
           placeholder="Название на английском"
           type="input"
-          onChange={(value) =>
-            setForm({
-              ...form,
-              name: value,
-            })
-          }
+          onChange={(value) => null}
         />
         <Input
           placeholder="Альтернативные названия"
@@ -202,27 +197,12 @@ const AddTitlePageForm = () => {
           }
         />
         <Input
-          placeholder="Язык По Умолчанию"
-          type="input"
-          onChange={(value) => null}
-        />
-        <Input
           placeholder="Год релиза"
           type="input"
           onChange={(value) =>
             setForm({
               ...form,
               year: Number(value),
-            })
-          }
-        />
-        <Input
-          placeholder="Общее количество глав"
-          type="input"
-          onChange={(value) =>
-            setForm({
-              ...form,
-              totalChapters: Number(value),
             })
           }
         />
@@ -281,7 +261,7 @@ const AddTitlePageForm = () => {
               items={[
                 {
                   key: StatusType.Started,
-                  name: "В процессе",
+                  name: "Онгоинг",
                 },
                 {
                   key: StatusType.Finished,
@@ -299,47 +279,6 @@ const AddTitlePageForm = () => {
                   key: StatusType.Announced,
                   name: "Анонсировано",
                 },
-              ]}
-              defaultIndex={0}
-            />
-          </FormFlexDropdown>
-          <FormFlexDropdown>
-            <b>Год релиза</b>
-            <Dropdown
-              cb={(value) =>
-                setForm({
-                  ...form,
-                  year: Number(value.key),
-                })
-              }
-              items={[
-                { key: "2025", name: "2025" },
-                { key: "2024", name: "2024" },
-                { key: "2023", name: "2023" },
-                { key: "2022", name: "2022" },
-                { key: "2021", name: "2021" },
-                { key: "2020", name: "2020" },
-                { key: "2019", name: "2019" },
-                { key: "2018", name: "2018" },
-                { key: "2017", name: "2017" },
-                { key: "2016", name: "2016" },
-                { key: "2015", name: "2015" },
-                { key: "2014", name: "2014" },
-                { key: "2013", name: "2013" },
-                { key: "2012", name: "2012" },
-                { key: "2011", name: "2011" },
-                { key: "2010", name: "2010" },
-                { key: "2009", name: "2009" },
-                { key: "2008", name: "2008" },
-                { key: "2007", name: "2007" },
-                { key: "2006", name: "2006" },
-                { key: "2005", name: "2005" },
-                { key: "2004", name: "2004" },
-                { key: "2003", name: "2003" },
-                { key: "2002", name: "2002" },
-                { key: "2001", name: "2001" },
-                { key: "2000", name: "2000" },
-                { key: "1999", name: "1999" },
               ]}
               defaultIndex={0}
             />
@@ -392,7 +331,7 @@ const AddTitlePageForm = () => {
               items={[
                 {
                   key: StatusType.Started,
-                  name: "В процессе",
+                  name: "Онгоинг",
                 },
                 {
                   key: StatusType.Finished,
@@ -414,29 +353,6 @@ const AddTitlePageForm = () => {
               defaultIndex={0}
             />
           </FormFlexDropdown>
-          <Tooltip title="Эта функция еще в разработке">
-            <FormFlexDropdown>
-              <b>Загрузка глав</b>
-              <Dropdown
-                cb={(e) => null}
-                items={[
-                  {
-                    key: "xd",
-                    name: "hello",
-                  },
-                  {
-                    key: "xd1",
-                    name: "hello1",
-                  },
-                  {
-                    key: "xd21",
-                    name: "hello12",
-                  },
-                ]}
-                defaultIndex={1}
-              />
-            </FormFlexDropdown>
-          </Tooltip>
         </FormTreflex>
         <BadgeTypeSelectManual
           placeholder="Формат выпуска"

@@ -69,6 +69,8 @@ export const ComicPoster = styled(Image)`
   object-fit: cover;
   user-select: none;
   border-radius: 12px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
   -webkit-user-drag: none;
   cursor: pointer;
 `;
