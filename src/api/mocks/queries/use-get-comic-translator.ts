@@ -10,8 +10,8 @@ export const getComicTranslator = (): GetComicTranslatorResult => {
         "Описание излишне мабой, мы владеем этим сайтом, так что лучше бы тебе выключить адблокер и трахнуть премиальную подписочку с кредиточки твоей мамы...",
       avatar:
         "https://zenko.b-cdn.net/73d110bb-b559-4206-9fb0-3df427a5f567?optimizer=image&width=80&quality=80&height=auto",
-      banner: "http://localhost:3000/mock-background.png",
-      telegram: "https://t.me/",
+      banner: "/mock-background.png",
+      telegram: "https://t.me/bluelockwa",
       discord: "https://discord.com/",
       instagram: "https://www.instagram.com/",
       twitter: "",
