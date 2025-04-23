@@ -8,46 +8,40 @@ import { useClickOutside } from "@/hooks/use-click-outside";
 import { Inputs, ModalContent, ModalSC, Title } from "../Form/styled";
 import {
   Action,
-  GoogleContent,
-  GoogleIconSC,
-  GoogleText,
   ModalAction,
   Question,
   Questions,
   Text,
-  WithGoogle,
-} from "./styled";
-import GoogleIcon from "@icons/svg/google.svg?url";
+} from "../SignInForm/styled";
 import Input from "@/components/Input";
-import type { LoginResponse } from "@/api/auth";
-import { signIn } from "@/api/auth";
 import { useMutation } from "@tanstack/react-query";
 import { useStore } from "@/app/store/useStore";
-import type { User } from "@/api/types/user";
-import { redirect, useRouter } from "next/navigation";
+import type { SignUpResponse } from "@/api/auth";
+import { resendConfirmation, signUp, verify } from "@/api/auth";
+import { useRouter } from "next/navigation";
 
 interface Props {
   state: ModalState;
   setState: React.Dispatch<React.SetStateAction<ModalState>>;
 }
 
-const SignInForm = ({ state, setState }: Props) => {
-  const router = useRouter();
+const VerifyForm = ({ state, setState }: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const [error, setError] = useState<string | null>(null);
-
   const { setAuth } = useStore();
+  const router = useRouter();
 
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     email: "",
-    password: "",
+    confirmPassword: "",
   });
 
   const mutation = useMutation({
-    mutationFn: signIn,
-    onSuccess: (result: LoginResponse) => {
+    mutationFn: verify,
+    onSuccess: (res: SignUpResponse) => {
       router.push("/user");
+      localStorage.removeItem("verify");
     },
     onError: (err: Error) => {
       setError(err.message || "Ошибка регистрации");
@@ -55,19 +49,32 @@ const SignInForm = ({ state, setState }: Props) => {
   });
 
   const onClickOutside = () => {
-    setState({ ...state, signIn: false });
+    setState({ ...state, verify: false });
   };
 
   useClickOutside(modalRef, onClickOutside);
 
+  const resendConfirmation_ = async () => {
+    try {
+      await resendConfirmation(localStorage.getItem("verify"));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const handleSubmit = () => {
-    mutation.mutate({ email: form.email, password: form.password });
+    if (form.password !== form.confirmPassword) {
+      setError("Пароли не совпадают");
+      return;
+    }
+
+    mutation.mutate({ email: localStorage.getItem("verify"), code: form.code });
   };
 
   return (
     <>
       <AnimatePresence mode="wait">
-        {state.signIn && (
+        {state.verify && (
           <Portal>
             <motion.div
               initial={{ opacity: 0 }}
@@ -84,49 +91,32 @@ const SignInForm = ({ state, setState }: Props) => {
                   transition={{ duration: 0.2 }}
                   onMouseDown={(e) => e.stopPropagation()}
                 >
-                  <Title>Вход</Title>
+                  <Title>Подтверждение</Title>
                   <Inputs>
                     <Input
-                      placeholder="Email"
                       type="input"
-                      onChange={(e) => setForm({ ...form, email: e })}
-                    />
-                    <Input
-                      placeholder="Пароль"
-                      type="input"
-                      onChange={(e) => setForm({ ...form, password: e })}
+                      placeholder="Код подтверждения"
+                      onChange={(e) => setForm({ code: e })}
                     />
                   </Inputs>
                   <Questions>
                     <Question>
-                      <Text>Нет аккаунта?</Text>
-                      <Action
-                        onClick={() =>
-                          setState({
-                            signUp: true,
-                            signIn: false,
-                            verify: false,
-                          })
-                        }
-                      >
-                        Создать аккаунт
+                      <Text>Не пришел код подтверждения ? </Text>
+                      <Action onClick={() => resendConfirmation_()}>
+                        Отправить снова
                       </Action>
                     </Question>
-                    <Question>
-                      <Text>Забыл пароль?</Text>
-                      <Action>Поменять</Action>
-                    </Question>
                   </Questions>
-                  <WithGoogle>
-                    <GoogleContent>
-                      <GoogleIconSC src={GoogleIcon} alt="google icon" />
-                      <GoogleText>С помощью Google</GoogleText>
-                    </GoogleContent>
-                  </WithGoogle>
                   <ModalAction>
                     <button
                       className="button-transparent"
-                      onClick={() => setState({ signIn: false, signUp: false, verify: false })}
+                      onClick={() =>
+                        setState({
+                          signIn: false,
+                          signUp: false,
+                          verify: false,
+                        })
+                      }
                     >
                       Закрыть
                     </button>
@@ -135,7 +125,7 @@ const SignInForm = ({ state, setState }: Props) => {
                       onClick={() => handleSubmit()}
                     >
                       {" "}
-                      Войти{" "}
+                      Завершить верификацию{" "}
                     </button>
                   </ModalAction>
                 </ModalContent>
@@ -148,4 +138,4 @@ const SignInForm = ({ state, setState }: Props) => {
   );
 };
 
-export default SignInForm;
+export default VerifyForm;

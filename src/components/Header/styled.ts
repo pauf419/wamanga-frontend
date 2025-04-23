@@ -172,10 +172,10 @@ export const LoginButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 75px;
   height: 30px;
+  padding: 0 15px;
+  font-weight: 700;
   font-size: 13px;
-  font-weight: 500;
   line-height: 22.29px;
   color: ${colors.text};
   text-align: center;

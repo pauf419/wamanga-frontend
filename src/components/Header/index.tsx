@@ -36,10 +36,12 @@ import CloseIcon from "@icons/svg/close.svg";
 import { ComicPreviewVertical } from "@/app/(tabs)/home/ComicPreviewVertical";
 import { NoImage } from "../Comments/styled";
 import { logout } from "@/app/lib";
+import VerifyForm from "../(auth)/VerifyForm";
 
 export interface ModalState {
   signUp: boolean;
   signIn: boolean;
+  verify: boolean;
 }
 
 interface Props {
@@ -47,9 +49,12 @@ interface Props {
 }
 
 const Header = ({ user }: Props) => {
+  const isVerify = localStorage.getItem("verify");
+  const boolVerify = isVerify ? isVerify === "true" && true : false;
   const [modalState, setModalState] = React.useState<ModalState>({
     signUp: false,
     signIn: false,
+    verify: boolVerify,
   });
 
   const [titles, setTitles] = useState<Comic[]>([]);
@@ -62,6 +67,12 @@ const Header = ({ user }: Props) => {
   const [clickMenuActive, setClickMenuActive] = React.useState<boolean>(false);
 
   const handleClick = () => {
+    if (boolVerify) {
+      return setModalState({
+        ...modalState,
+        verify: !modalState.verify,
+      });
+    }
     setModalState({
       ...modalState,
       signIn: !modalState.signIn,
@@ -144,6 +155,8 @@ const Header = ({ user }: Props) => {
         <Block>
           <SignUpForm state={modalState} setState={setModalState} />
           <SignInForm state={modalState} setState={setModalState} />
+          <VerifyForm state={modalState} setState={setModalState} />
+
           <SearchButton onClick={() => setSearchActive(!searchActive)}>
             <SearchIcon />
           </SearchButton>
@@ -182,7 +195,9 @@ const Header = ({ user }: Props) => {
                 </ClickMenuWrapper>
               </UserAvatar>
             ) : (
-              <LoginButton onClick={handleClick}>Войти</LoginButton>
+              <LoginButton onClick={handleClick}>
+                {boolVerify || modalState.verify ? "Верификация" : "Войти"}
+              </LoginButton>
             )}
           </NotDisplaysWhenAuth>
         </Block>

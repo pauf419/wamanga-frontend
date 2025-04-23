@@ -1,3 +1,4 @@
+import { API_URL } from "@/api/axiosInstance";
 import type { User } from "@/api/types/user";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
@@ -61,14 +62,11 @@ export async function updateSession(request: NextRequest): Promise<{
     };
 
   try {
-    const refreshResponse = await fetch(
-      "http://69.55.49.138:3011/auth/refresh-token",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ refreshToken: oldRefreshToken }),
-      }
-    );
+    const refreshResponse = await fetch(`${API_URL}/auth/refresh-token`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ refreshToken: oldRefreshToken }),
+    });
 
     if (!refreshResponse.ok)
       return {

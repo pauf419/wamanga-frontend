@@ -29,7 +29,7 @@ export async function signUp(data: {
 }): Promise<SignUpResponse> {
   const res = await $api.post("/auth/register", {
     ...data,
-    username: "default",
+    username: `User${Math.floor(Math.random() * (1000 - 10000) + 10000)}`,
   });
 
   return res.data;
@@ -39,7 +39,23 @@ export async function signIn(data: {
   email: string;
   password: string;
 }): Promise<LoginResponse> {
-  const res = await $api.post("/auth/login", { ...data });
+  const res = await $api.post("/auth/login", data);
 
+  return res.data;
+}
+
+export async function verify(data: {
+  code: string;
+  email: string;
+}): Promise<LoginResponse> {
+  const res = await $api.post("/auth/verify", {
+    ...data,
+    confirmationCode: data.code,
+  });
+  return res.data;
+}
+
+export async function resendConfirmation(email: string) {
+  const res = await $api.post("/auth/resend-confirmation", { email });
   return res.data;
 }

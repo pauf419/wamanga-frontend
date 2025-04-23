@@ -39,8 +39,8 @@ const SignUpForm = ({ state, setState }: Props) => {
   const mutation = useMutation({
     mutationFn: signUp,
     onSuccess: (res: SignUpResponse) => {
-      setAuth(res.user);
-      setState({ signUp: false, signIn: false });
+      localStorage.setItem("verify", form.email);
+      setState({ signUp: false, signIn: false, verify: true });
     },
     onError: (err: Error) => {
       setError(err.message || "Ошибка регистрации");
@@ -105,7 +105,11 @@ const SignUpForm = ({ state, setState }: Props) => {
                       <Text>Уже есть аккаунт?</Text>
                       <Action
                         onClick={() =>
-                          setState({ signUp: false, signIn: true })
+                          setState({
+                            signUp: false,
+                            signIn: true,
+                            verify: false,
+                          })
                         }
                       >
                         Войти
@@ -115,7 +119,13 @@ const SignUpForm = ({ state, setState }: Props) => {
                   <ModalAction>
                     <button
                       className="button-transparent"
-                      onClick={() => setState({ signIn: false, signUp: false })}
+                      onClick={() =>
+                        setState({
+                          signIn: false,
+                          signUp: false,
+                          verify: false,
+                        })
+                      }
                     >
                       Закрыть
                     </button>
