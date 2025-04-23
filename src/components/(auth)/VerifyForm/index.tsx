@@ -33,8 +33,7 @@ const VerifyForm = ({ state, setState }: Props) => {
 
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
-    email: "",
-    confirmPassword: "",
+    code: "",
   });
 
   const mutation = useMutation({
@@ -56,19 +55,21 @@ const VerifyForm = ({ state, setState }: Props) => {
 
   const resendConfirmation_ = async () => {
     try {
-      await resendConfirmation(localStorage.getItem("verify"));
+      const email = localStorage.getItem("verify");
+      await resendConfirmation(email ? email : "Error");
     } catch (e) {
       console.error(e);
     }
   };
 
   const handleSubmit = () => {
-    if (form.password !== form.confirmPassword) {
-      setError("Пароли не совпадают");
+    const email = localStorage.getItem("verify");
+    if (!email || !form.code) {
+      setError("Код не введен!");
       return;
     }
 
-    mutation.mutate({ email: localStorage.getItem("verify"), code: form.code });
+    mutation.mutate({ email, code: form.code });
   };
 
   return (
