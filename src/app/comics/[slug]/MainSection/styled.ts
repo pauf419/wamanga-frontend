@@ -27,6 +27,7 @@ export const Description = styled.div`
   line-height: 1.5714;
   color: ${colors.text};
   white-space: pre-wrap;
+  word-break: break-word;
 `;
 
 export const InfoTags = styled.div`
