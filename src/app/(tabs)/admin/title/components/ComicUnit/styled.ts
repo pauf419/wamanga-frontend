@@ -36,6 +36,7 @@ export const Poster = styled.img`
   width: 100%;
   object-fit: cover;
   height: 100%;
+  cursor: pointer;
 `;
 
 export const Description = styled.div`

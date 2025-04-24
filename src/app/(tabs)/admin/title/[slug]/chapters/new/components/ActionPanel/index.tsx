@@ -153,33 +153,6 @@ export const ActionPanel = ({ title }: Props) => {
           [key]: value,
         };
 
-        if (key === "volume") {
-          updatedUnit.name = unit.name.replaceAll(
-            `Том ${unit.volume}`,
-            `Том ${value}`
-          );
-        }
-
-        if (key === "chapter") {
-          updatedUnit.name = unit.name.replaceAll(
-            `Глава ${unit.chapter}`,
-            `Глава ${value}`
-          );
-        }
-
-        if (key === "name" && typeof value === "string") {
-          const volumeMatch = value.match(/Том (\d+)/);
-          const chapterMatch = value.match(/Глава (\d+)/);
-
-          if (volumeMatch) {
-            updatedUnit.volume = Number(volumeMatch[1]);
-          }
-
-          if (chapterMatch) {
-            updatedUnit.chapter = Number(chapterMatch[1]);
-          }
-        }
-
         return updatedUnit;
       })
     );

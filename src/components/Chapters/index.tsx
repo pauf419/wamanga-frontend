@@ -50,16 +50,16 @@ export const Chapters = ({ comic }: Props) => {
         />
         <div className="mini-switch-wrapper">
           <div
-            className={`mini-switch-toggler ${sortingType === 0 && "mini-switch-active"}`}
-            aria-disabled={sortingType === 0}
-            onClick={() => setSortingType(0)}
+            className={`mini-switch-toggler ${sortingType === 1 && "mini-switch-active"}`}
+            aria-disabled={sortingType === 1}
+            onClick={() => setSortingType(1)}
           >
             <DescendingIcon className="mini-switch-icon" />
           </div>
           <div
-            className={`mini-switch-toggler ${sortingType === 1 && "mini-switch-active"}`}
-            aria-disabled={sortingType === 1}
-            onClick={() => setSortingType(1)}
+            className={`mini-switch-toggler ${sortingType === 0 && "mini-switch-active"}`}
+            aria-disabled={sortingType === 0}
+            onClick={() => setSortingType(0)}
           >
             <AscendingIcon className="mini-switch-icon" />
           </div>

@@ -8,6 +8,7 @@ import {
 } from "../styled";
 import { paginateTitles } from "@/api/title";
 import { ComicUnit } from "./components/ComicUnit";
+import AvailableTitlesBody from "./AvailableTitlesBody";
 
 const AdminPage = async () => {
   const titles = await paginateTitles(0);
@@ -20,11 +21,8 @@ const AdminPage = async () => {
           <PathnameSpacer>\</PathnameSpacer>
           <Pathname href="/titles">Comics</Pathname>
         </PathnameHeader>
-        <GridContainer>
-          {titles.map((title) => (
-            <ComicUnit comic={title} key={title._id} />
-          ))}
-        </GridContainer>
+
+        <AvailableTitlesBody titles={titles} />
       </Container>
     </BasePage>
   );

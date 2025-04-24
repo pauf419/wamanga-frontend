@@ -326,6 +326,8 @@ export const PagePopupWrapper = styled.div<{
   flex-direction: column;
   padding: 8px;
   min-width: 200px;
+  max-height: 250px;
+  overflow-y: auto;
 
   ${(props) =>
     props.$mobile

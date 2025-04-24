@@ -37,7 +37,9 @@ export const ChapterUnit = ({ chapter, title }: Props) => {
       }
     >
       <Segment>
-        <Title>{chapter.title}</Title>
+        <Title>
+          {`Глава ${chapter.numberChapter} ${chapter.title ? `- ${chapter.title}` : ""}`}
+        </Title>
         <Tools>
           <Badges>
             <StatBadge>
@@ -58,11 +60,7 @@ export const ChapterUnit = ({ chapter, title }: Props) => {
           </CreatedAt>
         </Tools>
       </Segment>
-      <Segment>
-        <Download>
-          <Icon as={DownloadIcon} />
-        </Download>
-      </Segment>
+      <Segment></Segment>
     </Wrapper>
   );
 };
