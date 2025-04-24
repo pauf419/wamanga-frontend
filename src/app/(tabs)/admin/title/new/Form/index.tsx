@@ -355,6 +355,15 @@ const AddTitlePageForm = () => {
           </FormFlexDropdown>
         </FormTreflex>
         <BadgeTypeSelectManual
+          placeholder="Url жанр"
+          onChange={(values) =>
+            setForm({
+              ...form,
+              releaseFormat: values,
+            })
+          }
+        />
+        <BadgeTypeSelectManual
           placeholder="Формат выпуска"
           onChange={(values) =>
             setForm({

@@ -38,7 +38,9 @@ export const ChapterUnit = ({ chapter, title }: Props) => {
     >
       <Segment>
         <Title>
-          {`Глава ${chapter.numberChapter} ${chapter.title ? `- ${chapter.title}` : ""}`}
+          {chapter.titleSys
+            ? chapter.title
+            : `Глава ${chapter.numberChapter} - ${chapter.title}`}
         </Title>
         <Tools>
           <Badges>
