@@ -2,8 +2,8 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  display: grid;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
   overflow: hidden;
   background: #18191b;
@@ -35,6 +35,7 @@ export const EditButton = styled.a`
 export const Poster = styled.img`
   width: 100%;
   object-fit: cover;
+  height: 100%;
 `;
 
 export const Description = styled.div`

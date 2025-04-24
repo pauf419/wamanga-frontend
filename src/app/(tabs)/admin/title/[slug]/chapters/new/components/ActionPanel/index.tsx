@@ -48,7 +48,7 @@ export const ActionPanel = ({ title }: Props) => {
     volume: lastChapter.volumeIndex,
     chapter: lastChapter.numberChapter + 1,
     translater: "",
-    name: `Глава ${lastChapter.numberChapter + 1}`,
+    name: "",
     files: null,
     uploaded: false,
   };
@@ -76,7 +76,7 @@ export const ActionPanel = ({ title }: Props) => {
             id,
             volume: 1,
             chapter: newChapter,
-            name: `Глава ${newChapter}`,
+            name: "",
             uploaded: false,
           };
         }

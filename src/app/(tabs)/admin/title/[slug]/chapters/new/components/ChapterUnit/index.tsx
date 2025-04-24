@@ -79,16 +79,14 @@ export const ChapterUnitComponent = ({
       <VolumeInputWrapper>
         <VolumeInputHeader>Название Главы</VolumeInputHeader>
         <input
+          placeholder="Введите название главы"
           className="input-default"
           defaultValue={unit.name}
           onChange={(e) => updateUnit(unit.id, "name", e.target.value)}
           style={{ width: 250 }}
         />
       </VolumeInputWrapper>
-      <button
-        className="button-filled button-filled-icon-inside"
-        onClick={() => onDelete(unit.id)}
-      >
+      <button className="button-filled button-filled-icon-inside">
         <ClockIcon />
       </button>
       <input

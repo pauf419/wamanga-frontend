@@ -30,14 +30,14 @@ export const routes = {
   },
   adminMain: {
     path: "/",
-    title: "Гэ",
+    title: "Главная",
   },
   adminAddComics: {
     path: "/admin/title/new",
     title: "Создать",
   },
   adminCatalog: {
-    path: "/admin/catalog",
+    path: "/catalog",
     title: "Каталог",
   },
   adminUsers: {

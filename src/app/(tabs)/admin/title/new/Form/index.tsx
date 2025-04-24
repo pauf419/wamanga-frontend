@@ -128,7 +128,7 @@ const AddTitlePageForm = () => {
   const submit = async () => {
     try {
       const title = await createTitle(form, posterBlob, bannerBlob);
-      router.push(`/comics/${title.alternativeName}`);
+      router.push(`/admin/title/${title.alternativeName}/chapters/new`);
     } catch (e) {
       console.error(e);
       if (e && typeof e === "object" && "response" in e) {

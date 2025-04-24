@@ -53,53 +53,10 @@ const SettingsPageForm = () => {
           onChange={(e) => null}
         />
         <Input
-          placeholder="Главная Ссылка"
-          type="input"
-          onChange={(e) => null}
-        />
-        <Input
-          placeholder="Язык По Умолчанию"
-          type="input"
-          onChange={(e) => null}
-        />
-        <Checkbox placeholder="Скачать Главу" cb={(e) => null} />
-        <WarningBlock>
-          <WarningIcon as={InfoIcon} />
-          <WarningText>
-            Установите флажок, чтобы включить прямую загрузку главы.
-          </WarningText>
-        </WarningBlock>
-        <Checkbox placeholder="Скачать Том" cb={(e) => null} />
-        <WarningBlock>
-          <WarningIcon as={InfoIcon} />
-          <WarningText>
-            Установите флажок, чтобы включить прямую загрузку тома. [ВАЖНО:
-            максимальная загрузка кэша должна быть высокой, если эта опция
-            включена.]
-          </WarningText>
-        </WarningBlock>
-        <Input
-          placeholder="Максимальная Загрузка Кэша"
-          type="input"
-          onChange={(e) => null}
-        />
-        <Input
-          placeholder="Максимальная Загрузка Кэша Для PDF (МБ)"
-          type="input"
-          onChange={(e) => null}
-        />
-        <Input
           placeholder="Футер текст"
           type="textarea"
           onChange={(e) => null}
         />
-        <Checkbox placeholder="Регистрация Пользователей" cb={(e) => null} />
-        <WarningBlock>
-          <WarningIcon as={InfoIcon} />
-          <WarningText>
-            Установите флажок, чтобы разрешить регистрацию новых пользователей.
-          </WarningText>
-        </WarningBlock>
         <Checkbox placeholder="По Умолчанию Манги Скрыты" cb={(e) => null} />
         <WarningBlock>
           <WarningIcon as={InfoIcon} />
@@ -127,17 +84,6 @@ const SettingsPageForm = () => {
             снят, используется миниатюра комикса.
           </WarningText>
         </WarningBlock>
-        <Input placeholder="Фэйсбук" type="input" onChange={(e) => null} />
-        <Input placeholder="Инстаграм" type="input" onChange={(e) => null} />
-        <Input placeholder="Твиттер" type="input" onChange={(e) => null} />
-        <Input
-          placeholder="Телеграм Канал"
-          type="input"
-          onChange={(e) => null}
-        />
-        <Input placeholder="Телеграм Чат" type="input" onChange={(e) => null} />
-        <Input placeholder="Телеграм Бот" type="input" onChange={(e) => null} />
-        <Input placeholder="Дискорд" type="input" onChange={(e) => null} />
         <Input
           placeholder="Вкладки меню"
           type="textarea"
@@ -240,20 +186,6 @@ const SettingsPageForm = () => {
           <WarningIcon as={InfoIcon} />
           <WarningText>Это показано выше сканирования.</WarningText>
         </WarningBlock>
-        <Checkbox placeholder="Proxy Cache" cb={(e) => null} />
-        <WarningBlock>
-          <WarningIcon as={InfoIcon} />
-          <WarningText>
-            Установите флажок, чтобы включить прямую загрузку тома. [ВАЖНО:
-            максимальная загрузка кэша должна быть высокой, если эта опция
-            включена.]
-          </WarningText>
-        </WarningBlock>
-        <Input
-          placeholder="Max Age Of Proxy Cache"
-          type="input"
-          onChange={(e) => null}
-        />
         <button className="button-filled" style={{ margin: "auto" }}>
           Сохранить
         </button>
