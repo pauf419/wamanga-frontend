@@ -55,7 +55,7 @@ export const InfoTagText = styled.span`
 
 export const InfoTagBadge = styled.span`
   width: fit-content;
-  padding: 6px;
+  padding: 6px 10px;
   margin-top: 4px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -87,7 +87,7 @@ export const InfoTagTextField = styled.div`
 export const ChapterCountWrapper = styled.div`
   display: flex;
   gap: 5px;
-  margin-top: 4px;
+  margin-top: 8px;
 `;
 
 export const ChaptersAvailable = styled.span`

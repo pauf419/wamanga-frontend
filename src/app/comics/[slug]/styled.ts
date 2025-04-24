@@ -182,11 +182,11 @@ export const Stats = styled.div`
 
 export const StatsBadge = styled.div`
   display: flex;
-  gap: 4px;
+  gap: 6px;
   align-items: center;
   justify-content: center;
   width: fit-content;
-  padding: 6px;
+  padding: 6px 10px;
   font-size: 13px;
   color: ${colors.badgeColor};
   background: ${colors.badgeBg};

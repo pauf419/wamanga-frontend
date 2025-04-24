@@ -53,10 +53,10 @@ export const ComicType = styled.p`
 
 export const ComicStatus = styled.p`
   width: fit-content;
-  padding: 8px;
+  padding: 8px 12px;
   margin-top: 12px;
   font-size: 0.75rem;
-  font-weight: 550;
+  font-weight: 700;
   text-transform: uppercase;
   background: ${colors.comicPreviewVerticalStatusBackground};
   border-radius: 40px;

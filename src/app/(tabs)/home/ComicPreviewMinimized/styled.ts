@@ -98,10 +98,10 @@ export const ComicType = styled.p`
 
 export const ComicStatus = styled.p`
   width: fit-content;
-  padding: 8px;
+  padding: 8px 12px;
   margin-top: auto;
   font-size: 0.75rem;
-  font-weight: 550;
+  font-weight: 700;
   text-transform: uppercase;
   background: rgb(143 150 163 / 16%);
   border-radius: 40px;

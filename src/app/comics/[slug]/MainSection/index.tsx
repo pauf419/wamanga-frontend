@@ -32,6 +32,7 @@ import {
 import { Chapters } from "@/components/Chapters";
 import Badge from "@/app/(tabs)/home/Badge";
 import { colors } from "@/const/colors";
+import { ChaptersCount } from "@/app/(tabs)/home/ComicInfoPopup/styled";
 
 interface Props {
   comics: Comic;
@@ -86,7 +87,7 @@ export const MainSection = ({ comics }: Props) => {
             <InfoTag>
               <InfoTagTitle>Количество глав</InfoTagTitle>
               <ChapterCountWrapper>
-                <ChaptersAvailable>{comics.chapters.length}</ChaptersAvailable>
+                <ChaptersCount>{comics.chapters.length}</ChaptersCount>
               </ChapterCountWrapper>
               <HidesWhenMobile>
                 <CommentsTitle>Комментарии</CommentsTitle>

@@ -11,7 +11,7 @@ export const BadgeSC = styled.div`
   height: 25px;
   padding: 8px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   background: ${colors.statsBadgeBackground};
   border-radius: 16px;
 `;
