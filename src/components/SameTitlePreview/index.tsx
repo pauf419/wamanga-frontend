@@ -44,7 +44,7 @@ export const SameTitlePreview = ({ title }: Props) => {
       <Poster
         src={title.imagePath}
         onClick={() =>
-          router.push(`/${comic.seoGenre}/${title.alternativeName}`)
+          router.push(`/${title.seoGenre}/${title.alternativeName}`)
         }
       />
       <Content>
