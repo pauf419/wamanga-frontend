@@ -21,7 +21,7 @@ import {
   ChaptersAvailable,
   ChaptersTotal,
   Separator,
-} from "@/app/comics/[slug]/MainSection/styled";
+} from "@/app/[genre]/[slug]/MainSection/styled";
 import { Tooltip } from "@mui/material";
 
 interface Props {
@@ -93,7 +93,7 @@ export const ComicInfoPopup = ({ comic, onClose }: Props) => {
         )}
         <Flexbox>
           <a
-            href={`/comics/${comic.alternativeName}`}
+            href={`/${comic.seoGenre}/${comic.alternativeName}`}
             className="outline-button"
             style={{ minWidth: 89 }}
           >

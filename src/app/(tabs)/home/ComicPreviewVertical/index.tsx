@@ -57,14 +57,18 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({ comic }) => {
         <ComicInfoPopup comic={comic} onClose={handleClose} />
       </Popover>
       <ComicPoster
-        onClick={() => router.push(`/comics/${comic.alternativeName}`)}
+        onClick={() =>
+          router.push(`/${comic.seoGenre}/${comic.alternativeName}`)
+        }
         src={comic.imagePath ? comic.imagePath : "/test-1.webp"}
         alt="Comic"
         width={200}
         height={350}
       />
       <ComicInfo
-        onClick={() => router.push(`/comics/${comic.alternativeName}`)}
+        onClick={() =>
+          router.push(`/${comic.seoGenre}/${comic.alternativeName}`)
+        }
       >
         <ComicTitle>{comic.name}</ComicTitle>
         <ComicType>{comic.type}</ComicType>

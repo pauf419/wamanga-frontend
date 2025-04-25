@@ -124,7 +124,9 @@ export const RecommendedSwiper = ({ titles }: Props) => {
                     <StatsBadge icon={Icon.VIEW} amount={comic.views} />
                   </StatsBadges>
                   <Buttons>
-                    <OpenButton href={`/comics/${comic.alternativeName}`}>
+                    <OpenButton
+                      href={`/${comic.seoGenre}/${comic.alternativeName}`}
+                    >
                       Открыть
                     </OpenButton>
                     <FavouriteButton>

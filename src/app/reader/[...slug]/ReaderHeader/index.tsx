@@ -83,7 +83,7 @@ const ReaderHeader = ({
           </ToggleButton>
           <Spacer />
           <a
-            href={`/comics/${title.alternativeName}`}
+            href={`/${title.seoGenre}/${title.alternativeName}`}
             className="button-transparent button-fully-transparent icon-button-inline"
           >
             <ReturnIcon />

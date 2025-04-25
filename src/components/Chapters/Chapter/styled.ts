@@ -1,6 +1,6 @@
 "use client";
 
-import { StatsBadge } from "@/app/comics/[slug]/styled";
+import { StatsBadge } from "@/app/[genre]/[slug]/styled";
 import { colors } from "@/const";
 import styled from "@emotion/styled";
 

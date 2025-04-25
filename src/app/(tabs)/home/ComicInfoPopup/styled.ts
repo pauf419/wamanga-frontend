@@ -1,6 +1,6 @@
 "use client";
 
-import { ChaptersAvailable } from "@/app/comics/[slug]/MainSection/styled";
+import { ChaptersAvailable } from "@/app/[genre]/[slug]/MainSection/styled";
 import styled from "@emotion/styled";
 
 export const PopupWrapper = styled.div`

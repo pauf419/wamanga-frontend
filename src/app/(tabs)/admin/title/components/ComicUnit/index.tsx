@@ -23,7 +23,7 @@ export const ComicUnit = ({ comic }: Props) => {
     <Wrapper>
       <Poster
         src={comic.imagePath}
-        onClick={() => router.push(`/comics/${comic.alternativeName}`)}
+        onClick={() => router.push(`/admin/title/${comic.alternativeName}`)}
       />
       <EditButton href={`/admin/title/${comic.alternativeName}`}>
         <PencilIcon />

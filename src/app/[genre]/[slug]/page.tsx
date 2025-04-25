@@ -43,16 +43,18 @@ import { Tooltip } from "@mui/material";
 export type paramsType = Promise<{
   params: {
     slug: string;
+    genre: string;
   };
 }>;
 
 const ComicsPage = async ({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; genre: string }>;
 }) => {
-  const { slug } = await params;
+  const { slug, genre } = await params;
   const comics = await getBySlug(slug);
+  if (comics.seoGenre !== genre) return <h1>404 not found</h1>;
   const similarComics = await getSimilar(comics._id);
   const { data } = getSameTitles();
 

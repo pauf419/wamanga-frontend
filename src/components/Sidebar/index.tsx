@@ -71,7 +71,7 @@ const Sidebar = async () => {
         <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
         <SidebarTab
           icon={<RandomIcon />}
-          forceRoute={`/comics/${randomTitle?.alternativeName}`}
+          forceRoute={`/${randomTitle?.seoGenre}/${randomTitle?.alternativeName}`}
           route={routes.random}
         />
         <SidebarExpandTab

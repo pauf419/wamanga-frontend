@@ -62,7 +62,7 @@ const SideBarMobile: FC<SideBarMobileProps> = ({ active, setActive }) => {
         <SidebarTab
           mobile
           icon={<RandomIcon />}
-          forceRoute={`/comics/${randomTitle?.alternativeName}`}
+          forceRoute={`/${randomTitle?.seoGenre}/${randomTitle?.alternativeName}`}
           route={routes.random}
         />
         <SidebarExpandTab

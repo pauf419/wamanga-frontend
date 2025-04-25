@@ -48,7 +48,9 @@ export const ComicPreviewMinimized: FC<ComicPreviewProps> = ({
   return (
     <SwiperComic $nested={nested}>
       <ComicPoster
-        onClick={() => router.push(`/comics/${comic.alternativeName}`)}
+        onClick={() =>
+          router.push(`/${comic.seoGenre}/${comic.alternativeName}`)
+        }
         src={comic.imagePath ? comic.imagePath : "/test-1.webp"}
         alt="Comic"
         width={200}

@@ -1,7 +1,7 @@
 "use client";
 
-import { InfoTagBadge } from "@/app/comics/[slug]/MainSection/styled";
-import { StatsBadge } from "@/app/comics/[slug]/styled";
+import { InfoTagBadge } from "@/app/[genre]/[slug]/MainSection/styled";
+import { StatsBadge } from "@/app/[genre]/[slug]/styled";
 import { colors } from "@/const";
 import styled from "@emotion/styled";
 
