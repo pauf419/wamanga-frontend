@@ -4,6 +4,7 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
   return {
     data: [
       {
+        seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
         alternativeName: "updated-manga-name",
@@ -43,6 +44,7 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         totalChapters: 0,
       },
       {
+        seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
         alternativeName: "updated-manga-name",
@@ -82,6 +84,7 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         totalChapters: 0,
       },
       {
+        seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
         alternativeName: "updated-manga-name",
@@ -121,6 +124,7 @@ export const getTeamProjects = (): GetTeamProjectsResult => {
         totalChapters: 0,
       },
       {
+        seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
         alternativeName: "updated-manga-name",

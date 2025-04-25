@@ -47,6 +47,7 @@ export interface Comic {
   publishedOn?: Date;
   updatedAt?: Date;
   tags: string[];
+  seoGenre: string;
   genres: string[];
   chapters: Chapter[];
   chaptersAvailable: number;

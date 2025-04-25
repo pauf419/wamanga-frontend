@@ -278,6 +278,7 @@ export async function createTitle(
     "license",
     "totalChapters",
     "isPorno",
+    "seoGenre",
   ];
 
   allowedKeys.forEach((key) => {

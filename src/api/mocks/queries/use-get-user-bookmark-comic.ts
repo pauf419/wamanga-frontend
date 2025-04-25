@@ -8,6 +8,7 @@ export const getBookmarkComic = (
       return {
         data: [
           {
+            seoGenre: "manga",
             _id: "67b093102325c458b9a65615",
             name: "Updated Manga Name",
             alternativeName: "updated-manga-name",
@@ -47,6 +48,7 @@ export const getBookmarkComic = (
             totalChapters: 0,
           },
           {
+            seoGenre: "manga",
             _id: "67b093102325c458b9a65615",
             name: "Updated Manga Name",
             alternativeName: "updated-manga-name",
@@ -86,6 +88,7 @@ export const getBookmarkComic = (
             totalChapters: 0,
           },
           {
+            seoGenre: "manga",
             _id: "67b093102325c458b9a65615",
             name: "Updated Manga Name",
             alternativeName: "updated-manga-name",
@@ -125,6 +128,7 @@ export const getBookmarkComic = (
             totalChapters: 0,
           },
           {
+            seoGenre: "manga",
             _id: "67b093102325c458b9a65615",
             name: "Updated Manga Name",
             alternativeName: "updated-manga-name",

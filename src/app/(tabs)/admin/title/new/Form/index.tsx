@@ -100,6 +100,7 @@ const AddTitlePageForm = () => {
     releaseFormat: [],
     translationTeams: [],
     alternativeName: "",
+    seoGenre: ""
   });
 
   const router = useRouter();
@@ -355,11 +356,11 @@ const AddTitlePageForm = () => {
           </FormFlexDropdown>
         </FormTreflex>
         <BadgeTypeSelectManual
-          placeholder="Url жанр"
+          placeholder="SEO-жанр"
           onChange={(values) =>
             setForm({
               ...form,
-              releaseFormat: values,
+              seoGenre: values[0],
             })
           }
         />
