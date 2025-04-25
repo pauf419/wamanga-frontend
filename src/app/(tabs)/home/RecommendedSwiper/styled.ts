@@ -120,8 +120,10 @@ export const Comics = styled.div`
   @media (max-width: 600px) {
     display: grid;
     gap: 0;
-    align-content: center;
-    padding: 80px 16px;
+    padding: 50px 16px;
+    justify-items: start;
+    justify-content: start;
+    align-content: end;
   }
 `;
 
@@ -141,7 +143,12 @@ export const Poster = styled(Image)`
 
   @media (max-width: 900px) {
     width: 170px;
-    height: 250px;
+    height: auto;
+  }
+
+  @media (max-width: 600px) {
+    width: 150px;
+    height: auto;
   }
 `;
 
@@ -187,6 +194,11 @@ export const Description = styled.p`
   margin-top: 8px;
   font-size: 1rem;
   color: ${colors.grayText};
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 `;
 
 export const Buttons = styled.div`

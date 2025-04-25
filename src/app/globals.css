@@ -304,6 +304,11 @@ button {
   }
 }
 
+.MuiTooltip-tooltip {
+  background: #11121399 !important;
+  backdrop-filter: blur(6px);
+}
+
 .MuiPopover-paper {
   background: transparent !important;
 }
