@@ -33,7 +33,9 @@ export const ChapterUnit = ({ chapter, title }: Props) => {
   return (
     <Wrapper
       onClick={() =>
-        router.push(`/reader/${title.alternativeName}/${chapter._id}`)
+        router.push(
+          `/${title.seoGenre}/${title.alternativeName}/${chapter._id}`
+        )
       }
     >
       <Segment>

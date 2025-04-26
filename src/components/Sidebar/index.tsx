@@ -24,11 +24,6 @@ const isAdminPage = async () => {
   return referer.includes("/admin");
 };
 
-const isReaderPage = async () => {
-  const referer = (await headers()).get("x-current-path") || "";
-  return referer.includes("/reader");
-};
-
 const Sidebar = async () => {
   if (await isAdminPage())
     return (
@@ -50,7 +45,6 @@ const Sidebar = async () => {
         </Tabs>
       </SidebarSC>
     );
-  if (await isReaderPage()) return <div></div>;
 
   const randomTitle = await getRandomComic();
 
