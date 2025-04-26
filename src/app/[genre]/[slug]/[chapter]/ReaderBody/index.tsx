@@ -68,14 +68,32 @@ const EyeClosedIcon = dynamic(() => import("@icons/svg/eye-closed.svg"), {
 });
 const EyeIcon = dynamic(() => import("@icons/svg/view.svg"), { ssr: false });
 
+import AlignTopIcon from "@icons/svg/align-top.svg";
+import AlignCenterIcon from "@icons/svg/align-center.svg";
+import AlignBottomIcon from "@icons/svg/align-botton.svg";
+
 interface Props {
   title: Comic;
   chapter: Chapter;
 }
 
+export type ReaderScrollType = "center" | "end" | "start";
+
 const ReaderBody = ({ title, chapter }: Props) => {
   const comic = getComics();
   const comicTranslator = getComicTranslator();
+
+  const resolveScrollType = (): ReaderScrollType => {
+    const storedScrollType = localStorage.getItem("scrollType");
+    if (
+      storedScrollType === "center" ||
+      storedScrollType === "start" ||
+      storedScrollType === "end"
+    ) {
+      return storedScrollType;
+    }
+    return "center";
+  };
 
   const { getQueryParam, setQueryParam } = useQueryParams();
 
@@ -85,6 +103,9 @@ const ReaderBody = ({ title, chapter }: Props) => {
     Number(localStorage.getItem("readerWidth"))
   );
   const [readerType, setReaderType] = useState<string>("vertical");
+
+  const [scrollType, setScrollType] =
+    useState<ReaderScrollType>(resolveScrollType());
 
   const [currentPage, setCurrentPage] = useState<ChapterPage>(chapter.pages[0]);
 
@@ -106,6 +127,10 @@ const ReaderBody = ({ title, chapter }: Props) => {
   }, [readerType]);
 
   useEffect(() => {
+    localStorage.setItem("scrollType", scrollType);
+  }, [scrollType]);
+
+  useEffect(() => {
     const query = Number(getQueryParam("page")) || 1;
     const page = currentChapter.pages.find((p) => p.order === query);
     if (page) setCurrentPage(page);
@@ -122,7 +147,7 @@ const ReaderBody = ({ title, chapter }: Props) => {
       if (pageElement) {
         pageElement.scrollIntoView({
           behavior: "smooth",
-          block: "center",
+          block: scrollType,
         });
       }
     }
@@ -141,7 +166,7 @@ const ReaderBody = ({ title, chapter }: Props) => {
           }
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.01 }
     );
 
     pageRefs.current.forEach((page) => {
@@ -236,13 +261,39 @@ const ReaderBody = ({ title, chapter }: Props) => {
             />
           </SidebarBodySegment>
           <SidebarBodySegment>
-            <SegmentTitle>Размер текста</SegmentTitle>
-            <RangeInputSingle
-              min={500}
-              max={1500}
-              defaultValue={900}
-              onChange={() => null}
-            />
+            <SegmentTitle>При выборе страницы листать к</SegmentTitle>
+            <SegmentContent>
+              <SegmentButton
+                $active={scrollType === "start"}
+                onClick={() => setScrollType("start")}
+              >
+                <SegmentIcon
+                  as={AlignTopIcon}
+                  onClick={() => setScrollType("start")}
+                />
+                Верху
+              </SegmentButton>
+              <SegmentButton
+                $active={scrollType === "center"}
+                onClick={() => setScrollType("center")}
+              >
+                <SegmentIcon
+                  as={AlignCenterIcon}
+                  onClick={() => setScrollType("center")}
+                />
+                Центру
+              </SegmentButton>
+              <SegmentButton
+                $active={scrollType === "end"}
+                onClick={() => setScrollType("end")}
+              >
+                <SegmentIcon
+                  as={AlignCenterIcon}
+                  onClick={() => setScrollType("end")}
+                />
+                Низу
+              </SegmentButton>
+            </SegmentContent>
           </SidebarBodySegment>
           <SidebarBodySegment>
             <SegmentTitle>
@@ -301,7 +352,7 @@ const ReaderBody = ({ title, chapter }: Props) => {
                   $width={readerWidth}
                   src={page.path}
                   ref={(el) => {
-                    pageRefs.current[index] === el;
+                    pageRefs.current[index] = el;
                   }}
                   key={page._id}
                 />
