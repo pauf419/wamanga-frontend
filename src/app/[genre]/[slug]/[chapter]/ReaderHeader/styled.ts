@@ -56,6 +56,10 @@ export const ToggleButton = styled.button`
   svg path {
     fill: ${colors.headerToggleButtonFill};
   }
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
 `;
 
 export const SearchButton = styled.button`
@@ -96,6 +100,10 @@ export const Spacer = styled.div`
   height: 24px;
   background: rgba(143, 150, 163, 0.24);
   margin: 0 6px;
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
 `;
 
 export const ChapterControllsBlock = styled(Block)`

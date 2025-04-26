@@ -5,8 +5,14 @@ import styled from "@emotion/styled";
 
 export const ReaderPageWrapper = styled.div`
   display: grid;
-  min-height: 100dvh;
+  max-height: 100dvh;
   color: #fff;
+  overflow-y: auto;
+  border-left: 1px dashed rgba(143, 150, 163, 0.24);
+
+  @media (max-width: 1200px) {
+    border-left: none;
+  }
 `;
 
 export const Container = styled.div`

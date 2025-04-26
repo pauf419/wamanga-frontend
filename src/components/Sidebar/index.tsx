@@ -7,7 +7,7 @@ import RandomIcon from "@icons/svg/random.svg";
 import MoreIcon from "@icons/svg/more.svg";
 import { routes } from "@/const";
 import { SidebarExpandTab } from "./ExpandTab";
-import { LogoSC, SidebarSC, Tabs } from "./styled";
+import { LogoSC, LogoWrapper, SidebarSC, Tabs } from "./styled";
 import { headers } from "next/headers";
 import AdminComicsIcon from "@icons/svg/admin-comics.svg";
 import AdminMainPageIcon from "@icons/svg/admin-main.svg";
@@ -29,7 +29,9 @@ const Sidebar = async () => {
     return (
       <SidebarSC>
         <Link href="/">
-          <LogoSC src={Logo} alt="Logo" />
+          <LogoWrapper>
+            <LogoSC src={Logo} alt="Logo" />
+          </LogoWrapper>
         </Link>
         <Tabs>
           <SidebarTab icon={<AdminComicsIcon />} route={routes.adminComics} />
@@ -58,7 +60,9 @@ const Sidebar = async () => {
   return (
     <SidebarSC>
       <Link href="/">
-        <LogoSC src={Logo} alt="Logo" />
+        <LogoWrapper>
+          <LogoSC src={Logo} alt="Logo" />
+        </LogoWrapper>
       </Link>
       <Tabs>
         <SidebarTab icon={<HomeIcon />} route={routes.home} />

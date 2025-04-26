@@ -301,7 +301,7 @@ const ReaderBody = ({ title, chapter }: Props) => {
                   $width={readerWidth}
                   src={page.path}
                   ref={(el) => {
-                    pageRefs.current[index] = el;
+                    pageRefs.current[index] === el;
                   }}
                   key={page._id}
                 />
