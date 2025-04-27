@@ -77,16 +77,20 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return;
 
-    const newPages: ChapterPage[] = Array.from(event.target.files).map(
-      (file, index) => ({
-        _id: `new-${Date.now()}-${index}`,
-        order: localPages.length + index + 1,
-        path: URL.createObjectURL(file),
-        blob: file,
-        new: true,
-        uploaded: false,
-      })
+    const files = Array.from(event.target.files);
+
+    const sortedFiles = files.sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { numeric: true })
     );
+
+    const newPages: ChapterPage[] = sortedFiles.map((file, index) => ({
+      _id: file.name,
+      order: localPages.length + index + 1,
+      path: URL.createObjectURL(file),
+      blob: file,
+      new: true,
+      uploaded: false,
+    }));
 
     setLocalPages([...localPages, ...newPages]);
   };

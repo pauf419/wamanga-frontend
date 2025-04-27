@@ -24,7 +24,7 @@ export interface ChapterUnit {
   chapter: number;
   translater: string;
   name: string;
-  files: FileList | null;
+  files: File[] | null;
   uploaded: boolean;
 }
 
@@ -126,7 +126,7 @@ export const ActionPanel = ({ title }: Props) => {
     }
   };
 
-  const updateUnitFiles = (id: number, fileList: FileList | null) => {
+  const updateUnitFiles = (id: number, fileList: File[] | null) => {
     setUnitsAmount((prev) => {
       return prev.map((unit) => {
         if (unit.id === id)

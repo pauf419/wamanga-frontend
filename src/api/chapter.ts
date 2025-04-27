@@ -12,7 +12,7 @@ export interface CreateChapterMultiuploadDto {
   numberChapter: number;
   title: string;
   lang: "Russian" | "English";
-  files: FileList | null;
+  files: File[] | null;
   hide: boolean;
   views: number;
   teamId: string;

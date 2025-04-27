@@ -16,7 +16,7 @@ import { simpleSearch } from "@/api/team";
 
 interface Props {
   unit: ChapterUnit;
-  updateUnitFiles: (id: number, files: FileList | null) => void;
+  updateUnitFiles: (id: number, files: File[] | null) => void;
   updateUnit: <K extends keyof ChapterUnit>(
     id: number,
     key: K,
@@ -94,7 +94,13 @@ export const ChapterUnitComponent = ({
         id={`unit-${unit.id}`}
         style={{ display: "none" }}
         multiple
-        onChange={(e) => updateUnitFiles(unit.id, e.target.files)}
+        onChange={(e) => {
+          if (!e.target.files) return;
+          const sortedFiles = Array.from(e.target.files).sort((a, b) =>
+            a.name.localeCompare(b.name, undefined, { numeric: true })
+          );
+          updateUnitFiles(unit.id, sortedFiles);
+        }}
       />
       <label
         htmlFor={`unit-${unit.id}`}
