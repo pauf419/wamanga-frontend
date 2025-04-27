@@ -69,6 +69,8 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
     if (localPages.length) {
       setLoading(true);
       fetchFileInfo();
+    } else {
+      setLoading(false);
     }
   }, [localPages]);
 
@@ -146,14 +148,6 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
     }
   };
 
-  if (!localPages.length)
-    return (
-      <NoChaptersMessage>
-        <NoImage src="/no-comments.png" />
-        <NoChaptersText>Страниц нет...</NoChaptersText>
-      </NoChaptersMessage>
-    );
-
   return (
     <>
       <SegmentSeparator>
@@ -196,7 +190,7 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
       </SegmentTools>
       {loading ? (
         <h2>Загрузка...</h2>
-      ) : (
+      ) : localPages.length ? (
         <ChapterPageGridContainer>
           {localPages
             .sort((a, b) => a.order - b.order)
@@ -242,6 +236,11 @@ const ChapterPageListMinimized = ({ chapter, pages }: Props) => {
               );
             })}
         </ChapterPageGridContainer>
+      ) : (
+        <NoChaptersMessage>
+          <NoImage src="/no-comments.png" />
+          <NoChaptersText>Страниц нет...</NoChaptersText>
+        </NoChaptersMessage>
       )}
     </>
   );

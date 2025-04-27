@@ -21,6 +21,7 @@ export interface Comic {
   _id: string;
   id: string;
   name: string;
+  englishName: string;
   alternativeName?: string;
   altEnglishName: string[];
   altName: string[];

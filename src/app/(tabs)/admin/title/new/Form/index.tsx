@@ -529,6 +529,8 @@ const AddTitlePageForm = () => {
 
     altEnglishName: [],
 
+    englishName: "",
+
     altName: [],
 
     rating: 5,
@@ -671,7 +673,12 @@ const AddTitlePageForm = () => {
         <Input
           placeholder="Название на английском"
           type="input"
-          onChange={(value) => null}
+          onChange={(value) =>
+            setForm({
+              ...form,
+              englishName: value,
+            })
+          }
         />
         <Input
           placeholder="Альтернативные названия"

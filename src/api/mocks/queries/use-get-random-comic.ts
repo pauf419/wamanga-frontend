@@ -3,6 +3,7 @@ import type { GetRandomComicResult } from "@/api/types/results";
 export const getRandomComic = (): GetRandomComicResult => {
   return {
     data: {
+      englishName: "No eng name",
       seoGenre: "manga",
       _id: "67b093102325c458b9a65615",
       name: "Updated Manga Name",

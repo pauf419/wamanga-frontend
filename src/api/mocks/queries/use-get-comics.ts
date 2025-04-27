@@ -2,6 +2,7 @@ import type { Comic } from "@/api/types/comic";
 
 export const getComics = (): Comic => {
   return {
+    englishName: "No eng name",
     seoGenre: "manga",
     _id: "67b093102325c458b9a65615",
     name: "Updated Manga Name",

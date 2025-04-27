@@ -4,6 +4,7 @@ export const getByCategory = (): GetByCategoryResult => {
   return {
     data: [
       {
+        englishName: "No eng name",
         seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
@@ -44,6 +45,7 @@ export const getByCategory = (): GetByCategoryResult => {
         totalChapters: 0,
       },
       {
+        englishName: "No eng name",
         seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
@@ -84,6 +86,7 @@ export const getByCategory = (): GetByCategoryResult => {
         totalChapters: 0,
       },
       {
+        englishName: "No eng name",
         seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
@@ -124,6 +127,7 @@ export const getByCategory = (): GetByCategoryResult => {
         totalChapters: 0,
       },
       {
+        englishName: "No eng name",
         seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
@@ -164,6 +168,7 @@ export const getByCategory = (): GetByCategoryResult => {
         totalChapters: 0,
       },
       {
+        englishName: "No eng name",
         seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
@@ -204,6 +209,7 @@ export const getByCategory = (): GetByCategoryResult => {
         totalChapters: 0,
       },
       {
+        englishName: "No eng name",
         seoGenre: "manga",
         _id: "67b093102325c458b9a65615",
         name: "Updated Manga Name",
