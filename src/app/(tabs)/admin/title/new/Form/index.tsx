@@ -14,9 +14,8 @@ import Input from "@/components/Input";
 import { Checkbox } from "@/components/Checkbox";
 import { WarningBlock, WarningIcon, WarningText } from "@/app/user/styled";
 import InfoIcon from "@icons/svg/info-filled.svg";
-import BadgeTypeSelect, {
-  BadgeTypeSelectElement,
-} from "@/components/BadgeTypeSelect";
+import type { BadgeTypeSelectElement } from "@/components/BadgeTypeSelect";
+import BadgeTypeSelect from "@/components/BadgeTypeSelect";
 import { Dropdown } from "@/components/Dropdown";
 import type { CreateTitleDto } from "@/api/title";
 import { ComicsType, createTitle, PegiType, StatusType } from "@/api/title";
@@ -28,6 +27,493 @@ import { IconButton, Snackbar, Tooltip } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import CloseIcon from "@icons/svg/close.svg";
+
+export const MangaGenres: BadgeTypeSelectElement[] = [
+  { index: 0, value: "Арт" },
+  { index: 1, value: "Безумие" },
+  { index: 2, value: "Боевик" },
+  { index: 3, value: "Боевые искусства" },
+  { index: 4, value: "Вампиры" },
+  { index: 5, value: "Военное" },
+  { index: 6, value: "Гарем" },
+  { index: 7, value: "Гендерная интрига" },
+  { index: 8, value: "Героическое фэнтези" },
+  { index: 9, value: "Демоны" },
+  { index: 10, value: "Детектив" },
+  { index: 11, value: "Дзёсэй" },
+  { index: 12, value: "Драма" },
+  { index: 13, value: "Игра" },
+  { index: 14, value: "Исекай" },
+  { index: 15, value: "История" },
+  { index: 16, value: "Киберпанк" },
+  { index: 17, value: "Кодомо" },
+  { index: 18, value: "Комедия" },
+  { index: 19, value: "Космос" },
+  { index: 20, value: "Магия" },
+  { index: 21, value: "Махо-сёдзё" },
+  { index: 22, value: "Машины" },
+  { index: 23, value: "Меха" },
+  { index: 24, value: "Мистика" },
+  { index: 25, value: "Музыка" },
+  { index: 26, value: "Научная фантастика" },
+  { index: 27, value: "Омегаверс" },
+  { index: 28, value: "Пародия" },
+  { index: 29, value: "Повседневность" },
+  { index: 30, value: "Полиция" },
+  { index: 31, value: "Постапокалиптика" },
+  { index: 32, value: "Приключения" },
+  { index: 33, value: "Психология" },
+  { index: 34, value: "Романтика" },
+  { index: 35, value: "Самурайский боевик" },
+  { index: 36, value: "Сверхъестественное" },
+  { index: 37, value: "Сёдзё" },
+  { index: 38, value: "Спорт" },
+  { index: 39, value: "Супер сила" },
+  { index: 40, value: "Сэйнэн" },
+  { index: 41, value: "Трагедия" },
+  { index: 42, value: "Триллер" },
+  { index: 43, value: "Ужасы" },
+  { index: 44, value: "Фантастика" },
+  { index: 45, value: "Фэнтези" },
+  { index: 46, value: "Школа" },
+  { index: 47, value: "Эротика" },
+  { index: 48, value: "Этти" },
+];
+
+export const MangaTags: BadgeTypeSelectElement[] = [
+  {
+    index: 1,
+    value: "Азартные игры",
+  },
+  {
+    index: 2,
+    value: "Амнезия / Потеря памяти",
+  },
+  {
+    index: 3,
+    value: "Антигерой",
+  },
+  {
+    index: 4,
+    value: "Апокалипсис",
+  },
+  {
+    index: 5,
+    value: "Артефакты",
+  },
+  {
+    index: 6,
+    value: "Бои на мечах",
+  },
+  {
+    index: 7,
+    value: "Брат и сестра",
+  },
+  {
+    index: 8,
+    value: "Ведьма",
+  },
+  {
+    index: 9,
+    value: "Видеоигры",
+  },
+  {
+    index: 10,
+    value: "Владыка демонов",
+  },
+  {
+    index: 11,
+    value: "Война",
+  },
+  {
+    index: 12,
+    value: "Волшебные существа",
+  },
+  {
+    index: 13,
+    value: "Выживание",
+  },
+  {
+    index: 14,
+    value: "ГГ имба",
+  },
+  {
+    index: 15,
+    value: "Геймеры",
+  },
+  {
+    index: 16,
+    value: "Горничные",
+  },
+  {
+    index: 17,
+    value: "Гуру",
+  },
+  {
+    index: 18,
+    value: "Драконы",
+  },
+  {
+    index: 19,
+    value: "Жестокий мир",
+  },
+  {
+    index: 20,
+    value: "Завоевание мира",
+  },
+  {
+    index: 21,
+    value: "Злые духи",
+  },
+  {
+    index: 22,
+    value: "Игровые элементы",
+  },
+  {
+    index: 23,
+    value: "Исторические",
+  },
+  {
+    index: 24,
+    value: "Квесты",
+  },
+  {
+    index: 25,
+    value: "Кулинария",
+  },
+  {
+    index: 26,
+    value: "Легендарное оружие",
+  },
+  {
+    index: 27,
+    value: "Магическая академия",
+  },
+  {
+    index: 28,
+    value: "Мафия",
+  },
+  {
+    index: 29,
+    value: "Месть",
+  },
+  {
+    index: 30,
+    value: "Монстры",
+  },
+  {
+    index: 31,
+    value: "Навыки / способности",
+  },
+  {
+    index: 32,
+    value: "Насилие / жестокость",
+  },
+  {
+    index: 33,
+    value: "Ниндзя",
+  },
+  {
+    index: 34,
+    value: "Обратный Гарем",
+  },
+  {
+    index: 35,
+    value: "Офисные Работники",
+  },
+  {
+    index: 36,
+    value: "Пираты",
+  },
+  {
+    index: 37,
+    value: "Политика",
+  },
+  {
+    index: 38,
+    value: "Полностью CGI",
+  },
+  {
+    index: 39,
+    value: "Преступники / Криминал",
+  },
+  {
+    index: 40,
+    value: "Путешествие во времени",
+  },
+  {
+    index: 41,
+    value: "Разумные расы",
+  },
+  {
+    index: 42,
+    value: "Регрессия",
+  },
+  {
+    index: 43,
+    value: "Роботы",
+  },
+  {
+    index: 44,
+    value: "Самураи",
+  },
+  {
+    index: 45,
+    value: "Система",
+  },
+  {
+    index: 46,
+    value: "Спасение мира",
+  },
+  {
+    index: 47,
+    value: "Средневековье",
+  },
+  {
+    index: 48,
+    value: "Супергерои",
+  },
+  {
+    index: 49,
+    value: "Умный ГГ",
+  },
+  {
+    index: 50,
+    value: "Фермерство",
+  },
+  {
+    index: 51,
+    value: "Хикикомори",
+  },
+  {
+    index: 52,
+    value: "Шантаж",
+  },
+  {
+    index: 53,
+    value: "Япония",
+  },
+  {
+    index: 54,
+    value: "Алхимия",
+  },
+  {
+    index: 55,
+    value: "Ангелы",
+  },
+  {
+    index: 56,
+    value: "Антиутопия",
+  },
+  {
+    index: 57,
+    value: "Армия",
+  },
+  {
+    index: 58,
+    value: "Боги",
+  },
+  {
+    index: 59,
+    value: "Борьба за власть",
+  },
+  {
+    index: 60,
+    value: "Будущее",
+  },
+  {
+    index: 61,
+    value: "Вестерн",
+  },
+  {
+    index: 62,
+    value: "Виртуальная реальность",
+  },
+  {
+    index: 63,
+    value: "Военные",
+  },
+  {
+    index: 64,
+    value: "Волшебники / маги",
+  },
+  {
+    index: 65,
+    value: "Воспоминания из другого мира",
+  },
+  {
+    index: 66,
+    value: "ГГ женщина",
+  },
+  {
+    index: 67,
+    value: "ГГ мужчина",
+  },
+  {
+    index: 68,
+    value: "Гильдии",
+  },
+  {
+    index: 69,
+    value: "Гоблины",
+  },
+  {
+    index: 70,
+    value: "Гуро",
+  },
+  {
+    index: 71,
+    value: "Демоны",
+  },
+  {
+    index: 72,
+    value: "Дружба",
+  },
+  {
+    index: 73,
+    value: "Животные компаньоны",
+  },
+  {
+    index: 74,
+    value: "Зверолюди",
+  },
+  {
+    index: 75,
+    value: "Зомби",
+  },
+  {
+    index: 76,
+    value: "Империи",
+  },
+  {
+    index: 77,
+    value: "Камера",
+  },
+  {
+    index: 78,
+    value: "Космос",
+  },
+  {
+    index: 79,
+    value: "Культивирование",
+  },
+  {
+    index: 80,
+    value: "Лоли",
+  },
+  {
+    index: 81,
+    value: "Магия",
+  },
+  {
+    index: 82,
+    value: "Медицина",
+  },
+  {
+    index: 83,
+    value: "Монстродевушки",
+  },
+  {
+    index: 84,
+    value: "Мурим",
+  },
+  {
+    index: 85,
+    value: "Наёмники",
+  },
+  {
+    index: 86,
+    value: "Нежить",
+  },
+  {
+    index: 87,
+    value: "Обмен телами",
+  },
+  {
+    index: 88,
+    value: "Огнестрельное оружие",
+  },
+  {
+    index: 89,
+    value: "Пародия",
+  },
+  {
+    index: 90,
+    value: "Подземелья",
+  },
+  {
+    index: 91,
+    value: "Полиция",
+  },
+  {
+    index: 92,
+    value: "Полноценный ИИ",
+  },
+  {
+    index: 93,
+    value: "Призраки / Духи",
+  },
+  {
+    index: 94,
+    value: "Рабы",
+  },
+  {
+    index: 95,
+    value: "Ранги силы",
+  },
+  {
+    index: 96,
+    value: "Реинкарнация",
+  },
+  {
+    index: 97,
+    value: "Рыцари",
+  },
+  {
+    index: 98,
+    value: "Сгенерировано ИИ",
+  },
+  {
+    index: 99,
+    value: "Скрытые личности",
+  },
+  {
+    index: 100,
+    value: "Спортивное тело",
+  },
+  {
+    index: 101,
+    value: "Стимпанк",
+  },
+  {
+    index: 102,
+    value: "Традиционные игры",
+  },
+  {
+    index: 103,
+    value: "Учитель",
+  },
+  {
+    index: 104,
+    value: "Философия",
+  },
+  {
+    index: 105,
+    value: "Холодное оружие",
+  },
+  {
+    index: 106,
+    value: "Эльфы",
+  },
+  {
+    index: 107,
+    value: "Яндере",
+  },
+  {
+    index: 108,
+    value: "Эльдри",
+  },
+];
 
 const AddTitlePageForm = () => {
   const [error, setError] = useState<string>();
@@ -391,58 +877,7 @@ const AddTitlePageForm = () => {
               genres: values.map((genre) => genre.value),
             });
           }}
-          elements={[
-            { index: 0, value: "Игры" },
-            { index: 1, value: "Исекай" },
-            { index: 2, value: "История" },
-            { index: 3, value: "Апокалипсис" },
-            { index: 4, value: "Боевик" },
-            { index: 5, value: "Боевые искусства" },
-            { index: 6, value: "Ваншот" },
-            { index: 7, value: "Вестерн" },
-            { index: 8, value: "Яой" },
-            { index: 9, value: "Юри" },
-            { index: 10, value: "Шенен-ай" },
-            { index: 11, value: "Шенен" },
-            { index: 12, value: "Шедзе-ай" },
-            { index: 13, value: "Шедзя" },
-            { index: 14, value: "Фэнтези" },
-            { index: 15, value: "Философия" },
-            { index: 16, value: "Фантастика" },
-            { index: 17, value: "Триллер" },
-            { index: 18, value: "Трагедия" },
-            { index: 19, value: "Темное фэнтези" },
-            { index: 20, value: "Сентай" },
-            { index: 21, value: "Спокон" },
-            { index: 22, value: "Сейнен" },
-            { index: 23, value: "Романтика" },
-            { index: 24, value: "Психология" },
-            { index: 25, value: "Приключения" },
-            { index: 26, value: "Постапокалипсис" },
-            { index: 27, value: "Полиция" },
-            { index: 28, value: "Повседневность" },
-            { index: 29, value: "Пародия" },
-            { index: 30, value: "Омегаверс" },
-            { index: 31, value: "Научная фантастика" },
-            { index: 32, value: "Сверхъестественное" },
-            { index: 33, value: "Мистика" },
-            { index: 34, value: "Меха" },
-            { index: 35, value: "Махо-шонен" },
-            { index: 36, value: "Махо-шьёдзьо" },
-            { index: 37, value: "Комедия" },
-            { index: 38, value: "Йонкома" },
-            { index: 39, value: "Ужасы" },
-            { index: 40, value: "Эччи" },
-            { index: 41, value: "Эротика" },
-            { index: 42, value: "Экшн" },
-            { index: 43, value: "Драма" },
-            { index: 44, value: "Дополнительнее" },
-            { index: 45, value: "Детектив" },
-            { index: 46, value: "Джосей" },
-            { index: 47, value: "Деменция" },
-            { index: 48, value: "Готика" },
-            { index: 49, value: "Героическое фэнтези" },
-          ]}
+          elements={MangaGenres}
         />
         <BadgeTypeSelect
           placeholder="Теги"
@@ -452,70 +887,7 @@ const AddTitlePageForm = () => {
               tags: values.map((tag) => tag.value),
             });
           }}
-          elements={[
-            { index: 0, value: "Империи" },
-            { index: 1, value: "Артефакты" },
-            { index: 2, value: "Аристократия" },
-            { index: 3, value: "Боевик" },
-            { index: 4, value: "Безумие" },
-            { index: 5, value: "Якудза" },
-            { index: 6, value: "Школа" },
-            { index: 7, value: "Чудесица" },
-            { index: 8, value: "Фетиш" },
-            { index: 9, value: "Волшебники" },
-            { index: 10, value: "Университет" },
-            { index: 11, value: "Животные" },
-            { index: 12, value: "Спорт" },
-            { index: 13, value: "Суперсила" },
-            { index: 14, value: "Самураи" },
-            { index: 15, value: "Система" },
-            { index: 16, value: "Реинкарнация" },
-            { index: 17, value: "Приключения" },
-            { index: 18, value: "Подземелье" },
-            { index: 19, value: "Полиция" },
-            { index: 20, value: "Политика" },
-            { index: 21, value: "Путешествия по времени" },
-            { index: 22, value: "Парапсихология" },
-            { index: 23, value: "Быт" },
-            { index: 24, value: "Одержимость" },
-            { index: 25, value: "Обмен телами" },
-            { index: 26, value: "Насилие" },
-            { index: 27, value: "Бои на мечах" },
-            { index: 28, value: "Бои" },
-            { index: 29, value: "Вампиры" },
-            { index: 30, value: "Выживание" },
-            { index: 31, value: "Война" },
-            { index: 32, value: "ГГ женщина" },
-            { index: 33, value: "ГГ умный" },
-            { index: 34, value: "ГГ мужчина" },
-            { index: 35, value: "Гарем" },
-            { index: 36, value: "Гендерная интрига" },
-            { index: 37, value: "Гильдии" },
-            { index: 38, value: "Взрослые отношения" },
-            { index: 39, value: "Для детей" },
-            { index: 40, value: "Взрослые отношения" },
-            { index: 41, value: "Дружба" },
-            { index: 42, value: "Друзья детства" },
-            { index: 43, value: "Экшн" },
-            { index: 44, value: "Эпизод жизни" },
-            { index: 45, value: "Жестокость" },
-            { index: 46, value: "Эспер" },
-            { index: 47, value: "Зверолюди" },
-            { index: 48, value: "Изменение пола" },
-            { index: 49, value: "Преступление" },
-            { index: 50, value: "Сказка" },
-            { index: 51, value: "Космос" },
-            { index: 52, value: "Любовь" },
-            { index: 53, value: "Культивация" },
-            { index: 54, value: "Кулинария" },
-            { index: 55, value: "Киберпанк" },
-            { index: 56, value: "Любовный треугольник" },
-            { index: 57, value: "Магия" },
-            { index: 58, value: "Мафия" },
-            { index: 59, value: "Музыка" },
-            { index: 60, value: "Медицина" },
-            { index: 61, value: "Мифические существа" },
-          ]}
+          elements={MangaTags}
         />
         <BadgeTypeSelect
           placeholder="Команды"
