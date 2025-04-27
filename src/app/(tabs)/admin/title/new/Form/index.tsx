@@ -51,7 +51,7 @@ const AddTitlePageForm = () => {
 
     bannerPath: "",
 
-    type: ComicsType.Manga,
+    type: ComicsType,
 
     author: [],
 
@@ -100,7 +100,7 @@ const AddTitlePageForm = () => {
     releaseFormat: [],
     translationTeams: [],
     alternativeName: "",
-    seoGenre: ""
+    seoGenre: "",
   });
 
   const router = useRouter();
@@ -220,31 +220,23 @@ const AddTitlePageForm = () => {
               items={[
                 {
                   key: ComicsType.Manga,
-                  name: "Manga",
+                  name: "Манга",
                 },
                 {
                   key: ComicsType.Manhva,
-                  name: "Webtoon Manhva",
+                  name: "Манхва",
                 },
                 {
                   key: ComicsType.Manhua,
-                  name: "Webtoon Manhua",
+                  name: "Маньхуа",
                 },
                 {
                   key: ComicsType.Comic,
-                  name: "Comic",
-                },
-                {
-                  key: ComicsType.LifeComic,
-                  name: "Life Comic",
-                },
-                {
-                  key: ComicsType.WebComic,
-                  name: "Web Comic",
+                  name: "Комикс",
                 },
                 {
                   key: ComicsType.Manuscript,
-                  name: "Manuscript",
+                  name: "Манускрипт",
                 },
               ]}
               defaultIndex={0}
@@ -361,15 +353,6 @@ const AddTitlePageForm = () => {
             setForm({
               ...form,
               seoGenre: values[0],
-            })
-          }
-        />
-        <BadgeTypeSelectManual
-          placeholder="Формат выпуска"
-          onChange={(values) =>
-            setForm({
-              ...form,
-              releaseFormat: values,
             })
           }
         />

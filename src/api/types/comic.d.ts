@@ -1,12 +1,12 @@
 import type { Chapter } from "./chapter";
 
-type ComicType =
-  | "Manga"
-  | "Webtoon"
-  | "Comic"
-  | "Life Comic"
-  | "Web Comic"
-  | "Manuscript";
+export enum ComicsType {
+  Manga = "Манга",
+  Manhva = "Манхва",
+  Manhua = "Маньхуа",
+  Comic = "Комикс",
+  Manuscript = "Манускрипт",
+}
 
 type PegiType = "3+" | "6+" | "12+" | "16+" | "18+";
 
