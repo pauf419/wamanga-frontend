@@ -9,15 +9,12 @@ import type { Comic } from "./types/comic";
 }*/
 
 export enum ComicsType {
-  Manga = "Manga",
-  Manhva = "Webtoon Manhva",
-  Manhua = "Webtoon Manhua",
-  Comic = "Comic",
-  LifeComic = "Life Comic",
-  WebComic = "Web Comic",
-  Manuscript = "Manuscript",
+  Manga = "Манга",
+  Manhva = "Манхва",
+  Manhua = "Маньхуа",
+  Comic = "Комикс",
+  Manuscript = "Манускрипт",
 }
-
 export enum PegiType {
   Pegi3 = "3+",
   Pegi6 = "6+",
