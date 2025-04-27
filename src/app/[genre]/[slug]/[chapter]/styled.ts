@@ -122,10 +122,14 @@ export const ReaderButtonWrapper = styled.div`
   bottom: 0;
   z-index: 9;
   display: flex;
-  width: 100%;
+  width: calc(100% - 83px);
   justify-content: center;
   padding: 16px;
   min-height: 38px;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
 `;
 
 export const ReaderButton = styled.a`
