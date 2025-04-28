@@ -539,7 +539,7 @@ const AddTitlePageForm = () => {
 
     bannerPath: "",
 
-    type: ComicsType,
+    type: ComicsType.Manga,
 
     author: [],
 
@@ -617,7 +617,7 @@ const AddTitlePageForm = () => {
   const submit = async () => {
     try {
       const title = await createTitle(form, posterBlob, bannerBlob);
-      router.push(`/admin/title/${title.alternativeName}/chapters/new`);
+      router.push(`/admin/title/${title.alternativeName}`);
     } catch (e) {
       console.error(e);
       if (e && typeof e === "object" && "response" in e) {

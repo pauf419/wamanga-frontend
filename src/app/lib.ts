@@ -24,7 +24,10 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function logout() {
-  (await cookies()).set("session", "", { expires: new Date(0) });
+  (await cookies())
+    .delete("session")
+    .delete("refresh_token")
+    .delete("access_token");
 }
 
 export async function getSession() {
@@ -68,11 +71,18 @@ export async function updateSession(request: NextRequest): Promise<{
       body: JSON.stringify({ refreshToken: oldRefreshToken }),
     });
 
-    if (!refreshResponse.ok)
+    console.log("refrees");
+    if (!refreshResponse.ok) {
+      console.log("here");
+      response.cookies.delete("access_token");
+      response.cookies.delete("refresh_token");
+      response.cookies.delete("session");
+
       return {
         response,
         user: undefined,
       };
+    }
 
     const { accessToken, refreshToken } = await refreshResponse.json();
 

@@ -246,6 +246,7 @@ export async function createTitle(
     "name",
     "alternativeName",
     "altEnglishName",
+    "englishName",
     "altName",
     "description",
     "rating",

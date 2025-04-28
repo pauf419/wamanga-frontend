@@ -58,6 +58,8 @@ const ComicsPage = async ({
   const similarComics = await getSimilar(comics._id);
   const { data } = getSameTitles();
 
+  if (comics.englishName) comics.altName.unshift(comics.englishName);
+
   return (
     <BasePage isImageBehind>
       <Background $backgroundImage={comics.bannerPath}></Background>
