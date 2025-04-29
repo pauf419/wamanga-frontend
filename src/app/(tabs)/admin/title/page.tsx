@@ -22,7 +22,7 @@ const AdminPage = async () => {
           <Pathname href="/titles">Comics</Pathname>
         </PathnameHeader>
 
-        <AvailableTitlesBody titles={titles} />
+        <AvailableTitlesBody preset={titles} />
       </Container>
     </BasePage>
   );

@@ -69,34 +69,9 @@ const ComicEditableDataList = ({ title }: Props) => {
   return (
     <DataList>
       <DataListItem>
-        <b>Название:</b>
+        <b>Просмотры:</b>
         <DataListInput
-          defaultValue={title.name}
-          onChange={(e) =>
-            setEditTitle({
-              ...editTitle,
-              name: e.target.value,
-            })
-          }
-        />
-      </DataListItem>
-      <DataListItem>
-        <b>Ссылка:</b>
-        <DataListInput
-          placeholder="Введите Ссылку"
-          defaultValue={title.alternativeName}
-          onChange={(e) =>
-            setEditTitle({
-              ...editTitle,
-              alternativeName: e.target.value,
-            })
-          }
-        />
-      </DataListItem>
-      <DataListItem>
-        <b>Общее количество глав:</b>
-        <DataListInput
-          defaultValue={String(title.totalChapters)}
+          defaultValue={title.views}
           onChange={(e) =>
             setEditTitle({
               ...editTitle,
@@ -106,236 +81,53 @@ const ComicEditableDataList = ({ title }: Props) => {
         />
       </DataListItem>
       <DataListItem>
-        <b>Описание кнопки:</b>
+        <b>Просмотры глав:</b>
         <DataListInput
-          defaultValue={title.textForButton}
+          defaultValue={title.views}
           onChange={(e) =>
             setEditTitle({
               ...editTitle,
-              textForButton: e.target.value,
+              totalChapters: Number(e.target.value),
             })
           }
         />
       </DataListItem>
       <DataListItem>
-        <b>Ссылка на соц. сеть:</b>
+        <b>Сохранено:</b>
         <DataListInput
-          defaultValue={title.telegram}
+          defaultValue={title.bookmark}
           onChange={(e) =>
             setEditTitle({
               ...editTitle,
-              telegram: e.target.value,
+              totalChapters: Number(e.target.value),
             })
           }
         />
       </DataListItem>
       <DataListItem>
-        <b>Скрытый:</b>
-        <Checkbox
-          raw
-          cb={(b) =>
-            setEditTitle({
-              ...editTitle,
-              hidden: b,
-            })
-          }
-          defaultCheckedValue={title.hidden}
-        />
-      </DataListItem>
-      <DataListItem>
-        <b>Лицензированная:</b>
-        <Checkbox
-          raw
-          cb={(b) =>
-            setEditTitle({
-              ...editTitle,
-              license: b,
-            })
-          }
-          defaultCheckedValue={title.license}
-        />
-      </DataListItem>
-      <DataListItem>
-        <b>Для Взрослых:</b>
-        <Checkbox
-          raw
-          cb={(b) =>
-            setEditTitle({
-              ...editTitle,
-              isPorno: b,
-            })
-          }
-          defaultCheckedValue={title.isPorno}
-        />
-      </DataListItem>
-      <DataListItem>
-        <b>Статус тайтла:</b>
-        <Dropdown
-          items={[
-            {
-              key: StatusType.Started,
-              name: "Онгоинг",
-            },
-            {
-              key: StatusType.Finished,
-              name: "Окончено",
-            },
-            {
-              key: StatusType.Paused,
-              name: "Приостановлено",
-            },
-            {
-              key: StatusType.Abandoned,
-              name: "Заброшено",
-            },
-            {
-              key: StatusType.Announced,
-              name: "Анонсировано",
-            },
-          ]}
-          defaultIndex={statusDefault}
-          cb={(e) =>
-            setEditTitle({
-              ...editTitle,
-              status: e.key,
-            })
-          }
-        />
-      </DataListItem>
-      <DataListItem>
-        <b>Статус перевода:</b>
-        <Dropdown
-          items={[
-            {
-              key: StatusType.Started,
-              name: "Онгоинг",
-            },
-            {
-              key: StatusType.Finished,
-              name: "Окончено",
-            },
-            {
-              key: StatusType.Paused,
-              name: "Приостановлено",
-            },
-            {
-              key: StatusType.Abandoned,
-              name: "Заброшено",
-            },
-            {
-              key: StatusType.Announced,
-              name: "Анонсировано",
-            },
-          ]}
-          cb={(e) =>
-            setEditTitle({
-              ...editTitle,
-              transferStatus: e.key,
-            })
-          }
-          defaultIndex={translationStatusDefault}
-        />
-      </DataListItem>
-      <DataListItem>
-        <Input
-          type="textarea"
-          placeholder="Описание"
-          presetValue={title.description}
+        <b>Лайки:</b>
+        <DataListInput
+          defaultValue={title.likes}
           onChange={(e) =>
             setEditTitle({
               ...editTitle,
-              description: e,
+              totalChapters: Number(e.target.value),
             })
           }
         />
       </DataListItem>
       <DataListItem>
-        <BadgeTypeSelectManual
-          placeholder="Издатель"
-          preset={title.publisher}
+        <b>Общее количество глав:</b>
+        <DataListInput
+          defaultValue={title.chapters.length}
           onChange={(e) =>
             setEditTitle({
               ...editTitle,
-              publisher: e,
+              totalChapters: Number(e.target.value),
             })
           }
         />
       </DataListItem>
-      <DataListItem>
-        <BadgeTypeSelectManual
-          placeholder="Автор"
-          preset={title.author}
-          onChange={(e) =>
-            setEditTitle({
-              ...editTitle,
-              author: e,
-            })
-          }
-        />
-      </DataListItem>
-      <DataListItem>
-        <BadgeTypeSelectManual
-          preset={title.artist}
-          placeholder="Художник"
-          onChange={(e) =>
-            setEditTitle({
-              ...editTitle,
-              artist: e,
-            })
-          }
-        />
-      </DataListItem>
-      <DataListItem>
-        <BadgeTypeSelectManual
-          placeholder="Формат выпуска"
-          preset={title.releaseFormat}
-          onChange={(e) =>
-            setEditTitle({
-              ...editTitle,
-              releaseFormat: e,
-            })
-          }
-        />
-      </DataListItem>
-      <DataListItem>
-        <BadgeTypeSelect
-          preset={title.genres.map((genre, index) => {
-            return {
-              index,
-              value: genre,
-            };
-          })}
-          placeholder="Жанры"
-          elements={MangaGenres}
-          onChange={(e) =>
-            setEditTitle({
-              ...editTitle,
-              genres: e.map((genre) => genre.value),
-            })
-          }
-        />
-      </DataListItem>
-      <DataListItem>
-        <BadgeTypeSelect
-          preset={title.genres.map((genre, index) => {
-            return {
-              index,
-              value: genre,
-            };
-          })}
-          placeholder="Теги"
-          elements={MangaTags}
-          onChange={(e) =>
-            setEditTitle({
-              ...editTitle,
-              tags: e.map((tag) => tag.value),
-            })
-          }
-        />
-      </DataListItem>
-      <button className="button-filled" onClick={() => submit()}>
-        Сохранить изменения
-      </button>
       <Snackbar
         open={open}
         autoHideDuration={6000}

@@ -957,13 +957,6 @@ const AddTitlePageForm = () => {
             })
           }
         />
-        <WarningBlock>
-          <WarningIcon as={InfoIcon} />
-          <WarningText>
-            Автоматически генерируется, используйте это значение, если вы хотите
-            иметь пользовательский URL slug
-          </WarningText>
-        </WarningBlock>
         <Input
           placeholder="Описание Кнопки"
           type="input"

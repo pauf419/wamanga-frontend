@@ -14,7 +14,7 @@ const AdminPageNewComic = async () => {
         <PathnameHeader>
           <Pathname href="/admin">Admin</Pathname>
           <PathnameSpacer>\</PathnameSpacer>
-          <Pathname href="/Settings">Settings</Pathname>
+          <Pathname href="/admin/title/new">New Title</Pathname>
         </PathnameHeader>
       </Container>
       <SettingsPageForm />

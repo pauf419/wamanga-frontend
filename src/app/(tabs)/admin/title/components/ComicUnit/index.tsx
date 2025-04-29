@@ -25,7 +25,7 @@ export const ComicUnit = ({ comic }: Props) => {
         src={comic.imagePath}
         onClick={() => router.push(`/admin/title/${comic.alternativeName}`)}
       />
-      <EditButton href={`/admin/title/${comic.alternativeName}`}>
+      <EditButton href={`/admin/title/${comic.alternativeName}/edit`}>
         <PencilIcon />
       </EditButton>
       <Description>
