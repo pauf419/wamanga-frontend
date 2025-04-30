@@ -15,6 +15,7 @@ import React from "react";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@icons/svg/close.svg";
 import { MangaGenres, MangaTags } from "../../../new/Form";
+import { useRouter } from "next/navigation";
 
 interface Props {
   title: Comic;
@@ -32,6 +33,7 @@ const ComicEditableDataList = ({ title }: Props) => {
   const [editTitle, setEditTitle] = useState<Comic>(title);
   const [open, setOpen] = useState<boolean>(false);
   const [message, setMessage] = useState<string>();
+  const router = useRouter();
 
   const statusDefault = statusItems.findIndex(
     (item) => item.key === title.status
@@ -68,6 +70,14 @@ const ComicEditableDataList = ({ title }: Props) => {
 
   return (
     <DataList>
+      <button
+        className="button-filled"
+        onClick={() =>
+          router.push(`/admin/title/${title.alternativeName}/edit`)
+        }
+      >
+        Редактировать
+      </button>
       <DataListItem>
         <b>Просмотры:</b>
         <DataListInput

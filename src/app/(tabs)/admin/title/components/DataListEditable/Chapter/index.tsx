@@ -146,9 +146,6 @@ const ChapterEditableDataList = ({ chapter }: Props) => {
           }
         />
       </DataListItem>
-      <button className="button-filled" onClick={() => submit()}>
-        Сохранить изменения
-      </button>
       <Snackbar
         open={open}
         autoHideDuration={6000}

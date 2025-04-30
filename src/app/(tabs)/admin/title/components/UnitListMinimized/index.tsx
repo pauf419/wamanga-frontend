@@ -43,6 +43,12 @@ const ChapterListMinimized = ({ slug, chapters }: Props) => {
   return (
     <>
       <SegmentSeparator>
+        <button
+          className="button-filled"
+          onClick={() => router.push(`/admin/title/${slug}/chapters/new`)}
+        >
+          Создать новую главу
+        </button>
         <h1>Главы:</h1>
         <Input
           type="input"
@@ -62,13 +68,6 @@ const ChapterListMinimized = ({ slug, chapters }: Props) => {
               </Link>
             </MiniBoxWrapper>
           ))}
-        <MiniBoxRef
-          $uploaded={false}
-          onClick={() => router.push(`/admin/title/${slug}/chapters/new`)}
-        >
-          <NewIcon />
-          <h3>Добавить главу</h3>
-        </MiniBoxRef>
       </GridContainer>
     </>
   );
