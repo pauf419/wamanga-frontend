@@ -16,6 +16,7 @@ import { createChapter } from "@/api/chapter";
 import type { Comic } from "@/api/types/comic";
 import Modal from "@/components/Modal";
 import type { Chapter } from "@/api/types/chapter";
+import type { Team } from "@/api/types/team";
 
 export interface ChapterUnit {
   id: number;
@@ -26,15 +27,17 @@ export interface ChapterUnit {
   name: string;
   files: File[] | null;
   uploaded: boolean;
+  presetTeam?: Team | null;
 }
 
 export interface Props {
   title: Comic;
+  team: Team;
 }
 
-export const ActionPanel = ({ title }: Props) => {
+export const ActionPanel = ({ title, team }: Props) => {
   let lastChapter: Chapter =
-    title.chapters.length > 1
+    title.chapters.length >= 1
       ? title.chapters[title.chapters.length - 1]
       : title.chapters[title.chapters.length];
   if (!lastChapter)
@@ -47,10 +50,11 @@ export const ActionPanel = ({ title }: Props) => {
     notification: false,
     volume: lastChapter.volumeIndex,
     chapter: lastChapter.numberChapter + 1,
-    translater: "",
+    translater: team._id,
     name: "",
     files: null,
     uploaded: false,
+    presetTeam: team,
   };
 
   const [unitsAmount, setUnitsAmount] = useState<ChapterUnit[]>([template]);
@@ -78,6 +82,7 @@ export const ActionPanel = ({ title }: Props) => {
             chapter: newChapter,
             name: "",
             uploaded: false,
+            presetTeam: team,
           };
         }
       );
@@ -90,7 +95,6 @@ export const ActionPanel = ({ title }: Props) => {
     setUnitsUploaded(0);
     setErrors([]);
     setUploadModalActive(true);
-    const uploadedSuccessfully: number[] = [];
     for (let i = 0; i < unitsAmount.length; i++) {
       try {
         await createChapter({

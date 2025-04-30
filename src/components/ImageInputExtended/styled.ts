@@ -95,6 +95,35 @@ export const Blurer = styled.div<{ $active: boolean }>`
   }
 `;
 
+export const CloseBlurer = styled.div`
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  padding: 5px;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s all ease;
+
+  svg {
+    color: rgba(129, 129, 129, 0.7);
+    fill: rgba(129, 129, 129, 0.7);
+    transition: 0.2s all ease;
+  }
+
+  &:hover {
+    background: rgba(129, 129, 129, 0.7);
+    svg {
+      color: #fff;
+      fill: #fff;
+    }
+  }
+`;
+
 export const ChangerIcon = styled.span`
   svg {
     width: 20px;

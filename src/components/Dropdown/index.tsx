@@ -22,6 +22,7 @@ interface Props {
   cb: (i: DropdownItem) => void;
   items: DropdownItem[];
   defaultIndex?: number;
+  preset?: DropdownItem | null;
   search?: boolean;
   onSearch?: ((v: string) => void) | null;
 }
@@ -29,6 +30,7 @@ interface Props {
 export const Dropdown = ({
   cb,
   items,
+  preset = null,
   defaultIndex = 0,
   search = false,
   onSearch = null,
@@ -36,7 +38,9 @@ export const Dropdown = ({
   const [active, setActive] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>();
   const [timeoutId, setTimeoutId] = useState<any>();
-  const [selected, setSelected] = useState<DropdownItem>(items[defaultIndex]);
+  const [selected, setSelected] = useState<DropdownItem>(
+    preset ? preset : items[defaultIndex]
+  );
 
   const handleClick = (item: DropdownItem) => {
     cb(item);

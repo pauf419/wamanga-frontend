@@ -67,19 +67,18 @@ export const MainSection = ({ comics }: Props) => {
         <Content>
           <Main>
             <Description>{comics.description}</Description>
-
             <InfoTag>
-              <InfoTagTitle>Теги</InfoTagTitle>
+              <InfoTagTitle>Жанры</InfoTagTitle>
               <Badges>
-                {comics.tags.map((el) => (
+                {comics.genres.map((el) => (
                   <InfoTagBadgeDefault key={el}>{el}</InfoTagBadgeDefault>
                 ))}
               </Badges>
             </InfoTag>
             <InfoTag>
-              <InfoTagTitle>Жанры</InfoTagTitle>
+              <InfoTagTitle>Теги</InfoTagTitle>
               <Badges>
-                {comics.genres.map((el) => (
+                {comics.tags.map((el) => (
                   <InfoTagBadgeDefault key={el}>{el}</InfoTagBadgeDefault>
                 ))}
               </Badges>

@@ -158,6 +158,21 @@ export const MiniBoxWrapper = styled.div<{ $uploaded: boolean }>`
   }
 `;
 
+export const MiniBoxRef = styled(MiniBoxWrapper)`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  svg {
+    fill: #4f5053;
+
+    path {
+      fill: #4f5053;
+    }
+  }
+`;
+
 export const MiniBoxImage = styled.div<{ $background: string }>`
   width: 80px;
   height: 80px;

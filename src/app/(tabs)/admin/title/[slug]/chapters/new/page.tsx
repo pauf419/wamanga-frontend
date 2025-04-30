@@ -22,6 +22,7 @@ import ChapterEditableDataList from "../../../components/DataListEditable/Chapte
 import { Action, ActionContainer, Controller, HeaderTitle } from "./styled";
 import ControllerComponent from "./components/Controller";
 import ActionPanel from "./components/ActionPanel";
+import { getTeamById } from "@/api/team";
 
 const AdminPage = async ({
   params,
@@ -33,6 +34,8 @@ const AdminPage = async ({
   const title = await getBySlug(slug);
 
   if (!slug || !title) redirect(`/admin/title/${slug}`);
+
+  const team = await getTeamById(title.translationTeams[0]);
 
   return (
     <BasePage>
@@ -58,7 +61,7 @@ const AdminPage = async ({
           <Pathname href={`/admin/title/${slug}/chapters/new`}>New</Pathname>
         </PathnameHeader>
         <HeaderTitle>Добавить Главу</HeaderTitle>
-        <ActionPanel title={title} />
+        <ActionPanel title={title} team={team}/>
       </Container>
     </BasePage>
   );

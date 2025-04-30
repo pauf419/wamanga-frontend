@@ -1,9 +1,10 @@
 import type { FC } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Background,
   Blurer,
   ChangerIcon,
+  CloseBlurer,
   FileInputContainer,
   HiddenInput,
   Img,
@@ -11,6 +12,7 @@ import {
 } from "./styled";
 import Modal from "../Modal";
 import CropFileInput from "../CropFileInput";
+import CloseIcon from "@icons/svg/close.svg";
 
 interface IProps {
   onChange: (url: string, data: any) => void;
@@ -45,6 +47,10 @@ export const ImageInputExtended: FC<IProps> = ({
     });*/
   };
 
+  useEffect(() => {
+    setFileUrl(defaultImg);
+  }, [defaultImg]);
+
   return (
     <>
       <Modal
@@ -62,8 +68,11 @@ export const ImageInputExtended: FC<IProps> = ({
             e.target.files && previewSelectedAvatar(e.target.files[0])
           }
         />
-        <Label onClick={() => setModalActive(true)}>
-          <Blurer $active={fileUrl || defaultImg ? true : false}>
+        <Label>
+          <Blurer
+            $active={fileUrl ? true : false}
+            onClick={() => setModalActive(true)}
+          >
             <ChangerIcon>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,14 +97,22 @@ export const ImageInputExtended: FC<IProps> = ({
             </ChangerIcon>
             Загрузить фото
           </Blurer>
-          {defaultImg || fileUrl ? (
-            <Img
-              src={fileUrl || defaultImg}
-              key={fileUrl + defaultImg}
-              alt="Preview"
-            />
+          {fileUrl && (
+            <CloseBlurer
+              onClick={() => {
+                setFileUrl("");
+                onChange("", null);
+              }}
+            >
+              <ChangerIcon>
+                <CloseIcon />
+              </ChangerIcon>
+            </CloseBlurer>
+          )}
+          {fileUrl ? (
+            <Img src={fileUrl} key={fileUrl} alt="Preview" />
           ) : (
-            <Background></Background>
+            <Background />
           )}
         </Label>
       </FileInputContainer>

@@ -2,6 +2,7 @@
 
 import {
   GridContainer,
+  MiniBoxRef,
   MiniBoxWrapper,
   SegmentSeparator,
 } from "../../../styled";
@@ -14,6 +15,8 @@ import {
   NoChaptersText,
   NoImage,
 } from "@/components/Chapters/styled";
+import NewIcon from "@icons/svg/admin-plus.svg";
+import { useRouter } from "next/navigation";
 
 interface Props {
   slug: string;
@@ -21,6 +24,8 @@ interface Props {
 }
 
 const ChapterListMinimized = ({ slug, chapters }: Props) => {
+  const router = useRouter();
+
   const [filter, setFilter] = useState<string>();
   if (!chapters.length)
     return (
@@ -57,6 +62,13 @@ const ChapterListMinimized = ({ slug, chapters }: Props) => {
               </Link>
             </MiniBoxWrapper>
           ))}
+        <MiniBoxRef
+          $uploaded={false}
+          onClick={() => router.push(`/admin/title/${slug}/chapters/new`)}
+        >
+          <NewIcon />
+          <h3>Добавить главу</h3>
+        </MiniBoxRef>
       </GridContainer>
     </>
   );

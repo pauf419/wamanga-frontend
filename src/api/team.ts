@@ -6,3 +6,8 @@ export async function simpleSearch(query: string): Promise<Team[]> {
 
   return res.data;
 }
+
+export async function getTeamById(id: string): Promise<Team> {
+  const res = await $apiWithoutAuth.get(`/teams/${id}`);
+  return res.data;
+}

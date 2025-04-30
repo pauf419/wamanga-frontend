@@ -67,6 +67,14 @@ export const ChapterUnitComponent = ({
         <Dropdown
           search
           onSearch={onSearch}
+          preset={
+            unit.presetTeam
+              ? {
+                  key: unit.presetTeam._id,
+                  name: unit.presetTeam.name,
+                }
+              : null
+          }
           cb={(e) => updateUnit(unit.id, "translater", e.key)}
           items={teams.map((team) => {
             return {
