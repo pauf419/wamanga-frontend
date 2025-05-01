@@ -19,9 +19,10 @@ import TelegramIcon from "@icons/svg/telegram.svg";
 import DiscordIcon from "@icons/svg/discord.svg";
 import DonationIcon from "@icons/svg/donation.svg";
 import { DonationPanel } from "../DonationPanel";
+import type { Team } from "@/api/types/team";
 
 interface Props {
-  translator: ComicTranslator;
+  translator: Team;
 }
 
 export const ComicTranslatorMinimized = ({ translator }: Props) => {
@@ -29,10 +30,10 @@ export const ComicTranslatorMinimized = ({ translator }: Props) => {
     <Wrapper>
       <Header>
         <Banner src={translator.banner} />
-        <Avatar src={Logo} alt="Logo" />
+        <Avatar src={translator.avatar} alt="Logo" />
       </Header>
       <Body>
-        <Name href="/team/0239203">{translator.name}</Name>
+        <Name>{translator.name}</Name>
         <Description>{translator.description}</Description>
         <Icons>
           {translator.telegram && (
@@ -40,9 +41,11 @@ export const ComicTranslatorMinimized = ({ translator }: Props) => {
               <Icon as={TelegramIcon} />
             </IconLink>
           )}
-          <IconLink>
-            <Icon as={DonationIcon} />
-          </IconLink>
+          {translator.boosty && (
+            <IconLink href={translator.boosty}>
+              <Icon as={DonationIcon} />
+            </IconLink>
+          )}
           {translator.discord && (
             <IconLink href={translator.discord}>
               <Icon as={DiscordIcon} />

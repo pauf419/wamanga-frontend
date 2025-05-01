@@ -22,7 +22,7 @@ import { ComicsType, createTitle, PegiType, StatusType } from "@/api/title";
 import { BadgeTypeSelectManual } from "@/components/BadgeTypeSelect/Manual";
 import type { Team } from "@/api/types/team";
 import { simpleSearch } from "@/api/team";
-import type { Comic } from "@/api/types/comic";
+import type { Comic, CreateComicDto } from "@/api/types/comic";
 import { IconButton, Snackbar, Tooltip } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -522,7 +522,7 @@ const AddTitlePageForm = () => {
   const [bannerBlob, setBannerBlob] = useState<any>(null);
   const [bannerUrl, setBannerUrl] = useState<string>("");
   const [searchTeams, setSearchTeams] = useState<Team[]>([]);
-  const [form, setForm] = useState<Comic>({
+  const [form, setForm] = useState<CreateComicDto>({
     name: "",
 
     description: "",

@@ -35,7 +35,7 @@ const AdminPage = async ({
 
   if (!slug || !title) redirect(`/admin/title/${slug}`);
 
-  const team = await getTeamById(title.translationTeams[0]);
+  const team = title.translationTeams[0];
 
   return (
     <BasePage>
@@ -61,7 +61,7 @@ const AdminPage = async ({
           <Pathname href={`/admin/title/${slug}/chapters/new`}>New</Pathname>
         </PathnameHeader>
         <HeaderTitle>Добавить Главу</HeaderTitle>
-        <ActionPanel title={title} team={team}/>
+        <ActionPanel title={title} team={team} />
       </Container>
     </BasePage>
   );

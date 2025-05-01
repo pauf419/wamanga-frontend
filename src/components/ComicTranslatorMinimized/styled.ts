@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
   gap: 16px;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
   overflow: hidden;
   border: 1px solid rgb(143 150 163 / 24%);
   border-radius: 16px;
@@ -44,7 +43,7 @@ export const Banner = styled.img`
   object-position: center center;
 `;
 
-export const Avatar = styled(Image)`
+export const Avatar = styled.img`
   position: absolute;
   bottom: -16px;
   left: 24px;

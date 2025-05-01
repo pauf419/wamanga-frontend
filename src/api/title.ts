@@ -1,6 +1,6 @@
 import { data } from "motion/react-client";
 import { $api, $apiWithoutAuth } from "./axiosInstance";
-import type { Comic } from "./types/comic";
+import type { Comic, CreateComicDto } from "./types/comic";
 
 /*export interface SignUpResponse {
   status: string;
@@ -236,7 +236,7 @@ export async function editManga(body: Comic): Promise<Comic> {
 }
 
 export async function createTitle(
-  body: Comic,
+  body: CreateComicDto,
   poster: File,
   banner: File
 ): Promise<Comic> {

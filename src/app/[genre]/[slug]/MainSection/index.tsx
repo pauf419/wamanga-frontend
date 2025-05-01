@@ -179,7 +179,9 @@ export const MainSection = ({ comics }: Props) => {
 
               <TranslatorTag>
                 <InfoTagTitle> Переводчик </InfoTagTitle>
-                <ComicTranslatorMinimized translator={translator.data} />
+                <ComicTranslatorMinimized
+                  translator={comics.translationTeams[0]}
+                />
               </TranslatorTag>
             </InfoTags>
           </HidesWhenMobile>

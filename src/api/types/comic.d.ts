@@ -1,4 +1,5 @@
 import type { Chapter } from "./chapter";
+import type { Team } from "./team";
 
 export enum ComicsType {
   Manga = "Манга",
@@ -34,7 +35,7 @@ export interface Comic {
   author: string[];
   artist: string[];
   type: ComicType;
-  translationTeams: string[];
+  translationTeams: Team[];
   originalAuthor: string;
   publishedOn: Date;
   year: number;
@@ -58,4 +59,8 @@ export interface Comic {
   telegram: string;
   license: boolean;
   isPorno: boolean;
+}
+
+export interface CreateComicDto extends Comic {
+  translationTeams: string[];
 }

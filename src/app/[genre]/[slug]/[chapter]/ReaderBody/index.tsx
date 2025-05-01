@@ -431,7 +431,7 @@ const ReaderBody = ({ title, chapter }: Props) => {
             <HidesWhenMobile>
               <h3>Переводчик</h3>
             </HidesWhenMobile>
-            <ComicTranslatorMinimized translator={comicTranslator.data} />
+            <ComicTranslatorMinimized translator={title.translationTeams[0]} />
           </InfoBlockTranslator>
         </InfoContainer>
       </Container>
