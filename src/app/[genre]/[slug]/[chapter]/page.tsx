@@ -1,6 +1,7 @@
 import { getBySlug } from "@/api/title";
 import ReaderBody from "./ReaderBody";
 import { getChapterById } from "@/api/chapter";
+import AgeConfirmModal from "@/components/AgeConfirmModal";
 
 export type paramsType = Promise<{
   params: {
@@ -20,7 +21,14 @@ const ReaderPage = async ({
   const title = await getBySlug(titleAlternativeName);
   const chapterEl = await getChapterById(chapter);
 
-  return <ReaderBody title={title} chapter={chapterEl} />;
+  return (
+    <>
+      {(title.pegi === "16+" || title.pegi === "18+") && title.isPorno && (
+        <AgeConfirmModal href={`/${title.seoGenre}/${title.alternativeName}`} />
+      )}
+      <ReaderBody title={title} chapter={chapterEl} />;
+    </>
+  );
 };
 
 export default ReaderPage;

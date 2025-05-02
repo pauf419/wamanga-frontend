@@ -39,6 +39,7 @@ import { getBySlug, getSimilar } from "@/api/title";
 import BasePage from "@/components/BasePage";
 import BookmarkIcon from "@icons/svg/bookmark.svg";
 import { Tooltip } from "@mui/material";
+import AgeConfirmModal from "@/components/AgeConfirmModal";
 
 export type paramsType = Promise<{
   params: {

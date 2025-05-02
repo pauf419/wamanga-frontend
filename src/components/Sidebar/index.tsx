@@ -34,8 +34,8 @@ const Sidebar = async () => {
           </LogoWrapper>
         </Link>
         <Tabs>
-          <SidebarTab icon={<AdminComicsIcon />} route={routes.adminComics} />
           <SidebarTab icon={<AdminMainPageIcon />} route={routes.adminMain} />
+          <SidebarTab icon={<AdminComicsIcon />} route={routes.adminComics} />
           <SidebarTab icon={<AdminPlusIcon />} route={routes.adminAddComics} />
           <SidebarTab icon={<AdminCatalogIcon />} route={routes.adminCatalog} />
           <SidebarTab icon={<AdminUsersIcon />} route={routes.adminUsers} />
@@ -50,12 +50,7 @@ const Sidebar = async () => {
 
   const randomTitle = await getRandomComic();
 
-  const moreRoutes = [
-    { title: "Премиум подписочка", path: "/catalog" },
-    { title: "Крутейшая страница для си132554252", path: "/home" },
-    { title: "Правила сайта", path: "/rules" },
-    { title: "Политика сайта", path: "/catalog" },
-  ];
+  const moreRoutes = [{ title: "Правила сайта", path: "/rules" }];
 
   return (
     <SidebarSC>
