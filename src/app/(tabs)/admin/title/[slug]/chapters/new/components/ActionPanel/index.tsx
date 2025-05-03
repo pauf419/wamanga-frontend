@@ -176,6 +176,12 @@ export const ActionPanel = ({ title, team }: Props) => {
     }
   }, [uploadModalActive]);
 
+  useEffect(() => {
+    if (unitsUploaded === unitsAmount.length) {
+      setUploadModalActive(false);
+    }
+  }, [unitsAmount, unitsUploaded]);
+
   return (
     <ActionContainer>
       <Modal
