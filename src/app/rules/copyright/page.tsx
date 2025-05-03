@@ -33,7 +33,7 @@ const CopyrightPage = () => {
           <Description>
             <RulesImage
               quality={100}
-              src="/rules.png"
+              src="/rules-1.png"
               alt="rules"
               width={512}
               height={512}

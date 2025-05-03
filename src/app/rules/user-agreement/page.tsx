@@ -33,7 +33,7 @@ const UserAgreementPage = () => {
           <Description>
             <RulesImage
               quality={100}
-              src="/rules.png"
+              src="/rules-3.png"
               alt="rules"
               width={512}
               height={512}
