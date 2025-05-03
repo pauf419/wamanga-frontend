@@ -63,7 +63,7 @@ const ChapterListMinimized = ({ slug, chapters }: Props) => {
           .map((chapter) => (
             <MiniBoxWrapper key={chapter._id} $uploaded={false}>
               <h3>{chapter.title}</h3>
-              <Link href={`/admin/title/${slug}/chapters/${chapter._id}`}>
+              <Link href={`/admin/title/${slug}/chapters/${chapter.slug}`}>
                 Редактировать
               </Link>
             </MiniBoxWrapper>

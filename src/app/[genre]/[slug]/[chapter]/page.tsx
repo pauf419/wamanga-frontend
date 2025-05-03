@@ -1,6 +1,6 @@
-import { getBySlug } from "@/api/title";
+import { getBySlug, incrementMangaViews } from "@/api/title";
 import ReaderBody from "./ReaderBody";
-import { getChapterById } from "@/api/chapter";
+import { getChapterById, getChapterBySlug } from "@/api/chapter";
 import AgeConfirmModal from "@/components/AgeConfirmModal";
 
 export type paramsType = Promise<{
@@ -19,7 +19,8 @@ const ReaderPage = async ({
   const titleAlternativeName = slug;
 
   const title = await getBySlug(titleAlternativeName);
-  const chapterEl = await getChapterById(chapter);
+  await incrementMangaViews(title._id);
+  const chapterEl = await getChapterBySlug(title._id, chapter);
 
   return (
     <>

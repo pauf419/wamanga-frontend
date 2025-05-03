@@ -34,7 +34,7 @@ export const ChapterUnit = ({ chapter, title }: Props) => {
     <Wrapper
       onClick={() =>
         router.push(
-          `/${title.seoGenre}/${title.alternativeName}/${chapter._id}`
+          `/${title.seoGenre}/${title.alternativeName}/${chapter.slug}`
         )
       }
     >

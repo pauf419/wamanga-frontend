@@ -150,6 +150,12 @@ export async function getRandom(): Promise<Comic> {
   return res.data;
 }
 
+export async function incrementMangaViews(mangaId: string): Promise<Comic> {
+  const res = await $apiWithoutAuth.put(`/manga/${mangaId}/views`);
+
+  return res.data;
+}
+
 export async function paginateTitles(
   offset: number,
   limit: number = 30

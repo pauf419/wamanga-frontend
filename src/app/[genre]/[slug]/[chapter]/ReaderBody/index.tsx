@@ -207,7 +207,7 @@ const ReaderBody = ({ title, chapter }: Props) => {
               const isCurrent = currentChapter._id === chapter._id;
               return (
                 <ChaptersListElement
-                  href={`/${title.seoGenre}/${title.alternativeName}/${chapter._id}`}
+                  href={`/${title.seoGenre}/${title.alternativeName}/${chapter.slug}`}
                   $active={isCurrent}
                   key={chapter._id}
                 >
@@ -373,7 +373,7 @@ const ReaderBody = ({ title, chapter }: Props) => {
                   return false;
                 }
               }}
-              href={`/${title.seoGenre}/${title.alternativeName}/${chapter.prevChapter?._id}`}
+              href={`/${title.seoGenre}/${title.alternativeName}/${chapter.prevChapter?.slug}`}
             >
               <ArrowLeft />
               Предыдущий раздел
@@ -394,7 +394,7 @@ const ReaderBody = ({ title, chapter }: Props) => {
                   return false;
                 }
               }}
-              href={`/${title.seoGenre}/${title.alternativeName}/${chapter.nextChapter?._id}`}
+              href={`/${title.seoGenre}/${title.alternativeName}/${chapter.nextChapter?.slug}`}
             >
               Следующий раздел
               <ArrowRight />

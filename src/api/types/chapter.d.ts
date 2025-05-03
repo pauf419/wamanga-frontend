@@ -31,4 +31,5 @@ export interface Chapter {
   updatedAt: string;
   description: string;
   titleSys: boolean;
+  slug: string;
 }

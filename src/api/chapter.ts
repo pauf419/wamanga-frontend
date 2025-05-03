@@ -7,6 +7,16 @@ export async function getChapterById(chapterId: string): Promise<Chapter> {
   return res.data;
 }
 
+export async function getChapterBySlug(
+  mangaId: string,
+  slug: string
+): Promise<Chapter> {
+  console.log(`/chapters/slug/${slug}/${mangaId}`);
+  const res = await $apiWithoutAuth.get(`/chapters/slug/${slug}/${mangaId}`);
+
+  return res.data;
+}
+
 export interface CreateChapterMultiuploadDto {
   mangaId: string;
   numberChapter: number;

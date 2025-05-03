@@ -11,25 +11,25 @@ import {
   PathnameSpacer,
   Poster,
 } from "../../../../styled";
-import { getChapterById } from "@/api/chapter";
+import { getChapterById, getChapterBySlug } from "@/api/chapter";
 import { getBySlug } from "@/api/title";
 import ChapterPageListMinimized from "../../../components/UnitListMinimized/ChapterPageList";
 import ChapterEditableDataList from "../../../components/DataListEditable/Chapter";
 
 export type paramsType = {
   slug: string;
-  chapterId: string;
+  chapterSlug: string;
 };
 
 const AdminPage = async ({
   params,
 }: {
-  params: Promise<{ slug: string; chapterId: string }>;
+  params: Promise<{ slug: string; chapterSlug: string }>;
 }) => {
-  const { slug, chapterId } = await params;
+  const { slug, chapterSlug } = await params;
 
   const title = await getBySlug(slug);
-  const chapter = await getChapterById(chapterId);
+  const chapter = await getChapterBySlug(title._id, chapterSlug);
 
   if (!slug || !title) redirect(`/admin/title/${slug}`);
 
@@ -47,8 +47,8 @@ const AdminPage = async ({
             chapters
           </Pathname>
           <PathnameSpacer>\</PathnameSpacer>
-          <Pathname href={`/admin/title/${slug}/chapters/${chapterId}`}>
-            {chapterId}
+          <Pathname href={`/admin/title/${slug}/chapters/${chapterSlug}`}>
+            {chapterSlug}
           </Pathname>
         </PathnameHeader>
         <Block>
