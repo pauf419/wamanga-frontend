@@ -32,6 +32,7 @@ export const Section = styled.div`
   @media (max-width: 1025px) {
     gap: 24px;
     justify-content: center;
+    align-items: center;
   }
 `;
 

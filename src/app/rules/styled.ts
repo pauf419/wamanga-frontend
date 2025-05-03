@@ -119,3 +119,10 @@ export const ListItem = styled.div`
     font-weight: bold;
   }
 `;
+
+export const RawContainer = styled.div`
+  max-width: 500px;
+  width: 100%;
+  display: grid;
+  gap: 12px;
+`;

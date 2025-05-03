@@ -10,7 +10,7 @@ import {
   Socials,
   Title,
 } from "./styled";
-import Logo from "@icons/svg/big-logo.svg";
+import Logo from "@icons/svg/logo.svg";
 import Telegram from "@icons/svg/telegram.svg";
 import Instagram from "@icons/svg/instagram.svg";
 import Tiktok from "@icons/svg/tiktok.svg";
@@ -23,32 +23,29 @@ const Footer = () => {
         <Section>
           <Title>Инфо</Title>
           <Links>
-            <LinkSC href={"/"}>О нас</LinkSC>
-            <LinkSC href={"/"}>О вас</LinkSC>
-            <LinkSC href={"/"}>О них</LinkSC>
+            <LinkSC href="/rules/copyright">Авторские права</LinkSC>
+            <LinkSC href="/rules/user-agreement">
+              Пользовательское соглашение
+            </LinkSC>
+            <LinkSC href="/rules/copyright-holders">Правообладателям</LinkSC>
           </Links>
         </Section>
         <Section>
           <Title>Разделы</Title>
           <Links>
-            <LinkSC href={"/"}>E=mc^2</LinkSC>
-            <LinkSC href={"/"}>a^2+b^2=c^2</LinkSC>
-            <LinkSC href={"/"}>Ни о чем</LinkSC>
+            <LinkSC href="/">Главная</LinkSC>
+            <LinkSC href="/catalog">Каталог</LinkSC>
           </Links>
         </Section>
         <Socials>
-          <Social href={"https://google.com"}>
+          <Social href={"https://t.me/wamanga_support"}>
             <Telegram />
-          </Social>
-          <Social href={"https://google.com"}>
-            <Instagram />
-          </Social>
-          <Social href={"https://google.com"}>
-            <Tiktok />
           </Social>
         </Socials>
       </Content>
-      <Copyright>© 2024 WaComics</Copyright>
+      <Copyright>
+        © 2024 WaManga - WaManga@bk.ru - почта для вопросов
+      </Copyright>
     </FooterSC>
   );
 };

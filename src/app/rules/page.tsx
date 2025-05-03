@@ -43,7 +43,31 @@ const RulesPage = () => {
               </Block>
               <Block>
                 <BlockLeft>
-                  <BlockTitle>Правила для команд</BlockTitle>
+                  <BlockTitle>Авторские права</BlockTitle>
+                </BlockLeft>
+                <a className="button-filled" href="/rules/copyright">
+                  Открыть
+                </a>
+              </Block>
+              <Block>
+                <BlockLeft>
+                  <BlockTitle>Пользовательское соглашение</BlockTitle>
+                </BlockLeft>
+                <a className="button-filled" href="/rules/user-agreement">
+                  Открыть
+                </a>
+              </Block>
+              <Block>
+                <BlockLeft>
+                  <BlockTitle>Правообладателям</BlockTitle>
+                </BlockLeft>
+                <a className="button-filled" href="/rules/copyright-holders">
+                  Открыть
+                </a>
+              </Block>
+              <Block>
+                <BlockLeft>
+                  <BlockTitle>Правила для комнд</BlockTitle>
                   <BlockDescription>(Переводчикам и авторам)</BlockDescription>
                 </BlockLeft>
                 <a className="button-filled" href="/rules/teams">
