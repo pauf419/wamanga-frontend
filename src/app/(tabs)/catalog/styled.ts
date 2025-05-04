@@ -32,11 +32,28 @@ export const HeaderGroup = styled.div`
   gap: 8px;
 `;
 
+export const OverviewWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  gap: 16px;
+
+  .button-transparent {
+    padding: 10px 18px;
+    width: auto;
+  }
+`;
+
+export const NoTitlesWrapper = styled.div`
+  @media (min-width: 500px) {
+    margin-top: 46px;
+  }
+`;
+
 export const TitlesWrapper = styled.div`
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
-  margin-top: 16px;
 `;
 
 export const SortingButton = styled(SortingButtonTemplate)``;

@@ -29,6 +29,8 @@ button {
   border-radius: 5px;
 }
 
+/*disabled*/
+
 .button-blured {
   display: inline-flex;
   -webkit-box-align: center;
@@ -198,6 +200,17 @@ button {
   &:hover {
     box-shadow: none;
     background-color: rgba(143, 150, 163, 0.24);
+  }
+}
+
+.primary-disabled {
+  cursor: default;
+  opacity: 0.6;
+
+  &:hover {
+    box-shadow: none;
+    background: #5a5ee7;
+    opacity: 0.6;
   }
 }
 

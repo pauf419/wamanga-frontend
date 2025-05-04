@@ -1,6 +1,7 @@
 import { data } from "motion/react-client";
 import { $api, $apiWithoutAuth } from "./axiosInstance";
 import type { Comic, CreateComicDto } from "./types/comic";
+import qs from "qs";
 
 /*export interface SignUpResponse {
   status: string;
@@ -153,6 +154,33 @@ export async function getRandom(): Promise<Comic> {
 export async function incrementMangaViews(mangaId: string): Promise<Comic> {
   const res = await $apiWithoutAuth.put(`/manga/${mangaId}/views`);
 
+  return res.data;
+}
+
+export async function searchManga(
+  mangaType: ComicsType[],
+  translationStatus: StatusType[],
+  mangaStatus: StatusType[],
+  genres: string[],
+  tags: string[],
+  pegi: PegiType[],
+  offset: number,
+  limit: number
+): Promise<Comic[]> {
+  const res = await $apiWithoutAuth.get("/manga/search", {
+    params: {
+      mangaType,
+      translationStatus,
+      mangaStatus,
+      genres,
+      tags,
+      pegi,
+      offset,
+      limit,
+    },
+    paramsSerializer: (params) =>
+      qs.stringify(params, { arrayFormat: "repeat" }),
+  });
   return res.data;
 }
 
