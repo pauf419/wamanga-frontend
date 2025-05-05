@@ -76,6 +76,11 @@ export const ReaderContentImage = styled.img<{ $width: number }>`
   transition: 0.2s all ease;
   max-width: ${(props) => (props.$width ? props.$width : 900)}px;
   width: 100%;
+  margin-right: 83px;
+
+  @media (max-width: 1200px) {
+    margin-right: 0;
+  }
 `;
 
 export const HidesWhenMobile = styled.div`
