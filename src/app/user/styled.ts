@@ -184,6 +184,11 @@ export const RankIndicator = styled(LevelIndicator)<{ $rank: string }>`
           background: #FF515140;
           color: #FF5151;
         `;
+      case "owner":
+        return `
+           color: rgb(201 152 255);
+          background: rgb(98 58 227 / 79%);
+        `;
     }
   }}
 `;
