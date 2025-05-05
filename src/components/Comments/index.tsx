@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CommentsWrapper,
   List,
@@ -16,36 +16,46 @@ import type { Chapter } from "@/api/types/chapter";
 import { useMutation } from "@tanstack/react-query";
 import { getComments } from "@/api/comments";
 import type { ComicComment } from "@/api/types/comic-comment";
+import { useUserStore } from "@/app/store";
+import {
+  createCommentForManga,
+  getCommentsForManga,
+  type CreateCommentDto,
+} from "@/api/comment";
+import type { IComment } from "@/api/types/comment";
 
 interface Props {
   type: "comic" | "chapter";
   comic: Comic;
-  chapter?: Chapter;
+  chapter?: Chapter | null;
 }
 
 export const Comments = ({ comic, type = "comic", chapter }: Props) => {
-  const mutation = useMutation({
-    mutationFn: () => getComments(type, comic.id),
-    onSuccess: (result: ComicComment[]) => {
-      console.log(result);
-    },
-    onError: (err: Error) => {
-      console.log(err);
-    },
-  });
+  const user = useUserStore((state) => state.user);
+  const [comments, setComments] = useState<IComment[]>([]);
 
-  useEffect(() => {
-    mutation.mutate();
-  }, []);
+  const fetchComments = async () => {
+    const res = await getCommentsForManga(comic._id);
+    setComments(res);
+  };
+
+  const createComment = async (data: CreateCommentDto) => {
+    const res = await createCommentForManga(data);
+    return res;
+  };
 
   const { data } = getComicComments();
 
+  useEffect(() => {
+    fetchComments();
+  }, []);
+
   return (
     <CommentsWrapper>
-      <Reply cb={() => null} />
+      <Reply manga={comic} chapter={chapter} cb={createComment} />
       <List>
-        {data.length ? (
-          data.map((el) => <Comment comment={el} key={el.id} />)
+        {comments.length ? (
+          comments.map((el) => <Comment comment={el} key={el._id} />)
         ) : (
           <NoCommentsMessage>
             <NoImage src="/no-comments.png" />

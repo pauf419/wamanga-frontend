@@ -36,13 +36,15 @@ export const UserInfo = styled.div`
 `;
 
 export const Username = styled.a`
-  display: inline-block;
+  display: flex;
   margin: 0 8px 0 0;
   font: inherit;
   color: ${colors.commentUsernameColor};
   text-decoration: none;
   letter-spacing: inherit;
   vertical-align: middle;
+  align-items: center;
+  gap: 8px;
 `;
 
 export const Timestamp = styled.div`

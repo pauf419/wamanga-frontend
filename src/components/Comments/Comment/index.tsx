@@ -19,9 +19,11 @@ import { timeAgo } from "@/utils/timestamp-resolver";
 import { Reply } from "../Reply";
 import { useState } from "react";
 import FireIcon from "@icons/svg/fire.svg";
+import type { IComment } from "@/api/types/comment";
+import { RankIndicator } from "@/app/user/styled";
 
 interface Props {
-  comment: ComicComment;
+  comment: IComment;
 }
 
 export const Comment = ({ comment }: Props) => {
@@ -31,14 +33,26 @@ export const Comment = ({ comment }: Props) => {
     <Wrapper>
       <Content>
         <AvatarSection>
-          <Avatar src={comment.user.avatar} />
+          <Avatar src={comment.author.avatar} />
         </AvatarSection>
         <ContentSection>
           <UserInfo>
-            <Username href={`/user/${comment.user.id}`}>
-              {comment.user.username}
+            <Username href={`/user/${comment.author.id}`}>
+              {comment.author.username}
+              <RankIndicator $rank={comment.author.role}>
+                {comment.author.role &&
+                  comment.author.role !== "user" &&
+                  `
+                           
+                            ${comment.author.role === "moderator" ? "Модератор" : ""}
+                            ${comment.author.role === "admin" ? "Администратор" : ""}
+                            ${comment.author.role === "owner" ? "Владелец" : ""}
+                        `}
+              </RankIndicator>
             </Username>
-            <Timestamp>{timeAgo(comment.createdAt)}</Timestamp>
+            <Timestamp>
+              {timeAgo(Number(new Date(comment.createdAt)))}
+            </Timestamp>
           </UserInfo>
           <Text>{comment.text}</Text>
           <Tools>
@@ -55,11 +69,6 @@ export const Comment = ({ comment }: Props) => {
           </Tools>
         </ContentSection>
       </Content>
-      {replyActive && (
-        <ReplyWrapper>
-          <Reply cb={() => null} nested />
-        </ReplyWrapper>
-      )}
     </Wrapper>
   );
 };

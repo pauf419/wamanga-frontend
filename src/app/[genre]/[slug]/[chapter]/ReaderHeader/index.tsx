@@ -75,19 +75,6 @@ const ReaderHeader = ({
     goToPage(page);
   };
 
-  useEffect(() => {
-    const localValue = localStorage.getItem("buttonActive");
-    if (localValue === null) {
-      setButtonActive(true);
-      localStorage.setItem("buttonActive", "true");
-    } else if (localValue === "true") {
-      setButtonActive(true);
-    } else {
-      setButtonActive(false);
-      localStorage.setItem("buttonActive", "false");
-    }
-  }, [buttonActive]);
-
   return (
     <>
       <SideBarMobile active={sidebarActive} setActive={setSidebarActive} />
@@ -220,7 +207,6 @@ const ReaderHeader = ({
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  localStorage.setItem("buttonActive", "false");
                   setButtonActive(false);
                 }}
               >
@@ -282,7 +268,6 @@ const ReaderHeader = ({
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  localStorage.setItem("buttonActive", "false");
                   setButtonActive(false);
                 }}
               >

@@ -35,6 +35,7 @@ import Badge from "@/app/(tabs)/home/Badge";
 import { colors } from "@/const/colors";
 import { ChaptersCount } from "@/app/(tabs)/home/ComicInfoPopup/styled";
 import { NewChaptersSwiper } from "./NewChaptersSwiper";
+import { useUserStore } from "@/app/store";
 
 interface Props {
   comics: Comic;

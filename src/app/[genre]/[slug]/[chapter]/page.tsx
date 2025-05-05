@@ -2,6 +2,7 @@ import { getBySlug, incrementMangaViews } from "@/api/title";
 import ReaderBody from "./ReaderBody";
 import { getChapterById, getChapterBySlug } from "@/api/chapter";
 import AgeConfirmModal from "@/components/AgeConfirmModal";
+import { getSession } from "@/app/lib";
 
 export type paramsType = Promise<{
   params: {

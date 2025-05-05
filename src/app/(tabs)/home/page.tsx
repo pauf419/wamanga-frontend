@@ -53,18 +53,6 @@ const HomePage = async () => {
           </DayTopSection>
         )}
 
-        <UpdatesSection>
-          <UpdatesSwiper />
-        </UpdatesSection>
-
-        <RandomComicSection>
-          <RandomComic title={randomTitle} />
-        </RandomComicSection>
-
-        <ComicTypeSection title="Тип тайтла" link="/">
-          <TypeSwiper />
-        </ComicTypeSection>
-
         <CategorySection title="Категория" link="/">
           <CategoriesSwiper />
         </CategorySection>

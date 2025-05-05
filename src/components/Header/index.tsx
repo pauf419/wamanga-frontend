@@ -37,6 +37,7 @@ import { ComicPreviewVertical } from "@/app/(tabs)/home/ComicPreviewVertical";
 import { NoImage } from "../Comments/styled";
 import { logout } from "@/app/lib";
 import VerifyForm from "../(auth)/VerifyForm";
+import { useUserStore } from "@/app/store";
 
 export interface ModalState {
   signUp: boolean;
@@ -92,6 +93,12 @@ const Header = ({ user }: Props) => {
       setTitles([]);
     }
   };
+
+  const setUser = useUserStore((state) => state.setUser);
+
+  useEffect(() => {
+    setUser(user);
+  }, [user, setUser]);
 
   useEffect(() => {
     clearTimeout(sendTimeout);
