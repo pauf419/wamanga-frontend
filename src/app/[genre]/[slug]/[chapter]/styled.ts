@@ -133,15 +133,41 @@ export const ReaderButtonWrapper = styled.div`
 `;
 
 export const ReaderButton = styled.a`
+  position: relative;
   text-decoration: none;
   display: block;
   font-size: 14px;
   color: #fff;
   padding: 10px 16px;
   background: #11121399;
-  color: #fffl
+  color: #fff;
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   border: 1px dashed rgba(143, 150, 163, 0.24);
   border-radius: 6px;
+`;
+
+export const ReaderButtonClose = styled.button`
+  background: red;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 20px;
+  height: 20px;
+  background: #11121399;
+  color: #fff;
+  font-weight: 700;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px dashed rgba(143, 150, 163, 0.24);
+  border-radius: 100px;
+  transition: 0.2s all ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 650px) {
+    right: 12px;
+  }
 `;

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Block,
   ChapterControllsBlock,
@@ -35,6 +35,7 @@ import {
   DisplaysWhenMobile,
   HidesWhenMobile,
   ReaderButton,
+  ReaderButtonClose,
   ReaderButtonWrapper,
 } from "../styled";
 import { Tooltip } from "@mui/material";
@@ -63,6 +64,7 @@ const ReaderHeader = ({
 }: Props) => {
   const [sidebarActive, setSidebarActive] = React.useState<boolean>(false);
   const [pagePopupActive, setPagePopupActive] = useState<boolean>(false);
+  const [buttonActive, setButtonActive] = useState<boolean>(true);
 
   const toggleSidebar = () => {
     setSidebarActive((prev) => !prev);
@@ -72,6 +74,19 @@ const ReaderHeader = ({
     setPagePopupActive(false);
     goToPage(page);
   };
+
+  useEffect(() => {
+    const localValue = localStorage.getItem("buttonActive");
+    if (localValue === null) {
+      setButtonActive(true);
+      localStorage.setItem("buttonActive", "true");
+    } else if (localValue === "true") {
+      setButtonActive(true);
+    } else {
+      setButtonActive(false);
+      localStorage.setItem("buttonActive", "false");
+    }
+  }, [buttonActive]);
 
   return (
     <>
@@ -199,9 +214,23 @@ const ReaderHeader = ({
       </HeaderSC>
       <DisplaysWhenMobile>
         <MobileReaderButtonWrapper>
-          <ReaderButton href={title.telegram}>
-            {title.textForButton}
-          </ReaderButton>
+          {buttonActive ? (
+            <ReaderButton href={title.telegram}>
+              <ReaderButtonClose
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  localStorage.setItem("buttonActive", "false");
+                  setButtonActive(false);
+                }}
+              >
+                X
+              </ReaderButtonClose>
+              {title.textForButton}
+            </ReaderButton>
+          ) : (
+            <></>
+          )}
         </MobileReaderButtonWrapper>
         <HeaderBottom>
           <SettingsBlock>
@@ -247,9 +276,23 @@ const ReaderHeader = ({
       </DisplaysWhenMobile>
       <HidesWhenMobile>
         <ReaderButtonWrapper>
-          <ReaderButton href={title.telegram}>
-            {title.textForButton}
-          </ReaderButton>
+          {buttonActive ? (
+            <ReaderButton href={title.telegram}>
+              <ReaderButtonClose
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  localStorage.setItem("buttonActive", "false");
+                  setButtonActive(false);
+                }}
+              >
+                X
+              </ReaderButtonClose>
+              {title.textForButton}
+            </ReaderButton>
+          ) : (
+            <></>
+          )}
         </ReaderButtonWrapper>
       </HidesWhenMobile>
     </>

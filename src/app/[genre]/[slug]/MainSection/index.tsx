@@ -72,17 +72,37 @@ export const MainSection = ({ comics }: Props) => {
       {activeTab === 0 && (
         <Content>
           <Main>
+            <DisplaysWhenMobile>
+              {comics.chapters.length ? (
+                <InfoTag>
+                  <InfoTagTitle>Новые главы</InfoTagTitle>
+                  <NewChaptersSwiperWrapper>
+                    <NewChaptersSwiper
+                      manga={comics}
+                      chapters={latestChapters}
+                    />
+                  </NewChaptersSwiperWrapper>
+                </InfoTag>
+              ) : (
+                <></>
+              )}
+            </DisplaysWhenMobile>
             <Description>{comics.description}</Description>
-            {comics.chapters.length ? (
-              <InfoTag>
-                <InfoTagTitle>Новые главы</InfoTagTitle>
-                <NewChaptersSwiperWrapper>
-                  <NewChaptersSwiper manga={comics} chapters={latestChapters} />
-                </NewChaptersSwiperWrapper>
-              </InfoTag>
-            ) : (
-              <></>
-            )}
+            <HidesWhenMobile>
+              {comics.chapters.length ? (
+                <InfoTag>
+                  <InfoTagTitle>Новые главы</InfoTagTitle>
+                  <NewChaptersSwiperWrapper>
+                    <NewChaptersSwiper
+                      manga={comics}
+                      chapters={latestChapters}
+                    />
+                  </NewChaptersSwiperWrapper>
+                </InfoTag>
+              ) : (
+                <></>
+              )}
+            </HidesWhenMobile>
 
             <InfoTag>
               <InfoTagTitle>Жанры</InfoTagTitle>

@@ -433,6 +433,14 @@ export const ChaptersListElement = styled.a<{ $active: boolean }>`
 
 export const MobileReaderButtonWrapper = styled.div`
   position: fixed;
+  z-index: 9;
+  display: flex;
+  width: calc(100% - 83px);
+  justify-content: center;
+  min-height: 38px;
+  width: 100%;
+
+  position: fixed;
   bottom: 59px;
   right: 8px;
   z-index: 9;
