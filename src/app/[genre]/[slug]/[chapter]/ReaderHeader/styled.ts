@@ -112,6 +112,12 @@ export const ChapterControllsBlock = styled(Block)`
   align-items: center;
   color: #fff;
   font-weight: 700;
+
+  margin-right: 83px;
+
+  @media (max-width: 1200px) {
+    margin-right: 0;
+  }
 `;
 
 export const SettingsBlock = styled(Block)`
