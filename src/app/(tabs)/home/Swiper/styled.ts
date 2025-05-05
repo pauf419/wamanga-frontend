@@ -57,6 +57,10 @@ export const RecentSwiperSC = styled.div<{ $type: string }>`
       return css`
         height: 230px;
       `;
+    if (props.$type === "auto")
+      return css`
+        height: auto;
+      `;
   }}
 `;
 
@@ -77,11 +81,14 @@ export const SwiperSC = styled(Swiper)<SwiperProps>`
     width: 20px;
     height: 100%;
     content: "";
-    background: linear-gradient(
+    ${({ padding: $padding }) =>
+      $padding === 1
+        ? "background: transparent;"
+        : `    background: linear-gradient(
       270deg,
       rgb(0 0 0 / 0%) 0%,
       ${colors.background} 100%
-    );
+    );`}
   }
 
   &::after {
@@ -92,11 +99,14 @@ export const SwiperSC = styled(Swiper)<SwiperProps>`
     width: 100px;
     height: 100%;
     content: "";
-    background: linear-gradient(
+    ${({ padding: $padding }) =>
+      $padding === 1
+        ? "background: transparent;"
+        : `    background: linear-gradient(
       90deg,
       rgb(0 0 0 / 0%) 0%,
       ${colors.background} 100%
-    );
+    );`}
   }
 `;
 

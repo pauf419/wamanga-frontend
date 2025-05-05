@@ -9,6 +9,7 @@ export const Content = styled.div`
   grid-template-columns: 2fr 1fr;
   gap: 20px;
   margin-top: 16px;
+  position: relative;
 
   @media (max-width: 900px) {
     grid-template-columns: auto;
@@ -129,4 +130,8 @@ export const CommentsTitle = styled.div`
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.5555;
+`;
+
+export const NewChaptersSwiperWrapper = styled.div`
+  position: relative;
 `;

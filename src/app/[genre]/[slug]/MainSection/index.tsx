@@ -19,6 +19,7 @@ import {
   CommentsTitle,
   ZeroSpacer,
   InfoTagTextField,
+  NewChaptersSwiperWrapper,
 } from "./styled";
 import { Tabs } from "@/components/Tabs";
 import type { Comic } from "@/api/types/comic";
@@ -33,6 +34,7 @@ import { Chapters } from "@/components/Chapters";
 import Badge from "@/app/(tabs)/home/Badge";
 import { colors } from "@/const/colors";
 import { ChaptersCount } from "@/app/(tabs)/home/ComicInfoPopup/styled";
+import { NewChaptersSwiper } from "./NewChaptersSwiper";
 
 interface Props {
   comics: Comic;
@@ -43,6 +45,10 @@ export const MainSection = ({ comics }: Props) => {
   const [tabs, setTabs] = useState<string[]>(["Описание", "Главы"]);
 
   const translator = getComicTranslator();
+
+  const latestChapters = [...comics.chapters]
+    .sort((a, b) => b.numberChapter - a.numberChapter)
+    .slice(0, 10);
 
   useEffect(() => {
     const handleResize = () => {
@@ -67,6 +73,17 @@ export const MainSection = ({ comics }: Props) => {
         <Content>
           <Main>
             <Description>{comics.description}</Description>
+            {comics.chapters.length ? (
+              <InfoTag>
+                <InfoTagTitle>Новые главы</InfoTagTitle>
+                <NewChaptersSwiperWrapper>
+                  <NewChaptersSwiper manga={comics} chapters={latestChapters} />
+                </NewChaptersSwiperWrapper>
+              </InfoTag>
+            ) : (
+              <></>
+            )}
+
             <InfoTag>
               <InfoTagTitle>Жанры</InfoTagTitle>
               <Badges>

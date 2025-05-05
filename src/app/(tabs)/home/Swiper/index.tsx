@@ -16,6 +16,7 @@ import type { SwiperProps, SwiperRef } from "swiper/react";
 interface Props {
   type: string;
   padding?: number;
+  buttons?: boolean;
   buttonMargin?: number;
   children?: React.ReactNode;
   props?: SwiperProps;
@@ -25,6 +26,7 @@ export const Swiper = ({
   type,
   padding = 60,
   children,
+  buttons = true,
   props,
   buttonMargin,
 }: Props) => {
@@ -58,12 +60,18 @@ export const Swiper = ({
         {children}
       </SwiperSC>
 
-      <LeftSwipeButton onClick={handlePrev} $margin={buttonMargin ?? 0}>
-        <RightArrowIcon />
-      </LeftSwipeButton>
-      <RightSwipeButton onClick={handleNext} $margin={buttonMargin ?? 0}>
-        <RightArrowIcon />
-      </RightSwipeButton>
+      {buttons ? (
+        <>
+          <LeftSwipeButton onClick={handlePrev} $margin={buttonMargin ?? 0}>
+            <RightArrowIcon />
+          </LeftSwipeButton>
+          <RightSwipeButton onClick={handleNext} $margin={buttonMargin ?? 0}>
+            <RightArrowIcon />
+          </RightSwipeButton>
+        </>
+      ) : (
+        <></>
+      )}
     </RecentSwiperSC>
   );
 };
