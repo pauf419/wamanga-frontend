@@ -459,3 +459,10 @@ button {
     display: block;
   }
 }
+
+.button-transparent-red {
+  &:hover {
+    background: rgba(248, 75, 75, 0.103) !important;
+    color: rgba(248, 75, 75) !important;
+  }
+}

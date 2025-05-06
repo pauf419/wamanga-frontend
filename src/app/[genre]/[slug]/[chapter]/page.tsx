@@ -3,6 +3,7 @@ import ReaderBody from "./ReaderBody";
 import { getChapterById, getChapterBySlug } from "@/api/chapter";
 import AgeConfirmModal from "@/components/AgeConfirmModal";
 import { getSession } from "@/app/lib";
+import Footer from "@/components/Footer";
 
 export type paramsType = Promise<{
   params: {
@@ -19,6 +20,7 @@ const ReaderPage = async ({
   const { slug, chapter, genre } = await params;
   const titleAlternativeName = slug;
 
+  const user = await getSession();
   const title = await getBySlug(titleAlternativeName);
   await incrementMangaViews(title._id);
   const chapterEl = await getChapterBySlug(title._id, chapter);
@@ -28,7 +30,7 @@ const ReaderPage = async ({
       {(title.pegi === "16+" || title.pegi === "18+") && title.isPorno && (
         <AgeConfirmModal href={`/${title.seoGenre}/${title.alternativeName}`} />
       )}
-      <ReaderBody title={title} chapter={chapterEl} />;
+      <ReaderBody title={title} chapter={chapterEl} user={user} />
     </>
   );
 };

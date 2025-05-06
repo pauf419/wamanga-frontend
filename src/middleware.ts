@@ -33,12 +33,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/",
-    "/comics/:slug/:slug*",
-    "/user",
-    "/admin/:path*",
-    "/reader/:path*",
-    "/logout",
-  ],
+  matcher: ["/", "/:slug/:slug/:slug*", "/user", "/admin/:path*", "/logout"],
 };

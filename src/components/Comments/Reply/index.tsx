@@ -26,14 +26,21 @@ interface Props {
   nested?: boolean;
   manga: Comic;
   chapter?: Chapter | null;
+  isLoading: boolean;
 }
 
-export const Reply = ({ cb, nested = false, manga, chapter = null }: Props) => {
+export const Reply = ({
+  cb,
+  nested = false,
+  manga,
+  chapter = null,
+  isLoading,
+}: Props) => {
   const user = useUserStore((state) => state.user);
 
   const [comment, setComment] = useState<CreateCommentDto>({
     authorId: user ? user._id : "",
-    text: "hello",
+    text: "",
     mangaId: manga._id,
     chapterId: chapter ? chapter._id : undefined,
     isSpoilered: false,
@@ -47,6 +54,14 @@ export const Reply = ({ cb, nested = false, manga, chapter = null }: Props) => {
       textareaRef.current.style.height = "auto";
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
+  };
+
+  const handleClick = () => {
+    if (isLoading) return;
+    cb(comment);
+    setComment((prev) => {
+      return { ...prev, text: "" };
+    });
   };
 
   useEffect(() => {
@@ -64,6 +79,7 @@ export const Reply = ({ cb, nested = false, manga, chapter = null }: Props) => {
       <Form>
         <Icon as={PencilIcon} />
         <Textarea
+          value={comment.text}
           ref={textareaRef}
           onChange={(e) => {
             adjustHeight();
@@ -98,7 +114,12 @@ export const Reply = ({ cb, nested = false, manga, chapter = null }: Props) => {
           </SwitchSpacer>
         </Icons>
         {user ? (
-          <SendButton onClick={() => cb(comment)}>Отправить</SendButton>
+          <SendButton
+            className={`${isLoading ? "primary-disabled" : ""}`}
+            onClick={handleClick}
+          >
+            {isLoading ? "Загрузка..." : "Отправить"}
+          </SendButton>
         ) : (
           <Tooltip title="Только авторизованные пользователи могут отправлять комментарии">
             <SendButton className="primary-disabled">Отправить</SendButton>

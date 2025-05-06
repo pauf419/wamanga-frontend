@@ -71,15 +71,23 @@ const EyeIcon = dynamic(() => import("@icons/svg/view.svg"), { ssr: false });
 import AlignTopIcon from "@icons/svg/align-top.svg";
 import AlignCenterIcon from "@icons/svg/align-center.svg";
 import AlignBottomIcon from "@icons/svg/align-botton.svg";
+import type { User } from "@/api/types/user";
+import { useUserStore } from "@/app/store";
 
 interface Props {
   title: Comic;
   chapter: Chapter;
+  user: User;
 }
 
 export type ReaderScrollType = "center" | "end" | "start";
 
-const ReaderBody = ({ title, chapter }: Props) => {
+const ReaderBody = ({ title, chapter, user }: Props) => {
+  const setUser = useUserStore((state) => state.setUser);
+
+  useEffect(() => {
+    setUser(user);
+  }, [user, setUser]);
   const comic = getComics();
   const comicTranslator = getComicTranslator();
 
@@ -425,7 +433,7 @@ const ReaderBody = ({ title, chapter }: Props) => {
         <InfoContainer>
           <InfoBlock>
             <h3>Коментарии</h3>
-            <Comments type="comic" comic={comic} />
+            <Comments type="chapter" comic={comic} chapter={chapter} />
           </InfoBlock>
           <InfoBlockTranslator>
             <HidesWhenMobile>

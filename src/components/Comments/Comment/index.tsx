@@ -21,12 +21,15 @@ import { useState } from "react";
 import FireIcon from "@icons/svg/fire.svg";
 import type { IComment } from "@/api/types/comment";
 import { RankIndicator } from "@/app/user/styled";
+import { useUserStore } from "@/app/store";
 
 interface Props {
   comment: IComment;
+  deleteComment: (commendId: string) => void;
 }
 
-export const Comment = ({ comment }: Props) => {
+export const Comment = ({ comment, deleteComment }: Props) => {
+  const user = useUserStore((state) => state.user);
   const [replyActive, setReplyActive] = useState<boolean>(false);
 
   return (
@@ -56,16 +59,15 @@ export const Comment = ({ comment }: Props) => {
           </UserInfo>
           <Text>{comment.text}</Text>
           <Tools>
-            <ToggleButton
-              onClick={() => setReplyActive(!replyActive)}
-              $active={replyActive}
-            >
-              {replyActive ? "Закрыть" : "Ответить"}
-            </ToggleButton>
-            <ToggleButton $active={false} onClick={() => null}>
-              <Icon as={FireIcon} />
-              <Fires>12</Fires>
-            </ToggleButton>
+            {comment.author._id === user?._id && (
+              <ToggleButton
+                className="button-transparent-red"
+                onClick={() => deleteComment(comment._id)}
+                $active={replyActive}
+              >
+                Удалить
+              </ToggleButton>
+            )}
           </Tools>
         </ContentSection>
       </Content>
