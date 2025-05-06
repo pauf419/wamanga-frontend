@@ -49,13 +49,13 @@ export const Comments = ({ comic, type = "comic", chapter }: Props) => {
   };
 
   const fetchComments = async () => {
-    let res;
+    let res: IComment[];
     switch (type) {
       case "comic":
         res = await getCommentsForManga(comic._id);
         break;
       case "chapter":
-        res = await getCommentsForChapter(chapter?._id);
+        res = await getCommentsForChapter(chapter ? chapter._id : "");
         break;
       default:
         res = [];
