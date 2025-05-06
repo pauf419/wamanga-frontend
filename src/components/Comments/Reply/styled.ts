@@ -26,8 +26,6 @@ export const Form = styled.form`
 
 export const Textarea = styled.textarea`
   width: 100%;
-  height: 23px;
-  max-height: 92px;
   overflow: hidden;
   font: inherit;
   color: ${colors.text};

@@ -16,7 +16,7 @@ import GifIcon from "@icons/svg/gif.svg";
 import { Switch } from "@/components/Switch";
 import { useUserStore } from "@/app/store";
 import { Tooltip } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { CreateCommentDto } from "@/api/comment";
 import type { Comic } from "@/api/types/comic";
 import type { Chapter } from "@/api/types/chapter";
@@ -40,6 +40,15 @@ export const Reply = ({ cb, nested = false, manga, chapter = null }: Props) => {
     userId: undefined,
   });
 
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const adjustHeight = () => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  };
+
   useEffect(() => {
     if (user && user._id)
       setComment((prev) => {
@@ -55,14 +64,16 @@ export const Reply = ({ cb, nested = false, manga, chapter = null }: Props) => {
       <Form>
         <Icon as={PencilIcon} />
         <Textarea
-          onChange={(e) =>
+          ref={textareaRef}
+          onChange={(e) => {
+            adjustHeight();
             setComment((prev) => {
               return {
                 ...prev,
                 text: e.target.value,
               };
-            })
-          }
+            });
+          }}
           placeholder="Комментарий... (Максимум 500 символов)"
         />
       </Form>
