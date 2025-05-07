@@ -59,13 +59,6 @@ const ComicsPage = async ({
   const similarComics = await getSimilar(comics._id);
   const { data } = getSameTitles();
 
-  let likes = 0;
-
-  comics.chapters.map((chapter) => {
-    likes += chapter.likes;
-    return chapter;
-  });
-
   if (comics.englishName) comics.altName.unshift(comics.englishName);
 
   return (
@@ -100,7 +93,7 @@ const ComicsPage = async ({
                 <Stats>
                   <StatsBadge>
                     <LikeIcon />
-                    <StatsContent>{likes}</StatsContent>
+                    <StatsContent>{comics.likes}</StatsContent>
                   </StatsBadge>
                   <StatsBadge>
                     <ViewIcon />
@@ -162,7 +155,7 @@ const ComicsPage = async ({
             <Stats>
               <StatsBadge>
                 <LikeIcon />
-                Лайков: <StatsContent>{likes}</StatsContent>
+                Лайков: <StatsContent>{comics.likes}</StatsContent>
               </StatsBadge>
               <StatsBadge>
                 <ViewIcon />
