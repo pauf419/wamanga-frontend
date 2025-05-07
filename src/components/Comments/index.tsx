@@ -26,6 +26,8 @@ import {
   type CreateCommentDto,
 } from "@/api/comment";
 import type { IComment } from "@/api/types/comment";
+import { AdsFrameNames } from "@/api/types/settings";
+import { AdsFrame } from "../AdsFrame";
 
 interface Props {
   type: "comic" | "chapter" | "user";

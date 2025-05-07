@@ -14,6 +14,8 @@ import type { Comic } from "@/api/types/comic";
 import { ChapterUnit } from "./Chapter";
 import DescendingIcon from "@icons/svg/sort-descending.svg";
 import AscendingIcon from "@icons/svg/sort-ascending.svg";
+import { AdsFrame } from "../AdsFrame";
+import { AdsFrameNames } from "@/api/types/settings";
 
 interface Props {
   comic: Comic;
@@ -65,6 +67,7 @@ export const Chapters = ({ comic }: Props) => {
           </div>
         </div>
       </Tools>
+      <AdsFrame frameName={AdsFrameNames.MangaTop} />
       <List>
         {filteredAndSortedChapters.length ? (
           filteredAndSortedChapters.map((el) => (

@@ -36,6 +36,8 @@ import { colors } from "@/const/colors";
 import { ChaptersCount } from "@/app/(tabs)/home/ComicInfoPopup/styled";
 import { NewChaptersSwiper } from "./NewChaptersSwiper";
 import { useUserStore } from "@/app/store";
+import { AdsFrame } from "@/components/AdsFrame";
+import { AdsFrameNames } from "@/api/types/settings";
 
 interface Props {
   comics: Comic;
@@ -126,6 +128,7 @@ export const MainSection = ({ comics }: Props) => {
               <ChapterCountWrapper>
                 <ChaptersCount>{comics.chapters.length}</ChaptersCount>
               </ChapterCountWrapper>
+              <AdsFrame frameName={AdsFrameNames.MangaBottom} />
               <HidesWhenMobile>
                 <CommentsTitle>Комментарии</CommentsTitle>
                 <Comments type="comic" comic={comics} />

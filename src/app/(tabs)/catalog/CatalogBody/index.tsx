@@ -37,6 +37,8 @@ import {
   NoChaptersText,
   NoImage,
 } from "@/components/Chapters/styled";
+import { AdsFrame } from "@/components/AdsFrame";
+import { AdsFrameNames } from "@/api/types/settings";
 
 interface Props {
   defaultTitles: Comic[];
@@ -152,6 +154,7 @@ const CatalogBody = ({ defaultTitles }: Props) => {
           </HeaderGroup>
         </Header>
         <OverviewWrapper>
+          <AdsFrame frameName={AdsFrameNames.CatalogTop} />
           {titles.length ? (
             <TitlesWrapper>
               {titles.map((el, i) => (
@@ -179,6 +182,7 @@ const CatalogBody = ({ defaultTitles }: Props) => {
           ) : (
             <></>
           )}
+          <AdsFrame frameName={AdsFrameNames.CatalogBottom} />
         </OverviewWrapper>
       </Body>
       <FiltersBlurer

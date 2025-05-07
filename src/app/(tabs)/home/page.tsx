@@ -31,13 +31,15 @@ import {
   paginateTitles,
 } from "@/api/title";
 import { getSession } from "@/app/lib";
+import { AdsFrame } from "@/components/AdsFrame";
+import { AdsFrameNames } from "@/api/types/settings";
 
 const HomePage = async () => {
   const recommendedTitles = await getRecommendedTitles();
   const recentlyUpdatedTitles = await getRecentlyUpdated();
   const dailyTopTitles = await getDayTop();
   const categoriesTitles = await paginateTitles(0, 10);
-  const newsTitles = await getNews()
+  const newsTitles = await getNews();
   const randomTitle = await getRandom();
 
   return (
@@ -45,6 +47,7 @@ const HomePage = async () => {
       <RecommendedSwiper titles={recommendedTitles} />
 
       <Container>
+        <AdsFrame frameName={AdsFrameNames.HomeTop} />
         {recentlyUpdatedTitles && (
           <Section title="Недавние обновления" link="/">
             <RecentSwiper titles={recentlyUpdatedTitles} />
@@ -62,8 +65,9 @@ const HomePage = async () => {
         </CategorySection>
 
         <NewsSection title="Новинки 🔥" link="/">
-          <LatestSwiper titles={newsTitles}/>
+          <LatestSwiper titles={newsTitles} />
         </NewsSection>
+        <AdsFrame frameName={AdsFrameNames.HomeBottom} />
       </Container>
     </BasePage>
   );

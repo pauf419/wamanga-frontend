@@ -74,6 +74,8 @@ import AlignBottomIcon from "@icons/svg/align-botton.svg";
 import type { User } from "@/api/types/user";
 import { useUserStore } from "@/app/store";
 import { likeChapter } from "@/api/chapter";
+import { AdsFrame } from "@/components/AdsFrame";
+import { AdsFrameNames } from "@/api/types/settings";
 
 interface Props {
   title: Comic;
@@ -377,22 +379,56 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
       />
       <Container>
         <ReaderMain>
+          <AdsFrame frameName={AdsFrameNames.Chapter} />
           {readerType === "vertical" ? (
-            currentChapter.pages.map((page, index) => {
-              return (
-                <ReaderContentImage
-                  $width={readerWidth}
-                  src={page.path}
-                  ref={(el) => {
-                    pageRefs.current[index] = el;
-                  }}
-                  key={page._id}
-                />
+            (() => {
+              const pages = currentChapter.pages;
+              const pageCount = pages.length;
+
+              // Вычисляем количество рекламных блоков (от 1 до 10)
+              const adsCount = Math.min(
+                10,
+                Math.max(1, Math.floor(pageCount / 5))
               );
-            })
+
+              // Вычисляем интервалы вставки рекламы (между страницами)
+              const insertIndexes = new Set(
+                Array.from({ length: adsCount }, (_, i) =>
+                  Math.floor(((i + 1) * pageCount) / (adsCount + 1))
+                )
+              );
+
+              const elements: React.ReactNode[] = [];
+
+              pages.forEach((page, index) => {
+                elements.push(
+                  <ReaderContentImage
+                    $width={readerWidth}
+                    src={page.path}
+                    ref={(el) => {
+                      pageRefs.current[index] = el;
+                    }}
+                    key={page._id}
+                  />
+                );
+
+                // Вставляем AdsFrame после нужной страницы (между страницами)
+                if (insertIndexes.has(index + 1)) {
+                  elements.push(
+                    <AdsFrame
+                      frameName={AdsFrameNames.Chapter}
+                      key={`ad-${index}`}
+                    />
+                  );
+                }
+              });
+
+              return elements;
+            })()
           ) : (
             <ReaderContentImage $width={readerWidth} src={currentPage.path} />
           )}
+          <AdsFrame frameName={AdsFrameNames.Chapter} />
         </ReaderMain>
         <HidesWhenMobile>
           <ChaptersBlock>
