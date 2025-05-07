@@ -410,12 +410,22 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
               <ArrowLeft />
               Предыдущая глава
             </a>
-            <button className="button-transparent button-like">
-              <div>
-                <h4>Поставь лайк</h4>
-                <LikeIcon />
-              </div>
-              <span>Поставили лайков: 233</span>
+            <button
+              className="button-transparent button-like"
+              onClick={() => likeChapter_()}
+            >
+              {dynamicUser?.likedChapters?.includes(chapter._id) ? (
+                <div>
+                  <h4>Лайк поставлен!</h4>
+                </div>
+              ) : (
+                <div>
+                  <h4>Поставь лайк</h4>
+                  <LikeIcon />
+                </div>
+              )}
+
+              <span>Поставили лайков: {likes}</span>
             </button>
             <a
               className={`button-filled button-dark ${!chapter.nextChapter && "button-disabled"}`}
