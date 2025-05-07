@@ -67,6 +67,7 @@ import {
   TeamWrapper,
   ToolsBlock,
   ToolsFlex,
+  UserAvatarPreview,
   UserSettingsBlock,
   UserSettingsWrapper,
   WarningBlock,
@@ -96,9 +97,10 @@ import { $apiWithoutAuth } from "@/api/axiosInstance";
 
 interface Props {
   user: User;
+  current?: boolean;
 }
 
-const ProfilePageBody = ({ user }: Props) => {
+const ProfilePageBody = ({ user, current = false }: Props) => {
   const bookmarks = getUserBookmarks();
 
   const [editBannerActive, setEditBannerActive] = useState<boolean>(false);
@@ -192,19 +194,25 @@ const ProfilePageBody = ({ user }: Props) => {
         <CropFileInput onCropComplete={updateBanner} />
       </Modal>
       <Banner $background={user.banner}>
-        <EditBannerButton
-          className="button-filled"
-          onClick={() => setEditBannerActive(true)}
-        >
-          Редактировать
-        </EditBannerButton>
+        {current && (
+          <EditBannerButton
+            className="button-filled"
+            onClick={() => setEditBannerActive(true)}
+          >
+            Редактировать
+          </EditBannerButton>
+        )}
         <Profile>
-          <ImageInput
-            key={2323}
-            defaultImg={user.avatar}
-            onChange={saveAvatar}
-            type="category"
-          />
+          {current ? (
+            <ImageInput
+              key={2323}
+              defaultImg={user.avatar}
+              onChange={saveAvatar}
+              type="category"
+            />
+          ) : (
+            <UserAvatarPreview src={user.avatar} />
+          )}
           <ProfileStats>
             <ShortName>
               {user.username}
@@ -243,11 +251,13 @@ const ProfilePageBody = ({ user }: Props) => {
           </ProfileStats>
         </Profile>
         <TabsWrapper>
-          <Tabs
-            tabs={["Профиль", "Закладки", "Мои Команды", "Настройки"]}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
+          {current && (
+            <Tabs
+              tabs={["Профиль", "Закладки", "Мои Команды", "Настройки"]}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+          )}
         </TabsWrapper>
       </Banner>
       {activeTab === 0 && (
@@ -282,7 +292,7 @@ const ProfilePageBody = ({ user }: Props) => {
               </StatsContent>
             </StatsBlock>
           </StatsBlocks>
-          <Comments type="comic" comic={comic} />
+          <Comments type="user" comic={comic} userId={user._id} />
         </ProfileContent>
       )}
       {activeTab === 1 && (

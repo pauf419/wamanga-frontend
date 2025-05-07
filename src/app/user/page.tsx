@@ -10,7 +10,7 @@ const ProfilePage = async () => {
 
   return (
     <BasePage>
-      <ProfilePageBody user={session} />
+      <ProfilePageBody user={session} current={false} />
     </BasePage>
   );
 };

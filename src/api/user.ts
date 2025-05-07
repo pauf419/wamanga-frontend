@@ -40,3 +40,9 @@ export async function assignManga(
 
   return res.data;
 }
+
+export async function getUserInfo(userId: string): Promise<User> {
+  const res = await $apiWithoutAuth.get<User>(`/user/${userId}`);
+
+  return res.data;
+}

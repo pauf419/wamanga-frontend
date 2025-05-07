@@ -22,6 +22,7 @@ import FireIcon from "@icons/svg/fire.svg";
 import type { IComment } from "@/api/types/comment";
 import { RankIndicator } from "@/app/user/styled";
 import { useUserStore } from "@/app/store";
+import { UserRole } from "@/components/RoleSegregator";
 
 interface Props {
   comment: IComment;
@@ -40,18 +41,18 @@ export const Comment = ({ comment, deleteComment }: Props) => {
         </AvatarSection>
         <ContentSection>
           <UserInfo>
-            <Username href={`/user/${comment.author.id}`}>
+            <Username href={`/user/${comment.author._id}`}>
               {comment.author.username}
-              <RankIndicator $rank={comment.author.role}>
-                {comment.author.role &&
-                  comment.author.role !== "user" &&
-                  `
+              {comment.author.role && comment.author.role !== "user" && (
+                <RankIndicator $rank={comment.author.role}>
+                  {`
                            
                             ${comment.author.role === "moderator" ? "Модератор" : ""}
                             ${comment.author.role === "admin" ? "Администратор" : ""}
                             ${comment.author.role === "owner" ? "Владелец" : ""}
                         `}
-              </RankIndicator>
+                </RankIndicator>
+              )}
             </Username>
             <Timestamp>
               {timeAgo(Number(new Date(comment.createdAt)))}
@@ -59,7 +60,10 @@ export const Comment = ({ comment, deleteComment }: Props) => {
           </UserInfo>
           <Text>{comment.text}</Text>
           <Tools>
-            {comment.author._id === user?._id && (
+            {(comment.author._id === user?._id ||
+              user?.role === UserRole.Admin ||
+              user?.role === UserRole.Moderator ||
+              user?.role === UserRole.Owner) && (
               <ToggleButton
                 className="button-transparent-red"
                 onClick={() => deleteComment(comment._id)}

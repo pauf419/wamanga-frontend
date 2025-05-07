@@ -22,6 +22,7 @@ import {
   deleteComment,
   getCommentsForChapter,
   getCommentsForManga,
+  getCommentsForUser,
   type CreateCommentDto,
 } from "@/api/comment";
 import type { IComment } from "@/api/types/comment";
@@ -30,9 +31,10 @@ interface Props {
   type: "comic" | "chapter" | "user";
   comic: Comic;
   chapter?: Chapter;
+  userId?: string;
 }
 
-export const Comments = ({ comic, type = "comic", chapter }: Props) => {
+export const Comments = ({ comic, type = "comic", chapter, userId }: Props) => {
   const user = useUserStore((state) => state.user);
   const [comments, setComments] = useState<IComment[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -56,6 +58,9 @@ export const Comments = ({ comic, type = "comic", chapter }: Props) => {
         break;
       case "chapter":
         res = await getCommentsForChapter(chapter ? chapter._id : "");
+        break;
+      case "user":
+        res = await getCommentsForUser(userId ? userId : "");
         break;
       default:
         res = [];
@@ -87,6 +92,7 @@ export const Comments = ({ comic, type = "comic", chapter }: Props) => {
         chapter={chapter}
         cb={createComment}
         isLoading={isLoading}
+        userId={userId}
       />
       <List>
         {comments.length ? (

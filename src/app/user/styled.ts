@@ -296,3 +296,10 @@ export const UserSettingsBlock = styled.div<{ $type: boolean }>`
     grid-template-columns: auto;
   }
 `;
+
+export const UserAvatarPreview = styled.img`
+  width: 130px;
+  height: 130px;
+  border-radius: 100px;
+  object-fit: cover;
+`;

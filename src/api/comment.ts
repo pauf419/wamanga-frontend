@@ -28,6 +28,11 @@ export async function getCommentsForManga(
   return res.data;
 }
 
+export async function getCommentsForUser(userId: string): Promise<IComment[]> {
+  const res = await $apiWithoutAuth.get(`/comments/user/${userId}`);
+  return res.data;
+}
+
 export async function getCommentsForChapter(
   chapterId: string
 ): Promise<IComment[]> {

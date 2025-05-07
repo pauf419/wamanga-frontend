@@ -20,12 +20,14 @@ import { useEffect, useRef, useState } from "react";
 import type { CreateCommentDto } from "@/api/comment";
 import type { Comic } from "@/api/types/comic";
 import type { Chapter } from "@/api/types/chapter";
+import type { User } from "@/api/types/user";
 
 interface Props {
   cb: (_: CreateCommentDto) => void;
   nested?: boolean;
   manga: Comic;
   chapter?: Chapter | null;
+  userId?: string | undefined;
   isLoading: boolean;
 }
 
@@ -34,6 +36,7 @@ export const Reply = ({
   nested = false,
   manga,
   chapter = null,
+  userId = undefined,
   isLoading,
 }: Props) => {
   const user = useUserStore((state) => state.user);
@@ -44,7 +47,7 @@ export const Reply = ({
     mangaId: manga._id,
     chapterId: chapter ? chapter._id : undefined,
     isSpoilered: false,
-    userId: undefined,
+    userId,
   });
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
