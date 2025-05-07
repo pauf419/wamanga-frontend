@@ -52,7 +52,7 @@ export const Swiper = ({
         slidesPerView={"auto"}
         spaceBetween={30}
         speed={500}
-        initialSlide={1}
+        initialSlide={0}
         padding={padding}
         {...props}
       >
