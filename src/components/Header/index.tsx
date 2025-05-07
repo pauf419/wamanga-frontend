@@ -188,12 +188,14 @@ const Header = ({ user }: Props) => {
                   <HeaderLink href="/admin/title/new">
                     Добавить тайтл
                   </HeaderLink>
-                  {user.role !== "user" && (
+                  {user.role !== "user" ? (
                     <>
                       <HeaderSpacer />
                       <HeaderLink href="/admin">Админка</HeaderLink>
                       <HeaderSpacer />
                     </>
+                  ) : (
+                    <HeaderSpacer />
                   )}
                   <HeaderLink href="/logout" type="submit">
                     Выйти
