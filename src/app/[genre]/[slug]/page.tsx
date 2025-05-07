@@ -162,7 +162,7 @@ const ComicsPage = async ({
             <Stats>
               <StatsBadge>
                 <LikeIcon />
-                Лайков: <StatsContent>{comics.likes}</StatsContent>
+                Лайков: <StatsContent>{likes}</StatsContent>
               </StatsBadge>
               <StatsBadge>
                 <ViewIcon />
