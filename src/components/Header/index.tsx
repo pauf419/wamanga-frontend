@@ -185,16 +185,13 @@ const Header = ({ user }: Props) => {
                   <HeaderLink href="/user?activeTab=BOOKMARK">
                     Закладки
                   </HeaderLink>
-                  <HeaderLink href="/teams">Моя команда</HeaderLink>
-                  <HeaderLink href="/">Добавить тайтл</HeaderLink>
-                  <HeaderLink href="/">Добавить команду</HeaderLink>
-                  <HeaderLink href="/">Добавить автора</HeaderLink>
-                  <HeaderLink href="/">Оформление</HeaderLink>
+                  <HeaderLink href="/admin/title/new">
+                    Добавить тайтл
+                  </HeaderLink>
                   <HeaderSpacer />
                   {user.role !== "user" && (
                     <HeaderLink href="/admin">Админка</HeaderLink>
                   )}
-                  <HeaderLink href="/">Загруженные главы</HeaderLink>
                   <HeaderSpacer />
                   <HeaderLink href="/logout" type="submit">
                     Выйти
