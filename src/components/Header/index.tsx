@@ -188,7 +188,6 @@ const Header = ({ user }: Props) => {
                   <HeaderLink href="/admin/title/new">
                     Добавить тайтл
                   </HeaderLink>
-                  <HeaderSpacer />
                   {user.role !== "user" && (
                     <>
                       <HeaderSpacer />
