@@ -65,9 +65,6 @@ const UserListUnit = ({ user }: Props) => {
     case "developer":
       defaultIndex = 3;
       break;
-    case "owner":
-      defaultIndex = 4;
-      break;
   }
 
   const submit = async () => {
@@ -100,6 +97,8 @@ const UserListUnit = ({ user }: Props) => {
       }
     }
   };
+
+  if (user.role === "owner") return <></>;
 
   const action = (
     <React.Fragment>
@@ -204,10 +203,6 @@ const UserListUnit = ({ user }: Props) => {
                   {
                     key: "developer",
                     name: "Разработчик",
-                  },
-                  {
-                    key: "owner",
-                    name: "Владелец",
                   },
                 ]}
               />
