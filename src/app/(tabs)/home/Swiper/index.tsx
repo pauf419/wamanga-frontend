@@ -51,7 +51,6 @@ export const Swiper = ({
         ref={sliderRef}
         slidesPerView={"auto"}
         spaceBetween={30}
-        loop
         speed={500}
         initialSlide={1}
         padding={padding}
