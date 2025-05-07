@@ -27,12 +27,7 @@ interface SideBarMobileProps {
 }
 
 const SideBarMobile: FC<SideBarMobileProps> = ({ active, setActive }) => {
-  const moreRoutes = [
-    { title: "Премиум подписочка", path: "/catalog" },
-    { title: "Крутейшая страница для си132554252", path: "/home" },
-    { title: "Правила сайта", path: "/rules" },
-    { title: "Политика сайта", path: "/catalog" },
-  ];
+  const moreRoutes = [{ title: "Правила сайта", path: "/rules" }];
 
   const [randomTitle, setRandomTitle] = useState<Comic>();
 
