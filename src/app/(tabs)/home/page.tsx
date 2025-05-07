@@ -24,9 +24,11 @@ import { CategoriesSwiper } from "./CategoriesSwiper";
 import BasePage from "@/components/BasePage";
 import {
   getDayTop,
+  getNews,
   getRandom,
   getRecentlyUpdated,
   getRecommendedTitles,
+  paginateTitles,
 } from "@/api/title";
 import { getSession } from "@/app/lib";
 
@@ -34,6 +36,8 @@ const HomePage = async () => {
   const recommendedTitles = await getRecommendedTitles();
   const recentlyUpdatedTitles = await getRecentlyUpdated();
   const dailyTopTitles = await getDayTop();
+  const categoriesTitles = await paginateTitles(0, 10);
+  const newsTitles = await getNews()
   const randomTitle = await getRandom();
 
   return (
@@ -54,11 +58,11 @@ const HomePage = async () => {
         )}
 
         <CategorySection title="Категория" link="/">
-          <CategoriesSwiper />
+          <CategoriesSwiper titles={categoriesTitles} />
         </CategorySection>
 
         <NewsSection title="Новинки 🔥" link="/">
-          <LatestSwiper />
+          <LatestSwiper titles={newsTitles}/>
         </NewsSection>
       </Container>
     </BasePage>

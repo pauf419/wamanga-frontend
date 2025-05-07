@@ -61,9 +61,8 @@ export const Comment = ({ comment, deleteComment }: Props) => {
           <Text>{comment.text}</Text>
           <Tools>
             {(comment.author._id === user?._id ||
-              user?.role === UserRole.Admin ||
-              user?.role === UserRole.Moderator ||
-              user?.role === UserRole.Owner) && (
+              (typeof user?.role === "string" &&
+                ["admin", "owner", "moderator"].includes(user.role))) && (
               <ToggleButton
                 className="button-transparent-red"
                 onClick={() => deleteComment(comment._id)}

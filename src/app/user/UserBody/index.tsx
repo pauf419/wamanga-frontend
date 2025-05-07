@@ -288,7 +288,7 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
               <ViewsIcon as={CommentIcon} />
               <StatsContent>
                 <StatsAmount>374.94k</StatsAmount>
-                <StatsDesc>Коментариев</StatsDesc>
+                <StatsDesc>Комментариев</StatsDesc>
               </StatsContent>
             </StatsBlock>
           </StatsBlocks>

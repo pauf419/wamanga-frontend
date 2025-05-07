@@ -157,6 +157,12 @@ export async function incrementMangaViews(mangaId: string): Promise<Comic> {
   return res.data;
 }
 
+export async function getNews(): Promise<Comic[]> {
+  const res = await $apiWithoutAuth.get("/manga/topNumberChapter");
+
+  return res.data;
+}
+
 export async function searchManga(
   mangaType: ComicsType[],
   translationStatus: StatusType[],

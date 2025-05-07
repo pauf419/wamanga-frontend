@@ -73,6 +73,7 @@ import AlignCenterIcon from "@icons/svg/align-center.svg";
 import AlignBottomIcon from "@icons/svg/align-botton.svg";
 import type { User } from "@/api/types/user";
 import { useUserStore } from "@/app/store";
+import { likeChapter } from "@/api/chapter";
 
 interface Props {
   title: Comic;
@@ -84,12 +85,15 @@ export type ReaderScrollType = "center" | "end" | "start";
 
 const ReaderBody = ({ title, chapter, user }: Props) => {
   const setUser = useUserStore((state) => state.setUser);
+  const dynamicUser = useUserStore((state) => state.user);
 
   useEffect(() => {
     setUser(user);
   }, [user, setUser]);
+
   const comic = getComics();
   const comicTranslator = getComicTranslator();
+  const [likes, setLikes] = useState<number>(chapter.likes);
 
   const resolveScrollType = (): ReaderScrollType => {
     const storedScrollType = localStorage.getItem("scrollType");
@@ -161,6 +165,26 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
     }
   };
 
+  const likeChapter_ = async () => {
+    try {
+      if (
+        !user ||
+        !user.likedChapters ||
+        user?.likedChapters?.includes(chapter._id)
+      ) {
+        return;
+      }
+      const res = await likeChapter(chapter._id);
+      setLikes(res.likes);
+      setUser({
+        ...user,
+        likedChapters: [...user.likedChapters, chapter._id],
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -202,7 +226,7 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
       ></SettingsBlurer>
       <SettingsSidebar $type="chapters" $active={chaptersModalActive}>
         <SidebarHeader>
-          <b>Разделы{` (${title.chapters.length})`}</b>
+          <b>Главы{` (${title.chapters.length})`}</b>
           <SidebarHeaderTools>
             <SortingButton onClick={() => setChaptersModalActive(false)}>
               <CloseIcon />
@@ -374,7 +398,7 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
           <ChaptersBlock>
             <a
               className={`button-filled button-dark ${!chapter.prevChapter && "button-disabled"}`}
-              title={!chapter.prevChapter ? "Упс, это первый раздел" : ""}
+              title={!chapter.prevChapter ? "Упс, это первая глава" : ""}
               onClick={(e) => {
                 if (!chapter.prevChapter) {
                   e.preventDefault();
@@ -384,7 +408,7 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
               href={`/${title.seoGenre}/${title.alternativeName}/${chapter.prevChapter?.slug}`}
             >
               <ArrowLeft />
-              Предыдущий раздел
+              Предыдущая глава
             </a>
             <button className="button-transparent button-like">
               <div>
@@ -395,7 +419,7 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
             </button>
             <a
               className={`button-filled button-dark ${!chapter.nextChapter && "button-disabled"}`}
-              title={!chapter.nextChapter ? "Упс, это последний раздел" : ""}
+              title={!chapter.nextChapter ? "Упс, это последняя глава" : ""}
               onClick={(e) => {
                 if (!chapter.nextChapter) {
                   e.preventDefault();
@@ -404,35 +428,65 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
               }}
               href={`/${title.seoGenre}/${title.alternativeName}/${chapter.nextChapter?.slug}`}
             >
-              Следующий раздел
+              Следующая глава
               <ArrowRight />
             </a>
           </ChaptersBlock>
         </HidesWhenMobile>
         <DisplaysWhenMobile>
           <ChaptersBlock style={{ marginBottom: 16 }}>
-            <button className="button-transparent button-like">
-              <div>
-                <h4>Поставь лайк</h4>
-                <LikeIcon />
-              </div>
-              <span>Поставили лайков: 233</span>
+            <button
+              className="button-transparent button-like"
+              onClick={() => likeChapter_()}
+            >
+              {dynamicUser?.likedChapters?.includes(chapter._id) ? (
+                <div>
+                  <h4>Лайк поставлен!</h4>
+                </div>
+              ) : (
+                <div>
+                  <h4>Поставь лайк</h4>
+                  <LikeIcon />
+                </div>
+              )}
+
+              <span>Поставили лайков: {likes}</span>
             </button>
           </ChaptersBlock>
           <ChaptersBlock style={{ marginTop: 0, marginBottom: 24 }}>
-            <button className="button-filled button-dark">
+            <a
+              className={`button-filled button-dark ${!chapter.prevChapter && "button-disabled"}`}
+              title={!chapter.prevChapter ? "Упс, это первая глава" : ""}
+              onClick={(e) => {
+                if (!chapter.prevChapter) {
+                  e.preventDefault();
+                  return false;
+                }
+              }}
+              href={`/${title.seoGenre}/${title.alternativeName}/${chapter.prevChapter?.slug}`}
+            >
               <ArrowLeft />
-              Предыдущий раздел
-            </button>
-            <button className="button-filled button-dark">
-              Следующий раздел
+              Предыдущая глава
+            </a>
+            <a
+              className={`button-filled button-dark ${!chapter.nextChapter && "button-disabled"}`}
+              title={!chapter.nextChapter ? "Упс, это последняя глава" : ""}
+              onClick={(e) => {
+                if (!chapter.nextChapter) {
+                  e.preventDefault();
+                  return false;
+                }
+              }}
+              href={`/${title.seoGenre}/${title.alternativeName}/${chapter.nextChapter?.slug}`}
+            >
+              Следующая глава
               <ArrowRight />
-            </button>
+            </a>
           </ChaptersBlock>
         </DisplaysWhenMobile>
         <InfoContainer>
           <InfoBlock>
-            <h3>Коментарии</h3>
+            <h3>Комментарии</h3>
             <Comments type="chapter" comic={comic} chapter={chapter} />
           </InfoBlock>
           <InfoBlockTranslator>

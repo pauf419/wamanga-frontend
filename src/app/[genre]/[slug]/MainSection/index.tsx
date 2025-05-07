@@ -54,7 +54,7 @@ export const MainSection = ({ comics }: Props) => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 1200)
-        return setTabs(["Описание", "Главы", "Коментарии", "Команда"]);
+        return setTabs(["Описание", "Главы", "Комментарии", "Команда"]);
       setTabs(["Описание", "Главы"]);
     };
 

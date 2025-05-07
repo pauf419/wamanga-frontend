@@ -71,9 +71,7 @@ export async function updateSession(request: NextRequest): Promise<{
       body: JSON.stringify({ refreshToken: oldRefreshToken }),
     });
 
-    console.log("refrees");
     if (!refreshResponse.ok) {
-      console.log("here");
       response.cookies.delete("access_token");
       response.cookies.delete("refresh_token");
       response.cookies.delete("session");

@@ -194,7 +194,7 @@ const Header = ({ user }: Props) => {
                   {user.role !== "user" && (
                     <HeaderLink href="/admin">Админка</HeaderLink>
                   )}
-                  <HeaderLink href="/">Загруженные разделы</HeaderLink>
+                  <HeaderLink href="/">Загруженные главы</HeaderLink>
                   <HeaderSpacer />
                   <HeaderLink href="/logout" type="submit">
                     Выйти

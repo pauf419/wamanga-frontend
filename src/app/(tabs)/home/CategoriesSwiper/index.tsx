@@ -5,13 +5,17 @@ import { SwiperSlideSC } from "./styled";
 import { Swiper } from "../Swiper";
 import { ComicPreviewVertical } from "../ComicPreviewVertical";
 import { getByCategory } from "@/api/mocks/queries/use-get-by-category";
+import { paginateTitles } from "@/api/title";
+import type { Comic } from "@/api/types/comic";
 
-export const CategoriesSwiper = () => {
-  const { data } = getByCategory();
+interface Props {
+  titles: Comic[];
+}
 
+export const CategoriesSwiper = ({ titles }: Props) => {
   return (
     <Swiper type="vertical">
-      {data.map((comic, index) => (
+      {titles.map((comic, index) => (
         <SwiperSlideSC key={index}>
           <ComicPreviewVertical comic={comic} />
         </SwiperSlideSC>

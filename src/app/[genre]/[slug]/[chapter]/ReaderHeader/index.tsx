@@ -108,7 +108,7 @@ const ReaderHeader = ({
               <ArrowLeft />
             </ChaptersController>
           ) : (
-            <Tooltip title="Упс, это первый раздел">
+            <Tooltip title="Упс, это первая глава">
               <ChaptersController
                 $disabled={!chapter.prevChapter}
                 onClick={(e) => {
@@ -142,7 +142,7 @@ const ReaderHeader = ({
               <ArrowRight />
             </ChaptersController>
           ) : (
-            <Tooltip title="Упс, это последний раздел">
+            <Tooltip title="Упс, это последняя глава">
               <ChaptersController
                 $disabled={!chapter.nextChapter}
                 onClick={(e) => {
@@ -200,24 +200,26 @@ const ReaderHeader = ({
         </HidesWhenMobile>
       </HeaderSC>
       <DisplaysWhenMobile>
-        <MobileReaderButtonWrapper>
-          {buttonActive ? (
-            <ReaderButton href={title.telegram}>
-              <ReaderButtonClose
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setButtonActive(false);
-                }}
-              >
-                X
-              </ReaderButtonClose>
-              {title.textForButton}
-            </ReaderButton>
-          ) : (
-            <></>
-          )}
-        </MobileReaderButtonWrapper>
+        {title.textForButton && title.telegram && (
+          <MobileReaderButtonWrapper>
+            {buttonActive ? (
+              <ReaderButton href={title.telegram}>
+                <ReaderButtonClose
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setButtonActive(false);
+                  }}
+                >
+                  X
+                </ReaderButtonClose>
+                {title.textForButton}
+              </ReaderButton>
+            ) : (
+              <></>
+            )}
+          </MobileReaderButtonWrapper>
+        )}
         <HeaderBottom>
           <SettingsBlock>
             <SettingsBlurer
@@ -261,24 +263,26 @@ const ReaderHeader = ({
         </HeaderBottom>
       </DisplaysWhenMobile>
       <HidesWhenMobile>
-        <ReaderButtonWrapper>
-          {buttonActive ? (
-            <ReaderButton href={title.telegram}>
-              <ReaderButtonClose
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setButtonActive(false);
-                }}
-              >
-                X
-              </ReaderButtonClose>
-              {title.textForButton}
-            </ReaderButton>
-          ) : (
-            <></>
-          )}
-        </ReaderButtonWrapper>
+        {title.textForButton && title.telegram && (
+          <ReaderButtonWrapper>
+            {buttonActive ? (
+              <ReaderButton href={title.telegram}>
+                <ReaderButtonClose
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setButtonActive(false);
+                  }}
+                >
+                  X
+                </ReaderButtonClose>
+                {title.textForButton}
+              </ReaderButton>
+            ) : (
+              <></>
+            )}
+          </ReaderButtonWrapper>
+        )}
       </HidesWhenMobile>
     </>
   );

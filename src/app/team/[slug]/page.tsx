@@ -108,7 +108,7 @@ const TeamPage = () => {
                 <ChaptersIcon as={ChapterIcon} />
                 <StatsContent>
                   <StatsAmount>1.68k</StatsAmount>
-                  <StatsDesc>Разделов</StatsDesc>
+                  <StatsDesc>Глав</StatsDesc>
                 </StatsContent>
               </StatsBlock>
               <StatsBlock>

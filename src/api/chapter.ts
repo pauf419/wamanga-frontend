@@ -1,4 +1,4 @@
-import { $apiWithoutAuth } from "./axiosInstance";
+import { $api, $apiWithoutAuth } from "./axiosInstance";
 import type { Chapter } from "./types/chapter";
 
 export async function getChapterById(chapterId: string): Promise<Chapter> {
@@ -54,6 +54,11 @@ export async function createChapter(body: CreateChapterMultiuploadDto) {
     },
   });
 
+  return res.data;
+}
+
+export async function likeChapter(chapterId: string) {
+  const res = await $apiWithoutAuth.post(`/chapters/${chapterId}/like`);
   return res.data;
 }
 

@@ -30,6 +30,7 @@ export interface Chapter {
   createdAt: string;
   updatedAt: string;
   description: string;
+  likes: number;
   titleSys: boolean;
   slug: string;
 }
