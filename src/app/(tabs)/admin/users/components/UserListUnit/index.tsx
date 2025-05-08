@@ -59,7 +59,7 @@ const UserListUnit = ({ user }: Props) => {
     case "moderator":
       defaultIndex = 1;
       break;
-    case "administrator":
+    case "admin":
       defaultIndex = 2;
       break;
     case "developer":
