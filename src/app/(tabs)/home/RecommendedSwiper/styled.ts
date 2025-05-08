@@ -140,6 +140,8 @@ export const Poster = styled(Image)`
   width: 250px;
   height: 350px;
   border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
 
   @media (max-width: 900px) {
     width: 170px;

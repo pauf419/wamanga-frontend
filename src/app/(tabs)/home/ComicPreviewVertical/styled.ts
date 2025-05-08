@@ -44,6 +44,7 @@ export const ComicTitle = styled.h3`
   -webkit-line-clamp: 2;
   word-wrap: break-word;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 `;
 
 export const ComicType = styled.p`

@@ -38,6 +38,7 @@ import StatsBadge, { Icon } from "../StatsBadge";
 import { StatsBadges } from "../styled";
 import { SwiperSlide } from "swiper/react";
 import type { Comic } from "@/api/types/comic";
+import { useRouter } from "next/navigation";
 
 interface Props {
   titles: Comic[];
@@ -46,6 +47,8 @@ interface Props {
 export const RecommendedSwiper = ({ titles }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sliderRef = useRef<any>(null);
+
+  const router = useRouter();
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
@@ -82,6 +85,9 @@ export const RecommendedSwiper = ({ titles }: Props) => {
               <Comics>
                 <AdaptivePosterHolder>
                   <Poster
+                    onClick={() =>
+                      router.push(`/${comic.seoGenre}/${comic.alternativeName}`)
+                    }
                     src={comic.imagePath}
                     alt="poster"
                     width={250}

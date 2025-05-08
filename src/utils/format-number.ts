@@ -7,5 +7,5 @@ export function formatNumber(num: number): string {
     tier++;
   }
 
-  return num.toFixed(2).replace(/\.0$/, "") + suffixes[tier];
+  return num.toFixed(1).replace(/\.0$/, "") + suffixes[tier];
 }
