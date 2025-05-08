@@ -12,6 +12,18 @@ interface Props {
 
 const UsersBody = ({ users }: Props) => {
   const [search, setSearch] = useState<string>();
+  const [dynamicUsers, setDynamicUsers] = useState<User[]>(users);
+
+  const updateUser = (user: User) => {
+    setDynamicUsers((prev) => {
+      return prev.map((_user) => {
+        if (_user._id === user._id) {
+          return user;
+        }
+        return _user;
+      });
+    });
+  };
 
   return (
     <>
@@ -21,10 +33,10 @@ const UsersBody = ({ users }: Props) => {
         onChange={(value) => setSearch(value)}
       />
       <GridMini>
-        {users
+        {dynamicUsers
           .filter((user) => (search ? user.username.includes(search) : true))
           .map((user) => (
-            <UserListUnit user={user} key={user._id} />
+            <UserListUnit user={user} key={user._id} updateUser={updateUser} />
           ))}
       </GridMini>
     </>

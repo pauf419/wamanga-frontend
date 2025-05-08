@@ -1,5 +1,7 @@
 import BasePage from "@/components/BasePage";
 import { Container, Pathname, PathnameHeader, PathnameSpacer } from "./styled";
+import { getSession } from "@/app/lib";
+import { redirect } from "next/navigation";
 
 const AdminPage = async () => {
   return (

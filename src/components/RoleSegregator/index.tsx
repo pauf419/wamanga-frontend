@@ -6,15 +6,15 @@ export enum UserRole {
   User = "user",
   Moderator = "moderator",
   Admin = "admin",
-  Owner = "Owner",
+  Owner = "owner",
 }
 
 interface Props {
-  allowedRoles: UserRole[];
+  allowedRoles: string[];
   children: ReactNode;
 }
 
-export const Comment = ({ allowedRoles, children }: Props) => {
+export const RoleSegregator = ({ allowedRoles, children }: Props) => {
   const user = useUserStore((state) => state.user);
 
   if (!user || !allowedRoles.includes(user.role as UserRole)) return <></>;

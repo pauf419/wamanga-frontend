@@ -140,6 +140,13 @@ export async function getLatest(): Promise<Comic[]> {
   return res.data;
 }
 
+export async function getManyByIds(ids: string[]): Promise<Comic[]> {
+  const res = await $api.post("/manga/ids", {
+    ids,
+  });
+  return res.data;
+}
+
 export async function getByCategory(): Promise<Comic[]> {
   const res = await $api.get("/manga/by-category");
 

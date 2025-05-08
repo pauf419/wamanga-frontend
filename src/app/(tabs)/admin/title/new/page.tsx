@@ -6,8 +6,14 @@ import {
   PathnameSpacer,
 } from "../../styled";
 import SettingsPageForm from "./Form";
+import { getSession } from "@/app/lib";
+import { redirect } from "next/navigation";
 
 const AdminPageNewComic = async () => {
+  const session = await getSession();
+
+  if (!session || session.role !== "owner") return redirect("/");
+
   return (
     <BasePage>
       <Container>

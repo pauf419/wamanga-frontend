@@ -18,6 +18,8 @@ import AdminTeamsIcon from "@icons/svg/admin-team.svg";
 import AdminSettingsIcon from "@icons/svg/admin-gear.svg";
 import { getRandomComic } from "@/api/title";
 import Link from "next/link";
+import { getSession } from "@/app/lib";
+import { RoleSegregator, UserRole } from "../RoleSegregator";
 
 const isAdminPage = async () => {
   const referer = (await headers()).get("x-current-path") || "";
@@ -25,6 +27,8 @@ const isAdminPage = async () => {
 };
 
 const Sidebar = async () => {
+  const session = await getSession();
+
   if (await isAdminPage())
     return (
       <SidebarSC>
@@ -36,14 +40,23 @@ const Sidebar = async () => {
         <Tabs>
           <SidebarTab icon={<AdminMainPageIcon />} route={routes.adminMain} />
           <SidebarTab icon={<AdminComicsIcon />} route={routes.adminComics} />
-          <SidebarTab icon={<AdminPlusIcon />} route={routes.adminAddComics} />
+          <RoleSegregator allowedRoles={["owner"]}>
+            <SidebarTab
+              icon={<AdminPlusIcon />}
+              route={routes.adminAddComics}
+            />
+          </RoleSegregator>
           <SidebarTab icon={<AdminCatalogIcon />} route={routes.adminCatalog} />
-          <SidebarTab icon={<AdminUsersIcon />} route={routes.adminUsers} />
-          <SidebarTab icon={<AdminTeamsIcon />} route={routes.adminTeams} />
-          <SidebarTab
-            icon={<AdminSettingsIcon />}
-            route={routes.adminSettings}
-          />
+          <RoleSegregator allowedRoles={["owner"]}>
+            <>
+              <SidebarTab icon={<AdminUsersIcon />} route={routes.adminUsers} />
+              <SidebarTab icon={<AdminTeamsIcon />} route={routes.adminTeams} />
+              <SidebarTab
+                icon={<AdminSettingsIcon />}
+                route={routes.adminSettings}
+              />
+            </>
+          </RoleSegregator>
         </Tabs>
       </SidebarSC>
     );

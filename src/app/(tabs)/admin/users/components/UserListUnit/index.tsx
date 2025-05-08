@@ -14,14 +14,14 @@ import {
 import { Avatar } from "@/components/Comments/Comment/styled";
 import { Dropdown } from "@/components/Dropdown";
 import Modal from "@/components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Checkbox } from "@/components/Checkbox";
 import { WarningBlock, WarningIcon, WarningText } from "@/app/user/styled";
 
 import InfoIcon from "@icons/svg/info-filled.svg";
 import type { Comic } from "@/api/types/comic";
 import BadgeTypeSelect from "@/components/BadgeTypeSelect";
-import { simpleSearch } from "@/api/title";
+import { getManyByIds, simpleSearch } from "@/api/title";
 import { AppointWrapper, FlexBlock } from "../../../styled";
 import { title } from "process";
 import { assignManga, editUserAdmin } from "@/api/user";
@@ -31,9 +31,10 @@ import { IconButton, Snackbar } from "@mui/material";
 
 interface Props {
   user: User;
+  updateUser: (u: User) => void;
 }
 
-const UserListUnit = ({ user }: Props) => {
+const UserListUnit = ({ user, updateUser }: Props) => {
   const [message, setMessage] = useState<string>();
   const [open, setOpen] = useState<boolean>(false);
   const [appointActive, setAppointActive] = useState<boolean>(false);
@@ -67,12 +68,29 @@ const UserListUnit = ({ user }: Props) => {
       break;
   }
 
+  const fetchAllAssignedTitles = async (
+    titleIds: string[],
+    assignedAllManga: boolean
+  ) => {
+    try {
+      const res = await getManyByIds(titleIds);
+      await updateUser({
+        ...user,
+        assignedAllManga,
+        assignedManga: res,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const submit = async () => {
     try {
       await assignManga(user._id, appointedTitles, appointAll);
       setAppointActive(false);
       setMessage("Данные пользователя успешно обновлены");
       setOpen(true);
+      fetchAllAssignedTitles(appointedTitles, appointAll);
     } catch (e) {
       console.error(e);
       if (e && typeof e === "object" && "response" in e) {
