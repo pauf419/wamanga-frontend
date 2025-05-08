@@ -158,6 +158,12 @@ export async function getRandom(): Promise<Comic> {
   return res.data;
 }
 
+export async function getRandomList(count: number = 1): Promise<Comic[]> {
+  const res = await $apiWithoutAuth.get(`/manga/random?count=${count}`);
+
+  return res.data;
+}
+
 export async function incrementMangaViews(mangaId: string): Promise<Comic> {
   const res = await $apiWithoutAuth.put(`/manga/${mangaId}/views`);
 

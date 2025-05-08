@@ -26,6 +26,7 @@ import {
   getDayTop,
   getNews,
   getRandom,
+  getRandomList,
   getRecentlyUpdated,
   getRecommendedTitles,
   paginateTitles,
@@ -38,9 +39,8 @@ const HomePage = async () => {
   const recommendedTitles = await getRecommendedTitles();
   const recentlyUpdatedTitles = await getRecentlyUpdated();
   const dailyTopTitles = await getDayTop();
-  const categoriesTitles = await paginateTitles(0, 10);
   const newsTitles = await getNews();
-  const randomTitle = await getRandom();
+  const randomTitles = await getRandomList(20);
 
   return (
     <BasePage isImageBehind>
@@ -60,8 +60,8 @@ const HomePage = async () => {
           </DayTopSection>
         )}
 
-        <CategorySection title="Категория" link="/">
-          <CategoriesSwiper titles={categoriesTitles} />
+        <CategorySection title="Рандом" link="/">
+          <CategoriesSwiper titles={randomTitles} />
         </CategorySection>
 
         <NewsSection title="Новинки 🔥" link="/">

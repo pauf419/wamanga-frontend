@@ -188,6 +188,7 @@ export const ActionPanel = ({ title, team }: Props) => {
         state={uploadModalActive}
         setState={setUploadModalActive}
         title={`Загрузка данных (${unitsAmount.length})`}
+        clickOutside={false}
       >
         <UploadWrapper>
           <b>

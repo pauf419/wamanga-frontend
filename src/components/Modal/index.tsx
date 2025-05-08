@@ -16,13 +16,20 @@ interface Props {
   setState: React.Dispatch<React.SetStateAction<boolean>>;
   children: ReactNode;
   title: string;
+  clickOutside?: boolean;
 }
 
-const Modal = ({ state, setState, children, title }: Props) => {
+const Modal = ({
+  state,
+  setState,
+  children,
+  title,
+  clickOutside = true,
+}: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const onClickOutside = () => {
-    setState(false);
+    if (clickOutside) setState(false);
   };
 
   useClickOutside(modalRef, onClickOutside);
