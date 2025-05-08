@@ -16,6 +16,7 @@ import { IconButton } from "@mui/material";
 import CloseIcon from "@icons/svg/close.svg";
 import { MangaGenres, MangaTags } from "../../../new/Form";
 import { useRouter } from "next/navigation";
+import { RoleSegregator } from "@/components/RoleSegregator";
 
 interface Props {
   title: Comic;
@@ -70,14 +71,16 @@ const ComicEditableDataList = ({ title }: Props) => {
 
   return (
     <DataList>
-      <button
-        className="button-filled"
-        onClick={() =>
-          router.push(`/admin/title/${title.alternativeName}/edit`)
-        }
-      >
-        Редактировать
-      </button>
+      <RoleSegregator allowedRoles={["admin", "owner"]}>
+        <button
+          className="button-filled"
+          onClick={() =>
+            router.push(`/admin/title/${title.alternativeName}/edit`)
+          }
+        >
+          Редактировать
+        </button>
+      </RoleSegregator>
       <DataListItem>
         <b>Просмотры:</b>
         <DataListInput

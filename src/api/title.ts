@@ -203,6 +203,28 @@ export async function searchManga(
   return res.data;
 }
 
+export async function adminPaginateTitles(
+  offset: number = 0,
+  limit: number = 0,
+  query: string = "",
+  accessToken?: string,
+  refreshToken?: string
+): Promise<Comic[]> {
+  const headers: Record<string, string> = {};
+
+  if (accessToken && refreshToken) {
+    headers["Cookie"] =
+      `access_token=${accessToken}; refresh_token=${refreshToken}`;
+  }
+
+  const res = await $apiWithoutAuth.get(
+    `/manga/adminPaginate?offset=${offset}&limit=${limit}&query=${encodeURIComponent(query)}`,
+    { headers }
+  );
+
+  return res.data;
+}
+
 export async function paginateTitles(
   offset: number,
   limit: number = 30

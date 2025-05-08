@@ -5,7 +5,7 @@ import { GridContainer } from "../../styled";
 import { useEffect, useState } from "react";
 import Input from "@/components/Input";
 import { ComicUnit } from "../components/ComicUnit";
-import { simpleSearch } from "@/api/title";
+import { adminPaginateTitles, simpleSearch } from "@/api/title";
 
 interface Props {
   preset: Comic[];
@@ -18,7 +18,7 @@ const AvailableTitlesBody = ({ preset }: Props) => {
 
   const searchTitles = async (query: string) => {
     try {
-      const titles = await simpleSearch(query);
+      const titles = await adminPaginateTitles(0, 0, query);
       setTitles(titles);
     } catch (e) {
       console.error(e);

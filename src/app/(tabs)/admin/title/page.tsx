@@ -6,12 +6,22 @@ import {
   PathnameHeader,
   PathnameSpacer,
 } from "../styled";
-import { paginateTitles } from "@/api/title";
+import { adminPaginateTitles, paginateTitles } from "@/api/title";
 import { ComicUnit } from "./components/ComicUnit";
 import AvailableTitlesBody from "./AvailableTitlesBody";
+import { getTokens } from "@/app/lib";
 
 const AdminPage = async () => {
-  const titles = await paginateTitles(0);
+  const tokens = await getTokens();
+  const titles = await adminPaginateTitles(
+    0,
+    0,
+    "",
+    tokens.accessToken,
+    tokens.refreshToken
+  );
+
+  if (!titles) return <>sds</>;
 
   return (
     <BasePage>

@@ -11,6 +11,7 @@ import {
 } from "./styled";
 import PencilIcon from "@icons/svg/pencil-stroked.svg";
 import { useRouter } from "next/navigation";
+import { RoleSegregator } from "@/components/RoleSegregator";
 
 interface Props {
   comic: Comic;
@@ -25,9 +26,11 @@ export const ComicUnit = ({ comic }: Props) => {
         src={comic.imagePath}
         onClick={() => router.push(`/admin/title/${comic.alternativeName}`)}
       />
-      <EditButton href={`/admin/title/${comic.alternativeName}/edit`}>
-        <PencilIcon />
-      </EditButton>
+      <RoleSegregator allowedRoles={["owner", "admin"]}>
+        <EditButton href={`/admin/title/${comic.alternativeName}/edit`}>
+          <PencilIcon />
+        </EditButton>
+      </RoleSegregator>
       <Description>
         <h4>{comic.name}</h4>
         <Tools>
