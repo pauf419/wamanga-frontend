@@ -122,21 +122,6 @@ export const Indicator = styled(LevelStat)`
   }
 `;
 
-export const ReaderButtonWrapper = styled.div`
-  position: fixed;
-  bottom: 0;
-  z-index: 9;
-  display: flex;
-  width: calc(100% - 83px);
-  justify-content: center;
-  padding: 16px;
-  min-height: 38px;
-
-  @media (max-width: 1200px) {
-    width: 100%;
-  }
-`;
-
 export const ReaderButton = styled.a`
   position: relative;
   text-decoration: none;
@@ -150,6 +135,29 @@ export const ReaderButton = styled.a`
   backdrop-filter: blur(6px);
   border: 1px dashed rgba(143, 150, 163, 0.24);
   border-radius: 6px;
+`;
+
+export const ReaderButtonWrapper = styled.div`
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  width: calc(100% - 83px);
+  justify-content: center;
+  padding: 16px;
+  min-height: 38px;
+
+  ${ReaderButton} {
+    margin-right: 83px;
+  }
+
+  @media (max-width: 1200px) {
+    width: 100%;
+
+    ${ReaderButton} {
+      margin-right: 0px;
+    }
+  }
 `;
 
 export const ReaderButtonClose = styled.button`
@@ -174,5 +182,13 @@ export const ReaderButtonClose = styled.button`
 
   @media (max-width: 650px) {
     right: 12px;
+  }
+`;
+
+export const AdsFrameWrapper = styled.div`
+  margin-right: 83px;
+
+  @media (max-width: 1200px) {
+    margin-right: 0px;
   }
 `;

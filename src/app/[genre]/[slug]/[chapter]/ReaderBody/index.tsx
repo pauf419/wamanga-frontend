@@ -3,6 +3,7 @@
 import { getComics } from "@/api/mocks/queries/use-get-comics";
 import ReaderHeader from "../ReaderHeader";
 import {
+  AdsFrameWrapper,
   ChaptersBlock,
   Container,
   DisplaysWhenMobile,
@@ -379,7 +380,9 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
       />
       <Container>
         <ReaderMain>
-          <AdsFrame frameName={AdsFrameNames.Chapter} />
+          <AdsFrameWrapper>
+            <AdsFrame frameName={AdsFrameNames.Chapter} />
+          </AdsFrameWrapper>
           {readerType === "vertical" ? (
             (() => {
               const pages = currentChapter.pages;
@@ -415,10 +418,12 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
                 // Вставляем AdsFrame после нужной страницы (между страницами)
                 if (insertIndexes.has(index + 1)) {
                   elements.push(
-                    <AdsFrame
-                      frameName={AdsFrameNames.Chapter}
-                      key={`ad-${index}`}
-                    />
+                    <AdsFrameWrapper>
+                      <AdsFrame
+                        frameName={AdsFrameNames.Chapter}
+                        key={`ad-${index}`}
+                      />
+                    </AdsFrameWrapper>
                   );
                 }
               });
@@ -428,7 +433,9 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
           ) : (
             <ReaderContentImage $width={readerWidth} src={currentPage.path} />
           )}
-          <AdsFrame frameName={AdsFrameNames.Chapter} />
+          <AdsFrameWrapper>
+            <AdsFrame frameName={AdsFrameNames.Chapter} />
+          </AdsFrameWrapper>
         </ReaderMain>
         <HidesWhenMobile>
           <ChaptersBlock>
