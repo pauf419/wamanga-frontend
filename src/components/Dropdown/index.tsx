@@ -25,6 +25,7 @@ interface Props {
   preset?: DropdownItem | null;
   search?: boolean;
   onSearch?: ((v: string) => void) | null;
+  adaptive?: boolean;
 }
 
 export const Dropdown = ({
@@ -34,6 +35,7 @@ export const Dropdown = ({
   defaultIndex = 0,
   search = false,
   onSearch = null,
+  adaptive = false,
 }: Props) => {
   const [active, setActive] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>();
@@ -69,7 +71,7 @@ export const Dropdown = ({
         ></Blurer>
       )}
       <DropdownWrapper>
-        <DropdownHeader onClick={() => setActive(!active)}>
+        <DropdownHeader onClick={() => setActive(!active)} $adaptive={adaptive}>
           {search ? (
             <SearchInput
               value={selected ? selected.name : searchValue}

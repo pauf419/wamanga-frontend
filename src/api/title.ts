@@ -183,6 +183,8 @@ export async function searchManga(
   genres: string[],
   tags: string[],
   pegi: PegiType[],
+  sortKey: number | undefined,
+  sortOrder: string | undefined,
   offset: number,
   limit: number
 ): Promise<Comic[]> {
@@ -194,6 +196,8 @@ export async function searchManga(
       genres,
       tags,
       pegi,
+      sortKey,
+      sortOrder,
       offset,
       limit,
     },

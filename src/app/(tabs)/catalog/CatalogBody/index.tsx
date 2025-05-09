@@ -17,6 +17,7 @@ import {
 } from "../styled";
 import { Dropdown } from "@/components/Dropdown";
 import SortingIcon from "@icons/svg/sorting.svg";
+import SortingIconDesc from "@icons/svg/sorting-desc.svg";
 import { getTeamProjects } from "@/api/mocks/queries/use-get-team-projects";
 import { ComicPreviewVertical } from "../../home/ComicPreviewVertical";
 import ReloadIcon from "@icons/svg/reload.svg";
@@ -39,6 +40,10 @@ import {
 } from "@/components/Chapters/styled";
 import { AdsFrame } from "@/components/AdsFrame";
 import { AdsFrameNames } from "@/api/types/settings";
+import {
+  DisplaysWhenMobile,
+  HidesWhenMobile,
+} from "@/components/Adaptive/styled";
 
 interface Props {
   defaultTitles: Comic[];
@@ -55,9 +60,23 @@ const CatalogBody = ({ defaultTitles }: Props) => {
   const [mangaType, setMangaType] = useState<ComicsType[]>([]);
   const [translationStatus, setTranslationStatus] = useState<StatusType[]>([]);
   const [mangaStatus, setMangaStatus] = useState<StatusType[]>([]);
+  const [sortKey, setSortKey] = useState<number>();
+  const [sortOrder, setSortOrder] = useState<string>();
   const [genres, setGenres] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   const [pegi, setPegi] = useState<PegiType[]>([]);
+
+  // Set filtersFixed depending on screen size
+  useEffect(() => {
+    const checkWidth = () => {
+      setFiltersFixed(window.innerWidth >= 1200);
+    };
+
+    checkWidth(); // Set on mount
+
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   const filterTitles = async (paginating: boolean = false) => {
     if (!paginating) {
@@ -75,6 +94,8 @@ const CatalogBody = ({ defaultTitles }: Props) => {
         genres,
         tags,
         pegi,
+        sortKey,
+        sortOrder,
         paginating ? offset : 0,
         LIMIT
       );
@@ -83,7 +104,6 @@ const CatalogBody = ({ defaultTitles }: Props) => {
       } else {
         setTitles(fetched);
       }
-      console.log(fetched.length, LIMIT, fetched.length < LIMIT, canLoadMore);
       if (fetched.length < LIMIT) setCanLoadMore(false);
       else setCanLoadMore(true);
     } catch (e) {
@@ -93,11 +113,21 @@ const CatalogBody = ({ defaultTitles }: Props) => {
       }
     }
     setLoading(false);
+    console.log(filtersFixed);
+    if (!filtersFixed) setFiltersActive(true);
   };
 
   useEffect(() => {
     if (offset !== 0) filterTitles(true);
   }, [offset]);
+
+  useEffect(() => {
+    if (sortOrder) filterTitles();
+  }, [sortOrder]);
+
+  useEffect(() => {
+    if (sortKey !== undefined) filterTitles();
+  }, [sortKey]);
 
   return (
     <Container>
@@ -105,7 +135,7 @@ const CatalogBody = ({ defaultTitles }: Props) => {
         <Header>
           <HeaderGroup>
             <Dropdown
-              cb={() => null}
+              cb={(e) => setSortKey(e.key)}
               items={[
                 {
                   key: 0,
@@ -122,36 +152,59 @@ const CatalogBody = ({ defaultTitles }: Props) => {
                   name: "По последним обновлениям",
                 },
               ]}
+              adaptive
             />
-            <SortingButton>
-              <SortingIcon />
+            <SortingButton
+              onClick={() =>
+                setSortOrder((prev) => {
+                  if (prev === "ASCENDING") return "DESCENDING";
+                  if (prev === "DESCENDING") return "ASCENDING";
+                  return "ASCENDING";
+                })
+              }
+            >
+              {sortOrder === "ASCENDING" ? (
+                <SortingIconDesc />
+              ) : (
+                <SortingIcon />
+              )}
             </SortingButton>
           </HeaderGroup>
-          <HeaderGroup>
-            <div className="mini-switch-wrapper switch-minimal">
-              <div
-                className={`mini-switch-toggler ${filtersFixed === false && "mini-switch-active"}`}
-                aria-disabled={filtersFixed === false}
-                onClick={() => setFiltersFixed(false)}
-              >
-                <FiltersBeyond className="mini-switch-icon" />
+          <HidesWhenMobile>
+            <HeaderGroup>
+              <div className="mini-switch-wrapper switch-minimal">
+                <div
+                  className={`mini-switch-toggler ${filtersFixed === false && "mini-switch-active"}`}
+                  aria-disabled={filtersFixed === false}
+                  onClick={() => setFiltersFixed(false)}
+                >
+                  <FiltersBeyond className="mini-switch-icon" />
+                </div>
+                <div
+                  className={`mini-switch-toggler ${filtersFixed === true && "mini-switch-active"}`}
+                  aria-disabled={filtersFixed === true}
+                  onClick={() => setFiltersFixed(true)}
+                >
+                  <FiltersSticky className="mini-switch-icon" />
+                </div>
               </div>
-              <div
-                className={`mini-switch-toggler ${filtersFixed === true && "mini-switch-active"}`}
-                aria-disabled={filtersFixed === true}
-                onClick={() => setFiltersFixed(true)}
+              <button
+                className="icon-button icon-button-primary"
+                onClick={() => setFiltersActive(!filtersActive)}
               >
-                <FiltersSticky className="mini-switch-icon" />
-              </div>
-            </div>
+                <FiltersIcon className="icon-button-icon" />
+                <span>Фильтры</span>
+              </button>
+            </HeaderGroup>
+          </HidesWhenMobile>
+          <DisplaysWhenMobile>
             <button
               className="icon-button icon-button-primary"
               onClick={() => setFiltersActive(!filtersActive)}
             >
               <FiltersIcon className="icon-button-icon" />
-              <span>Фильтры</span>
             </button>
-          </HeaderGroup>
+          </DisplaysWhenMobile>
         </Header>
         <OverviewWrapper>
           <AdsFrame frameName={AdsFrameNames.CatalogTop} />

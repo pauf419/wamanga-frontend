@@ -4,7 +4,17 @@ export const DropdownWrapper = styled.div`
   position: relative;
 `;
 
-export const DropdownHeader = styled.div`
+export const SearchInput = styled.input`
+  height: 35px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 13px;
+  color: #fff;
+  font-weight: 700;
+`;
+
+export const DropdownHeader = styled.div<{ $adaptive: boolean }>`
   display: flex;
   width: 260px;
   justify-content: space-between;
@@ -12,6 +22,17 @@ export const DropdownHeader = styled.div`
   border: 1px solid rgba(143, 150, 163, 0.32);
   cursor: pointer;
   align-items: center;
+
+  ${(props) =>
+    props.$adaptive &&
+    `
+      max-width: 200px;
+      ${SearchInput} {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    `}
 `;
 
 export const Icon = styled.svg<{ $active: boolean }>`
@@ -27,6 +48,7 @@ export const SelectedName = styled.div`
   padding-right: 32px;
   min-height: 1.4375em;
   text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap;
   padding: 8.5px 14px;
 `;
@@ -65,14 +87,4 @@ export const Blurer = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-`;
-
-export const SearchInput = styled.input`
-  height: 35px;
-  background: transparent;
-  border: none;
-  outline: none;
-  padding-left: 13px;
-  color: #fff;
-  font-weight: 700;
 `;
