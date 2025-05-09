@@ -40,6 +40,8 @@ import BasePage from "@/components/BasePage";
 import BookmarkIcon from "@icons/svg/bookmark.svg";
 import { Tooltip } from "@mui/material";
 import AgeConfirmModal from "@/components/AgeConfirmModal";
+import { getSettings } from "@/api/settings";
+import type { Metadata } from "next";
 
 export type paramsType = Promise<{
   params: {
@@ -47,6 +49,39 @@ export type paramsType = Promise<{
     genre: string;
   };
 }>;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; genre: string }>;
+}): Promise<Metadata> {
+  const { slug, genre } = await params;
+  const settings = await getSettings();
+  const comics = await getBySlug(slug);
+  return {
+    title: `${settings.title} - ${comics.name}`,
+    description: settings.longTitle,
+    icons: {
+      icon: settings.logo,
+      shortcut: settings.logo,
+      apple: settings.logo,
+    },
+    openGraph: {
+      title: `${settings.title} - Каталог`,
+      description: settings.longTitle,
+      siteName: `${settings.title} - Каталог`,
+      images: [
+        {
+          url: comics.imagePath,
+          width: 1200,
+          height: 630,
+          alt: settings.title,
+        },
+      ],
+      type: "website",
+    },
+  };
+}
 
 const ComicsPage = async ({
   params,

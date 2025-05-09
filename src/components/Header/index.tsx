@@ -38,6 +38,7 @@ import { NoImage } from "../Comments/styled";
 import { logout } from "@/app/lib";
 import VerifyForm from "../(auth)/VerifyForm";
 import { useUserStore } from "@/app/store";
+import { RoleSegregator } from "../RoleSegregator";
 
 export interface ModalState {
   signUp: boolean;
@@ -185,9 +186,11 @@ const Header = ({ user }: Props) => {
                   <HeaderLink href="/user?activeTab=BOOKMARK">
                     Закладки
                   </HeaderLink>
-                  <HeaderLink href="/admin/title/new">
-                    Добавить тайтл
-                  </HeaderLink>
+                  <RoleSegregator allowedRoles={["owner"]}>
+                    <HeaderLink href="/admin/title/new">
+                      Добавить тайтл
+                    </HeaderLink>
+                  </RoleSegregator>
                   {user.role !== "user" ? (
                     <>
                       <HeaderSpacer />

@@ -37,7 +37,7 @@ const SettingsPageForm = ({ settingsPreset }: Props) => {
 
   const submit = async () => {
     try {
-      await updateSettings(settings);
+      await updateSettings(settings, posterBlob);
       setError("Изменения успешно сохранены.");
       setOpen(true);
     } catch (e) {
@@ -75,28 +75,33 @@ const SettingsPageForm = ({ settingsPreset }: Props) => {
             type="category"
           />
         </ImageInputWrapper>
-        <ImageInputWrapper>
-          <h4>Обложка</h4>
-          <ImageInputExtended
-            key={2323}
-            defaultImg={posterUrl}
-            onChange={savePoster}
-            type="category"
-          />
-        </ImageInputWrapper>
       </SettingsBlockFlexWrapper>
       <SettingsBlockGridWrapper>
         <Input
           placeholder="Название"
           type="input"
           presetValue={settings.title}
-          onChange={(e) => null}
+          onChange={(e) =>
+            setSettings((prev) => {
+              return {
+                ...prev,
+                title: e,
+              };
+            })
+          }
         />
         <Input
           placeholder="Длинное Название"
           presetValue={settings.longTitle}
           type="input"
-          onChange={(e) => null}
+          onChange={(e) =>
+            setSettings((prev) => {
+              return {
+                ...prev,
+                longTitle: e,
+              };
+            })
+          }
         />
         <Checkbox
           placeholder="По Умолчанию Манги Скрыты"

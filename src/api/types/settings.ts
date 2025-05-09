@@ -16,6 +16,8 @@ export interface Settings {
 
   longTitle: string;
 
+  logo: string;
+
   mangasHiddenByDefault: boolean;
 
   chaptersHiddenByDefault: boolean;
