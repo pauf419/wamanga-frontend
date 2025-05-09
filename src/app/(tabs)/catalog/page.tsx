@@ -6,7 +6,18 @@ import CatalogBody from "./CatalogBody";
 import { searchManga } from "@/api/title";
 
 const CatalogPage = async () => {
-  const recommendedTitles = await searchManga([], [], [], [], [], [], 0, 30);
+  const recommendedTitles = await searchManga(
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    undefined,
+    undefined,
+    0,
+    30
+  );
 
   return (
     <BasePage isImageBehind>
