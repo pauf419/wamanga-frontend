@@ -179,21 +179,6 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [error, setError] = useState<string>();
 
-  const submit = async () => {
-    try {
-      await updateSettings(settings, posterBlob);
-      setError("Изменения успешно сохранены.");
-      setOpen(true);
-    } catch (e) {
-      console.error(e);
-      if (e && typeof e === "object" && "response" in e) {
-        const err = e as { response: { data: { message: string } } };
-        setError(err.response.data.message);
-        handleClick();
-      }
-    }
-  };
-
   const handleClick = () => {
     setOpen(true);
   };
