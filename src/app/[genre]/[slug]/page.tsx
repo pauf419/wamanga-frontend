@@ -61,15 +61,18 @@ export async function generateMetadata({
   return {
     title: `${settings.title} - ${comics.name}`,
     description: settings.longTitle,
+    metadataBase: new URL(settings.metadataBase),
+    creator: settings.creator,
+    publisher: settings.publisher,
     icons: {
       icon: settings.logo,
       shortcut: settings.logo,
       apple: settings.logo,
     },
     openGraph: {
-      title: `${settings.title} - Каталог`,
+      title: `${settings.title} - ${comics.name}`,
       description: settings.longTitle,
-      siteName: `${settings.title} - Каталог`,
+      siteName: `${settings.title} - ${comics.name}`,
       images: [
         {
           url: comics.imagePath,

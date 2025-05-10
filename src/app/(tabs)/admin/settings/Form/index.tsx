@@ -17,6 +17,7 @@ import React from "react";
 import { IconButton, Snackbar } from "@mui/material";
 import CloseIcon from "@icons/svg/close.svg";
 import { updateSettings } from "@/api/settings";
+import { BadgeTypeSelectManual } from "@/components/BadgeTypeSelect/Manual";
 
 interface Props {
   settingsPreset: Settings;
@@ -70,7 +71,7 @@ const SettingsPageForm = ({ settingsPreset }: Props) => {
           <h4>Логотип</h4>
           <ImageInputExtended
             key={2323}
-            defaultImg={posterUrl}
+            defaultImg={settings.logo}
             onChange={savePoster}
             type="category"
           />
@@ -99,6 +100,57 @@ const SettingsPageForm = ({ settingsPreset }: Props) => {
               return {
                 ...prev,
                 longTitle: e,
+              };
+            })
+          }
+        />
+        <Input
+          placeholder="Metadata Base(Домен)"
+          type="input"
+          presetValue={settings.metadataBase}
+          onChange={(e) =>
+            setSettings((prev) => {
+              return {
+                ...prev,
+                metadataBase: e,
+              };
+            })
+          }
+        />
+        <BadgeTypeSelectManual
+          preset={settings.authors}
+          placeholder="Авторы"
+          onChange={(authors) => {
+            setSettings((prev) => {
+              return {
+                ...prev,
+                authors,
+              };
+            });
+          }}
+        />
+        <Input
+          placeholder="Создатель"
+          type="input"
+          presetValue={settings.creator}
+          onChange={(e) =>
+            setSettings((prev) => {
+              return {
+                ...prev,
+                creator: e,
+              };
+            })
+          }
+        />
+        <Input
+          placeholder="Издатель"
+          type="input"
+          presetValue={settings.publisher}
+          onChange={(e) =>
+            setSettings((prev) => {
+              return {
+                ...prev,
+                publisher: e,
               };
             })
           }

@@ -9,6 +9,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: settings.title,
     description: settings.longTitle,
+    metadataBase: new URL(settings.metadataBase),
+    creator: settings.creator,
+    publisher: settings.publisher,
     icons: {
       icon: settings.logo,
       shortcut: settings.logo,

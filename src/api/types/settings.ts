@@ -18,6 +18,14 @@ export interface Settings {
 
   logo: string;
 
+  metadataBase: string;
+
+  authors: string[];
+
+  creator: string;
+
+  publisher: string;
+
   mangasHiddenByDefault: boolean;
 
   chaptersHiddenByDefault: boolean;
