@@ -99,7 +99,7 @@ const RulesPage = () => {
               </Block>
               <Block>
                 <BlockLeft>
-                  <BlockTitle>Правила для комнд</BlockTitle>
+                  <BlockTitle>Правила для команд</BlockTitle>
                   <BlockDescription>(Переводчикам и авторам)</BlockDescription>
                 </BlockLeft>
                 <a className="button-filled" href="/rules/teams">

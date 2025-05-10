@@ -94,6 +94,9 @@ import type { User } from "@/api/types/user";
 import { Blurer } from "@/components/SideBarMobile/styled";
 import CropFileInput from "@/components/CropFileInput";
 import { $apiWithoutAuth } from "@/api/axiosInstance";
+import React from "react";
+import { IconButton, Snackbar } from "@mui/material";
+import CloseIcon from "@icons/svg/close.svg";
 
 interface Props {
   user: User;
@@ -121,6 +124,7 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
     useState<boolean>(false);
   const [preloadedFile, setPreloadedFile] = useState<any>(null);
   const [localPreview, setLocalPreview] = useState<string>("");
+  const [username, setUsername] = useState(user.username);
   const [avatarBlob, setAvatarBlob] = useState<any>(null);
   const [avararBUrl, setAvatarBUrl] = useState<string>("");
   const [teamLinks, setTeamLinks] = useState<number>(0);
@@ -172,6 +176,53 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
     });
   };
 
+  const [open, setOpen] = useState<boolean>(false);
+  const [error, setError] = useState<string>();
+
+  const submit = async () => {
+    try {
+      await updateSettings(settings, posterBlob);
+      setError("Изменения успешно сохранены.");
+      setOpen(true);
+    } catch (e) {
+      console.error(e);
+      if (e && typeof e === "object" && "response" in e) {
+        const err = e as { response: { data: { message: string } } };
+        setError(err.response.data.message);
+        handleClick();
+      }
+    }
+  };
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton size="small" color="inherit" onClick={() => setOpen(false)}>
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
+
+  const updateUsername = async () => {
+    try {
+      await $apiWithoutAuth.post("/user/username", {
+        username,
+      });
+      setError("Изменения успешно сохранены.");
+      setOpen(true);
+    } catch (e) {
+      console.error(e);
+      if (e && typeof e === "object" && "response" in e) {
+        const err = e as { response: { data: { message: string } } };
+        setError(err.response.data.message);
+        handleClick();
+      }
+    }
+  };
+
   useEffect(() => {
     loadBookmarkComics(bookmarkSelected);
   }, [bookmarkSelected]);
@@ -215,7 +266,7 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
           )}
           <ProfileStats>
             <ShortName>
-              {user.username}
+              {username}
               <RankIndicator $rank={user.role}>
                 {user.role &&
                   `
@@ -501,9 +552,10 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
               <UserSettingsBlock $type>
                 <Input onChange={() => null} type="input" placeholder="Email" />
                 <Input
-                  onChange={() => null}
+                  onChange={(e) => setUsername(e)}
                   type="input"
                   placeholder="Юзернейм"
+                  presetValue={username}
                 />
               </UserSettingsBlock>
               <UserSettingsBlock $type={false}>
@@ -531,7 +583,9 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
                 />
               </UserSettingsBlock>
             </UserSettingsWrapper>
-            <button className="button-filled">Обновить</button>
+            <button className="button-filled" onClick={() => updateUsername()}>
+              Обновить
+            </button>
           </SettingsBlock>
           <SettingsBlock>
             <SettingsBlockTitle>Доступ к контенту</SettingsBlockTitle>
@@ -556,6 +610,12 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
           </SettingsBlock>
         </SettingsWrapper>
       )}
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        message={error}
+        action={action}
+      />
     </Wrapper>
   );
 };

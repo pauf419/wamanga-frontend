@@ -20,6 +20,10 @@ export const Content = styled.div`
   position: relative;
   z-index: ${zIndex.behindHeaderAboveBackground};
   padding: 48px 64px;
+
+  @media (max-width: 900px) {
+    padding: 20px 20px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -28,6 +32,9 @@ export const Title = styled.h1`
   font-size: 4rem;
   mix-blend-mode: overlay;
   opacity: 1;
+
+  @media (max-width: 900px) {
+  }
 `;
 
 export const BlockDetail = styled.h3`
@@ -41,6 +48,10 @@ export const Description = styled.div`
 
   justify-content: flex-start;
   position: relative;
+
+  @media (max-width: 1300px) {
+    display: grid;
+  }
 `;
 
 export const Icon = styled(Image)`
@@ -60,6 +71,13 @@ export const ImageSpacer = styled.div`
   max-width: 512px;
   width: 100%;
   height: 512px;
+
+  @media (max-width: 1300px) {
+    display: none;
+    width: 100%;
+    max-width: 512px;
+    height: auto;
+  }
 `;
 
 export const Blocks = styled.div`
@@ -67,6 +85,10 @@ export const Blocks = styled.div`
   flex-direction: column;
   gap: 12px;
   margin-top: 260px;
+
+  @media (max-width: 1300px) {
+    margin-top: 0;
+  }
 `;
 
 export const Block = styled.div`
@@ -77,6 +99,10 @@ export const Block = styled.div`
   padding: 16px;
   background-color: ${colors.gray + convertOpacityToHex(50)};
   border-radius: 16px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 export const BlockLeft = styled.div`
@@ -89,6 +115,10 @@ export const BlockTitle = styled.p`
   font-size: 1.25rem;
   font-weight: 600;
   color: ${colors.text};
+
+  @media (max-width: 800px) {
+    font-size: 14px;
+  }
 `;
 
 export const BlockDescription = styled.p`
@@ -103,6 +133,13 @@ export const RulesImage = styled(Image)`
   position: absolute;
   top: 0;
   z-index: 2;
+
+  @media (max-width: 1300px) {
+    position: relative;
+    width: 100%;
+    max-width: 512px;
+    height: auto;
+  }
 `;
 
 export const ListWrapper = styled.div`

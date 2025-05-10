@@ -62,7 +62,9 @@ const UserAgreementPage = () => {
     <BasePage isImageBehind>
       <Background>
         <Content>
-          <Title>Пользовательское соглашение</Title>
+          <Title style={{ wordBreak: "break-all" }}>
+            Пользовательское соглашение
+          </Title>
           <Description>
             <RulesImage
               quality={100}
