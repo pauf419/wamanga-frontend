@@ -30,6 +30,8 @@ interface Props {
 export const ChapterUnit = ({ chapter, title }: Props) => {
   const router = useRouter();
 
+  console.log(chapter);
+
   return (
     <Wrapper
       onClick={() =>
@@ -48,15 +50,7 @@ export const ChapterUnit = ({ chapter, title }: Props) => {
           <Badges>
             <StatBadge>
               <StatIcon as={LikeIcon} />
-              <Stat>0</Stat>
-            </StatBadge>
-            <StatBadge>
-              <StatIcon as={ViewIcon} />
-              <Stat>{chapter.views}</Stat>
-            </StatBadge>
-            <StatBadge>
-              <StatIcon as={CommentIcon} />
-              <Stat>{chapter.comments.length}</Stat>
+              <Stat>{chapter.likes}</Stat>
             </StatBadge>
           </Badges>
           <CreatedAt>
