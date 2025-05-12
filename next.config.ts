@@ -58,6 +58,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "new.wamanga.me",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
