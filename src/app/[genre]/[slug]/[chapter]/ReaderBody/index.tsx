@@ -238,19 +238,21 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
         </SidebarHeader>
         <SidebarBody>
           <ChaptersList>
-            {title.chapters.map((chapter: Chapter) => {
-              const isCurrent = currentChapter._id === chapter._id;
-              return (
-                <ChaptersListElement
-                  href={`/${title.seoGenre}/${title.alternativeName}/${chapter.slug}`}
-                  $active={isCurrent}
-                  key={chapter._id}
-                >
-                  {`${chapter.title}${chapter.description ? `: ${chapter.description}` : ""}`}
-                  {isCurrent ? <EyeIcon /> : <EyeClosedIcon />}
-                </ChaptersListElement>
-              );
-            })}
+            {[...title.chapters]
+              .sort((a, b) => a.numberChapter - b.numberChapter)
+              .map((chapter: Chapter) => {
+                const isCurrent = currentChapter._id === chapter._id;
+                return (
+                  <ChaptersListElement
+                    href={`/${title.seoGenre}/${title.alternativeName}/${chapter.slug}`}
+                    $active={isCurrent}
+                    key={chapter._id}
+                  >
+                    {`${chapter.title}${chapter.description ? `: ${chapter.description}` : ""}`}
+                    {isCurrent ? <EyeIcon /> : <EyeClosedIcon />}
+                  </ChaptersListElement>
+                );
+              })}
           </ChaptersList>
         </SidebarBody>
       </SettingsSidebar>
