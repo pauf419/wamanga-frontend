@@ -262,24 +262,26 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
                         `}
               </RankIndicator>
             </ShortName>
-            <LevelStats>
-              <LevelIndicator>
-                Уровень:
-                <span>
-                  {user.role &&
-                    `
+            {user.role !== "owner" && (
+              <LevelStats>
+                <LevelIndicator>
+                  Уровень:
+                  <span>
+                    {user.role &&
+                      `
                             ${user.role === "user" ? "0" : ""}
                             ${user.role === "moderator" ? "1" : ""}
                             ${user.role === "admin" ? "2" : ""}
                             ${user.role === "owner" ? "3" : ""}
                         `}
-                </span>
-              </LevelIndicator>
-              <LevelBarWrapper>
-                <LevelBarThumb style={{ width: user.xp }}></LevelBarThumb>
-              </LevelBarWrapper>
-              <LevelStat>{user.xp} / 100</LevelStat>
-            </LevelStats>
+                  </span>
+                </LevelIndicator>
+                <LevelBarWrapper>
+                  <LevelBarThumb style={{ width: user.xp }}></LevelBarThumb>
+                </LevelBarWrapper>
+                <LevelStat>{user.xp} / 100</LevelStat>
+              </LevelStats>
+            )}
             <IDStat>
               <StatKey>ID:</StatKey>
               <StatValue>{user._id}</StatValue>

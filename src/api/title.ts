@@ -318,6 +318,13 @@ export async function editManga(body: Comic): Promise<Comic> {
   return response.data;
 }
 
+export async function getTitleLikes(mangaId: string): Promise<number> {
+  const res = await $apiWithoutAuth.get(
+    `/manga/getAllTitelsLikes?mangaId=${mangaId}`
+  );
+  return res.data;
+}
+
 export async function createTitle(
   body: CreateComicDto,
   poster: File,

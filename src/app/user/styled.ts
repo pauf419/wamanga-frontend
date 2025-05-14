@@ -113,19 +113,21 @@ export const LevelStats = styled.div`
 
 export const IDStat = styled.h6`
   display: flex;
-  align-items: center;
-  gap: 4px;
+align-items: flex-end;
+    gap: 4px;
+    opacity: .5;
+}
 `;
 
 export const StatKey = styled.span`
   color: rgb(143, 150, 163);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.57143;
-  font-size: 0.875rem;
+  font-size: 13px;
 `;
 
 export const StatValue = styled(StatKey)`
-  font-size: 1.125rem;
+  font-size: 13px;
   color: rgb(255, 255, 255);
 `;
 

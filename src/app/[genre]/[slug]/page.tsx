@@ -36,7 +36,12 @@ import {
 } from "@/components/Adaptive/styled";
 import { getSameTitles } from "@/api/mocks/queries/use-get-same-titles";
 import { SameTitlePreview } from "@/components/SameTitlePreview";
-import { getBySlug, getSimilar, incrementMangaViews } from "@/api/title";
+import {
+  getBySlug,
+  getSimilar,
+  getTitleLikes,
+  incrementMangaViews,
+} from "@/api/title";
 import BasePage from "@/components/BasePage";
 import BookmarkIcon from "@icons/svg/bookmark.svg";
 import { Tooltip } from "@mui/material";
@@ -97,6 +102,8 @@ const ComicsPage = async ({
   const comics = await getBySlug(slug);
   if (comics.seoGenre !== genre) return <h1>404 not found</h1>;
   const similarComics = await getSimilar(comics._id);
+  const likes = await getTitleLikes(comics._id);
+  if (likes) comics.likes = likes;
   const { data } = getSameTitles();
 
   if (comics.englishName) comics.altName.unshift(comics.englishName);

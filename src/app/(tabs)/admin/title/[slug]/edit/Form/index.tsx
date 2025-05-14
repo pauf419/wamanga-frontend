@@ -34,7 +34,11 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import CloseIcon from "@icons/svg/close.svg";
 import { MangaGenres, MangaTags } from "../../../new/Form";
-import { statusItems } from "../../../components/DataListEditable/Comic";
+import {
+  pegiItems,
+  statusItems,
+  typeItems,
+} from "../../../components/DataListEditable/Comic";
 
 interface Props {
   preset: Comic;
@@ -75,6 +79,10 @@ const EditTitlePageForm = ({ preset }: Props) => {
   const statusDefault = statusItems.findIndex(
     (item) => item.key === preset.status
   );
+
+  const pegiDefault = pegiItems.findIndex((item) => item.key === preset.pegi);
+
+  const typeDefault = typeItems.findIndex((item) => item.key === preset.type);
 
   const translationStatusDefault = statusItems.findIndex(
     (item) => item.key === preset.transferStatus
@@ -172,6 +180,40 @@ const EditTitlePageForm = ({ preset }: Props) => {
         />
         <FormTreflex>
           <FormFlexDropdown>
+            <b>Тип</b>
+            <Dropdown
+              cb={(value) =>
+                setForm({
+                  ...form,
+                  type: value.key,
+                })
+              }
+              items={[
+                {
+                  key: ComicsType.Manga,
+                  name: "Манга",
+                },
+                {
+                  key: ComicsType.Manhva,
+                  name: "Манхва",
+                },
+                {
+                  key: ComicsType.Manhua,
+                  name: "Маньхуа",
+                },
+                {
+                  key: ComicsType.Comic,
+                  name: "Комикс",
+                },
+                {
+                  key: ComicsType.Manuscript,
+                  name: "Манускрипт",
+                },
+              ]}
+              defaultIndex={typeDefault}
+            />
+          </FormFlexDropdown>
+          <FormFlexDropdown>
             <b>Статус тайтла</b>
             <Dropdown
               cb={(value) =>
@@ -203,6 +245,42 @@ const EditTitlePageForm = ({ preset }: Props) => {
                 },
               ]}
               defaultIndex={statusDefault}
+            />
+          </FormFlexDropdown>
+        </FormTreflex>
+        <FormTreflex>
+          <FormFlexDropdown>
+            <b>Возрастное ограничение</b>
+            <Dropdown
+              cb={(value) =>
+                setForm({
+                  ...form,
+                  pegi: value.key,
+                })
+              }
+              items={[
+                {
+                  key: PegiType.Pegi3,
+                  name: "+3",
+                },
+                {
+                  key: PegiType.Pegi6,
+                  name: "+6",
+                },
+                {
+                  key: PegiType.Pegi12,
+                  name: "+12",
+                },
+                {
+                  key: PegiType.Pegi16,
+                  name: "+16",
+                },
+                {
+                  key: PegiType.Pegi18,
+                  name: "+18",
+                },
+              ]}
+              defaultIndex={pegiDefault}
             />
           </FormFlexDropdown>
           <FormFlexDropdown>

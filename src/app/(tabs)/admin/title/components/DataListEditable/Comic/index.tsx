@@ -7,7 +7,13 @@ import { useState } from "react";
 import { BadgeTypeSelectManual } from "@/components/BadgeTypeSelect/Manual";
 import BadgeTypeSelect from "@/components/BadgeTypeSelect";
 import { Dropdown } from "@/components/Dropdown";
-import { createTitle, editManga, StatusType } from "@/api/title";
+import {
+  ComicsType,
+  createTitle,
+  editManga,
+  PegiType,
+  StatusType,
+} from "@/api/title";
 import Input from "@/components/Input";
 import type { SnackbarCloseReason } from "@mui/material/Snackbar";
 import Snackbar from "@mui/material/Snackbar";
@@ -28,6 +34,52 @@ export const statusItems = [
   { key: StatusType.Paused, name: "Приостановлено" },
   { key: StatusType.Abandoned, name: "Заброшено" },
   { key: StatusType.Announced, name: "Анонсировано" },
+];
+
+export const typeItems = [
+  {
+    key: ComicsType.Manga,
+    name: "Манга",
+  },
+  {
+    key: ComicsType.Manhva,
+    name: "Манхва",
+  },
+  {
+    key: ComicsType.Manhua,
+    name: "Маньхуа",
+  },
+  {
+    key: ComicsType.Comic,
+    name: "Комикс",
+  },
+  {
+    key: ComicsType.Manuscript,
+    name: "Манускрипт",
+  },
+];
+
+export const pegiItems = [
+  {
+    key: PegiType.Pegi3,
+    name: "+3",
+  },
+  {
+    key: PegiType.Pegi6,
+    name: "+6",
+  },
+  {
+    key: PegiType.Pegi12,
+    name: "+12",
+  },
+  {
+    key: PegiType.Pegi16,
+    name: "+16",
+  },
+  {
+    key: PegiType.Pegi18,
+    name: "+18",
+  },
 ];
 
 const ComicEditableDataList = ({ title }: Props) => {

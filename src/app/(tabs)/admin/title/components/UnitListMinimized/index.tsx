@@ -58,7 +58,7 @@ const ChapterListMinimized = ({ slug, chapters }: Props) => {
       </SegmentSeparator>
       <GridContainer>
         {chapters
-          .sort((a, b) => a.volumeIndex - b.volumeIndex)
+          .sort((a, b) => b.numberChapter - a.numberChapter)
           .filter((chapter) => !filter || chapter.title.includes(filter))
           .map((chapter) => (
             <MiniBoxWrapper key={chapter._id} $uploaded={false}>
