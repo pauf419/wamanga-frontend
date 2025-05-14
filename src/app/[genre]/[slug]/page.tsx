@@ -110,7 +110,7 @@ const ComicsPage = async ({
           <BackText>Назад</BackText>
         </BackButton>
         <RoleSegregator allowedRoles={["owner", "admin"]}>
-          <EditButton href={"/"}>
+          <EditButton href={`/admin/title/${comics.alternativeName}/edit`}>
             <BackText>Редактировать</BackText>
           </EditButton>
         </RoleSegregator>
