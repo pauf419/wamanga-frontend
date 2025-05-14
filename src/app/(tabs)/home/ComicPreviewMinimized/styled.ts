@@ -22,6 +22,7 @@ export const ComicInfo = styled.div`
   height: 100%;
   padding: 8px 4px 8px 12px;
   position: relative;
+  cursor: pointer;
 `;
 
 export const PopoverButton = styled.button`

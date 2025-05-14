@@ -7,7 +7,7 @@ import { getSettings } from "@/api/settings";
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings();
   return {
-    title: settings.title,
+    title: `${settings.title} - Манга, манхва на русском, Слив манги для вас`,
     description: settings.longTitle,
     metadataBase: new URL(settings.metadataBase),
     creator: settings.creator,

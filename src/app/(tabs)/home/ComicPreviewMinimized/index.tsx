@@ -56,30 +56,34 @@ export const ComicPreviewMinimized: FC<ComicPreviewProps> = ({
         width={200}
         height={350}
       />
-      <ComicInfo>
+      <ComicInfo
+        onClick={() =>
+          router.push(`/${comic.seoGenre}/${comic.alternativeName}`)
+        }
+      >
         <ComicTitle>{comic.name}</ComicTitle>
         <ComicType>{comic.type}</ComicType>
-        <PopoverButton aria-describedby={id} onClick={handleClick}>
-          <PopoverIcon />
-        </PopoverButton>
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            horizontal: "right",
-            vertical: "top",
-          }}
-        >
-          <ComicInfoPopup comic={comic} onClose={handleClose} />
-        </Popover>
         <StatsBadges>
           <StatsBadge icon={Icon.LIKE} amount={comic.likes} />
           <StatsBadge icon={Icon.VIEW} amount={comic.views} />
         </StatsBadges>
         <ComicStatus>{comic.status}</ComicStatus>
       </ComicInfo>
+      <PopoverButton aria-describedby={id} onClick={handleClick}>
+        <PopoverIcon />
+      </PopoverButton>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          horizontal: "right",
+          vertical: "top",
+        }}
+      >
+        <ComicInfoPopup comic={comic} onClose={handleClose} />
+      </Popover>
     </SwiperComic>
   );
 };
