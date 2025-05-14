@@ -102,8 +102,9 @@ const ComicsPage = async ({
   const comics = await getBySlug(slug);
   if (comics.seoGenre !== genre) return <h1>404 not found</h1>;
   const similarComics = await getSimilar(comics._id);
-  const likes = await getTitleLikes(comics._id);
-  if (likes) comics.likes = likes;
+  const totalData = await getTitleLikes(comics._id);
+  if (totalData.totalLikes) comics.likes = totalData.totalLikes;
+  if (totalData.totalViews) comics.views = totalData.totalViews;
   const { data } = getSameTitles();
 
   if (comics.englishName) comics.altName.unshift(comics.englishName);

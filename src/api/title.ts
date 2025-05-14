@@ -318,7 +318,9 @@ export async function editManga(body: Comic): Promise<Comic> {
   return response.data;
 }
 
-export async function getTitleLikes(mangaId: string): Promise<number> {
+export async function getTitleLikes(
+  mangaId: string
+): Promise<{ totalLikes: number; totalViews: number }> {
   const res = await $apiWithoutAuth.get(
     `/manga/getAllTitelsLikes?mangaId=${mangaId}`
   );
