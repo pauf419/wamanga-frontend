@@ -62,6 +62,8 @@ const CatalogBody = ({ defaultTitles }: Props) => {
   const [mangaStatus, setMangaStatus] = useState<StatusType[]>([]);
   const [sortKey, setSortKey] = useState<number>();
   const [sortOrder, setSortOrder] = useState<string>();
+  const [startYear, setStartYear] = useState<number>();
+  const [endYear, setEndYear] = useState<number>();
   const [genres, setGenres] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   const [pegi, setPegi] = useState<PegiType[]>([]);
@@ -97,7 +99,9 @@ const CatalogBody = ({ defaultTitles }: Props) => {
         sortKey,
         sortOrder,
         paginating ? offset : 0,
-        LIMIT
+        LIMIT,
+        startYear,
+        endYear
       );
       if (paginating) {
         setTitles((prev) => [...prev, ...fetched]);
@@ -150,6 +154,10 @@ const CatalogBody = ({ defaultTitles }: Props) => {
                 {
                   key: 4,
                   name: "По последним обновлениям",
+                },
+                {
+                  key: 5,
+                  name: "По алфавиту",
                 },
               ]}
               adaptive
@@ -551,7 +559,10 @@ const CatalogBody = ({ defaultTitles }: Props) => {
               />
             </CatalogDropdown>
             <CatalogDropdown last placeholder="Дата выхода">
-              <RangeSlider />
+              <RangeSlider
+                onMaxChange={setEndYear}
+                onMinChange={setStartYear}
+              />
             </CatalogDropdown>
           </DropdownsWrapper>
           <button

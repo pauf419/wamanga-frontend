@@ -7,6 +7,7 @@ import {
   Badge,
   Comics,
   Content,
+  EditButton,
   FavouriteButton,
   Left,
   ListTitle,
@@ -42,6 +43,7 @@ import { Tooltip } from "@mui/material";
 import AgeConfirmModal from "@/components/AgeConfirmModal";
 import { getSettings } from "@/api/settings";
 import type { Metadata } from "next";
+import { RoleSegregator } from "@/components/RoleSegregator";
 
 export type paramsType = Promise<{
   params: {
@@ -107,6 +109,11 @@ const ComicsPage = async ({
           <BackIcon />
           <BackText>Назад</BackText>
         </BackButton>
+        <RoleSegregator allowedRoles={["owner", "admin"]}>
+          <EditButton href={"/"}>
+            <BackText>Редактировать</BackText>
+          </EditButton>
+        </RoleSegregator>
         <Left>
           <Comics>
             <Poster

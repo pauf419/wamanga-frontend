@@ -73,6 +73,11 @@ export const BackButton = styled(Link)`
   }
 `;
 
+export const EditButton = styled(BackButton)`
+  left: auto;
+  right: 24px;
+`;
+
 export const BackText = styled.span`
   display: flex;
   align-items: center;

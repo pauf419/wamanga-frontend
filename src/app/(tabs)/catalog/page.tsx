@@ -49,7 +49,9 @@ const CatalogPage = async () => {
     undefined,
     undefined,
     0,
-    30
+    30,
+    undefined, 
+    undefined
   );
 
   return (

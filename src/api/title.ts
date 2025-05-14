@@ -186,7 +186,9 @@ export async function searchManga(
   sortKey: number | undefined,
   sortOrder: string | undefined,
   offset: number,
-  limit: number
+  limit: number,
+  startYear: number | undefined,
+  endYear: number | undefined
 ): Promise<Comic[]> {
   const res = await $apiWithoutAuth.get("/manga/search", {
     params: {
@@ -200,6 +202,8 @@ export async function searchManga(
       sortOrder,
       offset,
       limit,
+      startYear,
+      endYear,
     },
     paramsSerializer: (params) =>
       qs.stringify(params, { arrayFormat: "repeat" }),

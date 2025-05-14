@@ -137,7 +137,7 @@ export const MainSection = ({ comics }: Props) => {
             <DisplaysWhenMobile>
               <Main>
                 <InfoTag>
-                  <InfoTagTitle>Статус Перевода</InfoTagTitle>
+                  <InfoTagTitle>Статус перевода</InfoTagTitle>
                   <InfoTagBadge>{comics.status}</InfoTagBadge>
                 </InfoTag>
                 <InfoTag>
@@ -165,7 +165,7 @@ export const MainSection = ({ comics }: Props) => {
                 </Badge>
               </InfoTag>
               <InfoTag>
-                <InfoTagTitle>Статус Перевода</InfoTagTitle>
+                <InfoTagTitle>Статус перевода</InfoTagTitle>
                 <InfoTagBadge>{comics.status}</InfoTagBadge>
               </InfoTag>
               <InfoTag>
