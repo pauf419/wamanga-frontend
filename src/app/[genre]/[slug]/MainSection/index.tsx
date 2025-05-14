@@ -194,6 +194,26 @@ export const MainSection = ({ comics }: Props) => {
                 </InfoTagTextField>
               </InfoTag>
               <InfoTag>
+                <InfoTagTitle>Издатель</InfoTagTitle>
+                <InfoTagTextField>
+                  {comics.publisher.length
+                    ? comics.publisher.map((publisher, index) => {
+                        if (index === 0)
+                          return (
+                            <ChaptersAvailable key={publisher}>
+                              {publisher}
+                            </ChaptersAvailable>
+                          );
+                        return (
+                          <ChaptersAvailable key={publisher}>
+                            , {publisher}
+                          </ChaptersAvailable>
+                        );
+                      })
+                    : "N/A"}
+                </InfoTagTextField>
+              </InfoTag>
+              <InfoTag>
                 <InfoTagTitle>Художник</InfoTagTitle>
                 <InfoTagTextField>
                   {comics.artist.length

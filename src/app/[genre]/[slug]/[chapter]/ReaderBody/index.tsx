@@ -77,6 +77,7 @@ import { useUserStore } from "@/app/store";
 import { likeChapter } from "@/api/chapter";
 import { AdsFrame } from "@/components/AdsFrame";
 import { AdsFrameNames } from "@/api/types/settings";
+import { Tooltip } from "@mui/material";
 
 interface Props {
   title: Comic;
@@ -455,23 +456,39 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
               <ArrowLeft />
               Предыдущая глава
             </a>
-            <button
-              className="button-transparent button-like"
-              onClick={() => likeChapter_()}
-            >
-              {dynamicUser?.likedChapters?.includes(chapter._id) ? (
-                <div>
-                  <h4>Лайк поставлен!</h4>
-                </div>
-              ) : (
-                <div>
-                  <h4>Поставь лайк</h4>
-                  <LikeIcon />
-                </div>
-              )}
+            {dynamicUser ? (
+              <button
+                className="button-transparent button-like"
+                onClick={() => likeChapter_()}
+              >
+                {dynamicUser.likedChapters?.includes(chapter._id) ? (
+                  <div>
+                    <h4>Лайк поставлен!</h4>
+                  </div>
+                ) : (
+                  <div>
+                    <h4>Поставь лайк</h4>
+                    <LikeIcon />
+                  </div>
+                )}
 
-              <span>Поставили лайков: {likes}</span>
-            </button>
+                <span>Поставили лайков: {likes}</span>
+              </button>
+            ) : (
+              <Tooltip title="Только авторизованные пользователи могут оставлять лайки">
+                <button
+                  style={{ cursor: "default" }}
+                  className="button-transparent button-like"
+                >
+                  <div>
+                    <h4>Поставь лайк</h4>
+                    <LikeIcon />
+                  </div>
+
+                  <span>Поставили лайков: {likes}</span>
+                </button>
+              </Tooltip>
+            )}
             <a
               className={`button-filled button-dark ${!chapter.nextChapter && "button-disabled"}`}
               title={!chapter.nextChapter ? "Упс, это последняя глава" : ""}
@@ -490,23 +507,39 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
         </HidesWhenMobile>
         <DisplaysWhenMobile>
           <ChaptersBlock style={{ marginBottom: 16 }}>
-            <button
-              className="button-transparent button-like"
-              onClick={() => likeChapter_()}
-            >
-              {dynamicUser?.likedChapters?.includes(chapter._id) ? (
-                <div>
-                  <h4>Лайк поставлен!</h4>
-                </div>
-              ) : (
-                <div>
-                  <h4>Поставь лайк</h4>
-                  <LikeIcon />
-                </div>
-              )}
+            {dynamicUser ? (
+              <button
+                className="button-transparent button-like"
+                onClick={() => likeChapter_()}
+              >
+                {dynamicUser.likedChapters?.includes(chapter._id) ? (
+                  <div>
+                    <h4>Лайк поставлен!</h4>
+                  </div>
+                ) : (
+                  <div>
+                    <h4>Поставь лайк</h4>
+                    <LikeIcon />
+                  </div>
+                )}
 
-              <span>Поставили лайков: {likes}</span>
-            </button>
+                <span>Поставили лайков: {likes}</span>
+              </button>
+            ) : (
+              <Tooltip title="Только авторизованные пользователи могут оставлять лайки">
+                <button
+                  style={{ cursor: "default" }}
+                  className="button-transparent button-like"
+                >
+                  <div>
+                    <h4>Поставь лайк</h4>
+                    <LikeIcon />
+                  </div>
+
+                  <span>Поставили лайков: {likes}</span>
+                </button>
+              </Tooltip>
+            )}
           </ChaptersBlock>
           <ChaptersBlock style={{ marginTop: 0, marginBottom: 24 }}>
             <a
