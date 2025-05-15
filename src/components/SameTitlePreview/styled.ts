@@ -24,6 +24,7 @@ export const Content = styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 8px 4px 8px 12px;
+  cursor: pointer;
 `;
 
 export const TypeBadge = styled(Badge)`

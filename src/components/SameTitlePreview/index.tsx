@@ -47,29 +47,32 @@ export const SameTitlePreview = ({ title }: Props) => {
           router.push(`/${title.seoGenre}/${title.alternativeName}`)
         }
       />
-      <Content>
+      <Content
+        onClick={() =>
+          router.push(`/${title.seoGenre}/${title.alternativeName}`)
+        }
+      >
         <Info>
           <TypeBadge>{title.type}</TypeBadge>
           <Title>{title.name}</Title>
         </Info>
-        <Segment>
-          <PopoverButton aria-describedby={id} onClick={handleClick}>
-            <PopoverIcon />
-          </PopoverButton>
-          <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-              horizontal: "right",
-              vertical: "top",
-            }}
-          >
-            <ComicInfoPopup comic={title} onClose={handleClose} />
-          </Popover>
-        </Segment>
+        <Segment></Segment>
       </Content>
+      <PopoverButton aria-describedby={id} onClick={handleClick}>
+        <PopoverIcon />
+      </PopoverButton>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          horizontal: "right",
+          vertical: "top",
+        }}
+      >
+        <ComicInfoPopup comic={title} onClose={handleClose} />
+      </Popover>
     </Wrapper>
   );
 };
