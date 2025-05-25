@@ -1,5 +1,6 @@
 // api/user.ts
 import { $apiWithoutAuth } from "./axiosInstance";
+import type { ProcessingManga } from "./types/comic";
 import type { User } from "./types/user";
 
 export async function getAllUsers(tokens: {
@@ -10,6 +11,26 @@ export async function getAllUsers(tokens: {
     const cookieHeader = `access_token=${tokens.accessToken}; refresh_token=${tokens.refreshToken}`;
 
     const res = await $apiWithoutAuth.get("/user/all", {
+      headers: {
+        Cookie: cookieHeader,
+      },
+    });
+
+    return res.data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+}
+
+export async function getProcessingMangas(tokens: {
+  accessToken?: string;
+  refreshToken?: string;
+}): Promise<ProcessingManga[] | undefined> {
+  try {
+    const cookieHeader = `access_token=${tokens.accessToken}; refresh_token=${tokens.refreshToken}`;
+
+    const res = await $apiWithoutAuth.get("/user/processing", {
       headers: {
         Cookie: cookieHeader,
       },

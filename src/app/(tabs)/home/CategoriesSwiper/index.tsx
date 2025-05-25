@@ -14,7 +14,7 @@ interface Props {
 
 export const CategoriesSwiper = ({ titles }: Props) => {
   return (
-    <Swiper type="vertical">
+    <Swiper type="vertical" buttons={false} bottomControlls padding={0}>
       {titles.map((comic, index) => (
         <SwiperSlideSC key={index}>
           <ComicPreviewVertical comic={comic} />

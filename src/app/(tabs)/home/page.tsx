@@ -31,9 +31,13 @@ import {
   getRecommendedTitles,
   paginateTitles,
 } from "@/api/title";
-import { getSession } from "@/app/lib";
+import { getSession, getTokens } from "@/app/lib";
 import { AdsFrame } from "@/components/AdsFrame";
 import { AdsFrameNames } from "@/api/types/settings";
+import { getTeamsLeaderboard } from "@/api/team";
+import { TeamsLeaderboardSwiper } from "./TeamsLeaderboardSwiper";
+import { getProcessingMangas } from "@/api/user";
+import { ProcessingSwiper } from "./ProcessingSwiper";
 
 const HomePage = async () => {
   const recommendedTitles = await getRecommendedTitles();
@@ -41,6 +45,9 @@ const HomePage = async () => {
   const dailyTopTitles = await getDayTop();
   const newsTitles = await getNews();
   const randomTitles = await getRandomList(20);
+  const teams = await getTeamsLeaderboard(20);
+  const tokens = await getTokens();
+  const processingMangas = await getProcessingMangas(tokens);
 
   return (
     <BasePage isImageBehind>
@@ -49,9 +56,17 @@ const HomePage = async () => {
       <Container>
         <AdsFrame frameName={AdsFrameNames.HomeTop} />
         {recentlyUpdatedTitles && (
-          <Section title="Недавние обновления" link="/">
+          <Section title="Свежие обновления" link="/">
             <RecentSwiper titles={recentlyUpdatedTitles} />
           </Section>
+        )}
+
+        {processingMangas && processingMangas.length ? (
+          <DayTopSection title="Продолжить чтение" link="/">
+            <ProcessingSwiper titles={processingMangas} />
+          </DayTopSection>
+        ) : (
+          <></>
         )}
 
         {dailyTopTitles && (
@@ -59,6 +74,10 @@ const HomePage = async () => {
             <DayTopSwiper titles={dailyTopTitles} />
           </DayTopSection>
         )}
+
+        <Section title="Команды" link="/">
+          <TeamsLeaderboardSwiper teams={teams} />
+        </Section>
 
         <CategorySection title="Рандом" link="/">
           <CategoriesSwiper titles={randomTitles} />

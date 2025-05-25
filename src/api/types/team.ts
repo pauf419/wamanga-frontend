@@ -1,3 +1,5 @@
+import type { Comic } from "./comic";
+
 export interface Team {
   name: string;
   description: string;
@@ -12,4 +14,5 @@ export interface Team {
   telegram: string;
   discord: string;
   likes: string;
+  mangas?: Comic[];
 }

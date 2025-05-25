@@ -33,7 +33,7 @@ export const SectionTitle = styled.div`
 
 export const SectionTitleText = styled.h2`
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 700;
 `;
 
 export const MoreButton = styled(Link)`

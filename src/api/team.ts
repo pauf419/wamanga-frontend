@@ -11,3 +11,8 @@ export async function getTeamById(id: string): Promise<Team> {
   const res = await $apiWithoutAuth.get(`/teams/${id}`);
   return res.data;
 }
+
+export async function getTeamsLeaderboard(limit: number): Promise<Team[]> {
+  const res = await $apiWithoutAuth.get("/teams/leaderboard");
+  return res.data;
+}

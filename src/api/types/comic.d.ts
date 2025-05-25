@@ -64,3 +64,9 @@ export interface Comic {
 export interface CreateComicDto extends Comic {
   translationTeams: string[];
 }
+
+export interface ProcessingManga {
+  manga: Comic;
+  chaptersCompleted: number;
+  chaptersTotal: number;
+}

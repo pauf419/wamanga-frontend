@@ -28,6 +28,7 @@ export const NewChaptersSwiper = ({ chapters, manga }: Props) => {
       padding={1}
       type="auto"
       buttons={false}
+      bottomControlls={false}
       props={{
         spaceBetween: 10,
         loop: false,

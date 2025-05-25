@@ -48,7 +48,7 @@ export const ComicInfoPopup = ({ comic, onClose }: Props) => {
           <StatsBadge icon={Icon.VIEW} amount={comic.views} />
         </StatsBadges>
       </Gridbox>
-      {comic.chapters.length ? (
+      {comic.chapters?.length ? (
         <Gridbox>
           <h4>Количество глав</h4>
           <ChaptersCount>{comic.chapters.length}</ChaptersCount>
@@ -75,7 +75,7 @@ export const ComicInfoPopup = ({ comic, onClose }: Props) => {
         </GenreWrapper>
       </Gridbox>
       <Gridbox>
-        {comic.chapters.length ? (
+        {comic.chapters?.length ? (
           <a
             href={`/${comic.seoGenre}/${comic.alternativeName}/${comic.chapters[0].slug}`}
             className="button-filled"

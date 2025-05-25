@@ -9,6 +9,5 @@ export const SwiperSlideSC = styled(SwiperSlide)`
   align-items: center;
   justify-content: center;
   max-width: 424px;
-  background: ${colors.gray};
   border-radius: 12px;
 `;

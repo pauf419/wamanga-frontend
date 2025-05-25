@@ -4,7 +4,7 @@ import { colors, zIndex } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $preview: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,13 @@ export const Wrapper = styled.div`
   border-radius: 16px;
   -webkit-box-align: center;
   -webkit-box-pack: justify;
+
+  ${(props) =>
+    props.$preview &&
+    `
+    max-width: 300px;
+    
+    `}
 `;
 
 export const Header = styled.div`
@@ -51,6 +58,38 @@ export const Avatar = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
+`;
+
+export const NameWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+`;
+
+export const PreviewStatsWrapper = styled.div`
+  display: grid;
+  gap: 8px;
+  margin-bottom: 6px;
+`;
+
+export const PreviewStat = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+`;
+
+export const PreviewStatKey = styled.div`
+  font-size: 1rem;
+  font-weight: 600;
+`;
+
+export const PreviewStatValue = styled.div``;
+
+export const LeaderboardIndex = styled.div`
+  font-size: 0.75rem;
+  opacity: 0.6;
 `;
 
 export const Name = styled.a`

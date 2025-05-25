@@ -7,6 +7,7 @@ export const SwiperSlideSC = styled(SwiperSlide)`
   max-width: 70px;
   height: 90px;
   cursor: pointer;
+  width: 100% !important;
   margin-top: 8px;
   transition: 0.2s all ease;
   border: 1px dashed rgba(146, 146, 146, 0.44);

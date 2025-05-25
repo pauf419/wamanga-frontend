@@ -78,16 +78,19 @@ import { likeChapter } from "@/api/chapter";
 import { AdsFrame } from "@/components/AdsFrame";
 import { AdsFrameNames } from "@/api/types/settings";
 import { Tooltip } from "@mui/material";
+import type { Nonce } from "@/api/types/nonce";
+import { closeChapterNonce } from "@/api/nonce";
 
 interface Props {
   title: Comic;
   chapter: Chapter;
   user: User;
+  nonce: Nonce | undefined;
 }
 
 export type ReaderScrollType = "center" | "end" | "start";
 
-const ReaderBody = ({ title, chapter, user }: Props) => {
+const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
   const setUser = useUserStore((state) => state.setUser);
   const dynamicUser = useUserStore((state) => state.user);
 
@@ -211,6 +214,14 @@ const ReaderBody = ({ title, chapter, user }: Props) => {
 
     return () => observer.disconnect();
   }, [currentChapter, readerType]);
+
+  useEffect(() => {
+    const id = setTimeout(async () => {
+      if (nonce) await closeChapterNonce(nonce?._id);
+    }, 65000);
+
+    return () => clearTimeout(id);
+  }, [nonce]);
 
   return (
     <ReaderPageWrapper>

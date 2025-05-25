@@ -14,6 +14,12 @@ import {
   Icons,
   IconLink,
   Icon,
+  NameWrapper,
+  LeaderboardIndex,
+  PreviewStatsWrapper,
+  PreviewStat,
+  PreviewStatKey,
+  PreviewStatValue,
 } from "./styled";
 import TelegramIcon from "@icons/svg/telegram.svg";
 import DiscordIcon from "@icons/svg/discord.svg";
@@ -23,18 +29,49 @@ import type { Team } from "@/api/types/team";
 
 interface Props {
   translator: Team;
+  preview?: boolean;
+  leaderboardIndex?: number | undefined;
 }
 
-export const ComicTranslatorMinimized = ({ translator }: Props) => {
+export const ComicTranslatorMinimized = ({
+  translator,
+  preview = false,
+  leaderboardIndex,
+}: Props) => {
   return (
-    <Wrapper>
+    <Wrapper $preview={preview}>
       <Header>
         <Banner src={translator.banner} />
         <Avatar src={translator.avatar} alt="Logo" />
       </Header>
       <Body>
-        <Name>{translator.name}</Name>
+        <NameWrapper>
+          <Name>{translator.name}</Name>
+          {leaderboardIndex ? (
+            <LeaderboardIndex>Топ {leaderboardIndex}</LeaderboardIndex>
+          ) : (
+            <></>
+          )}
+        </NameWrapper>
         <Description>{translator.description}</Description>
+        {preview ? (
+          <PreviewStatsWrapper>
+            {translator.mangas ? (
+              <PreviewStat>
+                <PreviewStatKey>Добавлено манг:</PreviewStatKey>
+                <PreviewStatValue>{translator.mangas.length}</PreviewStatValue>
+              </PreviewStat>
+            ) : (
+              <></>
+            )}
+            <PreviewStat>
+              <PreviewStatKey>Лайков:</PreviewStatKey>
+              <PreviewStatValue>{translator.likes}</PreviewStatValue>
+            </PreviewStat>
+          </PreviewStatsWrapper>
+        ) : (
+          <></>
+        )}
         <Icons>
           {translator.telegram && (
             <IconLink href={translator.telegram}>
@@ -52,7 +89,7 @@ export const ComicTranslatorMinimized = ({ translator }: Props) => {
             </IconLink>
           )}
         </Icons>
-        <DonationPanel cb={(b) => null} nested />
+        {!preview && <DonationPanel cb={(b) => null} nested />}
       </Body>
     </Wrapper>
   );

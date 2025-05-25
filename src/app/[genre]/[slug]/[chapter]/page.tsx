@@ -2,10 +2,11 @@ import { getBySlug, incrementMangaViews } from "@/api/title";
 import ReaderBody from "./ReaderBody";
 import { getChapterById, getChapterBySlug } from "@/api/chapter";
 import AgeConfirmModal from "@/components/AgeConfirmModal";
-import { getSession } from "@/app/lib";
+import { getSession, getTokens } from "@/app/lib";
 import Footer from "@/components/Footer";
 import { getSettings } from "@/api/settings";
 import type { Metadata } from "next";
+import { createChapterNonce } from "@/api/nonce";
 
 export type paramsType = Promise<{
   params: {
@@ -65,13 +66,15 @@ const ReaderPage = async ({
   const title = await getBySlug(titleAlternativeName);
   await incrementMangaViews(title._id);
   const chapterEl = await getChapterBySlug(title._id, chapter);
+  const tokens = await getTokens();
+  const nonce = await createChapterNonce(chapterEl._id, tokens);
 
   return (
     <>
       {(title.pegi === "16+" || title.pegi === "18+") && title.isPorno && (
         <AgeConfirmModal href={`/${title.seoGenre}/${title.alternativeName}`} />
       )}
-      <ReaderBody title={title} chapter={chapterEl} user={user} />
+      <ReaderBody nonce={nonce} title={title} chapter={chapterEl} user={user} />
     </>
   );
 };

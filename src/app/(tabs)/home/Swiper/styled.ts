@@ -37,15 +37,11 @@ export const RecentSwiperSC = styled.div<{ $type: string }>`
   ${(props) => {
     if (props.$type === "vertical")
       return css`
-        height: 350px;
-
-        @media (max-width: 1200px) {
-          height: 300px;
-        }
+        height: auto;
       `;
     if (props.$type === "horizontal")
       return css`
-        height: 160px;
+        height: auto;
       `;
 
     if (props.$type === "large")
@@ -67,6 +63,8 @@ export const RecentSwiperSC = styled.div<{ $type: string }>`
 interface SwiperProps {
   padding?: number;
   $buttonMargin?: number;
+  $leftShadowDisabled: boolean;
+  $rightShadowDisabled: boolean;
 }
 
 export const SwiperSC = styled(Swiper)<SwiperProps>`
@@ -80,15 +78,17 @@ export const SwiperSC = styled(Swiper)<SwiperProps>`
     z-index: ${zIndex.behindHeaderAboveBackground};
     width: 20px;
     height: 100%;
+    transition: 1.8s all ease;
     content: "";
-    ${({ padding: $padding }) =>
-      $padding === 1
-        ? "background: transparent;"
-        : `    background: linear-gradient(
+    background: linear-gradient(
       270deg,
       rgb(0 0 0 / 0%) 0%,
       ${colors.background} 100%
-    );`}
+    );
+    ${({ padding: $padding, $leftShadowDisabled }) =>
+      $padding === 1 || $leftShadowDisabled
+        ? "opacity: 0;"
+        : "transition: .4s all ease;opacity: 1;"}
   }
 
   &::after {
@@ -99,14 +99,20 @@ export const SwiperSC = styled(Swiper)<SwiperProps>`
     width: 100px;
     height: 100%;
     content: "";
-    ${({ padding: $padding }) =>
-      $padding === 1
-        ? "background: transparent;"
-        : `    background: linear-gradient(
+    background: linear-gradient(
       90deg,
       rgb(0 0 0 / 0%) 0%,
       ${colors.background} 100%
-    );`}
+    );
+    transition: 1.8s all ease;
+    ${({ padding: $padding, $rightShadowDisabled }) =>
+      $padding === 1 || $rightShadowDisabled
+        ? "opacity: 0;"
+        : "transition: .4s all ease;opacity: 1;"}
+  }
+
+  .swiper-slide {
+    width: auto;
   }
 `;
 
@@ -132,6 +138,43 @@ export const SwipeButton = styled.button`
   }
 `;
 
+export const DefaultSwipeButton = styled.button<{ $disabled: boolean }>`
+  position: relative;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  border: none;
+  color: rgb(143, 150, 163);
+  background-color: rgb(29, 30, 32);
+  transition: 0.2s all ease;
+
+  &:hover {
+    background-color: rgb(41, 42, 44);
+  }
+
+  svg {
+    display: block;
+    height: 16px;
+    width: 16px;
+  }
+
+  ${(props) =>
+    props.$disabled &&
+    `
+        opacity: 0.5;
+        cursor: default;
+            color: rgba(143, 150, 163, 0.8);
+                background-color: rgba(143, 150, 163, 0.24);
+
+        &:hover { 
+          background-color: rgba(143, 150, 163, 0.24);
+        }
+    `}
+`;
+
 export const CustomSwipeButton = styled(SwipeButton)<{ $margin: number }>`
   margin-top: ${(props) => props.$margin}px;
 `;
@@ -146,4 +189,9 @@ export const LeftSwipeButton = styled(CustomSwipeButton)`
 
 export const RightSwipeButton = styled(CustomSwipeButton)`
   right: 0;
+`;
+
+export const ControllerWrapper = styled.div`
+  display: flex;
+  gap: 16px;
 `;
