@@ -259,7 +259,7 @@ export const SearchBodyWrapper = styled.div`
   max-height: calc(100dvh - 80px);
   overflow-y: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   gap: 16px;
 `;
 

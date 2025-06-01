@@ -96,6 +96,7 @@ const Header = ({ user }: Props) => {
   };
 
   const setUser = useUserStore((state) => state.setUser);
+  const dynamicUser = useUserStore((state) => state.user);
 
   useEffect(() => {
     setUser(user);
@@ -138,7 +139,7 @@ const Header = ({ user }: Props) => {
         {titles.length ? (
           <SearchBodyWrapper>
             {titles.map((title) => (
-              <ComicPreviewVertical comic={title} key={title._id} />
+              <ComicPreviewVertical adaptive comic={title} key={title._id} />
             ))}
           </SearchBodyWrapper>
         ) : (
@@ -171,7 +172,7 @@ const Header = ({ user }: Props) => {
           <NotDisplaysWhenAuth>
             {user ? (
               <UserAvatar
-                $source={user.avatar}
+                $source={dynamicUser?.avatar ? dynamicUser.avatar : user.avatar}
                 onClick={() => !clickMenuActive && setClickMenuActive(true)}
               >
                 <ClickMenuWrapper $active={clickMenuActive}>

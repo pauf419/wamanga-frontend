@@ -97,6 +97,9 @@ import { $apiWithoutAuth } from "@/api/axiosInstance";
 import React from "react";
 import { IconButton, Snackbar } from "@mui/material";
 import CloseIcon from "@icons/svg/close.svg";
+import { toggleUserSettings } from "@/api/user";
+import { useUserStore } from "@/app/store";
+import { formatNumber } from "@/utils";
 
 interface Props {
   user: User;
@@ -125,11 +128,14 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
   const [preloadedFile, setPreloadedFile] = useState<any>(null);
   const [localPreview, setLocalPreview] = useState<string>("");
   const [username, setUsername] = useState(user.username);
+  const [description, setDescription] = useState(user.description);
   const [avatarBlob, setAvatarBlob] = useState<any>(null);
   const [avararBUrl, setAvatarBUrl] = useState<string>("");
   const [teamLinks, setTeamLinks] = useState<number>(0);
 
   const teams = getUserTeams();
+
+  const setUser = useUserStore((state) => state.setUser);
 
   const { data } = getComicTranslator();
 
@@ -160,20 +166,30 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
     });
   };
 
+  const updateUserInfo = async () => {
+    if (user.description !== description) await updateDescription();
+    if (user.username !== username) await updateUsername();
+  };
+
   useEffect(() => {
     updateAvatar();
   }, [avatarBlob]);
 
   const updateAvatar = async () => {
-    if (!avatarBlob) return;
-    user.avatar = localPreview;
-    const formData = new FormData();
-    formData.append("file", avatarBlob);
-    await $apiWithoutAuth.post("/user/avatar", formData, {
-      headers: {
-        "Content-Type": "x-ww-form-urlencoded",
-      },
-    });
+    try {
+      if (!avatarBlob) return;
+      user.avatar = localPreview;
+      const formData = new FormData();
+      formData.append("file", avatarBlob);
+      const res = await $apiWithoutAuth.post("/user/avatar", formData, {
+        headers: {
+          "Content-Type": "x-ww-form-urlencoded",
+        },
+      });
+      setUser(res.data);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const [open, setOpen] = useState<boolean>(false);
@@ -195,6 +211,23 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
     try {
       await $apiWithoutAuth.post("/user/username", {
         username,
+      });
+      setError("Изменения успешно сохранены.");
+      setOpen(true);
+    } catch (e) {
+      console.error(e);
+      if (e && typeof e === "object" && "response" in e) {
+        const err = e as { response: { data: { message: string } } };
+        setError(err.response.data.message);
+        handleClick();
+      }
+    }
+  };
+
+  const updateDescription = async () => {
+    try {
+      await $apiWithoutAuth.post("/user/description", {
+        description,
       });
       setError("Изменения успешно сохранены.");
       setOpen(true);
@@ -262,6 +295,7 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
                         `}
               </RankIndicator>
             </ShortName>
+            <h4>{description}</h4>
             {user.role !== "owner" && (
               <LevelStats>
                 <LevelIndicator>
@@ -304,28 +338,30 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
             <StatsBlock>
               <LikesIcon as={LikeIcon} />
               <StatsContent>
-                <StatsAmount>178.26k</StatsAmount>
+                <StatsAmount>
+                  {formatNumber(user.likedChapters.length)}
+                </StatsAmount>
                 <StatsDesc>Лайков</StatsDesc>
               </StatsContent>
             </StatsBlock>
             <StatsBlock>
               <TitlesIcon as={BookmarkIcon} />
               <StatsContent>
-                <StatsAmount>45</StatsAmount>
+                <StatsAmount>0</StatsAmount>
                 <StatsDesc>Закладок</StatsDesc>
               </StatsContent>
             </StatsBlock>
             <StatsBlock>
               <ChaptersIcon as={ViewIcon} />
               <StatsContent>
-                <StatsAmount>1.68k</StatsAmount>
+                <StatsAmount>0</StatsAmount>
                 <StatsDesc>Просмотров</StatsDesc>
               </StatsContent>
             </StatsBlock>
             <StatsBlock>
               <ViewsIcon as={CommentIcon} />
               <StatsContent>
-                <StatsAmount>374.94k</StatsAmount>
+                <StatsAmount>0</StatsAmount>
                 <StatsDesc>Комментариев</StatsDesc>
               </StatsContent>
             </StatsBlock>
@@ -537,7 +573,12 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
             <SettingsBlockTitle>Настройки</SettingsBlockTitle>
             <UserSettingsWrapper>
               <UserSettingsBlock $type>
-                <Input onChange={() => null} type="input" placeholder="Email" />
+                <Input
+                  onChange={() => null}
+                  type="input"
+                  placeholder="Email"
+                  presetValue={user.email}
+                />
                 <Input
                   onChange={(e) => setUsername(e)}
                   type="input"
@@ -564,13 +605,14 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
                   placeholder="Обращение"
                 />
                 <Input
-                  onChange={() => null}
+                  presetValue={user.description}
+                  onChange={(e) => setDescription(e)}
                   placeholder="Описание"
                   type="textarea"
                 />
               </UserSettingsBlock>
             </UserSettingsWrapper>
-            <button className="button-filled" onClick={() => updateUsername()}>
+            <button className="button-filled" onClick={() => updateUserInfo()}>
               Обновить
             </button>
           </SettingsBlock>
@@ -579,19 +621,35 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
             <ParamsWrapper>
               <SettingsBlockParam>
                 <ParamName>Хочу просматривать тайтлы 16+</ParamName>
-                <Switch placeholder="" cb={() => null} />
+                <Switch
+                  placeholder=""
+                  defaultChecked={user.restricted16}
+                  cb={() => toggleUserSettings("restricted16")}
+                />
               </SettingsBlockParam>
               <SettingsBlockParam>
                 <ParamName>Хочу просматривать тайтлы 18+</ParamName>
-                <Switch placeholder="" cb={() => null} />
+                <Switch
+                  placeholder=""
+                  defaultChecked={user.restricted18}
+                  cb={() => toggleUserSettings("restricted18")}
+                />
               </SettingsBlockParam>
               <SettingsBlockParam>
                 <ParamName>Спрятать свои команды</ParamName>
-                <Switch placeholder="" cb={() => null} />
+                <Switch
+                  placeholder=""
+                  defaultChecked={user.teamsHidden}
+                  cb={() => toggleUserSettings("teamsHidden")}
+                />
               </SettingsBlockParam>
               <SettingsBlockParam>
                 <ParamName>Спрятать свои закладки</ParamName>
-                <Switch placeholder="" cb={() => null} />
+                <Switch
+                  placeholder=""
+                  defaultChecked={user.bookmarksHidden}
+                  cb={() => toggleUserSettings("bookmarksHidden")}
+                />
               </SettingsBlockParam>
             </ParamsWrapper>
           </SettingsBlock>

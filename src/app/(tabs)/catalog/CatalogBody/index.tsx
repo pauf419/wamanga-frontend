@@ -219,7 +219,7 @@ const CatalogBody = ({ defaultTitles }: Props) => {
           {titles.length ? (
             <TitlesWrapper>
               {titles.map((el, i) => (
-                <ComicPreviewVertical comic={el} key={el._id} />
+                <ComicPreviewVertical adaptive comic={el} key={el._id} />
               ))}
             </TitlesWrapper>
           ) : (

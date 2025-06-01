@@ -319,6 +319,16 @@ const EditTitlePageForm = ({ preset }: Props) => {
           </FormFlexDropdown>
         </FormTreflex>
         <BadgeTypeSelectManual
+          placeholder="SEО-жанр"
+          preset={[preset.seoGenre]}
+          onChange={(values) =>
+            setForm({
+              ...form,
+              seoGenre: values[0],
+            })
+          }
+        />
+        <BadgeTypeSelectManual
           placeholder="Издатель"
           preset={preset.publisher}
           onChange={(values) =>

@@ -48,12 +48,14 @@ export const ComicTitle = styled.h3`
   transition: 0.2s all ease;
 `;
 
-export const SwiperComic = styled.div`
+export const SwiperComic = styled.div<{ $adaptive: boolean }>`
   position: relative;
   width: 188px;
   height: 290px;
   border-radius: 12px;
   overflow: hidden;
+
+  ${(props) => props.$adaptive && "width: 100%!important; height: 265px;"}
 
   @media (max-width: 1200px) {
     height: 300px;
@@ -173,7 +175,7 @@ export const NewChapters = styled.div<{ $single: boolean }>`
   display: grid;
   ${(props) =>
     props.$single
-      ? "grid-template-columns: calc(50% - 6px) calc(50% - 6px);"
+      ? "grid-template-columns: auto;"
       : "grid-template-columns: auto auto;"}
   gap: 12px;
   margin-top: 12px;

@@ -17,7 +17,7 @@ const chunkArray = <T,>(array: T[], size: number): T[][] => {
 };
 
 export const RecentSwiper = ({ titles }: Props) => {
-  const chunks = chunkArray(titles, 21);
+  const chunks = chunkArray(titles, 6);
 
   return (
     <Swiper type="vertical" buttons={false} bottomControlls padding={0}>

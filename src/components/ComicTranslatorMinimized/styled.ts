@@ -21,7 +21,7 @@ export const Wrapper = styled.div<{ $preview: boolean }>`
     props.$preview &&
     `
     max-width: 300px;
-    
+    height: 100%;
     `}
 `;
 

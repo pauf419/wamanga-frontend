@@ -33,9 +33,13 @@ import { formatNumber } from "@/utils";
 
 interface ComicPreviewProps {
   comic: Comic;
+  adaptive?: boolean;
 }
 
-export const ComicPreviewVertical: FC<ComicPreviewProps> = ({ comic }) => {
+export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
+  comic,
+  adaptive = false,
+}) => {
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
@@ -59,7 +63,7 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({ comic }) => {
   const isExtended = latestChapters.length > 0;
 
   return (
-    <SwiperComic>
+    <SwiperComic $adaptive={adaptive}>
       <StatsBlock>
         <ComicStatus>{comic.status}</ComicStatus>
         <PegiBadge>

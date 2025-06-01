@@ -23,6 +23,14 @@ export async function getAllUsers(tokens: {
   }
 }
 
+export async function toggleUserSettings(fieldName: string): Promise<User> {
+  const res = await $apiWithoutAuth.post<User>(
+    `/user/settings/toggle/${fieldName}`
+  );
+
+  return res.data;
+}
+
 export async function getProcessingMangas(tokens: {
   accessToken?: string;
   refreshToken?: string;

@@ -16,7 +16,7 @@ export const TeamsLeaderboardSwiper = ({ teams }: Props) => {
   return (
     <Swiper type="vertical" buttons={false} bottomControlls padding={0}>
       {teams.map((team, index) => (
-        <SwiperSlideSC key={index}>
+        <SwiperSlideSC key={index} style={{ height: "auto" }}>
           <ComicTranslatorMinimized
             translator={team}
             preview

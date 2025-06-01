@@ -46,4 +46,9 @@ export interface User {
   assignedManga: Comic[];
   assignedAllManga: boolean;
   likedChapters: string[];
+  description: string;
+  restricted18: boolean;
+  restricted16: boolean;
+  teamsHidden: boolean;
+  bookmarksHidden: boolean;
 }
