@@ -59,7 +59,7 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
   const chapters = (comic.chapters || []).sort(
     (a, b) => b.numberChapter - a.numberChapter
   );
-  const latestChapters = chapters.slice(0, 2);
+  const latestChapters = chapters.slice(0, 1);
   const isExtended = latestChapters.length > 0;
 
   return (
