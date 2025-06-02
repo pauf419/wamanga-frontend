@@ -13,7 +13,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://cdn.adfinity.pro/code/css/adfinity.css"
+          rel="stylesheet"
+        ></link>
+      </head>
       <body>
+        <script
+          src="https://cdn.adfinity.pro/code/5450/adfinity.js"
+          async
+        ></script>
         <Providers>
           <LayoutSC>
             <Sidebar />
