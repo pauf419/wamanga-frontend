@@ -64,6 +64,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.adfinity.pro",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
