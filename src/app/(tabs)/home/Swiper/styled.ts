@@ -72,6 +72,7 @@ export const SwiperSC = styled(Swiper)<SwiperProps>`
   padding-left: ${({ padding: $padding }) => $padding}px;
 
   &::before {
+    pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -92,6 +93,7 @@ export const SwiperSC = styled(Swiper)<SwiperProps>`
   }
 
   &::after {
+    pointer-events: none;
     position: absolute;
     top: 0;
     right: 0;

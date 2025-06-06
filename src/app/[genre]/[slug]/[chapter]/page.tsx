@@ -27,7 +27,7 @@ export async function generateMetadata({
   const chapterEl = await getChapterBySlug(comics._id, chapter);
 
   return {
-    title: `${settings.title} - ${comics.name} - ${chapterEl.title}`,
+    title: `${settings.title} - ${comics.type} - ${comics.name} - ${chapterEl.title}`,
     description: settings.longTitle,
     metadataBase: new URL(settings.metadataBase),
     creator: settings.creator,
