@@ -22,7 +22,7 @@ COPY --from=builder /app /app
 
 # Добавляем конфигурацию PM2
 COPY ecosystem.config.js ./ecosystem.config.js
-1
+
 EXPOSE 3000
 
 CMD ["pm2-runtime", "ecosystem.config.js"]
