@@ -54,7 +54,9 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
   const open = Boolean(anchorEl);
   const id = open ? comic.alternativeName : undefined;
 
-  if (!comic || !comic.name) return <h1>Урума хуесос</h1>;
+  if (!comic || !comic.name) return <h1>NoComic</h1>;
+
+  const isExtended = false;
 
   return (
     <SwiperComic $adaptive={adaptive}>
