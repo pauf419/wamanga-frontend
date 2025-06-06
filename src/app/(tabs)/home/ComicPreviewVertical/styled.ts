@@ -51,7 +51,7 @@ export const ComicTitle = styled.h3`
 export const SwiperComic = styled.div<{ $adaptive: boolean }>`
   position: relative;
   width: 188px;
-  height: 205px;
+  height: 260px;
   border-radius: 12px;
   overflow: hidden;
 
