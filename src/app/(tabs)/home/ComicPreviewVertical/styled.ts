@@ -119,7 +119,7 @@ export const PegiBadge = styled.div`
   background: #e35151;
   color: #fff;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 0px 5px;
   height: 20px;
   display: flex;
   justify-content: center;

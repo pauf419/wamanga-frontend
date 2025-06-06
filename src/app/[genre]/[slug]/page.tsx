@@ -66,7 +66,7 @@ export async function generateMetadata({
   const settings = await getSettings();
   const comics = await getBySlug(slug);
   return {
-    title: `${settings.title} - ${comics.name}`,
+    title: `${settings.title} - ${comics.type} - ${comics.name}`,
     description: settings.longTitle,
     metadataBase: new URL(settings.metadataBase),
     creator: settings.creator,

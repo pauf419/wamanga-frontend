@@ -24,6 +24,11 @@ export default function RootLayout({
           src="https://cdn.adfinity.pro/code/5450/adfinity.js"
           async
         ></script>
+        <script
+          src="https://analytics.night-watchers.com/api/script.js"
+          data-site-id="3"
+          defer
+        ></script>
         <Providers>
           <LayoutSC>
             <Sidebar />

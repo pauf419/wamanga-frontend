@@ -67,8 +67,10 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
       <StatsBlock>
         <ComicStatus>{comic.status}</ComicStatus>
         <PegiBadge>
-          {comic.pegi.replaceAll("+", "")}
-          <PegiPlus>+</PegiPlus>
+          <PegiBadge>
+            {comic.pegi?.replaceAll("+", "")}
+            {comic.pegi && <PegiPlus>+</PegiPlus>}
+          </PegiBadge>
         </PegiBadge>
       </StatsBlock>
 

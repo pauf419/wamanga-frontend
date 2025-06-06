@@ -6,7 +6,6 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
-
 RUN npm run build
 
 FROM node:18-alpine AS runner
@@ -15,11 +14,15 @@ WORKDIR /app
 
 ENV NODE_ENV production
 
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
+# Установка PM2
+RUN npm install -g pm2
 
+# Копируем всё нужное
+COPY --from=builder /app /app
+
+# Добавляем конфигурацию PM2
+COPY ecosystem.config.js ./ecosystem.config.js
+1
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["pm2-runtime", "ecosystem.config.js"]
