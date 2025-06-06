@@ -25,6 +25,7 @@ export const AdsFrame = ({ frameName }: Props) => {
     fetchFrame();
   }, []);
 
-  if (frame) return <FrameBlockWrapper>{frame}</FrameBlockWrapper>;
+  if (frame)
+    return <FrameBlockWrapper dangerouslySetInnerHTML={{ __html: frame }} />;
   return <></>;
 };

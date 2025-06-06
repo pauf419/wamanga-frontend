@@ -54,13 +54,7 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
   const open = Boolean(anchorEl);
   const id = open ? comic.alternativeName : undefined;
 
-  if (!comic || !comic.name) return <h1>NoComic</h1>;
-
-  const chapters = (comic.chapters || []).sort(
-    (a, b) => b.numberChapter - a.numberChapter
-  );
-  const latestChapters = chapters.slice(0, 1);
-  const isExtended = latestChapters.length > 0;
+  if (!comic || !comic.name) return <h1>Урума хуесос</h1>;
 
   return (
     <SwiperComic $adaptive={adaptive}>
@@ -123,25 +117,6 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
           </ExtendedInfoUnit>
         </ExtendedInfoWrapper>
       </ComicInfo>
-
-      {latestChapters.length > 0 && (
-        <ComicNewChapters>
-          <NewChapters $single={latestChapters.length === 1}>
-            {latestChapters.map((chapter, index) => (
-              <NewChapterBadge
-                key={index}
-                onClick={() =>
-                  router.push(
-                    `/${comic.seoGenre}/${comic.alternativeName}/${chapter.slug}`
-                  )
-                }
-              >
-                Глава {chapter.numberChapter}
-              </NewChapterBadge>
-            ))}
-          </NewChapters>
-        </ComicNewChapters>
-      )}
     </SwiperComic>
   );
 };

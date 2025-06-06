@@ -51,19 +51,19 @@ export const ComicTitle = styled.h3`
 export const SwiperComic = styled.div<{ $adaptive: boolean }>`
   position: relative;
   width: 188px;
-  height: 290px;
+  height: 205px;
   border-radius: 12px;
   overflow: hidden;
 
   ${(props) => props.$adaptive && "width: 100%!important; height: 265px;"}
 
   @media (max-width: 1200px) {
-    height: 300px;
+    height: 270px;
   }
 
   @media (max-width: 900px) {
     width: 156px;
-    height: 260px;
+    height: 230px;
   }
 
   &:hover {
