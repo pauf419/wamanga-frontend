@@ -51,7 +51,10 @@ const EditTitlePageForm = ({ preset }: Props) => {
   const [bannerBlob, setBannerBlob] = useState<any>(null);
   const [bannerUrl, setBannerUrl] = useState<string>("");
   const [searchTeams, setSearchTeams] = useState<Team[]>([]);
-  const [form, setForm] = useState<Comic>(preset);
+  const [form, setForm] = useState<Comic>({
+    ...preset,
+    chapters: [],
+  });
 
   const router = useRouter();
 
