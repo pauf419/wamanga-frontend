@@ -95,6 +95,7 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
         alt="Comic"
         width={200}
         height={350}
+        unoptimized
       />
 
       <ComicInfo

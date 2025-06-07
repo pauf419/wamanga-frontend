@@ -92,6 +92,7 @@ export const RecommendedSwiper = ({ titles }: Props) => {
                     alt="poster"
                     width={250}
                     height={350}
+                    unoptimized
                   />
                   <BadgesAdaptive>
                     <Badge

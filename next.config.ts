@@ -76,6 +76,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.worldom.ru",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
