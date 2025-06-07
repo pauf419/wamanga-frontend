@@ -491,15 +491,6 @@ const CatalogBody = ({ defaultTitles }: Props) => {
               />
             </CatalogDropdown>
             <CatalogDropdown
-              placeholder={`Теги ${tags.length ? `(${tags.length})` : ""}`}
-            >
-              <BadgeTypeSelect
-                placeholder="Введите теги"
-                elements={MangaTags}
-                onChange={(tags) => setTags(tags.map((tag) => tag.value))}
-              />
-            </CatalogDropdown>
-            <CatalogDropdown
               placeholder={`Возрастные ограничения ${pegi.length ? `(${pegi.length})` : ""}`}
             >
               <Checkbox

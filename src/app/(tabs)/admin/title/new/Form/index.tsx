@@ -887,16 +887,6 @@ const AddTitlePageForm = () => {
           elements={MangaGenres}
         />
         <BadgeTypeSelect
-          placeholder="Теги"
-          onChange={(values) => {
-            setForm({
-              ...form,
-              tags: values.map((tag) => tag.value),
-            });
-          }}
-          elements={MangaTags}
-        />
-        <BadgeTypeSelect
           placeholder="Команды"
           onSearch={handleTeamSearch}
           onChange={(selectedTeams) => {

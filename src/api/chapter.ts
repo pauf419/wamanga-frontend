@@ -11,7 +11,6 @@ export async function getChapterBySlug(
   mangaId: string,
   slug: string
 ): Promise<Chapter> {
-  console.log(`/chapters/slug/${slug}/${mangaId}`);
   const res = await $apiWithoutAuth.get(`/chapters/slug/${slug}/${mangaId}`);
 
   return res.data;

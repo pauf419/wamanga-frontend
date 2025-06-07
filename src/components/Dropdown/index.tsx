@@ -44,8 +44,6 @@ export const Dropdown = ({
     preset ? preset : items[defaultIndex]
   );
 
-  console.log(items, defaultIndex, items[defaultIndex]);
-
   const handleClick = (item: DropdownItem) => {
     cb(item);
     setSelected(item);

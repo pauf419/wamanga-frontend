@@ -67,15 +67,6 @@ export const MainSection = ({ comics }: Props) => {
         <Content>
           <Main>
             <Description>{comics.description}</Description>
-
-            <InfoTag>
-              <InfoTagTitle>Теги</InfoTagTitle>
-              <Badges>
-                {comics.tags.map((el) => (
-                  <InfoTagBadgeDefault key={el}>{el}</InfoTagBadgeDefault>
-                ))}
-              </Badges>
-            </InfoTag>
             <InfoTag>
               <InfoTagTitle>Жанры</InfoTagTitle>
               <Badges>

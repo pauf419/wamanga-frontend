@@ -54,6 +54,7 @@ const EditTitlePageForm = ({ preset }: Props) => {
   const [form, setForm] = useState<Comic>({
     ...preset,
     chapters: [],
+    tags: [],
   });
 
   const router = useRouter();
@@ -376,22 +377,6 @@ const EditTitlePageForm = ({ preset }: Props) => {
             });
           }}
           elements={MangaGenres}
-        />
-        <BadgeTypeSelect
-          preset={preset.tags.map((genre, index) => {
-            return {
-              index,
-              value: genre,
-            };
-          })}
-          placeholder="Теги"
-          onChange={(values) => {
-            setForm({
-              ...form,
-              tags: values.map((tag) => tag.value),
-            });
-          }}
-          elements={MangaTags}
         />
         <Input
           presetValue={preset.description}

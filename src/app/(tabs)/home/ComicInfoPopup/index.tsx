@@ -66,15 +66,6 @@ export const ComicInfoPopup = ({ comic, onClose }: Props) => {
         </GenreWrapper>
       </Gridbox>
       <Gridbox>
-        <h4>Теги</h4>
-        <GenreWrapper>
-          {comic.tags.map((tag, index) => {
-            if (!index) return tag;
-            return `, ${tag}`;
-          })}
-        </GenreWrapper>
-      </Gridbox>
-      <Gridbox>
         {comic.chapters?.length ? (
           <a
             href={`/${comic.seoGenre}/${comic.alternativeName}/${comic.chapters[0].slug}`}

@@ -116,14 +116,6 @@ export const MainSection = ({ comics }: Props) => {
               </Badges>
             </InfoTag>
             <InfoTag>
-              <InfoTagTitle>Теги</InfoTagTitle>
-              <Badges>
-                {comics.tags.map((el) => (
-                  <InfoTagBadgeDefault key={el}>{el}</InfoTagBadgeDefault>
-                ))}
-              </Badges>
-            </InfoTag>
-            <InfoTag>
               <InfoTagTitle>Количество глав</InfoTagTitle>
               <ChapterCountWrapper>
                 <ChaptersCount>{comics.chapters.length}</ChaptersCount>
