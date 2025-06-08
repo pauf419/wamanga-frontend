@@ -61,6 +61,12 @@ export interface Comic {
   isPorno: boolean;
 }
 
+export interface MangaChaptersMinimalInfo {
+  totalChapters: number;
+  firstChapter: Chapter | undefined;
+  lastChapter: Chapter | undefined;
+}
+
 export interface CreateComicDto extends Comic {
   translationTeams: string[];
 }

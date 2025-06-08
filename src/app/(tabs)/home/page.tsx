@@ -64,7 +64,7 @@ const HomePage = async () => {
         break;
       }
     } catch (error) {
-      console.error("getHomePage error: ", error);
+      console.error("getHomePage error:", error);
     }
 
     await new Promise((resolve) => setTimeout(resolve, 1000));

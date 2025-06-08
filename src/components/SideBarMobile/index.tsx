@@ -34,7 +34,7 @@ const SideBarMobile: FC<SideBarMobileProps> = ({ active, setActive }) => {
   const getRandomTitle = async () => {
     try {
       const title = await getRandomComic();
-      setRandomTitle(title);
+      setRandomTitle(title[0]);
     } catch (e) {
       console.error(e);
     }

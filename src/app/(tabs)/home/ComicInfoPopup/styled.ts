@@ -53,6 +53,8 @@ export const GenreWrapper = styled.p`
   font-weight: 700;
 `;
 
+export const PopoverLoadingField = styled.div``;
+
 export const ChaptersCount = styled(ChaptersAvailable)`
   font-size: 1rem;
   font-weight: 600;

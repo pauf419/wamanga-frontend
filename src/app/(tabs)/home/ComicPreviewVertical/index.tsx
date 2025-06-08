@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, type FC } from "react";
+import React, { useEffect, useState, type FC } from "react";
 import {
   ComicInfo,
   ComicInfoTitles,
@@ -27,9 +27,11 @@ import LikeIcon from "@icons/svg/stat-like.svg";
 import Popover from "@mui/material/Popover";
 import { ComicInfoPopup } from "../ComicInfoPopup";
 import { useRouter } from "next/navigation";
-import type { Comic } from "@/api/types/comic";
+import type { MangaChaptersMinimalInfo } from "@/api/types/comic";
+import { type Comic } from "@/api/types/comic";
 import StatsBadge, { Icon } from "../StatsBadge";
 import { formatNumber } from "@/utils";
+import { getMangaChaptersMinimalInfo } from "@/api/title";
 
 interface ComicPreviewProps {
   comic: Comic;
@@ -43,8 +45,19 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const [chaptersInfo, setChaptersInfo] = useState<MangaChaptersMinimalInfo>();
+
+  const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
+
+    if (!chaptersInfo) {
+      try {
+        const res = await getMangaChaptersMinimalInfo(comic._id);
+        if (res) setChaptersInfo(res);
+      } catch (e) {
+        console.error(e);
+      }
+    }
   };
 
   const handleClose = () => {
@@ -83,7 +96,11 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
           vertical: "top",
         }}
       >
-        <ComicInfoPopup comic={comic} onClose={handleClose} />
+        <ComicInfoPopup
+          comic={comic}
+          chaptersInfo={chaptersInfo}
+          onClose={handleClose}
+        />
       </Popover>
 
       <ComicPoster

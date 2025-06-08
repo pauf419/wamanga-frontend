@@ -82,7 +82,7 @@ export const ComicPreviewMinimized: FC<ComicPreviewProps> = ({
           vertical: "top",
         }}
       >
-        <ComicInfoPopup comic={comic} onClose={handleClose} />
+        <h1>sdsd</h1>
       </Popover>
     </SwiperComic>
   );

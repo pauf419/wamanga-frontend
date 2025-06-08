@@ -260,7 +260,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
                     $active={isCurrent}
                     key={chapter._id}
                   >
-                    {`${chapter.title}${chapter.description ? `: ${chapter.description}` : ""}`}
+                    Глава {chapter.numberChapter}
                     {isCurrent ? <EyeIcon /> : <EyeClosedIcon />}
                   </ChaptersListElement>
                 );

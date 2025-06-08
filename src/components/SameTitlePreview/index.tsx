@@ -1,6 +1,6 @@
 "use client";
 
-import type { Comic } from "@/api/types/comic";
+import type { Comic, MangaChaptersMinimalInfo } from "@/api/types/comic";
 import {
   TypeBadge,
   Content,
@@ -18,6 +18,7 @@ import PopoverIcon from "@icons/svg/popover.svg";
 import Popover from "@mui/material/Popover";
 import { ComicInfoPopup } from "@/app/(tabs)/home/ComicInfoPopup";
 import { useRouter } from "next/navigation";
+import { getMangaChaptersMinimalInfo } from "@/api/title";
 
 interface Props {
   title: Comic;
@@ -28,8 +29,19 @@ export const SameTitlePreview = ({ title }: Props) => {
 
   const router = useRouter();
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const [chaptersInfo, setChaptersInfo] = useState<MangaChaptersMinimalInfo>();
+
+  const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
+
+    if (!chaptersInfo) {
+      try {
+        const res = await getMangaChaptersMinimalInfo(title._id);
+        if (res) setChaptersInfo(res);
+      } catch (e) {
+        console.error(e);
+      }
+    }
   };
 
   const handleClose = () => {
@@ -71,7 +83,7 @@ export const SameTitlePreview = ({ title }: Props) => {
           vertical: "top",
         }}
       >
-        <ComicInfoPopup comic={title} onClose={handleClose} />
+        <ComicInfoPopup chaptersInfo={chaptersInfo} comic={title} onClose={handleClose} />
       </Popover>
     </Wrapper>
   );

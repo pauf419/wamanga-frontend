@@ -63,6 +63,8 @@ const Sidebar = async () => {
 
   const randomTitle = await getRandomComic();
 
+  const title = randomTitle[0];
+
   const moreRoutes = [{ title: "Правила сайта", path: "/rules" }];
 
   return (
@@ -77,7 +79,7 @@ const Sidebar = async () => {
         <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
         <SidebarTab
           icon={<RandomIcon />}
-          forceRoute={`/${randomTitle?.seoGenre}/${randomTitle?.alternativeName}`}
+          forceRoute={`/${title?.seoGenre}/${title?.alternativeName}`}
           route={routes.random}
         />
         <SidebarExpandTab

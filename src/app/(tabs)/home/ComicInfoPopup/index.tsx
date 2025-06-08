@@ -1,12 +1,13 @@
 "use client";
 
-import type { Comic } from "@/api/types/comic";
+import type { Comic, MangaChaptersMinimalInfo } from "@/api/types/comic";
 import {
   ChaptersCount,
   Description,
   Flexbox,
   GenreWrapper,
   Gridbox,
+  PopoverLoadingField,
   PopupWrapper,
 } from "./styled";
 import CloseIcon from "@icons/svg/close.svg";
@@ -26,10 +27,11 @@ import { Tooltip } from "@mui/material";
 
 interface Props {
   comic: Comic;
+  chaptersInfo: MangaChaptersMinimalInfo | undefined;
   onClose: () => void;
 }
 
-export const ComicInfoPopup = ({ comic, onClose }: Props) => {
+export const ComicInfoPopup = ({ comic, onClose, chaptersInfo }: Props) => {
   return (
     <PopupWrapper>
       <Flexbox>
@@ -48,14 +50,18 @@ export const ComicInfoPopup = ({ comic, onClose }: Props) => {
           <StatsBadge icon={Icon.VIEW} amount={comic.views} />
         </StatsBadges>
       </Gridbox>
-      {comic.chapters?.length ? (
-        <Gridbox>
-          <h4>Количество глав</h4>
-          <ChaptersCount>{comic.chapters.length}</ChaptersCount>
-        </Gridbox>
-      ) : (
-        <></>
-      )}
+      <Gridbox style={{ minHeight: 60 }}>
+        <h4>Количество глав</h4>
+        {chaptersInfo ? (
+          <ChaptersCount>
+            <span>{chaptersInfo.totalChapters}</span>
+          </ChaptersCount>
+        ) : (
+          <ChaptersCount>
+            <div className="loader-mini"></div>
+          </ChaptersCount>
+        )}
+      </Gridbox>
       <Gridbox>
         <h4>Жанры</h4>
         <GenreWrapper>
@@ -66,21 +72,27 @@ export const ComicInfoPopup = ({ comic, onClose }: Props) => {
         </GenreWrapper>
       </Gridbox>
       <Gridbox>
-        {comic.chapters?.length ? (
-          <a
-            href={`/${comic.seoGenre}/${comic.alternativeName}/${comic.chapters[0].slug}`}
-            className="button-filled"
-          >
-            <BookIcon />
-            Читать
-          </a>
+        {chaptersInfo ? (
+          <>
+            {chaptersInfo.firstChapter ? (
+              <a
+                href={`/${comic.seoGenre}/${comic.alternativeName}/${chaptersInfo.firstChapter.slug}`}
+                className="button-filled"
+              >
+                <BookIcon />
+                Читать
+              </a>
+            ) : (
+              <Tooltip title="Нет доступных глав">
+                <button className="button-filled button-filled-disabled">
+                  <BookIcon />
+                  Читать
+                </button>
+              </Tooltip>
+            )}
+          </>
         ) : (
-          <Tooltip title="Нет доступных глав">
-            <button className="button-filled button-filled-disabled">
-              <BookIcon />
-              Читать
-            </button>
-          </Tooltip>
+          <div className="loader-mini"></div>
         )}
         <Flexbox>
           <a

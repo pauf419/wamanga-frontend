@@ -16,6 +16,22 @@ button {
   cursor: pointer;
 }
 
+.loader-mini {
+  width: 16px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-right-color: #fff;
+  border-top-color: #fff;
+  animation: l2 1s infinite linear;
+}
+
+@keyframes l2 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

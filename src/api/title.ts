@@ -1,6 +1,10 @@
 import { data } from "motion/react-client";
 import { $api, $apiWithoutAuth } from "./axiosInstance";
-import type { Comic, CreateComicDto } from "./types/comic";
+import type {
+  Comic,
+  CreateComicDto,
+  MangaChaptersMinimalInfo,
+} from "./types/comic";
 import qs from "qs";
 
 /*export interface SignUpResponse {
@@ -122,7 +126,7 @@ export async function getDayTop(): Promise<Comic[]> {
   return res.data;
 }
 
-export async function getRandomComic(): Promise<Comic> {
+export async function getRandomComic(): Promise<Comic[]> {
   const res = await $apiWithoutAuth.get("/manga/random");
 
   return res.data;
@@ -230,6 +234,13 @@ export async function adminPaginateTitles(
     { headers }
   );
 
+  return res.data;
+}
+
+export async function getMangaChaptersMinimalInfo(
+  mangaId: string
+): Promise<MangaChaptersMinimalInfo> {
+  const res = await $apiWithoutAuth.get(`/manga/${mangaId}/chapter/info`);
   return res.data;
 }
 
