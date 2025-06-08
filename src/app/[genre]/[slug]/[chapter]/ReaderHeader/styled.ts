@@ -30,6 +30,10 @@ export const HeaderSC = styled.div`
   }
 `;
 
+export const ReaderMangaTitle = styled.h1`
+  font-size: 14px;
+`;
+
 export const Content = styled.div`
   display: flex;
   justify-content: space-between;

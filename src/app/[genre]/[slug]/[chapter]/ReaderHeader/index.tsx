@@ -12,6 +12,7 @@ import {
   MobileReaderButtonWrapper,
   PagePopup,
   PagePopupWrapper,
+  ReaderMangaTitle,
   SettingsBlock,
   SettingsBlurer,
   Spacer,
@@ -89,7 +90,9 @@ const ReaderHeader = ({
             className="button-transparent button-fully-transparent icon-button-inline"
           >
             <ReturnIcon />
-            <HidesWhenMobile>{title.name}</HidesWhenMobile>
+            <HidesWhenMobile>
+              <ReaderMangaTitle>{title.name}</ReaderMangaTitle>
+            </HidesWhenMobile>
             <DisplaysWhenMobile>К тайтлу</DisplaysWhenMobile>
           </a>
         </Block>

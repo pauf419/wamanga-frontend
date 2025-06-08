@@ -92,7 +92,17 @@ export const ComicInfoPopup = ({ comic, onClose, chaptersInfo }: Props) => {
             )}
           </>
         ) : (
-          <div className="loader-mini"></div>
+          <div
+            style={{
+              height: 40,
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div className="loader-mini"></div>
+          </div>
         )}
         <Flexbox>
           <a

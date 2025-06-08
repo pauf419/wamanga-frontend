@@ -29,6 +29,11 @@ export interface CreateChapterMultiuploadDto {
   volumeIndex: number;
 }
 
+export async function incrementChapterViews(chapterId: string): Promise<any> {
+  const res = await $apiWithoutAuth.post(`/chapters/${chapterId}/view`);
+  return res.data;
+}
+
 export async function createChapter(body: CreateChapterMultiuploadDto) {
   const formData = new FormData();
   formData.append("mangaId", body.mangaId);

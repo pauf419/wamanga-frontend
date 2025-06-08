@@ -1,6 +1,10 @@
 import { getBySlug, incrementMangaViews } from "@/api/title";
 import ReaderBody from "./ReaderBody";
-import { getChapterById, getChapterBySlug } from "@/api/chapter";
+import {
+  getChapterById,
+  getChapterBySlug,
+  incrementChapterViews,
+} from "@/api/chapter";
 import AgeConfirmModal from "@/components/AgeConfirmModal";
 import { getSession, getTokens } from "@/app/lib";
 import Footer from "@/components/Footer";
@@ -64,8 +68,8 @@ const ReaderPage = async ({
 
   const user = await getSession();
   const title = await getBySlug(titleAlternativeName);
-  await incrementMangaViews(title._id);
   const chapterEl = await getChapterBySlug(title._id, chapter);
+  await incrementChapterViews(chapterEl._id);
   const tokens = await getTokens();
   const nonce = await createChapterNonce(chapterEl._id, tokens);
 
