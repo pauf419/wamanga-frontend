@@ -94,7 +94,7 @@ const EditTitlePageForm = ({ preset }: Props) => {
 
   const submit = async () => {
     try {
-      const title = await editManga(form);
+      const title = await editManga(form, posterBlob, bannerBlob);
       router.push(`/admin/title/${title.alternativeName}`);
     } catch (e) {
       console.error(e);

@@ -98,7 +98,7 @@ const ComicEditableDataList = ({ title }: Props) => {
 
   const submit = async () => {
     try {
-      const edited = await editManga(editTitle);
+      //const edited = await editManga(editTitle);
       setOpen(true);
       setMessage("Тайтл успешно обновлен");
     } catch (e) {

@@ -320,10 +320,25 @@ export async function paginateTitles(
   }
 }*/
 
-export async function editManga(body: Comic): Promise<Comic> {
+export async function editManga(
+  body: Comic,
+  image: File,
+  banner: File
+): Promise<Comic> {
+  const formData = new FormData();
+
+  formData.append("data", JSON.stringify(body)); // JSON как строка
+  formData.append("image", image);
+  formData.append("banner", banner);
+
   const response = await $apiWithoutAuth.put<Comic>(
     `/manga/update/${body._id}`,
-    body
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
   );
 
   return response.data;
@@ -335,6 +350,7 @@ export async function getTitleLikes(
   const res = await $apiWithoutAuth.get(
     `/manga/getAllTitelsLikes?mangaId=${mangaId}`
   );
+
   return res.data;
 }
 
