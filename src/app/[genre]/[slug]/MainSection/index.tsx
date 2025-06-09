@@ -38,6 +38,8 @@ import { NewChaptersSwiper } from "./NewChaptersSwiper";
 import { useUserStore } from "@/app/store";
 import { AdsFrame } from "@/components/AdsFrame";
 import { AdsFrameNames } from "@/api/types/settings";
+import { getMangaChaptersMinimalInfo } from "@/api/title";
+import type { Chapter } from "@/api/types/chapter";
 
 interface Props {
   comics: Comic;
@@ -46,12 +48,19 @@ interface Props {
 export const MainSection = ({ comics }: Props) => {
   const [activeTab, setActiveTab] = useState(0);
   const [tabs, setTabs] = useState<string[]>(["Описание", "Главы"]);
+  const [chaptersLoading, setChaptersLoading] = useState<boolean>(false);
+  const [chapters, setChapters] = useState<Chapter[]>([]);
 
   const translator = getComicTranslator();
 
-  const latestChapters = [...comics.chapters]
-    .sort((a, b) => b.numberChapter - a.numberChapter)
-    .slice(0, 10);
+  const fetchChannel = async () => {
+    try {
+      const res = await getMangaChaptersMinimalInfo(comics._id);
+      if (res && res.chapters) setChapters(res.chapters);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,6 +78,10 @@ export const MainSection = ({ comics }: Props) => {
     };
   }, []);
 
+  useEffect(() => {
+    fetchChannel();
+  }, []);
+
   return (
     <div>
       <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -76,14 +89,11 @@ export const MainSection = ({ comics }: Props) => {
         <Content>
           <Main>
             <DisplaysWhenMobile>
-              {comics.chapters.length ? (
+              {chapters.length ? (
                 <InfoTag>
                   <InfoTagTitle>Новые главы</InfoTagTitle>
                   <NewChaptersSwiperWrapper>
-                    <NewChaptersSwiper
-                      manga={comics}
-                      chapters={latestChapters}
-                    />
+                    <NewChaptersSwiper manga={comics} chapters={chapters} />
                   </NewChaptersSwiperWrapper>
                 </InfoTag>
               ) : (
@@ -92,14 +102,11 @@ export const MainSection = ({ comics }: Props) => {
             </DisplaysWhenMobile>
             <Description>{comics.description}</Description>
             <HidesWhenMobile>
-              {comics.chapters.length ? (
+              {chapters.length ? (
                 <InfoTag>
                   <InfoTagTitle>Новые главы</InfoTagTitle>
                   <NewChaptersSwiperWrapper>
-                    <NewChaptersSwiper
-                      manga={comics}
-                      chapters={latestChapters}
-                    />
+                    <NewChaptersSwiper manga={comics} chapters={chapters} />
                   </NewChaptersSwiperWrapper>
                 </InfoTag>
               ) : (
@@ -242,7 +249,7 @@ export const MainSection = ({ comics }: Props) => {
       )}
       {activeTab === 1 && (
         <ZeroSpacer>
-          <Chapters comic={comics} />
+          <Chapters comic={comics} chapters={chapters} />
         </ZeroSpacer>
       )}
       {activeTab === 2 && (

@@ -16,17 +16,19 @@ import DescendingIcon from "@icons/svg/sort-descending.svg";
 import AscendingIcon from "@icons/svg/sort-ascending.svg";
 import { AdsFrame } from "../AdsFrame";
 import { AdsFrameNames } from "@/api/types/settings";
+import type { Chapter } from "@/api/types/chapter";
 
 interface Props {
   comic: Comic;
+  chapters: Chapter[];
 }
 
-export const Chapters = ({ comic }: Props) => {
+export const Chapters = ({ comic, chapters }: Props) => {
   const [sortingType, setSortingType] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredAndSortedChapters = useMemo(() => {
-    const filtered = comic.chapters.filter((chapter) =>
+    const filtered = chapters.filter((chapter) =>
       chapter.title?.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -40,7 +42,7 @@ export const Chapters = ({ comic }: Props) => {
     });
 
     return sorted;
-  }, [comic.chapters, searchQuery, sortingType]);
+  }, [chapters, searchQuery, sortingType]);
 
   return (
     <ChaptersWrapper>

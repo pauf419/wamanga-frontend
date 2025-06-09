@@ -35,21 +35,24 @@ export const NewChaptersSwiper = ({ chapters, manga }: Props) => {
         initialSlide: 0,
       }}
     >
-      {chapters.map((chapter) => (
-        <SwiperSlideSC
-          key={chapter._id}
-          onClick={() =>
-            router.push(
-              `/${manga.seoGenre}/${manga.alternativeName}/${chapter.slug}`
-            )
-          }
-        >
-          <ChapterElement>
-            <ChapterIndex>{chapter.numberChapter}</ChapterIndex>
-            <ChapterP>глава</ChapterP>
-          </ChapterElement>
-        </SwiperSlideSC>
-      ))}
+      {chapters
+        .sort((a, b) => b.numberChapter - a.numberChapter)
+        .slice(0, 10)
+        .map((chapter) => (
+          <SwiperSlideSC
+            key={chapter._id}
+            onClick={() =>
+              router.push(
+                `/${manga.seoGenre}/${manga.alternativeName}/${chapter.slug}`
+              )
+            }
+          >
+            <ChapterElement>
+              <ChapterIndex>{chapter.numberChapter}</ChapterIndex>
+              <ChapterP>глава</ChapterP>
+            </ChapterElement>
+          </SwiperSlideSC>
+        ))}
     </Swiper>
   );
 };

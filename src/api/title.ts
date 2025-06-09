@@ -238,9 +238,12 @@ export async function adminPaginateTitles(
 }
 
 export async function getMangaChaptersMinimalInfo(
-  mangaId: string
+  mangaId: string,
+  extended: boolean = false
 ): Promise<MangaChaptersMinimalInfo> {
-  const res = await $apiWithoutAuth.get(`/manga/${mangaId}/chapter/info`);
+  const res = await $apiWithoutAuth.get(
+    `/manga/${mangaId}/chapter/info?extended=${extended}`
+  );
   return res.data;
 }
 

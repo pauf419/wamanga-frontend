@@ -65,6 +65,7 @@ export interface MangaChaptersMinimalInfo {
   totalChapters: number;
   firstChapter: Chapter | undefined;
   lastChapter: Chapter | undefined;
+  chapters?: Chapter[];
 }
 
 export interface CreateComicDto extends Comic {
