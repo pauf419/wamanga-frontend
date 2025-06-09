@@ -362,21 +362,15 @@ const EditTitlePageForm = ({ preset }: Props) => {
             })
           }
         />
-        <BadgeTypeSelect
+        <BadgeTypeSelectManual
           placeholder="Жанры"
-          preset={preset.genres.map((genre, index) => {
-            return {
-              index,
-              value: genre,
-            };
-          })}
-          onChange={(values) => {
+          preset={preset.genres}
+          onChange={(genres) => {
             setForm({
               ...form,
-              genres: values.map((genre) => genre.value),
+              genres,
             });
           }}
-          elements={MangaGenres}
         />
         <Input
           presetValue={preset.description}
