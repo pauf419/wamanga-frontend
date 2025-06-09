@@ -45,9 +45,10 @@ const SignUpForm = ({ state, setState }: Props) => {
       localStorage.setItem("verify", form.email);
       setState({ signUp: false, signIn: false, verify: true });
     },
-    onError: (err: AxiosError) => {
+    onError: (err: AxiosError<any>) => {
       try {
-        if (err.response.data.message) setError(err.response.data.message);
+        if (err.response && err.response.data && err.response.data.message)
+          setError(err.response.data.message);
       } catch (e) {
         setError("Непредвиденная ошибка регистрации");
       }

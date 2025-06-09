@@ -52,9 +52,10 @@ const SignInForm = ({ state, setState }: Props) => {
     onSuccess: (result: LoginResponse) => {
       router.push("/user");
     },
-    onError: (err: AxiosError) => {
+    onError: (err: AxiosError<any>) => {
       try {
-        if (err.response.data.message) setError(err.response.data.message);
+        if (err.response && err.response.data && err.response.data.message)
+          setError(err.response.data.message);
       } catch (e) {
         setError("Непредвиденная ошибка входа в аккаунт");
       }
