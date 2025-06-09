@@ -261,7 +261,7 @@ export const MainSection = ({ comics }: Props) => {
         <ZeroSpacer>
           <TranslatorTag>
             <ChaptersAvailable> Переводчик </ChaptersAvailable>
-            <ComicTranslatorMinimized translator={translator.data} />
+            <ComicTranslatorMinimized translator={comics.translationTeams[0]} />
           </TranslatorTag>
         </ZeroSpacer>
       )}
