@@ -8,6 +8,8 @@ import { useClickOutside } from "@/hooks/use-click-outside";
 import { Inputs, ModalContent, ModalSC, Title } from "../Form/styled";
 import {
   Action,
+  ErrorMessage,
+  ErrorWrapper,
   ModalAction,
   Question,
   Questions,
@@ -18,6 +20,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useStore } from "@/app/store/useStore";
 import type { SignUpResponse } from "@/api/auth";
 import { signUp } from "@/api/auth";
+import type { AxiosError } from "axios";
 
 interface Props {
   state: ModalState;
@@ -38,12 +41,16 @@ const SignUpForm = ({ state, setState }: Props) => {
 
   const mutation = useMutation({
     mutationFn: signUp,
-    onSuccess: (res: SignUpResponse) => {
+    onSuccess: (result: SignUpResponse) => {
       localStorage.setItem("verify", form.email);
       setState({ signUp: false, signIn: false, verify: true });
     },
-    onError: (err: Error) => {
-      setError(err.message || "Ошибка регистрации");
+    onError: (err: AxiosError) => {
+      try {
+        if (err.response.data.message) setError(err.response.data.message);
+      } catch (e) {
+        setError("Непредвиденная ошибка регистрации");
+      }
     },
   });
 
@@ -91,30 +98,49 @@ const SignUpForm = ({ state, setState }: Props) => {
                     />
                     <Input
                       placeholder="Пароль"
-                      type="input"
+                      type="password"
                       onChange={(e) => setForm({ ...form, password: e })}
                     />
                     <Input
                       placeholder="Повторите пароль"
-                      type="input"
+                      type="password"
                       onChange={(e) => setForm({ ...form, confirmPassword: e })}
                     />
                   </Inputs>
                   <Questions>
-                    <Question>
-                      <Text>Уже есть аккаунт?</Text>
-                      <Action
-                        onClick={() =>
-                          setState({
-                            signUp: false,
-                            signIn: true,
-                            verify: false,
-                          })
-                        }
-                      >
-                        Войти
-                      </Action>
-                    </Question>
+                    {error ? (
+                      <ErrorWrapper>
+                        <ErrorMessage>{error}</ErrorMessage>
+                        <Question>
+                          <Action
+                            onClick={() =>
+                              setState({
+                                signUp: false,
+                                signIn: true,
+                                verify: false,
+                              })
+                            }
+                          >
+                            Войти в аккаунт?
+                          </Action>
+                        </Question>
+                      </ErrorWrapper>
+                    ) : (
+                      <Question>
+                        <Text>Уже есть аккаунт?</Text>
+                        <Action
+                          onClick={() =>
+                            setState({
+                              signUp: false,
+                              signIn: true,
+                              verify: false,
+                            })
+                          }
+                        >
+                          Войти
+                        </Action>
+                      </Question>
+                    )}
                   </Questions>
                   <ModalAction>
                     <button

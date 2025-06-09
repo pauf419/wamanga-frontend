@@ -17,7 +17,7 @@ export interface BadgeTypeSelectElement {
 
 interface Props {
   placeholder: string;
-  type: "textarea" | "input";
+  type: "textarea" | "input" | "password";
   onChange: (_: string) => void;
   presetValue?: string;
 }
@@ -45,10 +45,11 @@ const Input = ({
         {placeholder}
       </Placeholder>
       <InsideWrapper>
-        {type === "input" ? (
+        {type === "input" || type === "password" ? (
           <InputElement
             autoComplete="off"
             id="inp"
+            type={type}
             autoFocus={focus}
             defaultValue={value ? value : ""}
             onChange={(e) => setValue(e.target.value)}

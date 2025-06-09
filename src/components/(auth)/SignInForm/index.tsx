@@ -8,6 +8,8 @@ import { useClickOutside } from "@/hooks/use-click-outside";
 import { Inputs, ModalContent, ModalSC, Title } from "../Form/styled";
 import {
   Action,
+  ErrorMessage,
+  ErrorWrapper,
   GoogleContent,
   GoogleIconSC,
   GoogleText,
@@ -25,6 +27,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useStore } from "@/app/store/useStore";
 import type { User } from "@/api/types/user";
 import { redirect, useRouter } from "next/navigation";
+import type { AxiosError } from "axios";
 
 interface Props {
   state: ModalState;
@@ -49,8 +52,12 @@ const SignInForm = ({ state, setState }: Props) => {
     onSuccess: (result: LoginResponse) => {
       router.push("/user");
     },
-    onError: (err: Error) => {
-      setError(err.message || "Ошибка регистрации");
+    onError: (err: AxiosError) => {
+      try {
+        if (err.response.data.message) setError(err.response.data.message);
+      } catch (e) {
+        setError("Непредвиденная ошибка входа в аккаунт");
+      }
     },
   });
 
@@ -93,25 +100,42 @@ const SignInForm = ({ state, setState }: Props) => {
                     />
                     <Input
                       placeholder="Пароль"
-                      type="input"
+                      type="password"
                       onChange={(e) => setForm({ ...form, password: e })}
                     />
                   </Inputs>
                   <Questions>
-                    <Question>
-                      <Text>Нет аккаунта?</Text>
-                      <Action
-                        onClick={() =>
-                          setState({
-                            signUp: true,
-                            signIn: false,
-                            verify: false,
-                          })
-                        }
-                      >
-                        Создать аккаунт
-                      </Action>
-                    </Question>
+                    {error ? (
+                      <ErrorWrapper>
+                        <ErrorMessage>{error}</ErrorMessage>
+                        <Action
+                          onClick={() =>
+                            setState({
+                              signUp: true,
+                              signIn: false,
+                              verify: false,
+                            })
+                          }
+                        >
+                          Создать аккаунт?
+                        </Action>
+                      </ErrorWrapper>
+                    ) : (
+                      <Question>
+                        <Text>Нет аккаунта?</Text>
+                        <Action
+                          onClick={() =>
+                            setState({
+                              signUp: true,
+                              signIn: false,
+                              verify: false,
+                            })
+                          }
+                        >
+                          Создать аккаунт
+                        </Action>
+                      </Question>
+                    )}
                     <Question>
                       <Text>Забыл пароль?</Text>
                       <Action>Поменять</Action>
@@ -126,7 +150,13 @@ const SignInForm = ({ state, setState }: Props) => {
                   <ModalAction>
                     <button
                       className="button-transparent"
-                      onClick={() => setState({ signIn: false, signUp: false, verify: false })}
+                      onClick={() =>
+                        setState({
+                          signIn: false,
+                          signUp: false,
+                          verify: false,
+                        })
+                      }
                     >
                       Закрыть
                     </button>

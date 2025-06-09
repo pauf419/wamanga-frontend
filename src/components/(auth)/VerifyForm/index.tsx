@@ -8,6 +8,8 @@ import { useClickOutside } from "@/hooks/use-click-outside";
 import { Inputs, ModalContent, ModalSC, Title } from "../Form/styled";
 import {
   Action,
+  ErrorMessage,
+  ErrorWrapper,
   ModalAction,
   Question,
   Questions,
@@ -19,6 +21,7 @@ import { useStore } from "@/app/store/useStore";
 import type { SignUpResponse } from "@/api/auth";
 import { resendConfirmation, signUp, verify } from "@/api/auth";
 import { useRouter } from "next/navigation";
+import type { AxiosError } from "axios";
 
 interface Props {
   state: ModalState;
@@ -38,12 +41,15 @@ const VerifyForm = ({ state, setState }: Props) => {
 
   const mutation = useMutation({
     mutationFn: verify,
-    onSuccess: (res: SignUpResponse) => {
+    onSuccess: (result: SignUpResponse) => {
       router.push("/user");
-      localStorage.removeItem("verify");
     },
-    onError: (err: Error) => {
-      setError(err.message || "Ошибка регистрации");
+    onError: (err: AxiosError) => {
+      try {
+        if (err.response.data.message) setError(err.response.data.message);
+      } catch (e) {
+        setError("Непредвиденная ошибка верификации аккаунта");
+      }
     },
   });
 
@@ -101,12 +107,23 @@ const VerifyForm = ({ state, setState }: Props) => {
                     />
                   </Inputs>
                   <Questions>
-                    <Question>
-                      <Text>Не пришел код подтверждения ? </Text>
-                      <Action onClick={() => resendConfirmation_()}>
-                        Отправить снова
-                      </Action>
-                    </Question>
+                    {error ? (
+                      <ErrorWrapper>
+                        <ErrorMessage>{error}</ErrorMessage>
+                        <Question>
+                          <Action onClick={() => resendConfirmation_()}>
+                            Отправить код снова?
+                          </Action>
+                        </Question>
+                      </ErrorWrapper>
+                    ) : (
+                      <Question>
+                        <Text>Не пришел код подтверждения ? </Text>
+                        <Action onClick={() => resendConfirmation_()}>
+                          Отправить снова
+                        </Action>
+                      </Question>
+                    )}
                   </Questions>
                   <ModalAction>
                     <button
@@ -125,8 +142,7 @@ const VerifyForm = ({ state, setState }: Props) => {
                       className="button-filled"
                       onClick={() => handleSubmit()}
                     >
-                      {" "}
-                      Завершить верификацию{" "}
+                      Завершить верификацию
                     </button>
                   </ModalAction>
                 </ModalContent>

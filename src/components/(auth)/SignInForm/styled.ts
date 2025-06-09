@@ -37,6 +37,19 @@ export const Action = styled.button`
   }
 `;
 
+export const ErrorWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`;
+
+export const ErrorMessage = styled.div`
+  line-height: 1.5;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgb(248, 75, 75);
+`;
+
 export const WithGoogle = styled.div`
   display: flex;
   gap: 8px;
