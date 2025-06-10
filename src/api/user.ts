@@ -1,5 +1,5 @@
 // api/user.ts
-import { $apiWithoutAuth } from "./axiosInstance";
+import { $apiSSR, $apiWithoutAuth } from "./axiosInstance";
 import type { Comic, ProcessingManga } from "./types/comic";
 import type { Team } from "./types/team";
 import type { User } from "./types/user";
@@ -40,7 +40,7 @@ export async function getHomePage(tokens: {
   try {
     const cookieHeader = `access_token=${tokens.accessToken}; refresh_token=${tokens.refreshToken}`;
 
-    const res = await $apiWithoutAuth.get("/user/homePage", {
+    const res = await $apiSSR.get("/user/homePage", {
       headers: {
         Cookie: cookieHeader,
       },
@@ -74,7 +74,7 @@ export async function getProcessingMangas(tokens: {
   try {
     const cookieHeader = `access_token=${tokens.accessToken}; refresh_token=${tokens.refreshToken}`;
 
-    const res = await $apiWithoutAuth.get("/user/processing", {
+    const res = await $apiSSR.get("/user/processing", {
       headers: {
         Cookie: cookieHeader,
       },

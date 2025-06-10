@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = "https://wamanga.ru/api/v1";
+export const API_URL = process.env.API_URL;
 
 export const $api = axios.create({
   baseURL: API_URL,
@@ -20,39 +20,11 @@ export const $apiWithoutAuth = axios.create({
   withCredentials: true,
 });
 
-$api.interceptors.request.use((config) => {
-  const accessToken = localStorage.getItem("accessToken");
-  if (accessToken) {
-    config.headers.Authorization = `Bearer ${accessToken}`;
-  }
-  return config;
+export const $apiSSR = axios.create({
+  baseURL: process.env.SSR_API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  timeout: 5000,
+  withCredentials: true,
 });
-
-$api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    if (error.response?.status === 401) {
-      try {
-        const refreshToken = localStorage.getItem("refreshToken");
-        if (!refreshToken) throw new Error("No refresh token");
-
-        const { data } = await axios.post(`${API_URL}/auth/refresh-token`, {
-          refreshToken,
-        });
-
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
-
-        error.config.headers.Authorization = `Bearer ${data.accessToken}`;
-        return $api.request(error.config);
-      } catch (refreshError) {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        window.location.href = "/login";
-        return Promise.reject(refreshError);
-      }
-    }
-
-    return Promise.reject(error);
-  }
-);
