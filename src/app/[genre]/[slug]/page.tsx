@@ -49,6 +49,7 @@ import AgeConfirmModal from "@/components/AgeConfirmModal";
 import { getSettings } from "@/api/settings";
 import type { Metadata } from "next";
 import { RoleSegregator } from "@/components/RoleSegregator";
+import OkakPage from "@/app/not-found";
 
 export type paramsType = Promise<{
   params: {
@@ -63,34 +64,40 @@ export async function generateMetadata({
   params: Promise<{ slug: string; genre: string }>;
 }): Promise<Metadata> {
   const { slug, genre } = await params;
-  const settings = await getSettings();
-  const comics = await getBySlug(slug);
-  return {
-    title: `${settings.title} - ${comics.type} - ${comics.name}`,
-    description: settings.longTitle,
-    metadataBase: new URL(settings.metadataBase),
-    creator: settings.creator,
-    publisher: settings.publisher,
-    icons: {
-      icon: settings.logo,
-      shortcut: settings.logo,
-      apple: settings.logo,
-    },
-    openGraph: {
-      title: `${settings.title} - ${comics.name}`,
+
+  try {
+    const settings = await getSettings();
+    const comics = await getBySlug(slug);
+    return {
+      title: `${settings.title} - ${comics.type} - ${comics.name}`,
       description: settings.longTitle,
-      siteName: `${settings.title} - ${comics.name}`,
-      images: [
-        {
-          url: comics.imagePath,
-          width: 1200,
-          height: 630,
-          alt: settings.title,
-        },
-      ],
-      type: "website",
-    },
-  };
+      metadataBase: new URL(settings.metadataBase),
+      creator: settings.creator,
+      publisher: settings.publisher,
+      icons: {
+        icon: settings.logo,
+        shortcut: settings.logo,
+        apple: settings.logo,
+      },
+      openGraph: {
+        title: `${settings.title} - ${comics.name}`,
+        description: settings.longTitle,
+        siteName: `${settings.title} - ${comics.name}`,
+        images: [
+          {
+            url: comics.imagePath,
+            width: 1200,
+            height: 630,
+            alt: settings.title,
+          },
+        ],
+        type: "website",
+      },
+    };
+  } catch (e) {
+    console.error(e);
+    return {};
+  }
 }
 
 const ComicsPage = async ({
@@ -99,13 +106,21 @@ const ComicsPage = async ({
   params: Promise<{ slug: string; genre: string }>;
 }) => {
   const { slug, genre } = await params;
-  const comics = await getBySlug(slug);
-  if (comics.seoGenre !== genre) return <h1>404 not found</h1>;
-  const similarComics = await getSimilar(comics._id);
-  const totalData = await getTitleLikes(comics._id);
-  if (totalData.totalLikes) comics.likes = totalData.totalLikes;
-  if (totalData.totalViews) comics.views = totalData.totalViews;
-  const { data } = getSameTitles();
+
+  let comics;
+  let similarComics;
+
+  try {
+    comics = await getBySlug(slug);
+    if (!comics || comics.seoGenre !== genre) return <OkakPage />;
+    similarComics = await getSimilar(comics._id);
+    const totalData = await getTitleLikes(comics._id);
+    if (totalData.totalLikes) comics.likes = totalData.totalLikes;
+    if (totalData.totalViews) comics.views = totalData.totalViews;
+  } catch (e) {
+    console.error(e);
+    return <OkakPage />;
+  }
 
   if (comics.englishName) comics.altName.unshift(comics.englishName);
 
