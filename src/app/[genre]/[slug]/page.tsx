@@ -129,6 +129,7 @@ const ComicsPage = async ({
               alt={comics.name}
               width={600}
               height={300}
+              unoptimized
             />
             <HidesWhenMobile>
               <Badge>{comics.type}</Badge>
