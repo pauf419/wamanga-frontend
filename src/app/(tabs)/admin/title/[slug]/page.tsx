@@ -15,7 +15,7 @@ import {
   SegmentSeparator,
 } from "../../styled";
 import { redirect } from "next/navigation";
-import { getBySlug } from "@/api/title";
+import { getBySlug, getMangaChaptersMinimalInfo } from "@/api/title";
 import { Link } from "../components/ComicUnit/styled";
 import Input from "@/components/Input";
 import ChapterListMinimized from "../components/UnitListMinimized";
@@ -26,6 +26,8 @@ const AdminPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
 
   const title = await getBySlug(slug);
+  const info = await getMangaChaptersMinimalInfo(title._id);
+  if (info.chapters) title.chapters = info.chapters;
 
   if (!slug || !title) redirect("/admin/title");
 
