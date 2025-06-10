@@ -103,7 +103,7 @@ export async function getBySlug(slug: string): Promise<Comic> {
 }
 
 export async function getSimilar(id: string): Promise<Comic[]> {
-  const res = await $apiWithoutAuth.get(`/manga/similar/${id}`);
+  const res = await $apiSSR.get(`/manga/similar/${id}`);
 
   return res.data;
 }
@@ -350,9 +350,7 @@ export async function editManga(
 export async function getTitleLikes(
   mangaId: string
 ): Promise<{ totalLikes: number; totalViews: number }> {
-  const res = await $apiWithoutAuth.get(
-    `/manga/getAllTitelsLikes?mangaId=${mangaId}`
-  );
+  const res = await $apiSSR.get(`/manga/getAllTitelsLikes?mangaId=${mangaId}`);
 
   return res.data;
 }
