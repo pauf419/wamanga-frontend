@@ -9,6 +9,7 @@ export const $api = axios.create({
     "Content-Type": "application/json",
   },
   withCredentials: true,
+  timeout: 4000,
 });
 
 export const $apiWithoutAuth = axios.create({
@@ -17,6 +18,7 @@ export const $apiWithoutAuth = axios.create({
     "Content-Type": "application/json",
   },
   withCredentials: true,
+  timeout: 4000,
 });
 
 export const $apiSSR = axios.create({
@@ -25,4 +27,5 @@ export const $apiSSR = axios.create({
     "Content-Type": "application/json",
   },
   withCredentials: true,
+  timeout: 4000,
 });
