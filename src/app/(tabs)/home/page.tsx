@@ -51,10 +51,8 @@ const HomePage = async () => {
 
   const tokens = await getTokens();
 
-  console.log("FETCHING HOME PAGE");
   let homePageResponse;
   while (true) {
-    console.log("ATTEMPT");
     try {
       homePageResponse = await getHomePage(tokens);
 
@@ -68,8 +66,9 @@ const HomePage = async () => {
     } catch (error) {
       console.error("getHomePage error:", error);
     }
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
-  console.log("FETCHING HOME PAGE - DONE");
 
   const recommendedTitles = homePageResponse.rec;
   const recentlyUpdatedTitles = homePageResponse.recently;
@@ -77,6 +76,7 @@ const HomePage = async () => {
   const newsTitles = homePageResponse.top;
   const randomTitles = homePageResponse.random;
   const teams = homePageResponse.team;
+  const processingMangas = await getProcessingMangas(tokens);
 
   return (
     <BasePage isImageBehind>
@@ -88,6 +88,14 @@ const HomePage = async () => {
           <Section title="Свежие обновления" link="/">
             <RecentSwiper titles={recentlyUpdatedTitles} />
           </Section>
+        )}
+
+        {processingMangas && processingMangas.length ? (
+          <DayTopSection title="Продолжить чтение" link="/">
+            <ProcessingSwiper titles={processingMangas} />
+          </DayTopSection>
+        ) : (
+          <></>
         )}
 
         {dailyTopTitles && (
