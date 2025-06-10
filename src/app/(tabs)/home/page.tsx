@@ -72,8 +72,8 @@ const HomePage = async () => {
 
   const recommendedTitles = homePageResponse.rec;
   const recentlyUpdatedTitles = homePageResponse.recently;
-  const dailyTopTitles = homePageResponse.topChupter;
-  const newsTitles = homePageResponse.top;
+  const dailyTopTitles = homePageResponse.top;
+  const newsTitles = homePageResponse.topChupter;
   const randomTitles = homePageResponse.random;
   const teams = homePageResponse.team;
   const processingMangas = await getProcessingMangas(tokens);
