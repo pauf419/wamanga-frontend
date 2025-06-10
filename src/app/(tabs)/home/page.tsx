@@ -77,10 +77,6 @@ const HomePage = async () => {
   const newsTitles = homePageResponse.top;
   const randomTitles = homePageResponse.random;
   const teams = homePageResponse.team;
-  console.log(homePageResponse);
-  console.log("FETCHING PROCESSING");
-  const processingMangas = await getProcessingMangas(tokens);
-  console.log("FETCHING PROCESSING - DONE");
 
   return (
     <BasePage isImageBehind>
@@ -92,14 +88,6 @@ const HomePage = async () => {
           <Section title="Свежие обновления" link="/">
             <RecentSwiper titles={recentlyUpdatedTitles} />
           </Section>
-        )}
-
-        {processingMangas && processingMangas.length ? (
-          <DayTopSection title="Продолжить чтение" link="/">
-            <ProcessingSwiper titles={processingMangas} />
-          </DayTopSection>
-        ) : (
-          <></>
         )}
 
         {dailyTopTitles && (
