@@ -1,5 +1,5 @@
 import { data } from "motion/react-client";
-import { $api, $apiWithoutAuth } from "./axiosInstance";
+import { $api, $apiSSR, $apiWithoutAuth } from "./axiosInstance";
 import type {
   Comic,
   CreateComicDto,
@@ -97,7 +97,7 @@ export async function getRecommendedTitles(): Promise<Comic[]> {
 }
 
 export async function getBySlug(slug: string): Promise<Comic> {
-  const res = await $apiWithoutAuth.get(`/manga/find/${slug}`);
+  const res = await $apiSSR.get(`/manga/find/${slug}`);
 
   return res.data;
 }
