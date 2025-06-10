@@ -120,7 +120,11 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
   const [settingsModalActive, setSettingsModalActive] = useState(false);
   const [chaptersModalActive, setChaptersModalActive] = useState(false);
   const [readerWidth, setReaderWidth] = useState<number>(
-    Number(localStorage.getItem("readerWidth"))
+    Number(
+      localStorage.getItem("readerWidth")
+        ? localStorage.getItem("readerWidth")
+        : 700
+    )
   );
   const [readerType, setReaderType] = useState<string>("vertical");
 
