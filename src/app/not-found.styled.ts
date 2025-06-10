@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const NotFoundWrapper = styled.div`
   margin: auto auto;
@@ -93,7 +94,7 @@ export const Title = styled.h1`
   }
 `;
 
-export const OkakButton = styled.a`
+export const OkakButton = styled(Link)`
   position: relative;
   z-index: 10;
 `;

@@ -3,6 +3,7 @@
 import { colors } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const RoutesWrapper = styled.div`
   --sidebar-width: 83px;
@@ -15,7 +16,7 @@ export const RoutesWrapper = styled.div`
   border-radius: 10px;
 `;
 
-export const RouteSC = styled.a<{ $mobile: boolean }>`
+export const RouteSC = styled(Link)<{ $mobile: boolean }>`
   position: relative;
   display: block;
   max-height: 32px;

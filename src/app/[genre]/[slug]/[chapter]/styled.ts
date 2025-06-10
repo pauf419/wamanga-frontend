@@ -2,6 +2,7 @@
 
 import { LevelStat } from "@/app/user/styled";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const ReaderPageWrapper = styled.div`
   display: grid;
@@ -122,7 +123,7 @@ export const Indicator = styled(LevelStat)`
   }
 `;
 
-export const ReaderButton = styled.a`
+export const ReaderButton = styled(Link)`
   position: relative;
   text-decoration: none;
   display: block;

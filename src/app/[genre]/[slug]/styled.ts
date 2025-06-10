@@ -133,7 +133,7 @@ export const Badge = styled.div`
   border-radius: 100px;
 `;
 
-export const ReadButton = styled.a`
+export const ReadButton = styled(Link)`
   text-decoration: none;
   display: flex;
   gap: 8px;

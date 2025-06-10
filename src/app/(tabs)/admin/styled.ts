@@ -3,6 +3,7 @@
 import { DropdownHeader } from "@/components/Dropdown/styled";
 import { Placeholder } from "@/components/Input/styled";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const Container = styled.div`
   max-width: 1200px;
@@ -32,7 +33,7 @@ export const PathnameHeader = styled.div`
   height: 35px;
 `;
 
-export const Pathname = styled.a`
+export const Pathname = styled(Link)`
   text-decoration: none;
   color: #fff;
   font-weight: 700;

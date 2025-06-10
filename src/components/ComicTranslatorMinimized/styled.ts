@@ -3,6 +3,7 @@
 import { colors, zIndex } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Wrapper = styled.div<{ $preview: boolean }>`
   position: relative;
@@ -92,7 +93,7 @@ export const LeaderboardIndex = styled.div`
   opacity: 0.6;
 `;
 
-export const Name = styled.a`
+export const Name = styled(Link)`
   margin: 0;
   font-size: 1rem;
   font-variation-settings: inherit;
@@ -144,7 +145,7 @@ export const Icons = styled.div`
   gap: 8px;
 `;
 
-export const IconLink = styled.a`
+export const IconLink = styled(Link)`
   position: relative;
   box-sizing: border-box;
   display: inline-flex;

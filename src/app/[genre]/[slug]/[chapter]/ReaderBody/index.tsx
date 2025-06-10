@@ -80,6 +80,7 @@ import { AdsFrameNames } from "@/api/types/settings";
 import { Tooltip } from "@mui/material";
 import type { Nonce } from "@/api/types/nonce";
 import { closeChapterNonce } from "@/api/nonce";
+import Link from "next/link";
 
 interface Props {
   title: Comic;
@@ -255,14 +256,15 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
               .map((chapter: Chapter) => {
                 const isCurrent = currentChapter._id === chapter._id;
                 return (
-                  <ChaptersListElement
-                    href={`/${title.seoGenre}/${title.alternativeName}/${chapter.slug}`}
-                    $active={isCurrent}
+                  <Link
                     key={chapter._id}
+                    href={`/${title.seoGenre}/${title.alternativeName}/${chapter.slug}`}
                   >
-                    Глава {chapter.numberChapter}
-                    {isCurrent ? <EyeIcon /> : <EyeClosedIcon />}
-                  </ChaptersListElement>
+                    <ChaptersListElement $active={isCurrent}>
+                      Глава {chapter.numberChapter}
+                      {isCurrent ? <EyeIcon /> : <EyeClosedIcon />}
+                    </ChaptersListElement>
+                  </Link>
                 );
               })}
           </ChaptersList>
@@ -453,7 +455,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
         </ReaderMain>
         <HidesWhenMobile>
           <ChaptersBlock>
-            <a
+            <Link
               className={`button-filled button-dark ${!chapter.prevChapter && "button-disabled"}`}
               title={!chapter.prevChapter ? "Упс, это первая глава" : ""}
               onClick={(e) => {
@@ -466,7 +468,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
             >
               <ArrowLeft />
               Предыдущая глава
-            </a>
+            </Link>
             {dynamicUser ? (
               <button
                 className="button-transparent button-like"
@@ -500,7 +502,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
                 </button>
               </Tooltip>
             )}
-            <a
+            <Link
               className={`button-filled button-dark ${!chapter.nextChapter && "button-disabled"}`}
               title={!chapter.nextChapter ? "Упс, это последняя глава" : ""}
               onClick={(e) => {
@@ -513,7 +515,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
             >
               Следующая глава
               <ArrowRight />
-            </a>
+            </Link>
           </ChaptersBlock>
         </HidesWhenMobile>
         <DisplaysWhenMobile>
@@ -553,7 +555,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
             )}
           </ChaptersBlock>
           <ChaptersBlock style={{ marginTop: 0, marginBottom: 24 }}>
-            <a
+            <Link
               className={`button-filled button-dark ${!chapter.prevChapter && "button-disabled"}`}
               title={!chapter.prevChapter ? "Упс, это первая глава" : ""}
               onClick={(e) => {
@@ -566,8 +568,8 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
             >
               <ArrowLeft />
               Предыдущая глава
-            </a>
-            <a
+            </Link>
+            <Link
               className={`button-filled button-dark ${!chapter.nextChapter && "button-disabled"}`}
               title={!chapter.nextChapter ? "Упс, это последняя глава" : ""}
               onClick={(e) => {
@@ -580,7 +582,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
             >
               Следующая глава
               <ArrowRight />
-            </a>
+            </Link>
           </ChaptersBlock>
         </DisplaysWhenMobile>
         <InfoContainer>

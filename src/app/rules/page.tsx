@@ -18,6 +18,7 @@ import { PrimaryButton } from "@/components/Button";
 import BasePage from "@/components/BasePage";
 import type { Metadata } from "next";
 import { getSettings } from "@/api/settings";
+import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings();
@@ -69,51 +70,51 @@ const RulesPage = () => {
                 <BlockLeft>
                   <BlockTitle>Общие правила</BlockTitle>
                 </BlockLeft>
-                <a className="button-filled" href="/rules/general">
+                <Link className="button-filled" href="/rules/general">
                   Открыть
-                </a>
+                </Link>
               </Block>
               <Block>
                 <BlockLeft>
                   <BlockTitle>Авторские права</BlockTitle>
                 </BlockLeft>
-                <a className="button-filled" href="/rules/copyright">
+                <Link className="button-filled" href="/rules/copyright">
                   Открыть
-                </a>
+                </Link>
               </Block>
               <Block>
                 <BlockLeft>
                   <BlockTitle>Пользовательское соглашение</BlockTitle>
                 </BlockLeft>
-                <a className="button-filled" href="/rules/user-agreement">
+                <Link className="button-filled" href="/rules/user-agreement">
                   Открыть
-                </a>
+                </Link>
               </Block>
               <Block>
                 <BlockLeft>
                   <BlockTitle>Правообладателям</BlockTitle>
                 </BlockLeft>
-                <a className="button-filled" href="/rules/copyright-holders">
+                <Link className="button-filled" href="/rules/copyright-holders">
                   Открыть
-                </a>
+                </Link>
               </Block>
               <Block>
                 <BlockLeft>
                   <BlockTitle>Правила для команд</BlockTitle>
                   <BlockDescription>(Переводчикам и авторам)</BlockDescription>
                 </BlockLeft>
-                <a className="button-filled" href="/rules/teams">
+                <Link className="button-filled" href="/rules/teams">
                   Открыть
-                </a>
+                </Link>
               </Block>
               <Block>
                 <BlockLeft>
                   <BlockTitle>Часто задаваемые вопросы</BlockTitle>
                   <BlockDescription>(FAQ - Вопрос/Ответ)</BlockDescription>
                 </BlockLeft>
-                <a className="button-filled" href="/rules/faq">
+                <Link className="button-filled" href="/rules/faq">
                   Открыть
-                </a>
+                </Link>
               </Block>
             </Blocks>
           </Description>

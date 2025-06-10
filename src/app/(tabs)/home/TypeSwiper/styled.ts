@@ -3,6 +3,7 @@
 import { colors, sizes } from "@/const";
 import styled from "@emotion/styled";
 import Image from "next/image";
+import Link from "next/link";
 import { SwiperSlide } from "swiper/react";
 
 export const SwiperHolder = styled.div`
@@ -32,7 +33,7 @@ export const SwiperSlideSC = styled(SwiperSlide)<{ background: string }>`
   }
 `;
 
-export const Content = styled.a`
+export const Content = styled(Link)`
   position: relative;
   display: flex;
   align-items: center;

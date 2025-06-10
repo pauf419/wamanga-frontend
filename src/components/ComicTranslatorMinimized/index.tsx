@@ -46,7 +46,7 @@ export const ComicTranslatorMinimized = ({
       </Header>
       <Body>
         <NameWrapper>
-          <Name>{translator.name}</Name>
+          <Name href={"/"}>{translator.name}</Name>
           {leaderboardIndex ? (
             <LeaderboardIndex>Топ {leaderboardIndex}</LeaderboardIndex>
           ) : (

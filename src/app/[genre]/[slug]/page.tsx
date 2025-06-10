@@ -50,6 +50,7 @@ import { getSettings } from "@/api/settings";
 import type { Metadata } from "next";
 import { RoleSegregator } from "@/components/RoleSegregator";
 import OkakPage from "@/app/not-found";
+import Link from "next/link";
 
 export type paramsType = Promise<{
   params: {
@@ -180,13 +181,13 @@ const ComicsPage = async ({
           </Comics>
           <AdaptivePadding>
             {comics.chapters.length ? (
-              <a
+              <Link
                 href={`/${comics.seoGenre}/${comics.alternativeName}/${comics.chapters[0].slug}`}
                 className="button-filled"
               >
                 <BookIcon />
                 Читать
-              </a>
+              </Link>
             ) : (
               <Tooltip title="Нет доступных для чтения глав">
                 <button className="button-filled button-filled-disabled button-filled-popped">

@@ -5,6 +5,7 @@ import { Blurer, SidebarMobileSC } from "@/components/SideBarMobile/styled";
 import { colors, zIndex } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const HeaderSC = styled.div`
   position: sticky;
@@ -165,7 +166,7 @@ export const ControllerDisabledMessage = styled.div`
   display: none;
 `;
 
-export const ChaptersController = styled.a<{ $disabled: boolean }>`
+export const ChaptersController = styled(Link)<{ $disabled: boolean }>`
   padding: 5px;
   color: rgba(143, 150, 163, 0.8);
   cursor: pointer;
@@ -396,7 +397,7 @@ export const ChaptersList = styled.div`
   gap: 4px;
 `;
 
-export const ChaptersListElement = styled.a<{ $active: boolean }>`
+export const ChaptersListElement = styled.div<{ $active: boolean }>`
   color: rgb(255, 255, 255);
   display: flex;
   -webkit-box-pack: justify;

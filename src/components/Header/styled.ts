@@ -5,6 +5,7 @@ import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 import { Blurer } from "../SideBarMobile/styled";
 import { SortingButton } from "@/app/team/[slug]/styled";
+import Link from "next/link";
 
 export const HeaderSC = styled.div`
   position: sticky;
@@ -96,7 +97,7 @@ export const ClickMenuHeader = styled.div`
   }
 `;
 
-export const HeaderAvatar = styled.a<{ $source: string }>`
+export const HeaderAvatar = styled(Link)<{ $source: string }>`
   width: 45px;
   height: 45px;
   border-radius: 100px;
@@ -106,7 +107,7 @@ export const HeaderAvatar = styled.a<{ $source: string }>`
   position: relative;
 `;
 
-export const HeaderLink = styled.a`
+export const HeaderLink = styled(Link)`
   padding: 6px 6px;
   line-height: 1.57143;
   font-size: 0.875rem;

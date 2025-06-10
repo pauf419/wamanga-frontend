@@ -19,6 +19,7 @@ import Popover from "@mui/material/Popover";
 import { ComicInfoPopup } from "@/app/(tabs)/home/ComicInfoPopup";
 import { useRouter } from "next/navigation";
 import { getMangaChaptersMinimalInfo } from "@/api/title";
+import Link from "next/link";
 
 interface Props {
   title: Comic;
@@ -53,23 +54,18 @@ export const SameTitlePreview = ({ title }: Props) => {
 
   return (
     <Wrapper>
-      <Poster
-        src={title.imagePath}
-        onClick={() =>
-          router.push(`/${title.seoGenre}/${title.alternativeName}`)
-        }
-      />
-      <Content
-        onClick={() =>
-          router.push(`/${title.seoGenre}/${title.alternativeName}`)
-        }
-      >
-        <Info>
-          <TypeBadge>{title.type}</TypeBadge>
-          <Title>{title.name}</Title>
-        </Info>
-        <Segment></Segment>
-      </Content>
+      <Link href={`/${title.seoGenre}/${title.alternativeName}`}>
+        <Poster src={title.imagePath} />
+      </Link>
+      <Link href={`/${title.seoGenre}/${title.alternativeName}`}>
+        <Content>
+          <Info>
+            <TypeBadge>{title.type}</TypeBadge>
+            <Title>{title.name}</Title>
+          </Info>
+          <Segment></Segment>
+        </Content>
+      </Link>
       <PopoverButton aria-describedby={id} onClick={handleClick}>
         <PopoverIcon />
       </PopoverButton>
@@ -83,7 +79,11 @@ export const SameTitlePreview = ({ title }: Props) => {
           vertical: "top",
         }}
       >
-        <ComicInfoPopup chaptersInfo={chaptersInfo} comic={title} onClose={handleClose} />
+        <ComicInfoPopup
+          chaptersInfo={chaptersInfo}
+          comic={title}
+          onClose={handleClose}
+        />
       </Popover>
     </Wrapper>
   );

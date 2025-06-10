@@ -39,6 +39,7 @@ import { logout } from "@/app/lib";
 import VerifyForm from "../(auth)/VerifyForm";
 import { useUserStore } from "@/app/store";
 import { RoleSegregator } from "../RoleSegregator";
+import Link from "next/link";
 
 export interface ModalState {
   signUp: boolean;
@@ -190,7 +191,7 @@ const Header = ({ user }: Props) => {
                       href="/user"
                       $source={user.avatar}
                     ></HeaderAvatar>
-                    <a href="/user?activeTab=EDIT">Редактировать</a>
+                    <Link href="/user?activeTab=EDIT">Редактировать</Link>
                   </ClickMenuHeader>
                   <HeaderLink href="/user">Профиль</HeaderLink>
                   <HeaderLink href="/user?activeTab=BOOKMARK">

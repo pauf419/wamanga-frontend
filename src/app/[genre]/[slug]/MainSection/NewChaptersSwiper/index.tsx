@@ -14,6 +14,7 @@ import {
 import type { Chapter } from "@/api/types/chapter";
 import { useRouter } from "next/navigation";
 import type { Comic } from "@/api/types/comic";
+import Link from "next/link";
 
 interface Props {
   manga: Comic;
@@ -21,8 +22,6 @@ interface Props {
 }
 
 export const NewChaptersSwiper = ({ chapters, manga }: Props) => {
-  const router = useRouter();
-
   return (
     <Swiper
       padding={1}
@@ -39,18 +38,15 @@ export const NewChaptersSwiper = ({ chapters, manga }: Props) => {
         .sort((a, b) => b.numberChapter - a.numberChapter)
         .slice(0, 10)
         .map((chapter) => (
-          <SwiperSlideSC
-            key={chapter._id}
-            onClick={() =>
-              router.push(
-                `/${manga.seoGenre}/${manga.alternativeName}/${chapter.slug}`
-              )
-            }
-          >
-            <ChapterElement>
-              <ChapterIndex>{chapter.numberChapter}</ChapterIndex>
-              <ChapterP>глава</ChapterP>
-            </ChapterElement>
+          <SwiperSlideSC key={chapter._id}>
+            <Link
+              href={`/${manga.seoGenre}/${manga.alternativeName}/${chapter.slug}`}
+            >
+              <ChapterElement>
+                <ChapterIndex>{chapter.numberChapter}</ChapterIndex>
+                <ChapterP>глава</ChapterP>
+              </ChapterElement>
+            </Link>
           </SwiperSlideSC>
         ))}
     </Swiper>

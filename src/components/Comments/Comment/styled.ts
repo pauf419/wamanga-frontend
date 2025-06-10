@@ -2,6 +2,7 @@
 
 import { colors } from "@/const";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -35,7 +36,7 @@ export const UserInfo = styled.div`
   align-items: center;
 `;
 
-export const Username = styled.a`
+export const Username = styled(Link)`
   display: flex;
   margin: 0 8px 0 0;
   font: inherit;

@@ -40,6 +40,7 @@ import {
   ReaderButtonWrapper,
 } from "../styled";
 import { Tooltip } from "@mui/material";
+import Link from "next/link";
 
 export interface ModalState {
   signUp: boolean;
@@ -85,7 +86,7 @@ const ReaderHeader = ({
             <SideBarToggleIcon />
           </ToggleButton>
           <Spacer />
-          <a
+          <Link
             href={`/${title.seoGenre}/${title.alternativeName}`}
             className="button-transparent button-fully-transparent icon-button-inline"
           >
@@ -94,7 +95,7 @@ const ReaderHeader = ({
               <ReaderMangaTitle>{title.name}</ReaderMangaTitle>
             </HidesWhenMobile>
             <DisplaysWhenMobile>К тайтлу</DisplaysWhenMobile>
-          </a>
+          </Link>
         </Block>
         <ChapterControllsBlock>
           {chapter.prevChapter ? (
@@ -113,6 +114,7 @@ const ReaderHeader = ({
           ) : (
             <Tooltip title="Упс, это первая глава">
               <ChaptersController
+                href={`/${title.seoGenre}/${title.alternativeName}/${chapter.slug}}`}
                 $disabled={!chapter.prevChapter}
                 onClick={(e) => {
                   if (!chapter.prevChapter) {
@@ -147,6 +149,7 @@ const ReaderHeader = ({
           ) : (
             <Tooltip title="Упс, это последняя глава">
               <ChaptersController
+                href={`/${title.seoGenre}/${title.alternativeName}/${chapter.slug}`}
                 $disabled={!chapter.nextChapter}
                 onClick={(e) => {
                   if (!chapter.nextChapter) {

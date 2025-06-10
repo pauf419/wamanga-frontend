@@ -39,6 +39,7 @@ import { StatsBadges } from "../styled";
 import { SwiperSlide } from "swiper/react";
 import type { Comic } from "@/api/types/comic";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Props {
   titles: Comic[];
@@ -84,16 +85,16 @@ export const RecommendedSwiper = ({ titles }: Props) => {
             <Background $backgroundImage={comic.bannerPath}>
               <Comics>
                 <AdaptivePosterHolder>
-                  <Poster
-                    onClick={() =>
-                      router.push(`/${comic.seoGenre}/${comic.alternativeName}`)
-                    }
-                    src={comic.imagePath}
-                    alt="poster"
-                    width={250}
-                    height={350}
-                    unoptimized
-                  />
+                  <Link href={`/${comic.seoGenre}/${comic.alternativeName}`}>
+                    <Poster
+                      src={comic.imagePath}
+                      alt="poster"
+                      width={250}
+                      height={350}
+                      unoptimized
+                    />
+                  </Link>
+
                   <BadgesAdaptive>
                     <Badge
                       textColor={colors.background}
@@ -131,11 +132,14 @@ export const RecommendedSwiper = ({ titles }: Props) => {
                     <StatsBadge icon={Icon.VIEW} amount={comic.views} />
                   </StatsBadges>
                   <Buttons>
-                    <OpenButton
-                      href={`/${comic.seoGenre}/${comic.alternativeName}`}
-                    >
-                      Открыть
-                    </OpenButton>
+                    <Link href={`/${comic.seoGenre}/${comic.alternativeName}`}>
+                      {" "}
+                      <OpenButton
+                        href={`/${comic.seoGenre}/${comic.alternativeName}`}
+                      >
+                        Открыть
+                      </OpenButton>
+                    </Link>
                     <FavouriteButton>
                       <FavouriteIcon />В закладки
                     </FavouriteButton>

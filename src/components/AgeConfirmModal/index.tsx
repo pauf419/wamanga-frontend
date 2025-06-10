@@ -16,13 +16,13 @@ import { useStore } from "@/app/store/useStore";
 import type { User } from "@/api/types/user";
 import { redirect, useRouter } from "next/navigation";
 import { ButtonsWrapper, Main, ModalSCBlurred, Title, Wrapper } from "./styled";
+import Link from "next/link";
 
 interface Props {
   href: string;
 }
 
 const AgeConfirmModal = ({ href }: Props) => {
-  const router = useRouter();
   const [state, setState] = useState<boolean>(
     !localStorage.getItem("isAgeConfirmed")
   );
@@ -63,12 +63,9 @@ const AgeConfirmModal = ({ href }: Props) => {
                       <button className="button-filled" onClick={handleClick}>
                         Да
                       </button>
-                      <button
-                        className="button-filled"
-                        onClick={() => router.push(href)}
-                      >
+                      <Link className="button-filled" href={href}>
                         Нет
-                      </button>
+                      </Link>
                     </ButtonsWrapper>
                   </Wrapper>
                 </ModalContent>

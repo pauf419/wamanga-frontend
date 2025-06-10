@@ -22,10 +22,9 @@ export const ComicUnit = ({ comic }: Props) => {
 
   return (
     <Wrapper>
-      <Poster
-        src={comic.imagePath}
-        onClick={() => router.push(`/admin/title/${comic.alternativeName}`)}
-      />
+      <Link href={`/admin/title/${comic.alternativeName}`}>
+        <Poster src={comic.imagePath} />
+      </Link>
       <RoleSegregator allowedRoles={["owner", "admin"]}>
         <EditButton href={`/admin/title/${comic.alternativeName}/edit`}>
           <PencilIcon />

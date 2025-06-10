@@ -24,6 +24,7 @@ import {
   Separator,
 } from "@/app/[genre]/[slug]/MainSection/styled";
 import { Tooltip } from "@mui/material";
+import Link from "next/link";
 
 interface Props {
   comic: Comic;
@@ -75,13 +76,13 @@ export const ComicInfoPopup = ({ comic, onClose, chaptersInfo }: Props) => {
         {chaptersInfo ? (
           <>
             {chaptersInfo.firstChapter ? (
-              <a
+              <Link
                 href={`/${comic.seoGenre}/${comic.alternativeName}/${chaptersInfo.firstChapter.slug}`}
                 className="button-filled"
               >
                 <BookIcon />
                 Читать
-              </a>
+              </Link>
             ) : (
               <Tooltip title="Нет доступных глав">
                 <button className="button-filled button-filled-disabled">
@@ -105,13 +106,13 @@ export const ComicInfoPopup = ({ comic, onClose, chaptersInfo }: Props) => {
           </div>
         )}
         <Flexbox>
-          <a
+          <Link
             href={`/${comic.seoGenre}/${comic.alternativeName}`}
             className="outline-button"
             style={{ minWidth: 89 }}
           >
             К тайтлу
-          </a>
+          </Link>
           <Tooltip title="Эта функция еще в разработке">
             <button
               className="button-filled button-filled-disabled"

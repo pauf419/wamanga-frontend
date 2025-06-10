@@ -78,6 +78,7 @@ export const SwiperComic = styled.div<{ $adaptive: boolean }>`
 export const ComicInfo = styled.div<{ $isExtended: boolean }>`
   cursor: pointer;
   position: absolute;
+  color: #fff;
   ${(props) =>
     props.$isExtended
       ? `

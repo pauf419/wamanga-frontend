@@ -3,8 +3,12 @@
 import { colors } from "@/const";
 import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
-export const SidebarTabSC = styled.a<{ $isActive?: boolean; $mobile: boolean }>`
+export const SidebarTabSC = styled(Link)<{
+  $isActive?: boolean;
+  $mobile: boolean;
+}>`
   position: relative;
   display: flex;
   align-items: center;

@@ -28,37 +28,29 @@ interface Props {
 }
 
 export const ChapterUnit = ({ chapter, title }: Props) => {
-  const router = useRouter();
-
-  console.log(chapter);
-
   return (
-    <Wrapper
-      onClick={() =>
-        router.push(
-          `/${title.seoGenre}/${title.alternativeName}/${chapter.slug}`
-        )
-      }
-    >
-      <Segment>
-        <Title>
-          {chapter.titleSys
-            ? chapter.title
-            : `Глава ${chapter.numberChapter} - ${chapter.title}`}
-        </Title>
-        <Tools>
-          <Badges>
-            <StatBadge>
-              <StatIcon as={LikeIcon} />
-              <Stat>{chapter.likes}</Stat>
-            </StatBadge>
-          </Badges>
-          <CreatedAt>
-            {timeAgo(new Date(chapter.uploadDate).getTime())}
-          </CreatedAt>
-        </Tools>
-      </Segment>
-      <Segment></Segment>
-    </Wrapper>
+    <Link href={`/${title.seoGenre}/${title.alternativeName}/${chapter.slug}`}>
+      <Wrapper>
+        <Segment>
+          <Title>
+            {chapter.titleSys
+              ? chapter.title
+              : `Глава ${chapter.numberChapter} - ${chapter.title}`}
+          </Title>
+          <Tools>
+            <Badges>
+              <StatBadge>
+                <StatIcon as={LikeIcon} />
+                <Stat>{chapter.likes}</Stat>
+              </StatBadge>
+            </Badges>
+            <CreatedAt>
+              {timeAgo(new Date(chapter.uploadDate).getTime())}
+            </CreatedAt>
+          </Tools>
+        </Segment>
+        <Segment></Segment>
+      </Wrapper>
+    </Link>
   );
 };

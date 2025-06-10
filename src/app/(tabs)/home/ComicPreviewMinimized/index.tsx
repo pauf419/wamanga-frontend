@@ -19,6 +19,7 @@ import Typography from "@mui/material/Typography";
 import { ComicInfoPopup } from "../ComicInfoPopup";
 import PopoverIcon from "@icons/svg/popover.svg";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface ComicPreviewProps {
   nested?: boolean;
@@ -41,34 +42,31 @@ export const ComicPreviewMinimized: FC<ComicPreviewProps> = ({
 
   const open = Boolean(anchorEl);
   const id = open ? comic.alternativeName : undefined;
-  const router = useRouter();
 
   if (!comic || !comic.name) return <h1>No comic</h1>;
 
   return (
     <SwiperComic $nested={nested}>
-      <ComicPoster
-        onClick={() =>
-          router.push(`/${comic.seoGenre}/${comic.alternativeName}`)
-        }
-        src={comic.imagePath ? comic.imagePath : "/test-1.webp"}
-        alt="Comic"
-        width={200}
-        height={350}
-      />
-      <ComicInfo
-        onClick={() =>
-          router.push(`/${comic.seoGenre}/${comic.alternativeName}`)
-        }
-      >
-        <ComicTitle>{comic.name}</ComicTitle>
-        <ComicType>{comic.type}</ComicType>
-        <StatsBadges>
-          <StatsBadge icon={Icon.LIKE} amount={comic.likes} />
-          <StatsBadge icon={Icon.VIEW} amount={comic.views} />
-        </StatsBadges>
-        <ComicStatus>{comic.status}</ComicStatus>
-      </ComicInfo>
+      <Link href={`/${comic.seoGenre}/${comic.alternativeName}`}>
+        <ComicPoster
+          src={comic.imagePath ? comic.imagePath : "/test-1.webp"}
+          alt="Comic"
+          width={200}
+          height={350}
+        />
+      </Link>
+
+      <Link href={`/${comic.seoGenre}/${comic.alternativeName}`}>
+        <ComicInfo>
+          <ComicTitle>{comic.name}</ComicTitle>
+          <ComicType>{comic.type}</ComicType>
+          <StatsBadges>
+            <StatsBadge icon={Icon.LIKE} amount={comic.likes} />
+            <StatsBadge icon={Icon.VIEW} amount={comic.views} />
+          </StatsBadges>
+          <ComicStatus>{comic.status}</ComicStatus>
+        </ComicInfo>
+      </Link>
       <PopoverButton aria-describedby={id} onClick={handleClick}>
         <PopoverIcon />
       </PopoverButton>

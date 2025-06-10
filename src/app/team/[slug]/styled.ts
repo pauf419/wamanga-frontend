@@ -219,7 +219,7 @@ export const Link = styled.div`
   padding: 6px 0;
 `;
 
-export const LinkCursor = styled.a``;
+export const LinkCursor = styled(Link)``;
 
 export const CursorIconWrapper = styled.div`
   border-radius: 12px;

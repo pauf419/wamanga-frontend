@@ -482,3 +482,8 @@ button {
     color: rgba(248, 75, 75) !important;
   }
 }
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
