@@ -68,8 +68,6 @@ const HomePage = async () => {
     } catch (error) {
       console.error("getHomePage error:", error);
     }
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
   console.log("FETCHING HOME PAGE - DONE");
 
@@ -79,6 +77,7 @@ const HomePage = async () => {
   const newsTitles = homePageResponse.top;
   const randomTitles = homePageResponse.random;
   const teams = homePageResponse.team;
+  console.log(homePageResponse);
   console.log("FETCHING PROCESSING");
   const processingMangas = await getProcessingMangas(tokens);
   console.log("FETCHING PROCESSING - DONE");
