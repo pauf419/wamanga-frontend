@@ -51,13 +51,22 @@ interface Props {
 }
 
 const Header = ({ user }: Props) => {
-  const isVerify = localStorage.getItem("verify");
-  const boolVerify = isVerify ? isVerify === "true" && true : false;
-  const [modalState, setModalState] = React.useState<ModalState>({
+  const [modalState, setModalState] = useState<ModalState>({
     signUp: false,
     signIn: false,
-    verify: boolVerify,
+    verify: false,
   });
+  const [boolVerify, setBoolVerify] = useState<boolean>(false);
+
+  useEffect(() => {
+    const isVerify = localStorage.getItem("verify");
+    const bVerify = isVerify === "true";
+    setBoolVerify(bVerify);
+    setModalState((prev) => ({
+      ...prev,
+      verify: bVerify,
+    }));
+  }, []);
 
   const [titles, setTitles] = useState<Comic[]>([]);
   const [searchActive, setSearchActive] = useState<boolean>(false);
