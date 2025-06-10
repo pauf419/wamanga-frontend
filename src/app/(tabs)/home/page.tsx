@@ -51,8 +51,10 @@ const HomePage = async () => {
 
   const tokens = await getTokens();
 
+  console.log("FETCHING HOME PAGE");
   let homePageResponse;
   while (true) {
+    console.log("ATTEMPT");
     try {
       homePageResponse = await getHomePage(tokens);
 
@@ -69,6 +71,7 @@ const HomePage = async () => {
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
+  console.log("FETCHING HOME PAGE - DONE");
 
   const recommendedTitles = homePageResponse.rec;
   const recentlyUpdatedTitles = homePageResponse.recently;
@@ -76,7 +79,9 @@ const HomePage = async () => {
   const newsTitles = homePageResponse.top;
   const randomTitles = homePageResponse.random;
   const teams = homePageResponse.team;
+  console.log("FETCHING PROCESSING");
   const processingMangas = await getProcessingMangas(tokens);
+  console.log("FETCHING PROCESSING - DONE");
 
   return (
     <BasePage isImageBehind>
