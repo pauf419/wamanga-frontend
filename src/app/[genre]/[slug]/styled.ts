@@ -42,7 +42,6 @@ export const Content = styled.div`
   max-width: 1536px;
   padding: 168px 24px 0;
   margin: 0 auto;
-  justify-items: end;
 
   @media (max-width: 1200px) {
     grid-template-columns: auto;
@@ -93,11 +92,6 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-width: 270px;
-
-  @media (max-width: 1200px) {
-    max-width: 100%;
-  }
 `;
 
 export const Title = styled.h1`
@@ -117,14 +111,11 @@ export const Comics = styled.div`
 `;
 
 export const Poster = styled(Image)`
-  width: 270px;
-  height: 370px;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
   border-radius: 16px;
 
   @media (max-width: 1200px) {
-    width: 100%;
-    height: 100%;
     border-radius: 0;
   }
 `;

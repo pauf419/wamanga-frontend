@@ -1,4 +1,8 @@
-import { getBySlug, incrementMangaViews } from "@/api/title";
+import {
+  getBySlug,
+  getMangaChaptersMinimalInfo,
+  incrementMangaViews,
+} from "@/api/title";
 import ReaderBody from "./ReaderBody";
 import {
   getChapterById,
@@ -69,7 +73,9 @@ const ReaderPage = async ({
   const user = await getSession();
   const title = await getBySlug(titleAlternativeName);
   const chapterEl = await getChapterBySlug(title._id, chapter);
-  await incrementChapterViews(chapterEl._id);
+  incrementChapterViews(chapterEl._id);
+  const info = await getMangaChaptersMinimalInfo(title._id);
+  if (info.chapters) title.chapters = info.chapters;
   const tokens = await getTokens();
   const nonce = await createChapterNonce(chapterEl._id, tokens);
 
