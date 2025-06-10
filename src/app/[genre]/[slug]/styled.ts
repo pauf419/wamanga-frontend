@@ -111,11 +111,14 @@ export const Comics = styled.div`
 `;
 
 export const Poster = styled(Image)`
-  width: 100%;
-  height: 100%;
+  width: 260px;
+  height: 370px;
+  object-fit: cover;
   border-radius: 16px;
 
   @media (max-width: 1200px) {
+    width: 100%;
+    height: 100%;
     border-radius: 0;
   }
 `;
