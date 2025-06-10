@@ -39,7 +39,7 @@ export async function getHomePage(tokens: {
 }): Promise<HomePageResponse> {
   try {
     const cookieHeader = `access_token=${tokens.accessToken}; refresh_token=${tokens.refreshToken}`;
-
+    console.log($apiSSR);
     const res = await $apiSSR.get("/user/homePage", {
       headers: {
         Cookie: cookieHeader,

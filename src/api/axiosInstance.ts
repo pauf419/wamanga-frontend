@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export const API_URL = process.env.API_URL;
+export const API_URL = "http://localhost:3011";
+export const API_SSR_URL = "https://wamanga.ru/api/v1";
 
 export const $api = axios.create({
   baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 5000,
   withCredentials: true,
 });
 
@@ -16,15 +16,13 @@ export const $apiWithoutAuth = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 5000,
   withCredentials: true,
 });
 
 export const $apiSSR = axios.create({
-  baseURL: process.env.SSR_API_URL,
+  baseURL: API_SSR_URL,
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 5000,
   withCredentials: true,
 });

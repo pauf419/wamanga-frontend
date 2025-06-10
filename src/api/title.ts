@@ -1,5 +1,5 @@
 import { data } from "motion/react-client";
-import { $api, $apiSSR, $apiWithoutAuth } from "./axiosInstance";
+import { $api, $apiWithoutAuth } from "./axiosInstance";
 import type {
   Comic,
   CreateComicDto,
@@ -192,11 +192,9 @@ export async function searchManga(
   offset: number,
   limit: number,
   startYear: number | undefined,
-  endYear: number | undefined,
-  ssr: boolean = false
+  endYear: number | undefined
 ): Promise<Comic[]> {
-  const base = ssr ? $apiSSR : $apiWithoutAuth;
-  const res = await base.get("/manga/search", {
+  const res = await $apiWithoutAuth.get("/manga/search", {
     params: {
       mangaType,
       translationStatus,
