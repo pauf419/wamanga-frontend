@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const API_URL = "http://localhost:3011";
-export const API_SSR_URL = "https://wamanga.ru/api/v1";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL;
+export const API_SSR_URL = process.env.NEXT_PUBLIC_API_SSR_URL;
 
 export const $api = axios.create({
   baseURL: API_URL,
