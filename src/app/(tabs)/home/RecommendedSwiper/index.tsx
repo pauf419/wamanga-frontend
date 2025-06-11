@@ -40,9 +40,10 @@ import { SwiperSlide } from "swiper/react";
 import type { Comic } from "@/api/types/comic";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Skeleton } from "@mui/material";
 
 interface Props {
-  titles: Comic[];
+  titles: Comic[] | undefined;
 }
 
 export const RecommendedSwiper = ({ titles }: Props) => {
@@ -75,80 +76,153 @@ export const RecommendedSwiper = ({ titles }: Props) => {
         autoplay={{ delay: 5000 }}
         loop
       >
-        {titles.map((comic, index) => (
+        {titles ? (
+          titles.map((comic, index) => (
+            <SwiperSlide
+              style={{
+                height: "80vh",
+              }}
+              key={index}
+            >
+              <Background $backgroundImage={comic.bannerPath}>
+                <Comics>
+                  <AdaptivePosterHolder>
+                    <Link href={`/${comic.seoGenre}/${comic.alternativeName}`}>
+                      <Poster
+                        src={comic.imagePath}
+                        alt={comic.name}
+                        width={250}
+                        height={350}
+                        unoptimized
+                      />
+                    </Link>
+
+                    <BadgesAdaptive>
+                      <Badge
+                        textColor={colors.background}
+                        backgroundColor={colors.orange}
+                      >
+                        {comic.type}
+                      </Badge>
+                      <Badge
+                        textColor={colors.text}
+                        backgroundColor={colors.primary}
+                      >
+                        {comic.status}
+                      </Badge>
+                    </BadgesAdaptive>
+                  </AdaptivePosterHolder>
+                  <Info>
+                    <BadgesAdaptiveMinus>
+                      <Badge
+                        textColor={colors.text}
+                        backgroundColor={colors.primary}
+                      >
+                        {comic.status}
+                      </Badge>
+                      <Badge
+                        textColor={colors.background}
+                        backgroundColor={colors.orange}
+                      >
+                        {comic.type}
+                      </Badge>
+                    </BadgesAdaptiveMinus>
+                    <Title>{comic.name}</Title>
+                    <Description>{comic.description}</Description>
+                    <StatsBadges>
+                      <StatsBadge icon={Icon.LIKE} amount={comic.likes} />
+                      <StatsBadge icon={Icon.VIEW} amount={comic.views} />
+                    </StatsBadges>
+                    <Buttons>
+                      <Link
+                        href={`/${comic.seoGenre}/${comic.alternativeName}`}
+                      >
+                        {" "}
+                        <OpenButton
+                          href={`/${comic.seoGenre}/${comic.alternativeName}`}
+                        >
+                          Открыть
+                        </OpenButton>
+                      </Link>
+                      <FavouriteButton>
+                        <FavouriteIcon />В закладки
+                      </FavouriteButton>
+                    </Buttons>
+                  </Info>
+                </Comics>
+              </Background>
+            </SwiperSlide>
+          ))
+        ) : (
           <SwiperSlide
             style={{
               height: "80vh",
             }}
-            key={index}
           >
-            <Background $backgroundImage={comic.bannerPath}>
+            <Background $backgroundImage={""}>
               <Comics>
                 <AdaptivePosterHolder>
-                  <Link href={`/${comic.seoGenre}/${comic.alternativeName}`}>
-                    <Poster
-                      src={comic.imagePath}
-                      alt="poster"
-                      width={250}
-                      height={350}
-                      unoptimized
-                    />
-                  </Link>
+                  <Skeleton style={{ borderRadius: 16 }}>
+                    <div style={{ width: 200, height: 500 }}></div>
+                  </Skeleton>
 
-                  <BadgesAdaptive>
-                    <Badge
-                      textColor={colors.background}
-                      backgroundColor={colors.orange}
-                    >
-                      {comic.type}
-                    </Badge>
-                    <Badge
-                      textColor={colors.text}
-                      backgroundColor={colors.primary}
-                    >
-                      {comic.status}
-                    </Badge>
-                  </BadgesAdaptive>
+                  <Skeleton>
+                    <BadgesAdaptive style={{ height: 24 }}>
+                      <Badge
+                        textColor={colors.background}
+                        backgroundColor={colors.orange}
+                      >
+                        Manga
+                      </Badge>
+                      <Badge
+                        textColor={colors.text}
+                        backgroundColor={colors.primary}
+                      >
+                        active
+                      </Badge>
+                    </BadgesAdaptive>
+                  </Skeleton>
                 </AdaptivePosterHolder>
                 <Info>
-                  <BadgesAdaptiveMinus>
-                    <Badge
-                      textColor={colors.text}
-                      backgroundColor={colors.primary}
-                    >
-                      {comic.status}
-                    </Badge>
-                    <Badge
-                      textColor={colors.background}
-                      backgroundColor={colors.orange}
-                    >
-                      {comic.type}
-                    </Badge>
-                  </BadgesAdaptiveMinus>
-                  <Title>{comic.name}</Title>
-                  <Description>{comic.description}</Description>
-                  <StatsBadges>
-                    <StatsBadge icon={Icon.LIKE} amount={comic.likes} />
-                    <StatsBadge icon={Icon.VIEW} amount={comic.views} />
-                  </StatsBadges>
-                  <Buttons>
-                    <Link href={`/${comic.seoGenre}/${comic.alternativeName}`}>
-                      {" "}
-                      <OpenButton
-                        href={`/${comic.seoGenre}/${comic.alternativeName}`}
+                  <Skeleton>
+                    <BadgesAdaptiveMinus style={{ height: 24 }}>
+                      <Badge
+                        textColor={colors.text}
+                        backgroundColor={colors.primary}
                       >
-                        Открыть
-                      </OpenButton>
-                    </Link>
-                    <FavouriteButton>
-                      <FavouriteIcon />В закладки
-                    </FavouriteButton>
-                  </Buttons>
+                        MAnga
+                      </Badge>
+                      <Badge
+                        textColor={colors.background}
+                        backgroundColor={colors.orange}
+                      >
+                        active
+                      </Badge>
+                    </BadgesAdaptiveMinus>
+                  </Skeleton>
+                  <Skeleton>
+                    <Title>Skeleton</Title>
+                    <Description style={{ width: 300 }}>Skeleton</Description>
+                  </Skeleton>
+                  <Skeleton>
+                    <StatsBadges style={{ height: 24 }}>
+                      <StatsBadge icon={Icon.LIKE} amount={1000} />
+                      <StatsBadge icon={Icon.VIEW} amount={1000} />
+                    </StatsBadges>
+                  </Skeleton>
+                  <Skeleton>
+                    <Buttons style={{ height: 36, width: 150 }}>
+                      <OpenButton href="/">Открыть</OpenButton>
+                      <FavouriteButton>
+                        <FavouriteIcon />В закладки
+                      </FavouriteButton>
+                    </Buttons>
+                  </Skeleton>
                 </Info>
               </Comics>
             </Background>
           </SwiperSlide>
-        ))}
+        )}
       </SwiperSC>
 
       <Arrows>

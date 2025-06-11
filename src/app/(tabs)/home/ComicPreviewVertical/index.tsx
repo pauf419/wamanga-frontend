@@ -108,7 +108,7 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
         <ComicPoster
           $isExtended={isExtended}
           src={comic.imagePath || "/test-1.webp"}
-          alt="Comic"
+          alt={comic.name}
           width={200}
           height={350}
           unoptimized

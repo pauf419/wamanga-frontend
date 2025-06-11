@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { SwiperGridWrapper, SwiperSlideSC } from "./styled";
+import { SkeletonWrapper, SwiperGridWrapper, SwiperSlideSC } from "./styled";
 import { Swiper } from "../Swiper";
 import { ComicPreviewVertical } from "../ComicPreviewVertical";
 import type { Comic } from "@/api/types/comic";
+import { ComicPreviewSkeleton } from "../ComicPreviewSkeleton";
 
 interface Props {
-  titles: Comic[];
+  titles: Comic[] | undefined;
 }
 
 const chunkArray = <T,>(array: T[], size: number): T[][] => {
@@ -17,15 +18,40 @@ const chunkArray = <T,>(array: T[], size: number): T[][] => {
 };
 
 export const RecentSwiper = ({ titles }: Props) => {
-  const chunks = chunkArray(titles, 6);
+  const isLoading = !titles;
+  const visibleItems = isLoading ? Array.from({ length: 27 }) : titles;
+  const chunks = chunkArray(visibleItems, 6);
+
+  if (isLoading)
+    return (
+      <SkeletonWrapper>
+        {chunks.map((chunk, index) => (
+          <SwiperGridWrapper key={index}>
+            {chunk.map((comic, idx) =>
+              isLoading ? (
+                <ComicPreviewSkeleton key={idx} />
+              ) : (
+                <ComicPreviewVertical
+                  key={(comic as Comic).id}
+                  comic={comic as Comic}
+                />
+              )
+            )}
+          </SwiperGridWrapper>
+        ))}
+      </SkeletonWrapper>
+    );
 
   return (
     <Swiper type="vertical" buttons={false} bottomControlls padding={0}>
       {chunks.map((chunk, index) => (
         <SwiperSlideSC key={index}>
           <SwiperGridWrapper>
-            {chunk.map((comic) => (
-              <ComicPreviewVertical key={comic.id} comic={comic} />
+            {chunk.map((comic, idx) => (
+              <ComicPreviewVertical
+                key={(comic as Comic).id}
+                comic={comic as Comic}
+              />
             ))}
           </SwiperGridWrapper>
         </SwiperSlideSC>

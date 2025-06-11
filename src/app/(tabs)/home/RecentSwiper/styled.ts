@@ -39,3 +39,9 @@ export const ScrollBarIndicator = styled.div<{ $width: number }>`
   transition: 0.4s all ease;
   width: ${(props) => props.$width}%;
 `;
+
+export const SkeletonWrapper = styled.div`
+  display: flex;
+  gap: 12px;
+  overflow: hidden;
+`;

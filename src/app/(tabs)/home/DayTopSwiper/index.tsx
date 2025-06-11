@@ -1,18 +1,32 @@
 "use client";
 
 import React from "react";
-import { SwiperSlideSC } from "./styled";
+import {
+  SimpleSkeletonSwiper,
+  SimpleSkeletonWrapper,
+  SwiperSlideSC,
+} from "./styled";
 import { Swiper } from "../Swiper";
 import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
 import { getDayTop } from "@/api/mocks/queries/use-get-day-top";
 import type { Comic } from "@/api/types/comic";
 import { ComicPreviewVertical } from "../ComicPreviewVertical";
+import { ComicPreviewSkeleton } from "../ComicPreviewSkeleton";
 
 interface Props {
-  titles: Comic[];
+  titles: Comic[] | undefined;
 }
 
 export const DayTopSwiper = ({ titles }: Props) => {
+  if (!titles)
+    return (
+      <SimpleSkeletonWrapper>
+        {Array.from({ length: 9 }).map((el, index) => (
+          <ComicPreviewSkeleton key={index} />
+        ))}
+      </SimpleSkeletonWrapper>
+    );
+
   return (
     <Swiper type="vertical" buttons={false} bottomControlls padding={0}>
       {titles.map((comic, index) => (

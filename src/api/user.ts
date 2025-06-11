@@ -33,17 +33,9 @@ export interface HomePageResponse {
   random: Comic[];
 }
 
-export async function getHomePage(tokens: {
-  accessToken?: string;
-  refreshToken?: string;
-}): Promise<HomePageResponse> {
+export async function getHomePage(): Promise<HomePageResponse> {
   try {
-    const cookieHeader = `access_token=${tokens.accessToken}; refresh_token=${tokens.refreshToken}`;
-    const res = await $apiSSR.get("/user/homePage", {
-      headers: {
-        Cookie: cookieHeader,
-      },
-    });
+    const res = await $apiWithoutAuth.get("/user/homePage");
     return res.data;
   } catch (e) {
     console.error(e);
@@ -66,18 +58,11 @@ export async function toggleUserSettings(fieldName: string): Promise<User> {
   return res.data;
 }
 
-export async function getProcessingMangas(tokens: {
-  accessToken?: string;
-  refreshToken?: string;
-}): Promise<ProcessingManga[] | undefined> {
+export async function getProcessingMangas(): Promise<
+  ProcessingManga[] | undefined
+> {
   try {
-    const cookieHeader = `access_token=${tokens.accessToken}; refresh_token=${tokens.refreshToken}`;
-
-    const res = await $apiSSR.get("/user/processing", {
-      headers: {
-        Cookie: cookieHeader,
-      },
-    });
+    const res = await $apiSSR.get("/user/processing");
 
     return res.data;
   } catch (e) {

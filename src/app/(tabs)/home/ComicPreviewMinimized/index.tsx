@@ -50,7 +50,7 @@ export const ComicPreviewMinimized: FC<ComicPreviewProps> = ({
       <Link href={`/${comic.seoGenre}/${comic.alternativeName}`}>
         <ComicPoster
           src={comic.imagePath ? comic.imagePath : "/test-1.webp"}
-          alt="Comic"
+          alt={comic.name}
           width={200}
           height={350}
         />

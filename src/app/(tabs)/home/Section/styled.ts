@@ -6,6 +6,7 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 
 export const SectionSC = styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 20px;

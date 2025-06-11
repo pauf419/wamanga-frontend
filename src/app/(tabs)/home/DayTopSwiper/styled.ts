@@ -11,3 +11,9 @@ export const SwiperSlideSC = styled(SwiperSlide)`
   max-width: 424px;
   border-radius: 12px;
 `;
+
+export const SimpleSkeletonWrapper = styled.div`
+  display: flex;
+  width: 2000px;
+  gap: 12px;
+`;

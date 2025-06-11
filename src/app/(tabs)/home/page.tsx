@@ -38,38 +38,11 @@ import { getTeamsLeaderboard } from "@/api/team";
 import { TeamsLeaderboardSwiper } from "./TeamsLeaderboardSwiper";
 import { getHomePage, getProcessingMangas } from "@/api/user";
 import { ProcessingSwiper } from "./ProcessingSwiper";
+import { HomePageBody } from "./HomePageBody";
 
 const HomePage = async () => {
-  /*const recommendedTitles = await getRecommendedTitles();
-  const recentlyUpdatedTitles = await getRecentlyUpdated();
-  const dailyTopTitles = await getDayTop();
-  const newsTitles = await getNews();
-  const randomTitles = await getRandomList(20);
-  const teams = await getTeamsLeaderboard(20);
-  const tokens = await getTokens();
-  const processingMangas = await getProcessingMangas(tokens);*/
-
-  const tokens = await getTokens();
-
-  let homePageResponse;
-  while (true) {
-    try {
-      homePageResponse = await getHomePage(tokens);
-
-      if (
-        homePageResponse?.rec &&
-        homePageResponse?.recently &&
-        homePageResponse?.topChupter
-      ) {
-        break;
-      }
-    } catch (error) {
-      console.error("getHomePage error:", error);
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-  }
-
+  /*const tokens = await getTokens();
+  const homePageResponse = await getHomePage(tokens);
   const recommendedTitles = homePageResponse.rec;
   const recentlyUpdatedTitles = homePageResponse.recently;
   const dailyTopTitles = homePageResponse.top;
@@ -117,6 +90,12 @@ const HomePage = async () => {
         </NewsSection>
         <AdsFrame frameName={AdsFrameNames.HomeBottom} />
       </Container>
+    </BasePage>
+  );*/
+
+  return (
+    <BasePage>
+      <HomePageBody />
     </BasePage>
   );
 };
