@@ -1,14 +1,8 @@
 "use client";
 
 import React from "react";
-import {
-  SimpleSkeletonSwiper,
-  SimpleSkeletonWrapper,
-  SwiperSlideSC,
-} from "./styled";
+import { SimpleSkeletonWrapper, SwiperSlideSC } from "./styled";
 import { Swiper } from "../Swiper";
-import { ComicPreviewMinimized } from "../ComicPreviewMinimized";
-import { getDayTop } from "@/api/mocks/queries/use-get-day-top";
 import type { Comic } from "@/api/types/comic";
 import { ComicPreviewVertical } from "../ComicPreviewVertical";
 import { ComicPreviewSkeleton } from "../ComicPreviewSkeleton";
