@@ -14,7 +14,7 @@ interface Props {
   titles: Comic[] | undefined;
 }
 
-export const LatestSwiper = ({ titles }: Props) => {
+const LatestSwiper = ({ titles }: Props) => {
   if (!titles)
     return (
       <SimpleSkeletonWrapper>
@@ -34,3 +34,5 @@ export const LatestSwiper = ({ titles }: Props) => {
     </Swiper>
   );
 };
+
+export default LatestSwiper;

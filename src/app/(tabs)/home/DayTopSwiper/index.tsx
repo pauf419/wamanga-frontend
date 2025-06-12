@@ -11,7 +11,7 @@ interface Props {
   titles: Comic[] | undefined;
 }
 
-export const DayTopSwiper = ({ titles }: Props) => {
+const DayTopSwiper = ({ titles }: Props) => {
   if (!titles)
     return (
       <SimpleSkeletonWrapper>
@@ -31,3 +31,5 @@ export const DayTopSwiper = ({ titles }: Props) => {
     </Swiper>
   );
 };
+
+export default DayTopSwiper;

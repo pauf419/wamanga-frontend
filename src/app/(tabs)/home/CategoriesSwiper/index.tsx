@@ -14,7 +14,7 @@ interface Props {
   titles: Comic[] | undefined;
 }
 
-export const CategoriesSwiper = ({ titles }: Props) => {
+const CategoriesSwiper = ({ titles }: Props) => {
   if (!titles)
     return (
       <SimpleSkeletonWrapper>
@@ -34,3 +34,5 @@ export const CategoriesSwiper = ({ titles }: Props) => {
     </Swiper>
   );
 };
+
+export default CategoriesSwiper;

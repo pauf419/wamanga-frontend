@@ -46,7 +46,7 @@ interface Props {
   titles: Comic[] | undefined;
 }
 
-export const RecommendedSwiper = ({ titles }: Props) => {
+const RecommendedSwiper = ({ titles }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sliderRef = useRef<any>(null);
 
@@ -236,3 +236,5 @@ export const RecommendedSwiper = ({ titles }: Props) => {
     </RecentSwiperSC>
   );
 };
+
+export default RecommendedSwiper;

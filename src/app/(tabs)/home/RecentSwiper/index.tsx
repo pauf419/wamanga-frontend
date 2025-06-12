@@ -17,7 +17,7 @@ const chunkArray = <T,>(array: T[], size: number): T[][] => {
   );
 };
 
-export const RecentSwiper = ({ titles }: Props) => {
+const RecentSwiper = ({ titles }: Props) => {
   const isLoading = !titles;
   const visibleItems = isLoading ? Array.from({ length: 27 }) : titles;
   const chunks = chunkArray(visibleItems, 6);
@@ -59,3 +59,5 @@ export const RecentSwiper = ({ titles }: Props) => {
     </Swiper>
   );
 };
+
+export default RecentSwiper;

@@ -14,7 +14,7 @@ interface Props {
   titles: ProcessingManga[] | undefined;
 }
 
-export const ProcessingSwiper = ({ titles }: Props) => {
+const ProcessingSwiper = ({ titles }: Props) => {
   if (!titles) {
     return (
       <SimpleSkeletonWrapper>
@@ -37,3 +37,5 @@ export const ProcessingSwiper = ({ titles }: Props) => {
     </Swiper>
   );
 };
+
+export default ProcessingSwiper;

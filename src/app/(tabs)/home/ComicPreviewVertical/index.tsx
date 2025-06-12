@@ -110,6 +110,7 @@ export const ComicPreviewVertical: FC<ComicPreviewProps> = ({
           src={comic.imagePath || "/test-1.webp"}
           alt={comic.name}
           width={200}
+          loading="lazy"
           height={350}
           unoptimized
         />
