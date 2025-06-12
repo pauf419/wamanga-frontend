@@ -48,6 +48,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "http",
+        hostname: "localhost",
+        port: "2170",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
         hostname: "69.55.49.138",
         port: "3011",
         pathname: "/**",
@@ -79,6 +85,12 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "cdn.worldom.ru",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "wamanga.me",
         port: "",
         pathname: "/**",
       },

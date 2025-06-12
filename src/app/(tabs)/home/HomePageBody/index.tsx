@@ -26,7 +26,9 @@ import { LatestSwiper } from "../LatestSwiper";
 
 export const HomePageBody = () => {
   const [homePage, setHomePage] = useState<HomePageResponse>();
-  const [processingMangas, setProcessingMangas] = useState<ProcessingManga[]>();
+  const [processingMangas, setProcessingMangas] = useState<
+    ProcessingManga[] | undefined
+  >(undefined);
 
   const fetchHomePage = async () => {
     const res = await getHomePage();
@@ -49,12 +51,16 @@ export const HomePageBody = () => {
         <Section title="Свежие обновления" link="/">
           <RecentSwiper titles={homePage?.recently} />
         </Section>
+
         <DayTopSection title="Продолжить чтение" link="/">
           <ProcessingSwiper titles={processingMangas} />
         </DayTopSection>
-        <DayTopSection title="Топ за день" link="/">
-          <DayTopSwiper titles={homePage?.top} />
-        </DayTopSection>
+
+        {homePage && homePage.top && (
+          <DayTopSection title="Топ за день" link="/">
+            <DayTopSwiper titles={homePage?.top} />
+          </DayTopSection>
+        )}
 
         <Section title="Команды" link="/">
           <TeamsLeaderboardSwiper teams={homePage?.team} />
