@@ -34,6 +34,11 @@ export async function incrementChapterViews(chapterId: string): Promise<any> {
   return res.data;
 }
 
+export async function deleteChapter(chapterId: string): Promise<any> {
+  const res = await $apiWithoutAuth.delete(`/chapters/${chapterId}`);
+  return res.data;
+}
+
 export async function createChapter(body: CreateChapterMultiuploadDto) {
   const formData = new FormData();
   formData.append("mangaId", body.mangaId);

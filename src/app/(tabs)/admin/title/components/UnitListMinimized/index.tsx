@@ -6,7 +6,7 @@ import {
   MiniBoxWrapper,
   SegmentSeparator,
 } from "../../../styled";
-import { Link } from "../ComicUnit/styled";
+import { LinkS } from "../ComicUnit/styled";
 import Input from "@/components/Input";
 import type { Chapter } from "@/api/types/chapter";
 import { useState } from "react";
@@ -17,6 +17,8 @@ import {
 } from "@/components/Chapters/styled";
 import NewIcon from "@icons/svg/admin-plus.svg";
 import { useRouter } from "next/navigation";
+import { ActionsWrapper, DeleteHandler } from "./styled";
+import { deleteChapter } from "@/api/chapter";
 
 interface Props {
   slug: string;
@@ -25,6 +27,18 @@ interface Props {
 
 const ChapterListMinimized = ({ slug, chapters }: Props) => {
   const router = useRouter();
+  const [chaptersDynamic, setChaptersDynamic] = useState<Chapter[]>(chapters);
+
+  const handleDelete = async (chapterId: string) => {
+    try {
+      await deleteChapter(chapterId);
+      setChaptersDynamic((prev) => {
+        return prev.filter((chapter) => chapter._id !== chapterId);
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const [filter, setFilter] = useState<string>();
   if (!chapters.length)
@@ -33,9 +47,12 @@ const ChapterListMinimized = ({ slug, chapters }: Props) => {
         <NoImage src="/no-comments.png" />
         <NoChaptersText>
           Глав нет...{" "}
-          <a className="a-primary" href={`/admin/title/${slug}/chapters/new`}>
+          <LinkS
+            className="a-primary"
+            href={`/admin/title/${slug}/chapters/new`}
+          >
             Создать новую ?
-          </a>
+          </LinkS>
         </NoChaptersText>
       </NoChaptersMessage>
     );
@@ -57,15 +74,20 @@ const ChapterListMinimized = ({ slug, chapters }: Props) => {
         />
       </SegmentSeparator>
       <GridContainer>
-        {chapters
+        {chaptersDynamic
           .sort((a, b) => b.numberChapter - a.numberChapter)
           .filter((chapter) => !filter || chapter.title.includes(filter))
           .map((chapter) => (
             <MiniBoxWrapper key={chapter._id} $uploaded={false}>
               <h3>Глава {chapter.numberChapter}</h3>
-              <Link href={`/admin/title/${slug}/chapters/${chapter.slug}`}>
-                Редактировать
-              </Link>
+              <ActionsWrapper>
+                <LinkS href={`/admin/title/${slug}/chapters/${chapter.slug}`}>
+                  Редактировать
+                </LinkS>
+                <DeleteHandler onClick={() => handleDelete(chapter._id)}>
+                  Удалить
+                </DeleteHandler>
+              </ActionsWrapper>
             </MiniBoxWrapper>
           ))}
       </GridContainer>

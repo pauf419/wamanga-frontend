@@ -16,7 +16,6 @@ import {
 } from "../../styled";
 import { redirect } from "next/navigation";
 import { getBySlug, getMangaChaptersMinimalInfo } from "@/api/title";
-import { Link } from "../components/ComicUnit/styled";
 import Input from "@/components/Input";
 import ChapterListMinimized from "../components/UnitListMinimized";
 import { Checkbox } from "@/components/Checkbox";

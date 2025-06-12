@@ -15,7 +15,7 @@ const AdminPage = async () => {
   const tokens = await getTokens();
   const titles = await adminPaginateTitles(
     0,
-    0,
+    20,
     "",
     tokens.accessToken,
     tokens.refreshToken

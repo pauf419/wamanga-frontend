@@ -237,6 +237,11 @@ export async function adminPaginateTitles(
   return res.data;
 }
 
+export async function deleteManga(mangaId: string): Promise<Comic> {
+  const res = await $apiWithoutAuth.post(`/manga/delete/${mangaId}`);
+  return res.data;
+}
+
 export async function getMangaChaptersMinimalInfo(
   mangaId: string,
   extended: boolean = false

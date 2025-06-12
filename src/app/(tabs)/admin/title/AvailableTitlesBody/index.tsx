@@ -26,6 +26,12 @@ const AvailableTitlesBody = ({ preset }: Props) => {
     }
   };
 
+  const deleteTitle = (titleId: string) => {
+    setTitles((prev) => {
+      return prev.filter((title) => title._id !== titleId);
+    });
+  };
+
   useEffect(() => {
     clearTimeout(sendTimeout);
     if (search) {
@@ -45,7 +51,7 @@ const AvailableTitlesBody = ({ preset }: Props) => {
       />
       <GridContainer>
         {titles.map((title) => (
-          <ComicUnit comic={title} key={title._id} />
+          <ComicUnit comic={title} deleteTitle={deleteTitle} key={title._id} />
         ))}
       </GridContainer>
     </>
