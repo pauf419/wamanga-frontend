@@ -50,13 +50,17 @@ export const MainSection = ({ comics }: Props) => {
   const [tabs, setTabs] = useState<string[]>(["Описание", "Главы"]);
   const [chaptersLoading, setChaptersLoading] = useState<boolean>(false);
   const [chapters, setChapters] = useState<Chapter[]>([]);
+  const [totalChapters, setTotalChapters] = useState<number>();
 
   const translator = getComicTranslator();
 
   const fetchChannel = async () => {
     try {
       const res = await getMangaChaptersMinimalInfo(comics._id);
-      if (res && res.chapters) setChapters(res.chapters);
+      if (res && res.chapters) {
+        setChapters(res.chapters);
+        setTotalChapters(res.totalChapters);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -123,10 +127,14 @@ export const MainSection = ({ comics }: Props) => {
               </Badges>
             </InfoTag>
             <InfoTag>
-              <InfoTagTitle>Количество глав</InfoTagTitle>
-              <ChapterCountWrapper>
-                <ChaptersCount>{comics.chapters.length}</ChaptersCount>
-              </ChapterCountWrapper>
+              {totalChapters && (
+                <>
+                  <InfoTagTitle>Количество глав</InfoTagTitle>
+                  <ChapterCountWrapper>
+                    <ChaptersCount>{totalChapters}</ChaptersCount>
+                  </ChapterCountWrapper>
+                </>
+              )}
               <AdsFrame frameName={AdsFrameNames.MangaBottom} />
               <HidesWhenMobile>
                 <CommentsTitle>Комментарии</CommentsTitle>
