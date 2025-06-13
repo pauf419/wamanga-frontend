@@ -2,6 +2,7 @@ import "@app/globals.css";
 import "@assets/fonts/fonts.css";
 import { LayoutSC } from "./layout.styled";
 import { headers } from "next/headers";
+import Script from "next/script";
 
 import Providers from "./Providers";
 import Sidebar from "@/components/Sidebar";
@@ -18,6 +19,18 @@ export default function RootLayout({
           href="https://cdn.adfinity.pro/code/css/adfinity.css"
           rel="stylesheet"
         ></link>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GCBZHB4YVB"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GCBZHB4YVB');
+          `}
+        </Script>
       </head>
       <body>
         <script
