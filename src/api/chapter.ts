@@ -61,6 +61,7 @@ export async function createChapter(body: CreateChapterMultiuploadDto) {
     headers: {
       "Content-Type": "multipart/form-data",
     },
+    timeout: 3000000,
   });
 
   return res.data;
