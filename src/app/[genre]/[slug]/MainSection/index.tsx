@@ -52,11 +52,9 @@ export const MainSection = ({ comics }: Props) => {
   const [chapters, setChapters] = useState<Chapter[]>([]);
   const [totalChapters, setTotalChapters] = useState<number>();
 
-  const translator = getComicTranslator();
-
   const fetchChannel = async () => {
     try {
-      const res = await getMangaChaptersMinimalInfo(comics._id);
+      const res = await getMangaChaptersMinimalInfo(comics._id, true);
       if (res && res.chapters) {
         setChapters(res.chapters);
         setTotalChapters(res.totalChapters);
