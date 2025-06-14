@@ -45,7 +45,7 @@ export const Content = styled.div`
 
   @media (max-width: 1200px) {
     grid-template-columns: auto;
-    padding: 80px 0 0;
+    padding: 64px 0 0;
   }
 `;
 

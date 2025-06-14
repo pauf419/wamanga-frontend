@@ -23,6 +23,4 @@ export const BasePageSC = styled.div`
   animation: opacity 0.2s ease-in-out;
 `;
 
-export const Content = styled.div<{ $isImageBehind: boolean }>`
-  margin-top: ${(props) => (props.$isImageBehind ? -sizes.headerHeight : 0)}px;
-`;
+export const Content = styled.div<{ $isImageBehind: boolean }>``;

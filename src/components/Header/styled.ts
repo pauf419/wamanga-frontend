@@ -8,16 +8,16 @@ import { SortingButton } from "@/app/team/[slug]/styled";
 import Link from "next/link";
 
 export const HeaderSC = styled.div`
-  position: sticky;
+  position: fixed;
   top: 0;
-  left: 0;
+  left: 83px;
   z-index: ${zIndex.header};
   display: flex;
   gap: 16px;
   align-items: center;
   justify-content: flex-end;
   justify-content: space-between;
-  width: 100%;
+  width: calc(100% - 83px);
   height: 80px;
   padding: 0 50px;
   background: ${colors.background + convertOpacityToHex(60)};
@@ -25,6 +25,8 @@ export const HeaderSC = styled.div`
 
   @media (max-width: 1200px) {
     height: 64px;
+    left: 0;
+    width: 100%;
     padding: 0 24px;
   }
 `;
