@@ -70,6 +70,31 @@ export const ReaderMain = styled.div`
   justify-content: center;
   overflow-x: hidden;
   align-items: center;
+  position: relative;
+`;
+
+export const ReaderTapButtonsWrapper = styled.div<{ $width: number }>`
+  max-width: ${(props) => (props.$width ? props.$width : 900)}px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+
+  margin-right: 83px;
+
+  @media (max-width: 1200px) {
+    margin-right: 0;
+  }
+`;
+
+export const ReaderTapLink = styled(Link)`
+  flex: 1;
+  width: 100%;
+`;
+
+export const ReaderNoChapter = styled.div`
+  flex: 1;
+  width: 100%;
 `;
 
 export const ReaderContentImage = styled.img<{ $width: number }>`

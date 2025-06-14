@@ -14,7 +14,10 @@ import {
   ReaderButton,
   ReaderContentImage,
   ReaderMain,
+  ReaderNoChapter,
   ReaderPageWrapper,
+  ReaderTapButtonsWrapper,
+  ReaderTapLink,
 } from "../styled";
 import { Comments } from "@/components/Comments";
 import { ComicTranslatorMinimized } from "@/components/ComicTranslatorMinimized";
@@ -400,6 +403,24 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
       />
       <Container>
         <ReaderMain>
+          {readerType === "book" && (
+            <ReaderTapButtonsWrapper $width={readerWidth}>
+              {chapter.prevChapter ? (
+                <ReaderTapLink
+                  href={`/${title.seoGenre}/${title.alternativeName}/${chapter.prevChapter.slug}`}
+                ></ReaderTapLink>
+              ) : (
+                <ReaderNoChapter></ReaderNoChapter>
+              )}
+              {chapter.nextChapter ? (
+                <ReaderTapLink
+                  href={`/${title.seoGenre}/${title.alternativeName}/${chapter.nextChapter.slug}`}
+                ></ReaderTapLink>
+              ) : (
+                <ReaderNoChapter></ReaderNoChapter>
+              )}
+            </ReaderTapButtonsWrapper>
+          )}
           <AdsFrameWrapper>
             <AdsFrame frameName={AdsFrameNames.Chapter} />
           </AdsFrameWrapper>
