@@ -6,9 +6,8 @@ import Link from "next/link";
 
 export const ReaderPageWrapper = styled.div`
   display: grid;
-  max-height: 100dvh;
   color: #fff;
-  overflow-y: auto;
+  overflow-y: hidden;
   border-left: 1px dashed rgba(143, 150, 163, 0.24);
 
   @media (max-width: 1200px) {
@@ -21,7 +20,8 @@ export const Container = styled.div`
   max-width: 1200px;
   padding: 0 24px;
   margin: 0 auto;
-  margin-bottom: 80px;
+  margin-top: 64px;
+  overflow-y: auto;
 `;
 
 export const InfoContainer = styled.div`

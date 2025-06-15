@@ -97,6 +97,7 @@ export type ReaderScrollType = "center" | "end" | "start";
 const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
   const setUser = useUserStore((state) => state.setUser);
   const dynamicUser = useUserStore((state) => state.user);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setUser(user);
@@ -230,6 +231,47 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
 
     return () => clearTimeout(id);
   }, [nonce]);
+
+  useEffect(() => {
+    if (readerType === "book") return;
+
+    const scrollTarget = scrollContainerRef.current;
+    if (!scrollTarget) return;
+
+    let lastScrollY = scrollTarget.scrollTop;
+    let ticking = false;
+
+    const updateScrollDirection = () => {
+      const currentScrollY = scrollTarget.scrollTop;
+
+      if (Math.abs(currentScrollY - lastScrollY) < 10) {
+        ticking = false;
+        return;
+      }
+
+      if (currentScrollY > lastScrollY) {
+        console.log("bottom");
+      } else {
+        console.log("top");
+      }
+
+      lastScrollY = currentScrollY;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollDirection);
+        ticking = true;
+      }
+    };
+
+    scrollTarget.addEventListener("scroll", onScroll);
+
+    return () => {
+      scrollTarget.removeEventListener("scroll", onScroll);
+    };
+  }, [readerType]);
 
   return (
     <ReaderPageWrapper>
@@ -402,7 +444,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
         page={currentPage}
       />
       <Container>
-        <ReaderMain>
+        <ReaderMain ref={scrollContainerRef}>
           {readerType === "book" && (
             <ReaderTapButtonsWrapper $width={readerWidth}>
               {chapter.prevChapter ? (
@@ -449,6 +491,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
                   <ReaderContentImage
                     $width={readerWidth}
                     src={page.path}
+                    loading="lazy"
                     ref={(el) => {
                       pageRefs.current[index] = el;
                     }}

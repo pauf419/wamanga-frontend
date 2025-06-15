@@ -8,21 +8,27 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 
 export const HeaderSC = styled.div`
-  position: sticky;
+  position: fixed;
   top: 0;
-  left: 0;
+  left: 84px;
   display: grid;
   align-content: center;
   align-items: center;
   grid-template-columns: repeat(3, minmax(0px, 1fr));
   gap: 16px;
-  width: 100%;
+  z-index: 10;
+  width: calc(100% - 84px);
   z-index: 9;
   padding: 16px;
   height: 64px;
   background: ${colors.background + convertOpacityToHex(60)};
   backdrop-filter: blur(6px);
   border-bottom: 1px dashed rgba(143, 150, 163, 0.24);
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    left: 0;
+  }
 
   @media (max-width: 650px) {
     grid-template-columns: 1fr minmax(0px, max-content);
