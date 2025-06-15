@@ -228,14 +228,14 @@ export const MobileInfo = styled.div`
   align-content: end;
   justify-items: start;
   width: 100%;
-  height: 30%;
+  height: 45%;
   padding: 0 24px;
   pointer-events: none;
   background: linear-gradient(
     to top,
-    ${colors.background},
-    rgb(0 0 0 / 70%) 40%,
-    rgb(0 0 0 / 50%) 60%,
+    rgb(17, 18, 19),
+    rgb(0 0 0 / 75%) 40%,
+    rgb(0 0 0 / 61%) 60%,
     rgb(0 0 0 / 0%)
   );
 `;

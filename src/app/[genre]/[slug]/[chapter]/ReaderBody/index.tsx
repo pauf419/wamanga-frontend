@@ -301,7 +301,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
         <SidebarBody>
           <ChaptersList>
             {[...title.chapters]
-              .sort((a, b) => a.numberChapter - b.numberChapter)
+              .sort((a, b) => b.numberChapter - a.numberChapter)
               .map((chapter: Chapter) => {
                 const isCurrent = currentChapter._id === chapter._id;
                 return (
