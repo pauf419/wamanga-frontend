@@ -97,6 +97,10 @@ export const Left = styled.div`
 export const Title = styled.h1`
   margin-bottom: 6px;
   font-size: 2rem;
+
+  @media (max-width: 1200px) {
+    margin-bottom: unset;
+  }
 `;
 
 export const SubTitle = styled.h2`
@@ -178,7 +182,7 @@ export const FavouriteButton = styled.button`
 export const Stats = styled.div`
   display: flex;
   gap: 12px;
-  margin: 24px 0 19px;
+  margin: 15px 0 15px;
 
   @media (max-width: 1200px) {
     width: 100%;
