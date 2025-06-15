@@ -85,7 +85,7 @@ const ReaderPage = async ({
     const chapterEl = await getChapterBySlug(title._id, chapter);
     if (!chapterEl) return <OkakPage />;
     incrementChapterViews(chapterEl._id);
-    const info = await getMangaChaptersMinimalInfo(title._id);
+    const info = await getMangaChaptersMinimalInfo(title._id, true);
     if (info.chapters) title.chapters = info.chapters;
     const tokens = await getTokens();
     const nonce = await createChapterNonce(chapterEl._id, tokens);
