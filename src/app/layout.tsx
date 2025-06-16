@@ -15,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="yandex-verification" content="176b7f43df025f2e" />
         <link
           href="https://cdn.adfinity.pro/code/css/adfinity.css"
           rel="stylesheet"
