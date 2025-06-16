@@ -7,7 +7,7 @@ import { convertOpacityToHex } from "@/utils";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
-export const HeaderSC = styled.div`
+export const HeaderSC = styled.div<{ $active: boolean }>`
   position: fixed;
   top: 0;
   left: 84px;
@@ -24,6 +24,12 @@ export const HeaderSC = styled.div`
   background: ${colors.background + convertOpacityToHex(60)};
   backdrop-filter: blur(6px);
   border-bottom: 1px dashed rgba(143, 150, 163, 0.24);
+  transition: 0.2s all ease;
+
+  ${(props) =>
+    props.$active
+      ? "transform: translateY(0);"
+      : "transform: translateY(-100%);"}
 
   @media (max-width: 1200px) {
     width: 100%;
@@ -448,7 +454,7 @@ export const ChaptersListElement = styled.div<{ $active: boolean }>`
   }
 `;
 
-export const MobileReaderButtonWrapper = styled.div`
+export const MobileReaderButtonWrapper = styled.div<{ $active: boolean }>`
   position: fixed;
   z-index: 9;
   display: flex;
@@ -456,15 +462,20 @@ export const MobileReaderButtonWrapper = styled.div`
   justify-content: center;
   min-height: 38px;
   width: 100%;
+  bottom: 0;
 
   position: fixed;
-  bottom: 59px;
-  right: 8px;
   z-index: 9;
   min-height: 38px;
+  transition: 0.2s all ease;
+
+  ${(props) =>
+    props.$active
+      ? "transform: translateY(-59px);"
+      : "transform: translateY(-8px);"}
 `;
 
-export const HeaderBottom = styled.div`
+export const HeaderBottom = styled.div<{ $active: boolean }>`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -477,6 +488,12 @@ export const HeaderBottom = styled.div`
   background: ${colors.background + convertOpacityToHex(60)};
   backdrop-filter: blur(6px);
   border-top: 1px dashed rgba(143, 150, 163, 0.24);
+  transition: 0.2s all ease;
+
+  ${(props) =>
+    props.$active
+      ? "transform: translateY(0);"
+      : "transform: translateY(100%);"}
 
   ${PagePopupWrapper} {
     top: autoeee;

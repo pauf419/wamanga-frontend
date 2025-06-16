@@ -54,6 +54,7 @@ interface Props {
   setSettingsSidebarActive: (b: boolean) => void;
   goToPage: (page: ChapterPage) => void;
   setChaptersSidebarActive: (b: boolean) => void;
+  menusActive: boolean;
 }
 
 const ReaderHeader = ({
@@ -63,6 +64,7 @@ const ReaderHeader = ({
   setSettingsSidebarActive,
   goToPage,
   setChaptersSidebarActive,
+  menusActive,
 }: Props) => {
   const [sidebarActive, setSidebarActive] = React.useState<boolean>(false);
   const [pagePopupActive, setPagePopupActive] = useState<boolean>(false);
@@ -80,7 +82,7 @@ const ReaderHeader = ({
   return (
     <>
       <SideBarMobile active={sidebarActive} setActive={setSidebarActive} />
-      <HeaderSC>
+      <HeaderSC $active={menusActive}>
         <Block>
           <ToggleButton onClick={toggleSidebar}>
             <SideBarToggleIcon />
@@ -207,7 +209,7 @@ const ReaderHeader = ({
       </HeaderSC>
       <DisplaysWhenMobile>
         {title.textForButton && title.telegram && (
-          <MobileReaderButtonWrapper>
+          <MobileReaderButtonWrapper $active={menusActive}>
             {buttonActive ? (
               <ReaderButton href={title.telegram}>
                 <ReaderButtonClose
@@ -226,7 +228,7 @@ const ReaderHeader = ({
             )}
           </MobileReaderButtonWrapper>
         )}
-        <HeaderBottom>
+        <HeaderBottom $active={menusActive}>
           <SettingsBlock>
             <SettingsBlurer
               $notadaptive

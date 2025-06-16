@@ -98,6 +98,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
   const setUser = useUserStore((state) => state.setUser);
   const dynamicUser = useUserStore((state) => state.user);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [menusActive, setMenusActive] = useState<boolean>(true);
 
   useEffect(() => {
     setUser(user);
@@ -235,14 +236,11 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
   useEffect(() => {
     if (readerType === "book") return;
 
-    const scrollTarget = scrollContainerRef.current;
-    if (!scrollTarget) return;
-
-    let lastScrollY = scrollTarget.scrollTop;
+    let lastScrollY = window.scrollY;
     let ticking = false;
 
     const updateScrollDirection = () => {
-      const currentScrollY = scrollTarget.scrollTop;
+      const currentScrollY = window.scrollY;
 
       if (Math.abs(currentScrollY - lastScrollY) < 10) {
         ticking = false;
@@ -250,10 +248,8 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
       }
 
       if (currentScrollY > lastScrollY) {
-        console.log("bottom");
-      } else {
-        console.log("top");
-      }
+        if (menusActive) setMenusActive(false);
+      } else setMenusActive(true);
 
       lastScrollY = currentScrollY;
       ticking = false;
@@ -266,15 +262,15 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
       }
     };
 
-    scrollTarget.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll);
 
     return () => {
-      scrollTarget.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onScroll);
     };
   }, [readerType]);
 
   return (
-    <ReaderPageWrapper>
+    <ReaderPageWrapper ref={scrollContainerRef}>
       <SettingsBlurer
         $notadaptive={false}
         $active={settingsModalActive}
@@ -442,9 +438,10 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
         title={title}
         chapter={currentChapter}
         page={currentPage}
+        menusActive={menusActive}
       />
       <Container>
-        <ReaderMain ref={scrollContainerRef}>
+        <ReaderMain>
           {readerType === "book" && (
             <ReaderTapButtonsWrapper $width={readerWidth}>
               {chapter.prevChapter ? (
@@ -502,7 +499,7 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
                 // Вставляем AdsFrame после нужной страницы (между страницами)
                 if (insertIndexes.has(index + 1)) {
                   elements.push(
-                    <AdsFrameWrapper>
+                    <AdsFrameWrapper key={index}>
                       <AdsFrame
                         frameName={AdsFrameNames.Chapter}
                         key={`ad-${index}`}
