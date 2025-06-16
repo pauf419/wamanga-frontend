@@ -25,7 +25,7 @@ const AdminPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
 
   const title = await getBySlug(slug);
-  const info = await getMangaChaptersMinimalInfo(title._id);
+  const info = await getMangaChaptersMinimalInfo(title._id, true);
   if (info.chapters) title.chapters = info.chapters;
 
   if (!slug || !title) redirect("/admin/title");
