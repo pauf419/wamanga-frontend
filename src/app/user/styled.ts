@@ -197,7 +197,7 @@ export const RankIndicator = styled(LevelIndicator)<{ $rank: string }>`
 
 export const EditBannerButton = styled.button`
   position: absolute;
-  z-index: 2;
+  z-index: 100;
   top: 16px;
   right: 16px;
   height: 30px;

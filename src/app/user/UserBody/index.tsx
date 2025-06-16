@@ -325,7 +325,7 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
         <TabsWrapper>
           {current && (
             <Tabs
-              tabs={["Профиль", "Закладки", "Мои Команды", "Настройки"]}
+              tabs={["Профиль", "Настройки"]}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
             />
@@ -369,7 +369,7 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
           <Comments type="user" comic={comic} userId={user._id} />
         </ProfileContent>
       )}
-      {activeTab === 1 && (
+      {activeTab === 9999 && (
         <ProjectsWrapper>
           <ToolsFlex>
             <ToolsBlock>
@@ -452,7 +452,7 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
           )}
         </ProjectsWrapper>
       )}
-      {activeTab === 2 && (
+      {activeTab === 999 && (
         <MembersWrapper>
           <ToolsFlex>
             <ToolsBlock>
@@ -567,7 +567,7 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
           </BookmarksContainer>
         </MembersWrapper>
       )}
-      {activeTab === 3 && (
+      {activeTab === 1 && (
         <SettingsWrapper>
           <SettingsBlock>
             <SettingsBlockTitle>Настройки</SettingsBlockTitle>
@@ -587,23 +587,6 @@ const ProfilePageBody = ({ user, current = false }: Props) => {
                 />
               </UserSettingsBlock>
               <UserSettingsBlock $type={false}>
-                <InputSelect
-                  elements={[
-                    {
-                      index: 0,
-                      value: "Он",
-                    },
-                    {
-                      index: 0,
-                      value: "Она",
-                    },
-                    {
-                      index: 0,
-                      value: "Они",
-                    },
-                  ]}
-                  placeholder="Обращение"
-                />
                 <Input
                   presetValue={user.description}
                   onChange={(e) => setDescription(e)}

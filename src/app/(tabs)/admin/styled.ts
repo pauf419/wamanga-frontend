@@ -8,12 +8,17 @@ import Link from "next/link";
 export const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 80px;
   padding: 0 24px;
   display: grid;
   gap: 24px;
 
   label {
     background: rgb(17 18 19);
+  }
+
+  @media (max-width: 1200px) {
+    margin-top: 64px;
   }
 `;
 

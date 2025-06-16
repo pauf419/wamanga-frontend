@@ -8,10 +8,15 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 1536px;
   margin: 0 auto;
+  margin-top: 80px;
   padding: 0 24px;
   color: ${colors.text};
   display: grid;
   align-content: start;
+
+  @media (max-width: 1200px) {
+    margin-top: 64px;
+  }
 `;
 
 export const Banner = styled.div<{ $background: string }>`
