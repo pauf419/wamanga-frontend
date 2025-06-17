@@ -67,7 +67,6 @@ const Sidebar = async () => {
               route={routes.adminAddComics}
             />
           </RoleSegregator>
-          <SidebarTab icon={<AdminCatalogIcon />} route={routes.adminCatalog} />
           <RoleSegregator allowedRoles={["owner"]}>
             <>
               <SidebarTab icon={<AdminUsersIcon />} route={routes.adminUsers} />
