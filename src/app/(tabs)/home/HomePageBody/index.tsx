@@ -72,10 +72,12 @@ export const HomePageBody = () => {
           <RecentSwiper titles={homePage?.recently} />
         </Section>
 
-        {processingMangas && processingMangas.length && (
+        {processingMangas && processingMangas.length ? (
           <DayTopSection title="Продолжить чтение" link="/">
             <ProcessingSwiper titles={processingMangas} />
           </DayTopSection>
+        ) : (
+          <></>
         )}
 
         {homePage?.top && (

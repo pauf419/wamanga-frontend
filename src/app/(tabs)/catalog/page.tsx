@@ -36,6 +36,9 @@ export async function generateMetadata(): Promise<Metadata> {
       ],
       type: "website",
     },
+    alternates: {
+      canonical: `${settings.metadataBase}/catalog`,
+    },
   };
 }
 
@@ -56,14 +59,9 @@ const CatalogPage = async () => {
   );
 
   return (
-    <>
-      <Head>
-        <link rel="canonical" href="https://wamanga.ru/catalog" />
-      </Head>
-      <BasePage isImageBehind>
-        <CatalogBody defaultTitles={recommendedTitles} />
-      </BasePage>
-    </>
+    <BasePage isImageBehind>
+      <CatalogBody defaultTitles={recommendedTitles} />
+    </BasePage>
   );
 };
 
