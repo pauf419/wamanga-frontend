@@ -109,7 +109,7 @@ export const HeaderAvatar = styled(Link)<{ $source: string }>`
   position: relative;
 `;
 
-export const HeaderLink = styled(Link)`
+export const HeaderLink = styled.a`
   padding: 6px 6px;
   line-height: 1.57143;
   font-size: 0.875rem;
