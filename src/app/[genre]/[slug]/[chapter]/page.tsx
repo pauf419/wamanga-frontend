@@ -37,6 +37,8 @@ export async function generateMetadata({
     const comics = await getBySlug(slug);
     const chapterEl = await getChapterBySlug(comics._id, chapter);
 
+    const canonicalUrl = `${settings.metadataBase}/${genre}/${slug}/${chapter}`;
+
     return {
       title: `${settings.title} - ${comics.type} - ${comics.name} - ${chapterEl.title}`,
       description: settings.longTitle,
@@ -61,6 +63,9 @@ export async function generateMetadata({
           },
         ],
         type: "website",
+      },
+      alternates: {
+        canonical: canonicalUrl,
       },
     };
   } catch (e) {

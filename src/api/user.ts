@@ -62,7 +62,7 @@ export async function getProcessingMangas(): Promise<
   ProcessingManga[] | undefined
 > {
   try {
-    const res = await $apiSSR.get("/user/processing");
+    const res = await $apiWithoutAuth.get("/user/processing");
 
     return res.data;
   } catch (e) {
