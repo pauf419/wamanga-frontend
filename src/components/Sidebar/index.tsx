@@ -29,7 +29,13 @@ const isAdminPage = async () => {
 const Sidebar = async () => {
   const session = await getSession();
 
-  if (await isAdminPage())
+  const randomTitle = await getRandomComic();
+
+  const title = randomTitle[0];
+
+  const moreRoutes = [{ title: "Правила сайта", path: "/rules" }];
+
+  if (session && session.role && session.role !== "user")
     return (
       <SidebarSC>
         <Link href="/">
@@ -39,6 +45,17 @@ const Sidebar = async () => {
         </Link>
         <Tabs>
           <SidebarTab icon={<AdminMainPageIcon />} route={routes.adminMain} />
+          <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
+          <SidebarTab
+            icon={<RandomIcon />}
+            forceRoute={`/${title?.seoGenre}/${title?.alternativeName}`}
+            route={routes.random}
+          />
+          <SidebarExpandTab
+            icon={<MoreIcon />}
+            title={"Ещё"}
+            routes={moreRoutes}
+          />
           <SidebarTab icon={<AdminComicsIcon />} route={routes.adminComics} />
           <RoleSegregator allowedRoles={["owner"]}>
             <SidebarTab
@@ -60,13 +77,6 @@ const Sidebar = async () => {
         </Tabs>
       </SidebarSC>
     );
-
-  const randomTitle = await getRandomComic();
-
-  const title = randomTitle[0];
-
-  const moreRoutes = [{ title: "Правила сайта", path: "/rules" }];
-
   return (
     <SidebarSC>
       <Link href="/">
