@@ -876,15 +876,14 @@ const AddTitlePageForm = () => {
             })
           }
         />
-        <BadgeTypeSelect
+        <BadgeTypeSelectManual
           placeholder="Жанры"
-          onChange={(values) => {
+          onChange={(genres) => {
             setForm({
               ...form,
-              genres: values.map((genre) => genre.value),
+              genres,
             });
           }}
-          elements={MangaGenres}
         />
         <BadgeTypeSelect
           placeholder="Команды"

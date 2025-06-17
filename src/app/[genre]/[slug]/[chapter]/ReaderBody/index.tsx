@@ -16,6 +16,7 @@ import {
   ReaderMain,
   ReaderNoChapter,
   ReaderPageWrapper,
+  ReaderTap,
   ReaderTapButtonsWrapper,
   ReaderTapLink,
 } from "../styled";
@@ -444,17 +445,29 @@ const ReaderBody = ({ title, chapter, user, nonce }: Props) => {
         <ReaderMain>
           {readerType === "book" && (
             <ReaderTapButtonsWrapper $width={readerWidth}>
-              {chapter.prevChapter ? (
-                <ReaderTapLink
-                  href={`/${title.seoGenre}/${title.alternativeName}/${chapter.prevChapter.slug}`}
-                ></ReaderTapLink>
+              {currentPage.order - 1 > 0 ? (
+                <ReaderTap
+                  onClick={() => {
+                    const pageEx = chapter.pages.find(
+                      (page) => page.order === currentPage.order - 1
+                    );
+                    if (!pageEx) return;
+                    return goToPage(pageEx);
+                  }}
+                ></ReaderTap>
               ) : (
                 <ReaderNoChapter></ReaderNoChapter>
               )}
-              {chapter.nextChapter ? (
-                <ReaderTapLink
-                  href={`/${title.seoGenre}/${title.alternativeName}/${chapter.nextChapter.slug}`}
-                ></ReaderTapLink>
+              {currentPage.order + 1 <= chapter.pages.length ? (
+                <ReaderTap
+                  onClick={() => {
+                    const pageEx = chapter.pages.find(
+                      (page) => page.order === currentPage.order + 1
+                    );
+                    if (!pageEx) return;
+                    return goToPage(pageEx);
+                  }}
+                ></ReaderTap>
               ) : (
                 <ReaderNoChapter></ReaderNoChapter>
               )}

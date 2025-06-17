@@ -97,6 +97,12 @@ export const ReaderNoChapter = styled.div`
   width: 100%;
 `;
 
+export const ReaderTap = styled.div`
+  flex: 1;
+  width: 100%;
+  cursor: pointer;
+`;
+
 export const ReaderContentImage = styled.img<{ $width: number }>`
   display: block;
   transition: 0.2s all ease;
