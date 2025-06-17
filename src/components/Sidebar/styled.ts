@@ -10,6 +10,7 @@ export const SidebarSC = styled.div`
   flex-direction: column;
   gap: 4px;
   width: ${sizes.sidebarWidth}px;
+  justify-content: space-between;
 
   @media (max-width: 1200px) {
     display: none;
@@ -39,4 +40,10 @@ export const Tabs = styled.div`
   flex-direction: column;
   gap: 4px;
   padding: 0px 6px 0px;
+`;
+
+export const Segment = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 `;

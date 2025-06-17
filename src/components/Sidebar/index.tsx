@@ -7,7 +7,7 @@ import RandomIcon from "@icons/svg/random.svg";
 import MoreIcon from "@icons/svg/more.svg";
 import { routes } from "@/const";
 import { SidebarExpandTab } from "./ExpandTab";
-import { LogoSC, LogoWrapper, SidebarSC, Tabs } from "./styled";
+import { LogoSC, LogoWrapper, Segment, SidebarSC, Tabs } from "./styled";
 import { headers } from "next/headers";
 import AdminComicsIcon from "@icons/svg/admin-comics.svg";
 import AdminMainPageIcon from "@icons/svg/admin-main.svg";
@@ -38,24 +38,28 @@ const Sidebar = async () => {
   if (session && session.role && session.role !== "user")
     return (
       <SidebarSC>
-        <Link href="/">
-          <LogoWrapper>
-            <LogoSC src={Logo} alt="Logo" />
-          </LogoWrapper>
-        </Link>
-        <Tabs>
-          <SidebarTab icon={<AdminMainPageIcon />} route={routes.adminMain} />
-          <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
-          <SidebarTab
-            icon={<RandomIcon />}
-            forceRoute={`/${title?.seoGenre}/${title?.alternativeName}`}
-            route={routes.random}
-          />
-          <SidebarExpandTab
-            icon={<MoreIcon />}
-            title={"Ещё"}
-            routes={moreRoutes}
-          />
+        <Segment>
+          <Link href="/">
+            <LogoWrapper>
+              <LogoSC src={Logo} alt="Logo" />
+            </LogoWrapper>
+          </Link>
+          <Tabs>
+            <SidebarTab icon={<HomeIcon />} route={routes.home} />
+            <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
+            <SidebarTab
+              icon={<RandomIcon />}
+              forceRoute={`/${title?.seoGenre}/${title?.alternativeName}`}
+              route={routes.random}
+            />
+            <SidebarExpandTab
+              icon={<MoreIcon />}
+              title={"Ещё"}
+              routes={moreRoutes}
+            />
+          </Tabs>
+        </Segment>
+        <Tabs style={{ paddingBottom: 8 }}>
           <SidebarTab icon={<AdminComicsIcon />} route={routes.adminComics} />
           <RoleSegregator allowedRoles={["owner"]}>
             <SidebarTab
@@ -77,27 +81,30 @@ const Sidebar = async () => {
         </Tabs>
       </SidebarSC>
     );
+
   return (
     <SidebarSC>
-      <Link href="/">
-        <LogoWrapper>
-          <LogoSC src={Logo} alt="Logo" />
-        </LogoWrapper>
-      </Link>
-      <Tabs>
-        <SidebarTab icon={<HomeIcon />} route={routes.home} />
-        <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
-        <SidebarTab
-          icon={<RandomIcon />}
-          forceRoute={`/${title?.seoGenre}/${title?.alternativeName}`}
-          route={routes.random}
-        />
-        <SidebarExpandTab
-          icon={<MoreIcon />}
-          title={"Ещё"}
-          routes={moreRoutes}
-        />
-      </Tabs>
+      <Segment>
+        <Link href="/">
+          <LogoWrapper>
+            <LogoSC src={Logo} alt="Logo" />
+          </LogoWrapper>
+        </Link>
+        <Tabs>
+          <SidebarTab icon={<HomeIcon />} route={routes.home} />
+          <SidebarTab icon={<CatalogIcon />} route={routes.catalog} />
+          <SidebarTab
+            icon={<RandomIcon />}
+            forceRoute={`/${title?.seoGenre}/${title?.alternativeName}`}
+            route={routes.random}
+          />
+          <SidebarExpandTab
+            icon={<MoreIcon />}
+            title={"Ещё"}
+            routes={moreRoutes}
+          />
+        </Tabs>
+      </Segment>
     </SidebarSC>
   );
 };
