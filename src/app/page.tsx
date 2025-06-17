@@ -34,6 +34,16 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: `${settings.metadataBase}`,
     },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+      },
+    },
   };
 }
 

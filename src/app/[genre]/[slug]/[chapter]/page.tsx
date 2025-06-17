@@ -67,6 +67,16 @@ export async function generateMetadata({
       alternates: {
         canonical: canonicalUrl,
       },
+      robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+          index: true,
+          follow: true,
+          noimageindex: false,
+        },
+      },
     };
   } catch (e) {
     console.error(e);

@@ -39,6 +39,16 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: `${settings.metadataBase}/catalog`,
     },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+      },
+    },
   };
 }
 
