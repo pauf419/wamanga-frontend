@@ -7,6 +7,7 @@ import { searchManga } from "@/api/title";
 
 import type { Metadata, ResolvingMetadata } from "next";
 import { getSettings } from "@/api/settings";
+import Head from "next/head";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings();
@@ -55,9 +56,14 @@ const CatalogPage = async () => {
   );
 
   return (
-    <BasePage isImageBehind>
-      <CatalogBody defaultTitles={recommendedTitles} />
-    </BasePage>
+    <>
+      <Head>
+        <link rel="canonical" href="https://wamanga.ru/catalog" />
+      </Head>
+      <BasePage isImageBehind>
+        <CatalogBody defaultTitles={recommendedTitles} />
+      </BasePage>
+    </>
   );
 };
 

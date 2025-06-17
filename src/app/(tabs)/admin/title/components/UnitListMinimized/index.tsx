@@ -19,6 +19,7 @@ import NewIcon from "@icons/svg/admin-plus.svg";
 import { useRouter } from "next/navigation";
 import { ActionsWrapper, DeleteHandler } from "./styled";
 import { deleteChapter } from "@/api/chapter";
+import { ChapterListUnit } from "./ChapterUnit";
 
 interface Props {
   slug: string;
@@ -78,17 +79,12 @@ const ChapterListMinimized = ({ slug, chapters }: Props) => {
           .sort((a, b) => b.numberChapter - a.numberChapter)
           .filter((chapter) => !filter || chapter.title.includes(filter))
           .map((chapter) => (
-            <MiniBoxWrapper key={chapter._id} $uploaded={false}>
-              <h3>Глава {chapter.numberChapter}</h3>
-              <ActionsWrapper>
-                <LinkS href={`/admin/title/${slug}/chapters/${chapter.slug}`}>
-                  Редактировать
-                </LinkS>
-                <DeleteHandler onClick={() => handleDelete(chapter._id)}>
-                  Удалить
-                </DeleteHandler>
-              </ActionsWrapper>
-            </MiniBoxWrapper>
+            <ChapterListUnit
+              chapter={chapter}
+              titleSlug={slug}
+              onDelete={handleDelete}
+              key={chapter._id}
+            />
           ))}
       </GridContainer>
     </>

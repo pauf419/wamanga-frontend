@@ -43,7 +43,7 @@ export const ActionPanel = ({ title, team }: Props) => {
   if (!lastChapter)
     lastChapter = {
       volumeIndex: 1,
-      numberChapter: 0,
+      numberChapter: title.totalChapters ? title.totalChapters - 1 : 0,
     } as Chapter;
   const template: ChapterUnit = {
     id: 1,
@@ -62,7 +62,10 @@ export const ActionPanel = ({ title, team }: Props) => {
   const [unitsUploaded, setUnitsUploaded] = useState<number>(0);
   const [errors, setErrors] = useState<string[]>([]);
 
-  const onCreate = (amount: number) => {
+  const onCreate = (
+    amount: number,
+    customNumberChapter: number | undefined = undefined
+  ) => {
     setUnitsAmount((prev) => {
       const newUnits: ChapterUnit[] = Array.from(
         { length: amount },
@@ -79,7 +82,7 @@ export const ActionPanel = ({ title, team }: Props) => {
             ...template,
             id,
             volume: 1,
-            chapter: newChapter,
+            chapter: customNumberChapter ? customNumberChapter : newChapter,
             name: "",
             uploaded: false,
             presetTeam: team,
@@ -95,9 +98,10 @@ export const ActionPanel = ({ title, team }: Props) => {
     setUnitsUploaded(0);
     setErrors([]);
     setUploadModalActive(true);
+
     for (let i = 0; i < unitsAmount.length; i++) {
       try {
-        await createChapter({
+        const chapter = await createChapter({
           mangaId: title._id,
           numberChapter: unitsAmount[i].chapter,
           title: unitsAmount[i].name,
@@ -109,6 +113,7 @@ export const ActionPanel = ({ title, team }: Props) => {
           mangaAlternativeName: title.alternativeName,
           volumeIndex: unitsAmount[i].volume,
         });
+        title.chapters.push(chapter);
         setUnitsUploaded((prev) => prev + 1);
         setUnitsAmount((prev) => {
           return prev.map((unit) => {

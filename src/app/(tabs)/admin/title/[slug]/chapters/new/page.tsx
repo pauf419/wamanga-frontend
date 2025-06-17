@@ -14,8 +14,8 @@ import {
   Poster,
   SegmentSeparator,
 } from "../../../../styled";
-import { getChapterById } from "@/api/chapter";
-import { getBySlug } from "@/api/title";
+import { getChapterById, getChapterBySlug } from "@/api/chapter";
+import { getBySlug, getMangaChaptersMinimalInfo } from "@/api/title";
 import { redirect } from "next/navigation";
 import ChapterPageListMinimized from "../../../components/UnitListMinimized/ChapterPageList";
 import ChapterEditableDataList from "../../../components/DataListEditable/Chapter";
@@ -32,6 +32,12 @@ const AdminPage = async ({
   const { slug, chapterId } = await params;
 
   const title = await getBySlug(slug);
+
+  const info = await getMangaChaptersMinimalInfo(title._id);
+
+  if (info && info.totalChapters) {
+    title.totalChapters = info.totalChapters;
+  }
 
   if (!slug || !title) redirect(`/admin/title/${slug}`);
 

@@ -44,7 +44,9 @@ const LatestSwiper = dynamic(() => import("../LatestSwiper"), {
 
 export const HomePageBody = () => {
   const [homePage, setHomePage] = useState<HomePageResponse>();
-  const [processingMangas, setProcessingMangas] = useState<ProcessingManga[]>();
+  const [processingMangas, setProcessingMangas] = useState<
+    ProcessingManga[] | undefined
+  >(undefined);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,9 +72,11 @@ export const HomePageBody = () => {
           <RecentSwiper titles={homePage?.recently} />
         </Section>
 
-        <DayTopSection title="Продолжить чтение" link="/">
-          <ProcessingSwiper titles={processingMangas} />
-        </DayTopSection>
+        {processingMangas && processingMangas.length && (
+          <DayTopSection title="Продолжить чтение" link="/">
+            <ProcessingSwiper titles={processingMangas} />
+          </DayTopSection>
+        )}
 
         {homePage?.top && (
           <DayTopSection title="Топ за день" link="/">
