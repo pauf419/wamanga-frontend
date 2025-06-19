@@ -32,6 +32,11 @@ const UsersBody = ({ users }: Props) => {
         placeholder="Поиск"
         onChange={(value) => setSearch(value)}
       />
+      <div>
+        <h1 style={{ fontSize: 14, color: "rgb(94, 99, 110)" }}>
+          Общее количество пользователей: {users.length}
+        </h1>
+      </div>
       <GridMini>
         {dynamicUsers
           .filter((user) => (search ? user.username.includes(search) : true))

@@ -21,6 +21,7 @@ import type { Chapter } from "@/api/types/chapter";
 import Link from "next/link";
 import type { Comic } from "@/api/types/comic";
 import { useRouter } from "next/navigation";
+import { RoleSegregator, UserRole } from "@/components/RoleSegregator";
 
 interface Props {
   chapter: Chapter;
@@ -43,6 +44,18 @@ export const ChapterUnit = ({ chapter, title }: Props) => {
                 <StatIcon as={LikeIcon} />
                 <Stat>{chapter.likes}</Stat>
               </StatBadge>
+              <RoleSegregator
+                allowedRoles={[
+                  UserRole.Admin,
+                  UserRole.Moderator,
+                  UserRole.Owner,
+                ]}
+              >
+                <StatBadge>
+                  <StatIcon as={ViewIcon} />
+                  <Stat>{chapter.views}</Stat>
+                </StatBadge>
+              </RoleSegregator>
             </Badges>
             <CreatedAt>
               {timeAgo(new Date(chapter.uploadDate).getTime())}
