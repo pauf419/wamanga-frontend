@@ -18,7 +18,6 @@ export const ReaderPageWrapper = styled.div`
 export const Container = styled.div`
   width: 100%;
   max-width: 1200px;
-  padding: 0 24px;
   margin: 0 auto;
   margin-top: 64px;
   overflow-y: auto;
