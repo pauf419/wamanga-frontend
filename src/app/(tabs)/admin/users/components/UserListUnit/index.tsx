@@ -28,6 +28,7 @@ import { assignManga, editUserAdmin } from "@/api/user";
 import CloseIcon from "@icons/svg/close.svg";
 import React from "react";
 import { IconButton, Snackbar } from "@mui/material";
+import Link from "next/link";
 
 interface Props {
   user: User;
@@ -171,7 +172,9 @@ const UserListUnit = ({ user, updateUser }: Props) => {
       </Modal>
       <ContentWrapper>
         <div>
-          <Avatar src={user.avatar} />
+          <Link href={`/user/${user._id}`}>
+            <Avatar src={user.avatar} />
+          </Link>
         </div>
         <DataWrapper>
           <DataListUnit>
